@@ -1,0 +1,5 @@
+services:
+  routing.onLoadMapResourcesLoadRouterFiles:
+    class: con4gis\RoutingExpenseBundle\Classes\Listener\LoadMapResourcesListener
+    tags:
+    - { name: kernel.event_listener, event: maps.resources.load, method: onLoadMapResourcesLoadRouterFiles, priority: 9001 }

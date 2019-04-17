@@ -1,0 +1,53 @@
+{
+    "name": "con4gis/routing-expense",
+    "type": "contao-bundle",
+    "description": "RoutingExpenses bundle with to extend the usual Router from the MapsBundle.",
+    "keywords": ["con4gis", "routing", "contao", "c4g", "RoutingBundle"],
+    "license": "LGPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Kuestenschmiede GmbH Software & Design",
+            "homepage": "https://kuestenschmiede.de",
+            "role": "Operator"
+        },
+        {
+            "name": "con4gis community",
+            "homepage": "https://con4gis.org",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "email": "support@con4gis.org"
+    },
+    "require": {
+        "contao/core-bundle": "^4.4",
+        "con4gis/maps": "^6.0"
+    },
+    "conflict": {
+        "contao/core": "*",
+        "contao/manager-plugin": "<2.0 || >=3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "con4gis\\RoutingExpensesBundle\\": ""
+        },
+        "classmap": [
+            "Resources/contao/"
+        ],
+        "exclude-from-classmap": [
+            "Resources/contao/config/",
+            "Resources/contao/dca/",
+            "Resources/contao/languages/",
+            "Resources/contao/templates/"
+        ]
+    },
+    "config": {
+        "preferred-install": "dist"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        },
+        "contao-manager-plugin": "con4gis\\RoutingExpensesBundle\\ContaoManager\\Plugin"
+    }
+}

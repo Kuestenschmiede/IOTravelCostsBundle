@@ -1,0 +1,7 @@
+services:
+  con4gis.expense_service:
+    class: con4gis\RoutingExpensesBundle\Classes\Services\ExpenseService
+    public: true
+    arguments:
+      - "@event_dispatcher"
+      - "@doctrine.orm.entity_manager"
