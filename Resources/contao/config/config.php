@@ -22,3 +22,7 @@ $GLOBALS['BE_MOD']['con4gis_core'] = array_merge($GLOBALS['BE_MOD']['con4gis_cor
         'tables' => ['tl_c4g_routing_expenses_tariffs']
     ]
 ]);
+array_insert($GLOBALS['FE_MOD']['con4gis'], 1,
+    [
+        'c4g_routing_expenses' => 'con4gis\RoutingExpensesBundle\Resources\contao\modules\ModuleC4gRoutingExpenses',
+    ]);
