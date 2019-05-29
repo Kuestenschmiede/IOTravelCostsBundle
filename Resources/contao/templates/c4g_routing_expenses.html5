@@ -1,32 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-</head>
-<body>
 
-<div class="input-route" style="">
+
+<div class="input-route">
     <div class="route-from-input">
         <div class="input-route-from-field">
             <button class="route-from-geolocation"></button>
-            <input type="text" class="route-from" name="routeFrom" placeholder="PLZ, Ort oder Straße eingeben..." autocomplete="off">
+            <input type="text" class="route-from" name="routeFrom" placeholder="PLZ, Ort oder Straße eingeben...">
         </div>
     </div>
     <div class="route-to-input">
         <div class="input-route-to-field">
             <button class="route-to-geolocation"></button>
-            <input type="text" class="route-to ui-autocomplete-input" name="routeTo" placeholder="PLZ, Ort oder Straße eingeben..." autocomplete="off">
+            <input type="text" class="route-to ui-autocomplete-input" name="routeTo" placeholder="PLZ, Ort oder Straße eingeben...">
         </div>
     </div>
+</div>
+<div class="route-output">
+    <ul class="output-headline">
+        <li class="output-dist">Distanz</li>
+        <li class="output-dist">Zeit</li>
+        <li class="output-dist">Kosten</li>
+    </ul>
+    <ul class="output-content">
+
+    </ul>
+</div>
 <?php if ($this->keyReverse && $this->keyForward && $this->proxyUrl): ?>
 <script defer>
     window.proxyUrl = "<?php echo $this->proxyUrl ?>";
     window.keyReverse = "<?php echo $this->keyReverse ?>";
     window.keyForward = "<?php echo $this->keyForward ?>";
+    window.settingId = "<?php echo $this->settingId ?>";
 
 </script>
 <?php endif; ?>
-</body>
-</html>

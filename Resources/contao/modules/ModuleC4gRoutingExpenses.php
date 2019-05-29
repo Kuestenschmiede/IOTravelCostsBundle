@@ -64,6 +64,7 @@ class ModuleC4gRoutingExpenses extends \Module
         $template->proxyUrl = $objSettings->con4gisIoUrl;
         $template->keyReverse = C4GUtils::getKey($objSettings,3);
         $template->keyForward = C4GUtils::getKey($objSettings,2);
+        $template->settingId = 1;
     }
 
 

@@ -67,7 +67,7 @@ class ExpenseService
 
             }
         }
-
+        return $REQUEST->response;
         $repoExpenseTariffs = $this->entityManager->getRepository(RoutingExpensesTariff::class);
 
     }

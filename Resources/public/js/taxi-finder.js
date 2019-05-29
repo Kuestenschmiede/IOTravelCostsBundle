@@ -1,40 +1,56 @@
 "use strict";
-import {CachedInputfield} from "./../../../../../../con4gis/bundles/CoreBundle/Resources/public/js/c4g-cached-inputfield";
 
 const $ = jQuery;
-
-const taxiData = {
-    routeFrom: "",
-    routeTo: ""
+var arrFromNames = [];
+var arrFromPositions = [];
+var arrToNames = [];
+var arrToPositions = [];
+var taxiData = {
+    routeFrom: {},
+    routeTo: {}
 };
 
 let routeFromInput = null;
 let routeToInput = null;
 
-function setAreaAddres(address) {
-    taxiData.areaAddress = address;
-}
 
 function setRouteFrom(address) {
-    taxiData.routeFrom = address;
+    taxiData.routeFrom.adress = address;
 }
 
 function setRouteTo(address) {
-    taxiData.routeTo = address;
+    taxiData.routeTo.adress = address;
 }
 
 
 function handleRouteFromPosition(coordinates) {
     handlePosition(coordinates, ".route-from", "routeFrom");
+    calculateExpenses();
+
 }
 
 function handleRouteToPosition(coordinates) {
     handlePosition(coordinates, ".route-to", "routeTo");
+    calculateExpenses();
+}
+function calculateExpenses () {
+    if (taxiData.routeFrom.loc && taxiData.routeTo.loc) {
+        let url = "con4gis/expenseService/" + window.settingId + "/" + taxiData.routeFrom.loc[0] + "," + taxiData.routeFrom.loc[1] + ";" + taxiData.routeTo.loc[0] + "," + taxiData.routeTo.loc[1] + "/";
+        $.ajax({url: url}).done(function(data) {
+            let parentNode = $(".output-content");
+        })
+    }
 }
 
 function handlePosition(coordinates, cssId, propName) {
     let coords = coordinates.coords;
     // TODO aus modul hier rein geben
+    if (cssId === ".route-from") {
+        taxiData.routeFrom.loc = [coords.latitude, coords.longitude];
+    }
+    else {
+        taxiData.routeTo.loc = [coords.latitude, coords.longitude];
+    }
     let url = window.proxyUrl + '/reverse.php?key='+ window.keyReverse+'&format=json&lat=' + coords.latitude + '&lon=' + coords.longitude;
     $.ajax({url: url}).done(function(data) {
         let address = "";
@@ -60,33 +76,85 @@ function handlePosition(coordinates, cssId, propName) {
             address += data.address.town;
         }
         $(cssId).val(address);
-        taxiData[propName] = address;
+        taxiData[propName].adress = address;
     });
 }
 function handleAdress(input, cssId) {
     let url = window.proxyUrl + "search.php?format=json&key=" + window.keyForward + "&q=" + input;
     $.ajax({url: url}).done(function(data) {
         if(data[0] && data[0].display_name) {
-            $(cssId).val(data[0].display_name);
+            // $(cssId).val(data[0].display_name);
+
+            for (let i in data) {
+                if (data.hasOwnProperty(i)) {
+                    if (cssId === ".route-from") {
+                        arrFromNames.push(data[i].display_name);
+                        arrFromPositions.push([data[i].lat, data[i].lon]);
+                    }
+                    else {
+                        arrToNames.push(data[i].display_name);
+                        arrToPositions.push([data[i].lat, data[i].lon]);
+                    }
+                }
+            }
+            if (cssId === ".route-from") {
+                $(cssId).autocomplete({
+                    source: arrFromNames
+                });
+            }
+            else {
+                $(cssId).autocomplete({
+                    source: arrToNames
+                });
+            }
+
+        }
+    })
+}
+function submitSearch(input, cssId) {
+    let url = window.proxyUrl + "search.php?format=json&key=" + window.keyForward + "&q=" + input;
+    $.ajax({url: url}).done(function(data) {
+        if(data[0] && data[0].display_name) {
+            // $(cssId).val(data[0].display_name);
+            if (cssId === ".route-to") {
+                taxiData.routeTo.loc = [data[0].lat, data[0].lon];
+            }
+            else {
+                taxiData.routeFrom.loc = [data[0].lat, data[0].lon];
+            }
+            calculateExpenses();
         }
     })
 }
 
-$(document).ready(function() {
-    routeFromInput = new CachedInputfield(".route-from", false, "c4g-router-address");
-    routeToInput = new CachedInputfield(".route-to", false, "c4g-router-address");
+ $(document).ready(function() {
+//     routeFromInput = new CachedInputfield(".route-from", false, "c4g-router-address");
+//     routeToInput = new CachedInputfield(".route-to", false, "c4g-router-address");
     const enterListener = function(event) {
-        let currTime = Math.floor(Date.now() / 1000);
-        if (window.counter && window.counter + 2 < currTime) {
-            delete window.counter;
-            handleAdress($(this).val(), ".route-from");
+        const scope = this;
+        if (event.keyCode === 13) {
+            submitSearch($(scope).val(), "." + scope.classList[0]);
         }
         else {
-            window.counter = currTime;
+            let currTime = Math.floor(Date.now());
+            scope.counter = currTime;
+            setTimeout(function(){
+                if (scope.counter && scope.counter + 1000 < Math.floor(Date.now())) {
+                    delete scope.counter;
+                    handleAdress($(scope).val(), "." + scope.classList[0]);
+                }
+            },1500)
         }
+
     };
 
     $(".route-from").on('keydown', enterListener);
+    $(".route-from").on('autocompleteselect', function(event, ui){
+        let value = ui.item.value;
+        let loc = arrFromPositions[arrFromNames.findIndex(danger => danger === value)];
+        taxiData.routeFrom.loc = loc;
+        calculateExpenses();
+    });
     $(".route-to").on('keydown', enterListener);
 
     $(".route-from").on('change', function() {
