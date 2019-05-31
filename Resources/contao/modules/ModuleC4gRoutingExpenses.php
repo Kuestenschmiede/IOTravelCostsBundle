@@ -56,7 +56,7 @@ class ModuleC4gRoutingExpenses extends \Module
         $pageUrl = Controller::replaceInsertTags("{{link_url:: " . $pageId . "}}");
         ResourceLoader::loadJavaScriptDeferred('jquery-ui', "/bundles/con4giscore/vendor/jQuery/jquery-ui-1.12.1.custom/jquery-ui.js");
         ResourceLoader::loadJavaScriptDeferred("taxi-finder", "bundles/con4gisroutingexpenses/build/taxi-finder.js");
-//        ResourceLoader::loadCssRessource("fuel-finder-module", "bundles/gasstationsfuel/css/fuel-finder-module.css");
+        ResourceLoader::loadCssRessource("fuel-finder-module", "bundles/con4gisroutingexpenses/css/taxi-finder.css");
         ResourceLoader::loadCssRessource('jquery-ui-css', "/bundles/con4giscore/vendor/jQuery/jquery-ui-1.12.1.custom/jquery-ui.css");
 //        ResourceLoader::loadCssRessource("c4g-cached-inputfield", "bundles/con4giscore/css/c4g-cached-inputfield.css");
         $template = $this->Template;

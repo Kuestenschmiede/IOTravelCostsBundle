@@ -3,26 +3,29 @@
 <div class="input-route">
     <div class="route-from-input">
         <div class="input-route-from-field">
-            <button class="route-from-geolocation"></button>
+            <button class="route-from-geolocation" title="Get user position"></button>
             <input type="text" class="route-from" name="routeFrom" placeholder="PLZ, Ort oder Straße eingeben...">
         </div>
     </div>
     <div class="route-to-input">
         <div class="input-route-to-field">
-            <button class="route-to-geolocation"></button>
+            <button class="route-to-geolocation" title="Get user position"></button>
             <input type="text" class="route-to ui-autocomplete-input" name="routeTo" placeholder="PLZ, Ort oder Straße eingeben...">
         </div>
     </div>
 </div>
-<div class="route-output">
-    <ul class="output-headline">
-        <li class="output-dist">Distanz</li>
-        <li class="output-dist">Zeit</li>
-        <li class="output-dist">Kosten</li>
-    </ul>
-    <ul class="output-content">
+<div >
+    <table class="route-output" style="display:none">
+        <tr class="route-output-headline">
+            <th class="headline-dist">Distanz</th>
+            <th class="headline-time">Zeit</th>
+        </tr>
+        <tr class="route-output-values">
+            <td class="response-dist"></td>
+            <td class="response-time"></td>
+        </tr>
+    </table>
 
-    </ul>
 </div>
 <?php if ($this->keyReverse && $this->keyForward && $this->proxyUrl): ?>
 <script defer>

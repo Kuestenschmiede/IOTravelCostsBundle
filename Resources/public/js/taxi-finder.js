@@ -37,8 +37,32 @@ function calculateExpenses () {
     if (taxiData.routeFrom.loc && taxiData.routeTo.loc) {
         let url = "con4gis/expenseService/" + window.settingId + "/" + taxiData.routeFrom.loc[0] + "," + taxiData.routeFrom.loc[1] + ";" + taxiData.routeTo.loc[0] + "," + taxiData.routeTo.loc[1] + "/";
         $.ajax({url: url}).done(function(data) {
-            let parentNode = $(".output-content");
+            let tableNode = $(".route-output");
+            tableNode.css("display", "block");
+            $("response-headline").remove();
+            $("response-value").remove();
+            if (data.time) {
+                let elementTime = $(".response-time");
+                elementTime.html(data.time);
+            }
+            if (data.dist) {
+                let elementDistance = $(".response-dist");
+                elementDistance.html(data.dist);
+            }
+            let headlindeNode = $(".route-output-headline");
+            let responseNode = $(".route-output-values");
+            for(let tariffName in data.tariffs) {
+                let headlineElement = document.createElement('th');
+                headlineElement.innerHTML = tariffName;
+                $(headlineElement).addClass("response-headline")
+                let responseElement = document.createElement('td');
+                responseElement.innerHTML = data.tariffs[tariffName];
+                $(responseElement).addClass("response-value")
+                headlindeNode.append(headlineElement);
+                responseNode.append(responseElement);
+            }
         })
+        
     }
 }
 
