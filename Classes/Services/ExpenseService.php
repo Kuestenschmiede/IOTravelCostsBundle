@@ -67,8 +67,16 @@ class ExpenseService
 
             }
         }
-        return $REQUEST->response;
-        $repoExpenseTariffs = $this->entityManager->getRepository(RoutingExpensesTariff::class);
+        $response = json_decode($REQUEST->response);
+        if ($response->tariffs){
+            $arrResponseTariffs = [];
+            foreach ($response->tariffs as $key => $tariff) {
+//                $objTariff = $arrTariffs[$key]
+                $arrResponseTariffs[$arrTariffs[$key]->getCaption()] = $tariff;
+            }
+            $response->tariffs = $arrResponseTariffs;
+        }
+        return json_encode($response);
 
     }
 }
