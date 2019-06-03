@@ -15,6 +15,16 @@
     </div>
 </div>
 <br>
+<div>
+    <table class="tariff-output" style="display:none">
+        <tr class="tariff-output-headline">
+            <th class="headline-caption"></th>
+            <th class="headline-base-price"></th>
+            <th class="headline-dist-price"></th>
+            <th class="headline-time-price"></th>
+        </tr>
+    </table>
+</div>
 <div >
     <table class="route-output" style="display:none">
         <tr class="route-output-headline">

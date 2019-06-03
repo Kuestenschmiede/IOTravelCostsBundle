@@ -168,7 +168,7 @@ function handlePosition(coordinates, cssId, propName) {
     let coords = coordinates.coords;
     // TODO aus modul hier rein geben
     if (window.bBox && window.bBox[0]) {
-        if (window.bBox[0] < coords.latitude && coords.latitude < window.bBox[2] && window.bBox[1] < coords.longitude && coords.longitude < window.bBox[3]) {
+        if (window.bBox[0] < coords.longitude && coords.longitude < window.bBox[2] && window.bBox[1] < coords.latitude && coords.latitude < window.bBox[3]) {
             if (cssId === ".route-from") {
                 taxiData.routeFrom.loc = [coords.latitude, coords.longitude];
             }
@@ -314,17 +314,45 @@ function submitSearch(input, cssId) {
 
         if (window.bBox && window.bBox[0]) {
             if (window.bBox[0] < data[0].lon && data[0].lon < window.bBox[2] && window.bBox[1] < data[0].lat && data[0].lat < window.bBox[3]) {
+                if(data[0] && data[0].display_name) {
+                    // $(cssId).val(data[0].display_name);
+                    if (cssId === ".route-to") {
+                        taxiData.routeTo.loc = [data[0].lat, data[0].lon];
+                    }
+                    else {
+                        taxiData.routeFrom.loc = [data[0].lat, data[0].lon];
+                    }
+                    calculateExpenses();
+                }
             }
         }
-        if(data[0] && data[0].display_name) {
-            // $(cssId).val(data[0].display_name);
-            if (cssId === ".route-to") {
-                taxiData.routeTo.loc = [data[0].lat, data[0].lon];
+        else {
+            if(data[0] && data[0].display_name) {
+                // $(cssId).val(data[0].display_name);
+                if (cssId === ".route-to") {
+                    taxiData.routeTo.loc = [data[0].lat, data[0].lon];
+                }
+                else {
+                    taxiData.routeFrom.loc = [data[0].lat, data[0].lon];
+                }
+                calculateExpenses();
             }
-            else {
-                taxiData.routeFrom.loc = [data[0].lat, data[0].lon];
+        }
+
+    })
+}
+function findTariffs() {
+    let url = "con4gis/tariffService/" + window.settingId + "/";
+    $.ajax({url:url})
+        .done(function(data){
+        let parent = $(".tariff-output");
+        parent.css('display','block');
+        for (let i in data) {
+            if (data.hasOwnProperty(i)) {
+                let elementRow = document.createElement('tr');
+                elementRow.innerHTML = "<td>" + i + "</td>" + "<td>"+ data[i].basePrice+"€</td>" + "<td>"+ data[i].distPrice+"€</td>" + "<td>"+ data[i].timePrice+"€</td>"
+                parent.append(elementRow);
             }
-            calculateExpenses();
         }
     })
 }
@@ -415,4 +443,11 @@ function submitSearch(input, cssId) {
             console.warn("The geolocation API is not available in your browser. Consider updating it or switching to a newer browser.");
         }
     });
+     let objHeadlineDistPrice = $(".headline-dist-price");
+     objHeadlineDistPrice.html(langConstants.HEADLINE_DIST_PRICE);
+     let objHeadlineTimePrice = $(".headline-time-price");
+     objHeadlineTimePrice.html(langConstants.HEADLINE_TIME_PRICE);
+     let objHeadlineBasePrice = $(".headline-base-price");
+     objHeadlineBasePrice.html(langConstants.HEADLINE_BASE_PRICE);
+    findTariffs();
 });
