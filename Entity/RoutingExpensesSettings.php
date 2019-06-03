@@ -76,30 +76,6 @@ class RoutingExpensesSettings extends BaseEntity
     protected $startBboxDownery = '';
 
     /**
-     * @var float
-     * @ORM\Column(type="float")
-     */
-    protected $destBboxUpperx = '';
-
-    /**
-     * @var float
-     * @ORM\Column(type="float")
-     */
-    protected $destBboxUppery = '';
-
-    /**
-     * @var float
-     * @ORM\Column(type="float")
-     */
-    protected $destBboxDownerx = '';
-
-    /**
-     * @var float
-     * @ORM\Column(type="float")
-     */
-    protected $destBboxDownery = '';
-
-    /**
      * @var array
      * @ORM\Column(type="array")
      */
@@ -243,70 +219,6 @@ class RoutingExpensesSettings extends BaseEntity
     public function setStartBboxDownery(float $startBboxDownery): void
     {
         $this->startBboxDownery = $startBboxDownery;
-    }
-
-    /**
-     * @return float
-     */
-    public function getDestBboxUpperx(): float
-    {
-        return $this->destBboxUpperx;
-    }
-
-    /**
-     * @param float $destBboxUpperx
-     */
-    public function setDestBboxUpperx(float $destBboxUpperx): void
-    {
-        $this->destBboxUpperx = $destBboxUpperx;
-    }
-
-    /**
-     * @return float
-     */
-    public function getDestBboxUppery(): float
-    {
-        return $this->destBboxUppery;
-    }
-
-    /**
-     * @param float $destBboxUppery
-     */
-    public function setDestBboxUppery(float $destBboxUppery): void
-    {
-        $this->destBboxUppery = $destBboxUppery;
-    }
-
-    /**
-     * @return float
-     */
-    public function getDestBboxDownerx(): float
-    {
-        return $this->destBboxDownerx;
-    }
-
-    /**
-     * @param float $destBboxDownerx
-     */
-    public function setDestBboxDownerx(float $destBboxDownerx): void
-    {
-        $this->destBboxDownerx = $destBboxDownerx;
-    }
-
-    /**
-     * @return float
-     */
-    public function getDestBboxDownery(): float
-    {
-        return $this->destBboxDownery;
-    }
-
-    /**
-     * @param float $destBboxDownery
-     */
-    public function setDestBboxDownery(float $destBboxDownery): void
-    {
-        $this->destBboxDownery = $destBboxDownery;
     }
 
     /**

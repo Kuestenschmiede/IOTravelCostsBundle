@@ -5,3 +5,9 @@ services:
     arguments:
       - "@event_dispatcher"
       - "@doctrine.orm.entity_manager"
+  con4gis.tariff_service:
+    class: con4gis\RoutingExpensesBundle\Classes\Services\TariffService
+    public: true
+    arguments:
+      - "@event_dispatcher"
+      - "@doctrine.orm.entity_manager"

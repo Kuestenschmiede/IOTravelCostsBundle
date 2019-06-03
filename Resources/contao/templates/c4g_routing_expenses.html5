@@ -4,21 +4,22 @@
     <div class="route-from-input">
         <div class="input-route-from-field">
             <button class="route-from-geolocation" title="Get user position"></button>
-            <input type="text" class="route-from" name="routeFrom" placeholder="PLZ, Ort oder Straße eingeben...">
+            <input type="text" class="route-from" name="routeFrom">
         </div>
     </div>
     <div class="route-to-input">
         <div class="input-route-to-field">
             <button class="route-to-geolocation" title="Get user position"></button>
-            <input type="text" class="route-to ui-autocomplete-input" name="routeTo" placeholder="PLZ, Ort oder Straße eingeben...">
+            <input type="text" class="route-to ui-autocomplete-input" name="routeTo">
         </div>
     </div>
 </div>
+<br>
 <div >
     <table class="route-output" style="display:none">
         <tr class="route-output-headline">
-            <th class="headline-dist">Distanz</th>
-            <th class="headline-time">Zeit</th>
+            <th class="headline-dist"></th>
+            <th class="headline-time"></th>
         </tr>
         <tr class="route-output-values">
             <td class="response-dist"></td>
@@ -27,12 +28,12 @@
     </table>
 
 </div>
-<?php if ($this->keyReverse && $this->keyForward && $this->proxyUrl): ?>
+<?php if ($this->keyReverse && $this->keyForward && $this->proxyUrl && $this->bBox): ?>
 <script defer>
     window.proxyUrl = "<?php echo $this->proxyUrl ?>";
     window.keyReverse = "<?php echo $this->keyReverse ?>";
     window.keyForward = "<?php echo $this->keyForward ?>";
     window.settingId = "<?php echo $this->settingId ?>";
-
+    window.bBox = "<?php echo $this->bBox ?>";
 </script>
 <?php endif; ?>

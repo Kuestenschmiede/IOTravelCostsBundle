@@ -16,6 +16,9 @@ namespace con4gis\RoutingExpensesBundle\Resources\contao\modules;
 use con4gis\CoreBundle\Resources\contao\classes\C4GUtils;
 use con4gis\CoreBundle\Resources\contao\classes\ResourceLoader;
 use con4gis\CoreBundle\Resources\contao\models\C4gSettingsModel;
+use con4gis\RoutingExpensesBundle\Entity\RoutingExpensesSettings;
+use Contao\System;
+use Doctrine\ORM\EntityManager;
 use Contao\Controller;
 
 /**
@@ -56,7 +59,7 @@ class ModuleC4gRoutingExpenses extends \Module
         $pageUrl = Controller::replaceInsertTags("{{link_url:: " . $pageId . "}}");
         ResourceLoader::loadJavaScriptDeferred('jquery-ui', "/bundles/con4giscore/vendor/jQuery/jquery-ui-1.12.1.custom/jquery-ui.js");
         ResourceLoader::loadJavaScriptDeferred("taxi-finder", "bundles/con4gisroutingexpenses/build/taxi-finder.js");
-        ResourceLoader::loadCssRessource("fuel-finder-module", "bundles/con4gisroutingexpenses/css/taxi-finder.css");
+        ResourceLoader::loadCssRessource("taxi-finder", "bundles/con4gisroutingexpenses/css/taxi-finder.css");
         ResourceLoader::loadCssRessource('jquery-ui-css', "/bundles/con4giscore/vendor/jQuery/jquery-ui-1.12.1.custom/jquery-ui.css");
 //        ResourceLoader::loadCssRessource("c4g-cached-inputfield", "bundles/con4giscore/css/c4g-cached-inputfield.css");
         $template = $this->Template;
@@ -64,7 +67,27 @@ class ModuleC4gRoutingExpenses extends \Module
         $template->proxyUrl = $objSettings->con4gisIoUrl;
         $template->keyReverse = C4GUtils::getKey($objSettings,3);
         $template->keyForward = C4GUtils::getKey($objSettings,2);
-        $template->settingId = 1;
+        $settingsId = $this->expense_settings_id;
+        $tariffConfig = System::getContainer()->get("doctrine.orm.default_entity_manager")->getRepository(RoutingExpensesSettings::class)
+            ->findOneBy(['id' => $settingsId]);
+        if ($tariffConfig instanceof RoutingExpensesSettings) {
+            $bBox = [$tariffConfig->getStartBboxDownerx(), $tariffConfig->getStartBboxDownery(), $tariffConfig->getStartBboxUpperx(), $tariffConfig->getStartBboxUppery()];
+
+            if($bBox) {
+                if ($bBox[0] > $bBox[2]) {
+                    $bboxSaver = $bBox[0];
+                    $bBox[0] = $bBox[2];
+                    $bBox[2] = $bboxSaver;
+                }
+                if ($bBox[1] > $bBox[3]) {
+                    $bboxSaver = $bBox[1];
+                    $bBox[1] = $bBox[3];
+                    $bBox[3] = $bboxSaver;
+                }
+                $template->bBox = json_encode($bBox);
+            }
+        }
+        $template->settingId = $settingsId;
     }
 
 

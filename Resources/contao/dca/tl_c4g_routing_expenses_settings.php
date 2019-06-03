@@ -19,178 +19,132 @@ $GLOBALS['TL_DCA'][$strName] = array
 (
 
     // Config
-    'config' => array
-    (
-        'dataContainer'               => 'Table',
-        'enableVersioning'            => true,
-    ),
+    'config' => [
+        'dataContainer' => 'Table',
+        'enableVersioning' => true,
+    ],
 
     // List
-    'list' => array
-    (
-        'sorting' => array
-        (
-            'mode'                    => 1,
-            'fields'                  => array('caption'),
-            'flag'                    => 1
-        ),
-        'label' => array
-        (
-            'fields'                  => array('caption'),
-            'format'                  => '%s'
-        ),
-        'global_operations' => array
-        (
-            'all' => array
-            (
-                'label'               => &$GLOBALS['TL_LANG']['MSC']['all'],
-                'href'                => 'act=select',
-                'class'               => 'header_edit_all',
-                'attributes'          => 'onclick="Backend.getScrollOffset();" accesskey="e"'
-            )
-        ),
-        'operations' => array
-        (
-            'edit' => array
-            (
-                'label'               => &$GLOBALS['TL_LANG'][$strName]['edit'],
-                'href'                => 'act=edit',
-                'icon'                => 'edit.gif'
-            ),
-            'copy' => array
-            (
-                'label'               => &$GLOBALS['TL_LANG'][$strName]['copy'],
-                'href'                => 'act=copy',
-                'icon'                => 'copy.gif'
-            ),
-            'delete' => array
-            (
-                'label'               => &$GLOBALS['TL_LANG'][$strName]['delete'],
-                'href'                => 'act=delete',
-                'icon'                => 'delete.gif',
-                'attributes'          => 'onclick="if (!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['deleteConfirm'] . '\')) return false; Backend.getScrollOffset();"'
-            ),
-            'show' => array
-            (
-                'label'               => &$GLOBALS['TL_LANG'][$strName]['show'],
-                'href'                => 'act=show',
-                'icon'                => 'show.gif'
-            )
-        )
-    ),
+    'list' => [
+        'sorting' => [
+            'mode' => 1,
+            'fields' => ['caption'],
+            'flag' => 1
+        ],
+        'label' => [
+            'fields' => ['caption'],
+            'format' => '%s'
+        ],
+        'global_operations' => [
+            'all' => [
+                'label' => &$GLOBALS['TL_LANG']['MSC']['all'],
+                'href' => 'act=select',
+                'class' => 'header_edit_all',
+                'attributes' => 'onclick="Backend.getScrollOffset();" accesskey="e"'
+            ]
+        ],
+        'operations' => [
+            'edit' => [
+                'label' => &$GLOBALS['TL_LANG'][$strName]['edit'],
+                'href' => 'act=edit',
+                'icon' => 'edit.gif'
+            ],
+            'copy' => [
+                'label' => &$GLOBALS['TL_LANG'][$strName]['copy'],
+                'href' => 'act=copy',
+                'icon' => 'copy.gif'
+            ],
+            'delete' => [
+                'label' => &$GLOBALS['TL_LANG'][$strName]['delete'],
+                'href' => 'act=delete',
+                'icon' => 'delete.gif',
+                'attributes' => 'onclick="if (!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['deleteConfirm'] . '\')) return false; Backend.getScrollOffset();"'
+            ],
+            'show' => [
+                'label' => &$GLOBALS['TL_LANG'][$strName]['show'],
+                'href' => 'act=show',
+                'icon' => 'show.gif'
+            ]
+        ]
+    ],
 
     // Palettes
-    'palettes' => array
-    (
-        '__selector__'                => array('router_api_selection'),
-        'default'                     => '{general_legend},caption,startBboxUpperx,startBboxUppery,startBboxDownerx,startBboxDownery,destBboxUpperx,destBboxUppery,destBboxDownerx,destBboxDownery,tariffs,withDateTime,withPositionButton;'
-    ),
+    'palettes' => [
+        '__selector__' => ['router_api_selection'],
+        'default' => '{general_legend},caption,startBboxUpperx,startBboxUppery,startBboxDownerx,startBboxDownery,destBboxUpperx,destBboxUppery,destBboxDownerx,destBboxDownery,tariffs,withDateTime,withPositionButton;'
+    ],
 
 
     // Subpalettes
-    'subpalettes' => array
-    (
+    'subpalettes' => [
 
-    ),
+    ],
 
     // Fields
-    'fields' => array
-    (
+    'fields' => [
         'caption' => [
-            'label'                   => &$GLOBALS['TL_LANG'][$strName]['caption'],
-            'default'                 => '',
-            'inputType'               => 'text',
-            'eval'                    => ['decodeEntities'=>true, 'maxlength'=>255, 'tl_class'=>'long'],
+            'label' => &$GLOBALS['TL_LANG'][$strName]['caption'],
+            'default' => '',
+            'inputType' => 'text',
+            'eval' => ['decodeEntities' => true, 'maxlength' => 255, 'tl_class' => 'long'],
         ],
         'startBboxUpperx' => [
-            'label'                   => &$GLOBALS['TL_LANG'][$strName]['startBboxUpperx'],
-            'default'                 => '',
-            'wizard'                  => [['con4gis\MapsBundle\Resources\contao\classes\GeoPicker', 'getPickerLink']],
-            'save_callback'           => [['tl_c4g_routing_expenses_settings', 'setLon']],
-            'inputType'               => 'c4g_text',
-            'eval'                    => ['maxlength'=>20, 'tl_class'=>'w50 wizard','require_input'=>true]
+            'label' => &$GLOBALS['TL_LANG'][$strName]['startBboxUpperx'],
+            'default' => '',
+            'wizard' => [['con4gis\MapsBundle\Resources\contao\classes\GeoPicker', 'getPickerLink']],
+            'save_callback' => [['tl_c4g_routing_expenses_settings', 'setLon']],
+            'inputType' => 'c4g_text',
+            'eval' => ['maxlength' => 20, 'tl_class' => 'w50 wizard', 'require_input' => true]
         ],
         'startBboxUppery' => [
-            'label'                   => &$GLOBALS['TL_LANG'][$strName]['startBboxUppery'],
-            'default'                 => '',
-            'wizard'                  => [['con4gis\MapsBundle\Resources\contao\classes\GeoPicker', 'getPickerLink']],
-            'save_callback'           => [['tl_c4g_routing_expenses_settings', 'setLat']],
-            'inputType'               => 'c4g_text',
-            'eval'                    => ['maxlength'=>20, 'tl_class'=>'w50 wizard','require_input'=>true]
+            'label' => &$GLOBALS['TL_LANG'][$strName]['startBboxUppery'],
+            'default' => '',
+            'wizard' => [['con4gis\MapsBundle\Resources\contao\classes\GeoPicker', 'getPickerLink']],
+            'save_callback' => [['tl_c4g_routing_expenses_settings', 'setLat']],
+            'inputType' => 'c4g_text',
+            'eval' => ['maxlength' => 20, 'tl_class' => 'w50 wizard', 'require_input' => true]
         ],
         'startBboxDownerx' => [
-            'label'                   => &$GLOBALS['TL_LANG'][$strName]['startBboxDownerx'],
-            'default'                 => '',
-            'wizard'                  => [['con4gis\MapsBundle\Resources\contao\classes\GeoPicker', 'getPickerLink']],
-            'save_callback'           => [['tl_c4g_routing_expenses_settings', 'setLon']],
-            'inputType'               => 'c4g_text',
-            'eval'                    => ['maxlength'=>20, 'tl_class'=>'w50 wizard','require_input'=>true]
+            'label' => &$GLOBALS['TL_LANG'][$strName]['startBboxDownerx'],
+            'default' => '',
+            'wizard' => [['con4gis\MapsBundle\Resources\contao\classes\GeoPicker', 'getPickerLink']],
+            'save_callback' => [['tl_c4g_routing_expenses_settings', 'setLon']],
+            'inputType' => 'c4g_text',
+            'eval' => ['maxlength' => 20, 'tl_class' => 'w50 wizard', 'require_input' => true]
         ],
         'startBboxDownery' => [
-            'label'                   => &$GLOBALS['TL_LANG'][$strName]['startBboxDownery'],
-            'default'                 => '',
-            'wizard'                  => [['con4gis\MapsBundle\Resources\contao\classes\GeoPicker', 'getPickerLink']],
-            'save_callback'           => [['tl_c4g_routing_expenses_settings', 'setLat']],
-            'inputType'               => 'c4g_text',
-            'eval'                    => ['maxlength'=>20, 'tl_class'=>'w50 wizard','require_input'=>true]
-        ],
-        'destBboxUpperx' => [
-            'label'                   => &$GLOBALS['TL_LANG'][$strName]['destBboxUpperx'],
-            'default'                 => '',
-            'wizard'                  => [['con4gis\MapsBundle\Resources\contao\classes\GeoPicker', 'getPickerLink']],
-            'save_callback'           => [['tl_c4g_routing_expenses_settings', 'setLon']],
-            'inputType'               => 'c4g_text',
-            'eval'                    => ['maxlength'=>20, 'tl_class'=>'w50 wizard','require_input'=>true]
-        ],
-        'destBboxUppery' => [
-            'label'                   => &$GLOBALS['TL_LANG'][$strName]['destBboxUppery'],
-            'default'                 => '',
-            'wizard'                  => [['con4gis\MapsBundle\Resources\contao\classes\GeoPicker', 'getPickerLink']],
-            'save_callback'           => [['tl_c4g_routing_expenses_settings', 'setLat']],
-            'inputType'               => 'c4g_text',
-            'eval'                    => ['maxlength'=>20, 'tl_class'=>'w50 wizard','require_input'=>true]
-        ],
-        'destBboxDownerx' => [
-            'label'                   => &$GLOBALS['TL_LANG'][$strName]['destBboxDownerx'],
-            'default'                 => '',
-            'wizard'                  => [['con4gis\MapsBundle\Resources\contao\classes\GeoPicker', 'getPickerLink']],
-            'save_callback'           => [['tl_c4g_routing_expenses_settings', 'setLon']],
-            'inputType'               => 'c4g_text',
-            'eval'                    => ['maxlength'=>20, 'tl_class'=>'w50 wizard','require_input'=>true]
-        ],
-        'destBboxDownery' => [
-            'label'                   => &$GLOBALS['TL_LANG'][$strName]['destBboxDownery'],
-            'default'                 => '',
-            'wizard'                  => [['con4gis\MapsBundle\Resources\contao\classes\GeoPicker', 'getPickerLink']],
-            'save_callback'           => [['tl_c4g_routing_expenses_settings', 'setLat']],
-            'inputType'               => 'c4g_text',
-            'eval'                    => ['maxlength'=>20, 'tl_class'=>'w50 wizard','require_input'=>true]
+            'label' => &$GLOBALS['TL_LANG'][$strName]['startBboxDownery'],
+            'default' => '',
+            'wizard' => [['con4gis\MapsBundle\Resources\contao\classes\GeoPicker', 'getPickerLink']],
+            'save_callback' => [['tl_c4g_routing_expenses_settings', 'setLat']],
+            'inputType' => 'c4g_text',
+            'eval' => ['maxlength' => 20, 'tl_class' => 'w50 wizard', 'require_input' => true]
         ],
         'tariffs' => [
-            'label'                   => &$GLOBALS['TL_LANG'][$strName]['tariffs'],
-            'default'                 => '',
-            'inputType'               => 'checkbox',
-            'options_callback'        => ['tl_c4g_routing_expenses_settings', 'getTariffs'],
-            'eval'                    => ['mandatory'=>false, 'multiple'=>true],
+            'label' => &$GLOBALS['TL_LANG'][$strName]['tariffs'],
+            'default' => '',
+            'inputType' => 'checkbox',
+            'options_callback' => ['tl_c4g_routing_expenses_settings', 'getTariffs'],
+            'eval' => ['mandatory' => false, 'multiple' => true],
         ],
         'withDateTime' => [
-            'label'                   => &$GLOBALS['TL_LANG'][$strName]['withDateTime'],
-            'default'                 => '',
-            'inputType'               => 'text',
-            'eval'                    => ['decodeEntities'=>true, 'maxlength'=>255, 'tl_class'=>'long'],
+            'label' => &$GLOBALS['TL_LANG'][$strName]['withDateTime'],
+            'default' => '',
+            'inputType' => 'text',
+            'eval' => ['decodeEntities' => true, 'maxlength' => 255, 'tl_class' => 'long'],
         ],
         'withPositionButton' => [
-            'label'                   => &$GLOBALS['TL_LANG'][$strName]['withPositionButton'],
-            'default'                 => '',
-            'inputType'               => 'text',
-            'eval'                    => ['decodeEntities'=>true, 'maxlength'=>255, 'tl_class'=>'long'],
-        ],
-
-
-    )
+            'label' => &$GLOBALS['TL_LANG'][$strName]['withPositionButton'],
+            'default' => '',
+            'inputType' => 'text',
+            'eval' => ['decodeEntities' => true, 'maxlength' => 255, 'tl_class' => 'long'],
+        ]
+    ]
 );
-class tl_c4g_routing_expenses_settings extends \Contao\Backend {
-    public function getTariffs(\Contao\DataContainer $dc){
+class tl_c4g_routing_expenses_settings extends \Contao\Backend
+{
+    public function getTariffs(\Contao\DataContainer $dc)
+    {
         $tariffs = $this->Database->prepare("SELECT id,caption FROM tl_c4g_routing_expenses_tariffs ORDER BY caption")
             ->execute();
         while ($tariffs->next()) {
@@ -198,6 +152,7 @@ class tl_c4g_routing_expenses_settings extends \Contao\Backend {
         }
         return $return;
     }
+
     public function setLon($varValue, DataContainer $dc)
     {
         if (!\con4gis\MapsBundle\Resources\contao\classes\Utils::validateLon($varValue)) {
@@ -205,6 +160,7 @@ class tl_c4g_routing_expenses_settings extends \Contao\Backend {
         }
         return $varValue;
     }
+
     public function setLat($varValue, DataContainer $dc)
     {
         if (!\con4gis\MapsBundle\Resources\contao\classes\Utils::validateLon($varValue)) {

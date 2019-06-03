@@ -1,20 +1,41 @@
 .route-from-geolocation,
 .route-to-geolocation {
-    color: rgba(0,155,222,.5);
-    background-color: rgba(24, 61, 93,.8);
+    color: rgba(255,255,255,1);
+    background-color: rgba(0, 0, 0,.75);
+    height: 32px;
+    width: 32px;
+    vertical-align: middle;
+    display: inline-block;
+    padding: 2px;
+    margin: 2px;
+    border-radius: 50%;
+}
+button.route-from-geolocation:before,
+button.route-to-geolocation:before {
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    font-size: inherit;
+    content: "\f05b";
 }
 table, th, td {
     /*border: 1px solid black;*/
 }
 table {
     border-collapse: collapse;
-    width: 100%
+    width: 100%;
+}
+tbody {
+    width: 100%;
 }
 th, td {
-    padding: 30px;
+    padding-right: 30px !important;
     text-align: left;
     border-bottom: 1px solid #ddd;
 }
 tr:nth-child(even) {
     background-color: #f2f2f2;
+}
+.input-route>div>div {
+    display: flex;
+    justify-content: flex-start;
 }

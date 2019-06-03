@@ -37,6 +37,18 @@ class RoutingExpensesController extends AbstractController
         $response ->setContent($expenseService->getResponse($settings, $locations, $tariffId, $time));
         $response->headers->set('Content-Type', 'application/json');
         return $response;
-
+    }
+    /**
+     * @Route("/con4gis/tariffService/{settingId}", name="getTariffService", methods={"GET"})
+     * @param $request
+     * @return JsonResponse
+     */
+    public function getTariffAction(Request $request, $settingId){
+        $this->get('contao.framework')->initialize();
+        $tariffService = $this->get("con4gis.tariff_service");
+        $response = new Response();
+        $response ->setContent($tariffService->getResponse($settingId));
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
     }
 }
