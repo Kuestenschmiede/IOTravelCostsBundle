@@ -32,10 +32,25 @@ th, td {
     text-align: left;
     border-bottom: 1px solid #ddd;
 }
-tr:nth-child(even) {
+tr:nth-child(even),
+div.row-uneven,
+div.response-dist,
+div.response-time,
+div.response-value {
     background-color: #f2f2f2;
 }
 .input-route>div>div {
     display: flex;
     justify-content: flex-start;
+}
+div.tariff-output,
+div.route-output {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    padding: 10px;
+}
+div.grid-item {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    text-align: center;
 }

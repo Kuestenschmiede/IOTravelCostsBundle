@@ -18,8 +18,8 @@ export  var taxiConstantsEnglish = {
     DUMMY_INPUT: 'Enter postal code, city or street...',
     HEADLINE_DIST: 'Distance',
     HEADLINE_TIME: 'Time',
-    HEADLINE_BASE_PRICE:'Grundpreis',
-    HEADLINE_DIST_PRICE:'Preis / km',
-    HEADLINE_TIME_PRICE:'Preis / m',
+    HEADLINE_BASE_PRICE:'Base price',
+    HEADLINE_DIST_PRICE:'Price / km',
+    HEADLINE_TIME_PRICE:'Price / m',
     NONE: '' // last line
 }; // end of "css constants" ---

@@ -71,7 +71,7 @@ $GLOBALS['TL_DCA'][$strName] = array
     // Palettes
     'palettes' => [
         '__selector__' => ['router_api_selection'],
-        'default' => '{general_legend},caption,startBboxUpperx,startBboxUppery,startBboxDownerx,startBboxDownery,destBboxUpperx,destBboxUppery,destBboxDownerx,destBboxDownery,tariffs,withDateTime,withPositionButton;'
+        'default' => '{general_legend},caption;{bbox_legend},startBboxUpperx,startBboxUppery,startBboxDownerx,startBboxDownery;tariffs,displayGrid;'
     ],
 
 
@@ -130,13 +130,13 @@ $GLOBALS['TL_DCA'][$strName] = array
         'withDateTime' => [
             'label' => &$GLOBALS['TL_LANG'][$strName]['withDateTime'],
             'default' => '',
-            'inputType' => 'text',
+            'inputType' => 'checkbox',
             'eval' => ['decodeEntities' => true, 'maxlength' => 255, 'tl_class' => 'long'],
         ],
-        'withPositionButton' => [
-            'label' => &$GLOBALS['TL_LANG'][$strName]['withPositionButton'],
+        'displayGrid' => [
+            'label' => &$GLOBALS['TL_LANG'][$strName]['displayGrid'],
             'default' => '',
-            'inputType' => 'text',
+            'inputType' => 'checkbox',
             'eval' => ['decodeEntities' => true, 'maxlength' => 255, 'tl_class' => 'long'],
         ]
     ]

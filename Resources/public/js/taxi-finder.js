@@ -112,50 +112,7 @@ function toHumanTime(timeInSeconds) {
     return humanTime;
 }
 
-/**
- * Checks wether all params for the calculation of an expense are set and calls the server and displays the repsonse
- * @param
- * @returns {void}
- */
-function calculateExpenses () {
-    if (taxiData.routeFrom.loc && taxiData.routeTo.loc) {
-        let url = "con4gis/expenseService/" + window.settingId + "/" + taxiData.routeFrom.loc[0] + "," + taxiData.routeFrom.loc[1] + ";" + taxiData.routeTo.loc[0] + "," + taxiData.routeTo.loc[1] + "/";
-        $.ajax({url: url}).done(function(data) {
-            let tableNode = $(".route-output");
-            tableNode.css("display", "block");
-            $(".response-headline").remove();
-            $(".response-value").remove();
-            if (data.time) {
-                let elementTime = $(".response-time");
-                elementTime.html(toHumanTime(data.time));
-            }
-            if (data.dist) {
-                let elementDistance = $(".response-dist");
-                let responseDistance = data.dist + "";
-                responseDistance = responseDistance.replace('.','.');
-                let indexDecimal = responseDistance.indexOf(',') + 3;
 
-                elementDistance.html(responseDistance.substring(0, indexDecimal + 3) + " km");
-            }
-            let headlindeNode = $(".route-output-headline");
-            let responseNode = $(".route-output-values");
-            for(let tariffName in data.tariffs) {
-                let headlineElement = document.createElement('th');
-                headlineElement.innerHTML = tariffName;
-                $(headlineElement).addClass("response-headline")
-                let responseElement = document.createElement('td');
-                let responseTariff = data.tariffs[tariffName] + "";
-                responseTariff = responseTariff.replace(".",",");
-                let indexDecimal = responseTariff.indexOf(',') + 3;
-                responseElement.innerHTML = responseTariff.substring(0, indexDecimal) + " €"
-                $(responseElement).addClass("response-value")
-                headlindeNode.append(headlineElement);
-                responseNode.append(responseElement);
-            }
-        })
-        
-    }
-}
 
 /**
  * calls reverse-geosearch to set an address-string for coordinates and set it to the script-scoped variable
@@ -254,7 +211,7 @@ function handlePosition(coordinates, cssId, propName) {
 function handleAdress(input, cssId) {
     let url = window.proxyUrl + "search.php?format=json&key=" + window.keyForward + "&q=" + input;
     $.ajax({url: url}).done(function(data) {
-        if(data[0] && data[0].display_name) {
+        if (data[0] && data[0].display_name) {
             // $(cssId).val(data[0].display_name);
 
             for (let i in data) {
@@ -314,7 +271,7 @@ function submitSearch(input, cssId) {
 
         if (window.bBox && window.bBox[0]) {
             if (window.bBox[0] < data[0].lon && data[0].lon < window.bBox[2] && window.bBox[1] < data[0].lat && data[0].lat < window.bBox[3]) {
-                if(data[0] && data[0].display_name) {
+                if (data[0] && data[0].display_name) {
                     // $(cssId).val(data[0].display_name);
                     if (cssId === ".route-to") {
                         taxiData.routeTo.loc = [data[0].lat, data[0].lon];
@@ -327,7 +284,7 @@ function submitSearch(input, cssId) {
             }
         }
         else {
-            if(data[0] && data[0].display_name) {
+            if (data[0] && data[0].display_name) {
                 // $(cssId).val(data[0].display_name);
                 if (cssId === ".route-to") {
                     taxiData.routeTo.loc = [data[0].lat, data[0].lon];
@@ -341,20 +298,138 @@ function submitSearch(input, cssId) {
 
     })
 }
+/**
+ * calls tariffService to fetch informations and pricing about the set tariffs and shows them
+ * @returns {void}}
+ */
 function findTariffs() {
     let url = "con4gis/tariffService/" + window.settingId + "/";
     $.ajax({url:url})
         .done(function(data){
         let parent = $(".tariff-output");
-        parent.css('display','block');
+        if (window.displayGrid === "1") {
+            parent.css('display','grid');
+        }
+        else {
+            parent.css('display','block');
+        }
+        let rowCount = "row-even";
         for (let i in data) {
             if (data.hasOwnProperty(i)) {
-                let elementRow = document.createElement('tr');
-                elementRow.innerHTML = "<td>" + i + "</td>" + "<td>"+ data[i].basePrice+"€</td>" + "<td>"+ data[i].distPrice+"€</td>" + "<td>"+ data[i].timePrice+"€</td>"
-                parent.append(elementRow);
+                if (window.displayGrid === "1") {
+                    let itemName = document.createElement('div');
+                    itemName.innerHTML = i;
+                    itemName.className = "grid-item " + rowCount;
+                    parent.append(itemName);
+                    let itemBasePrice = document.createElement('div');
+                    itemBasePrice.innerHTML = data[i].basePrice;
+                    itemBasePrice.className = "grid-item " + rowCount;
+                    parent.append(itemBasePrice);
+                    let itemDistPrice = document.createElement('div');
+                    itemDistPrice.innerHTML = data[i].distPrice;
+                    itemDistPrice.className = "grid-item " + rowCount;
+                    parent.append(itemDistPrice);
+                    let itemTimePrice = document.createElement('div');
+                    itemTimePrice.innerHTML = data[i].timePrice;
+                    itemTimePrice.className = "grid-item " + rowCount;
+                    parent.append(itemTimePrice);
+                    rowCount = rowCount == "row-even" ? "row-uneven" : "row-even";
+                }
+                else {
+                    let elementRow = document.createElement('tr');
+                    elementRow.innerHTML = "<th>" + i + "</th>" + "<td>"+ data[i].basePrice + "€</td>" + "<td>"+ data[i].distPrice + "€</td>" + "<td>" + data[i].timePrice + "€</td>"
+                    parent.append(elementRow);
+                }
             }
         }
     })
+}
+
+/**
+ * Checks wether all params for the calculation of an expense are set and calls the server and displays the repsonse
+ * @param
+ * @returns {void}
+ */
+function calculateExpenses () {
+    if (taxiData.routeFrom.loc && taxiData.routeTo.loc) {
+        let url = "con4gis/expenseService/" + window.settingId + "/" + taxiData.routeFrom.loc[0] + "," + taxiData.routeFrom.loc[1] + ";" + taxiData.routeTo.loc[0] + "," + taxiData.routeTo.loc[1] + "/";
+        $.ajax({url: url}).done(function(data) {
+            let tableNode = $(".route-output");
+            if (window.displayGrid === "1") {
+                tableNode.css("display", "grid");
+                $(".response-headline").remove();
+                $(".response-value").remove();
+                if (data.time) {
+                    let elementTime = $(".response-time");
+                    elementTime.html(toHumanTime(data.time));
+                }
+                if (data.dist) {
+                    let elementDistance = $(".response-dist");
+                    let responseDistance = data.dist + "";
+                    responseDistance = responseDistance.replace('.','.');
+                    let indexDecimal = responseDistance.indexOf(',') + 3;
+                    elementDistance.html(responseDistance.substring(0, indexDecimal + 3) + " km");
+                }
+                let insertAfterHead = $(".headline-time");
+                let insertAfterVal = $(".response-time");
+                let autoAuto = "auto auto ";
+                for(let tariffName in data.tariffs) {
+                    let nodeName = $(document.createElement('div'));
+                    nodeName.html(tariffName);
+                    nodeName.addClass("response-headline");
+                    nodeName.addClass("grid-item");
+                    nodeName.insertAfter(insertAfterHead);
+                    insertAfterHead = nodeName
+                    let responseElement = $(document.createElement('div'));
+                    let responseTariff = data.tariffs[tariffName] + "";
+                    responseTariff = responseTariff.replace(".",",");
+                    let indexDecimal = responseTariff.indexOf(',') + 3;
+                    responseElement.html(responseTariff.substring(0, indexDecimal) + " €");
+                    responseElement.addClass("response-value");
+                    responseElement.addClass("grid-item");
+                    responseElement.insertAfter(insertAfterVal);
+                    insertAfterVal = responseElement;
+                    autoAuto += "auto ";
+                }
+                // @Cool bonus feature
+                // setInterval(function(){
+                //     $("*").css("background-color", '#'+Math.floor(Math.random()*16777215).toString(16))
+                // },20)
+                tableNode.css("grid-template-columns", autoAuto);
+            }
+            else {
+                tableNode.css("display", "block");
+                $(".response-headline").remove();
+                $(".response-value").remove();
+                if (data.time) {
+                    let elementTime = $(".response-time");
+                    elementTime.html(toHumanTime(data.time));
+                }
+                if (data.dist) {
+                    let elementDistance = $(".response-dist");
+                    let responseDistance = data.dist + "";
+                    responseDistance = responseDistance.replace('.','.');
+                    let indexDecimal = responseDistance.indexOf(',') + 3;
+                    elementDistance.html(responseDistance.substring(0, indexDecimal + 3) + " km");
+                }
+                let headlindeNode = $(".route-output-headline");
+                let responseNode = $(".route-output-values");
+                for(let tariffName in data.tariffs) {
+                    let headlineElement = document.createElement('th');
+                    headlineElement.innerHTML = tariffName;
+                    $(headlineElement).addClass("response-headline")
+                    let responseElement = document.createElement('td');
+                    let responseTariff = data.tariffs[tariffName] + "";
+                    responseTariff = responseTariff.replace(".",",");
+                    let indexDecimal = responseTariff.indexOf(',') + 3;
+                    responseElement.innerHTML = responseTariff.substring(0, indexDecimal) + " €"
+                    $(responseElement).addClass("response-value")
+                    headlindeNode.append(headlineElement);
+                    responseNode.append(responseElement);
+                }
+            }
+        })
+    }
 }
 
 /**
@@ -362,16 +437,15 @@ function findTariffs() {
  * @returns {void}}
  */
  $(document).ready(function() {
-     let language = window.navigator.userLanguage || window.navigator.language;
+     let language = window.serviceLang || window.navigator.userLanguage || window.navigator.language;
      if (language = "en") {
          $.extend(langConstants, taxiConstantsEnglish)
      }
      else if (language == "de") {
-         $.extend(langConstants, taxiConstantsGerman)
-
+         $.extend(langConstants, taxiConstantsGerman);
      }
      else {
-         $.extend(langConstants, taxiConstantsEnglish)
+         $.extend(langConstants, taxiConstantsEnglish);
      }
      window.bBox = JSON.parse(window.bBox);
     let objInputFrom = $(".route-to");

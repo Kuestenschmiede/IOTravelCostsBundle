@@ -86,10 +86,11 @@ class ModuleC4gRoutingExpenses extends \Module
                 }
                 $template->bBox = json_encode($bBox);
             }
+            $template->displayGrid = $tariffConfig->getDisplayGrid();
+            $template->posButton = $tariffConfig->getWithPositionButton();
         }
+        $language = Controller::replaceInsertTags("{{page::language}}");
+        $template->lang = $language;
         $template->settingId = $settingsId;
     }
-
-
-
 }
