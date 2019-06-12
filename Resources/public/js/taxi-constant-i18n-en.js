@@ -23,6 +23,6 @@ export  var taxiConstantsEnglish = {
     HEADLINE_TIME_PRICE:'Price / m',
     ERROR_OUT_OF_BOUNDS: 'Address is out of bounds',
     ERROR_FALSE_ADDRESS: 'Address not found',
-    ERROR:'Error'
+    ERROR:'Error',
     NONE: '' // last line
 }; // end of "css constants" ---

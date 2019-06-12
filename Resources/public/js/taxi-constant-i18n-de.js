@@ -23,6 +23,6 @@ export  var taxiConstantsGerman = {
     HEADLINE_TIME_PRICE: 'Preis / m',
     ERROR_OUT_OF_BOUNDS: 'Adresse außerhalb des Tarifgebiets',
     ERROR_FALSE_ADDRESS: 'Adresse nicht gefunden',
-    ERROR:'Fehler'
+    ERROR:'Fehler',
     NONE: '' // last line
 }; // end of "css constants" ---
