@@ -2,6 +2,7 @@
 import {taxiConstantsEnglish} from "./taxi-constant-i18n-en";
 import {taxiConstantsGerman} from "./taxi-constant-i18n-de";
 import {taxiConstants} from "./taxi-constants.js";
+import {AlertHandler} from "./../../../../CoreBundle/Resources/public/js/AlertHandler";
 
 const $ = jQuery;
 const langConstants = {};
@@ -211,13 +212,29 @@ function handlePosition(coordinates, cssId, propName) {
 function handleAdress(input, cssId) {
     let url = window.proxyUrl + "search.php?format=json&key=" + window.keyForward + "&q=" + input;
     $.ajax({url: url}).done(function(data) {
-        if (data[0] && data[0].display_name) {
-            // $(cssId).val(data[0].display_name);
+        if (data.length > 0) {
 
-            for (let i in data) {
-                if (data.hasOwnProperty(i)) {
-                    if (window.bBox && window.bBox[0]) {
-                        if (window.bBox[0] < data[i].lon && data[i].lon < window.bBox[2] && window.bBox[1] < data[i].lat && data[i].lat < window.bBox[3]) {
+            if (data[0] && data[0].display_name) {
+                // $(cssId).val(data[0].display_name);
+
+                for (let i in data) {
+                    if (data.hasOwnProperty(i)) {
+                        if (window.bBox && window.bBox[0]) {
+                            if (window.bBox[0] < data[i].lon && data[i].lon < window.bBox[2] && window.bBox[1] < data[i].lat && data[i].lat < window.bBox[3]) {
+                                if (cssId === ".route-from") {
+                                    arrFromNames.push(data[i].display_name);
+                                    arrFromPositions.push([data[i].lat, data[i].lon]);
+                                }
+                                else {
+                                    arrToNames.push(data[i].display_name);
+                                    arrToPositions.push([data[i].lat, data[i].lon]);
+                                }
+                            }
+                            else {
+                                //@ToDo outofbounds
+                            }
+                        }
+                        else {
                             if (cssId === ".route-from") {
                                 arrFromNames.push(data[i].display_name);
                                 arrFromPositions.push([data[i].lat, data[i].lon]);
@@ -227,34 +244,23 @@ function handleAdress(input, cssId) {
                                 arrToPositions.push([data[i].lat, data[i].lon]);
                             }
                         }
-                        else {
-                            //@ToDo outofbounds
-                        }
-                    }
-                    else {
-                        if (cssId === ".route-from") {
-                            arrFromNames.push(data[i].display_name);
-                            arrFromPositions.push([data[i].lat, data[i].lon]);
-                        }
-                        else {
-                            arrToNames.push(data[i].display_name);
-                            arrToPositions.push([data[i].lat, data[i].lon]);
-                        }
-                    }
 
+                    }
                 }
-            }
-            if (cssId === ".route-from") {
-                $(cssId).autocomplete({
-                    source: arrFromNames
-                });
-            }
-            else {
-                $(cssId).autocomplete({
-                    source: arrToNames
-                });
-            }
+                if (cssId === ".route-from") {
+                    $(cssId).autocomplete({
+                        source: arrFromNames
+                    });
+                }
+                else {
+                    $(cssId).autocomplete({
+                        source: arrToNames
+                    });
+                }
 
+            }
+        }
+        else {
         }
     })
 }
@@ -266,11 +272,28 @@ function handleAdress(input, cssId) {
  * @returns {void}}
  */
 function submitSearch(input, cssId) {
-    let url = window.proxyUrl + "search.php?format=json&key=" + window.keyForward + "&q=" + input;
+    let url = window.proxyUrl + "search.php?format=json&key=" + window.keyForward + "&q=" + $(input).val();
     $.ajax({url: url}).done(function(data) {
-
-        if (window.bBox && window.bBox[0]) {
-            if (window.bBox[0] < data[0].lon && data[0].lon < window.bBox[2] && window.bBox[1] < data[0].lat && data[0].lat < window.bBox[3]) {
+        let falseResponse = false;
+        if (data.length > 0) {
+            if (window.bBox && window.bBox[0]) {
+                if (window.bBox[0] < data[0].lon && data[0].lon < window.bBox[2] && window.bBox[1] < data[0].lat && data[0].lat < window.bBox[3]) {
+                    if (data[0] && data[0].display_name) {
+                        // $(cssId).val(data[0].display_name);
+                        if (cssId === ".route-to") {
+                            taxiData.routeTo.loc = [data[0].lat, data[0].lon];
+                        }
+                        else {
+                            taxiData.routeFrom.loc = [data[0].lat, data[0].lon];
+                        }
+                        calculateExpenses();
+                    }
+                }
+                else {
+                    falseResponse = langConstants.ERROR_OUT_OF_BOUNDS;
+                }
+            }
+            else {
                 if (data[0] && data[0].display_name) {
                     // $(cssId).val(data[0].display_name);
                     if (cssId === ".route-to") {
@@ -282,21 +305,17 @@ function submitSearch(input, cssId) {
                     calculateExpenses();
                 }
             }
+
         }
         else {
-            if (data[0] && data[0].display_name) {
-                // $(cssId).val(data[0].display_name);
-                if (cssId === ".route-to") {
-                    taxiData.routeTo.loc = [data[0].lat, data[0].lon];
-                }
-                else {
-                    taxiData.routeFrom.loc = [data[0].lat, data[0].lon];
-                }
-                calculateExpenses();
-            }
+            falseResponse = langConstants.ERROR_FALSE_ADDRESS;
         }
-
+        if (falseResponse) {
+            let alertHandler = new AlertHandler();
+            alertHandler.showInfoDialog(langConstants.ERROR, falseResponse);
+        }
     })
+
 }
 /**
  * calls tariffService to fetch informations and pricing about the set tariffs and shows them
@@ -343,6 +362,24 @@ function findTariffs() {
             }
         }
     })
+}
+function showAdressError(errorText) {
+    let errorDiv = document.createElement('div');
+    $(errorDiv).addClass('contentError');
+    $(errorDiv).addClass('contentHeadline');
+
+    let errorLabel = document.createElement('label');
+    errorLabel.innerHTML = errorText;
+    errorDiv.appendChild(errorLabel);
+    let buttonClose = document.createElement('button');
+    $(buttonClose).addClass(taxiConstants.POPUP_CLOSE);
+    $(buttonClose).addClass(taxiConstants.ICON);
+    $(buttonClose).on('click', function () {
+            $(this).parent().remove();
+        }
+    )
+    errorDiv.appendChild(buttonClose);
+    return errorDiv;
 }
 
 /**
@@ -463,7 +500,7 @@ function calculateExpenses () {
     const enterListener = function(event) {
         const scope = this;
         if (event.keyCode === 13) {
-            submitSearch($(scope).val(), "." + scope.classList[0]);
+            submitSearch(scope, "." + scope.classList[0]);
         }
         else {
             let currTime = Math.floor(Date.now());

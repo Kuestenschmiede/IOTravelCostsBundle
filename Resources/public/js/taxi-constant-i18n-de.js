@@ -18,8 +18,11 @@ export  var taxiConstantsGerman = {
     DUMMY_INPUT: 'PLZ, Ort oder Straße eingeben...',
     HEADLINE_DIST: 'Entfernung',
     HEADLINE_TIME: 'Dauer',
-    HEADLINE_BASE_PRICE:'Grundpreis',
-    HEADLINE_DIST_PRICE:'Preis / km',
-    HEADLINE_TIME_PRICE:'Preis / m',
+    HEADLINE_BASE_PRICE: 'Grundpreis',
+    HEADLINE_DIST_PRICE: 'Preis / km',
+    HEADLINE_TIME_PRICE: 'Preis / m',
+    ERROR_OUT_OF_BOUNDS: 'Adresse außerhalb des Tarifgebiets',
+    ERROR_FALSE_ADDRESS: 'Adresse nicht gefunden',
+    ERROR:'Fehler'
     NONE: '' // last line
 }; // end of "css constants" ---
