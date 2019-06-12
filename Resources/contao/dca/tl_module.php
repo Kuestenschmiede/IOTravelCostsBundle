@@ -24,6 +24,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['expense_settings_id'] =
         'exclude'                 => true,
         'inputType'               => 'select',
         'options_callback'        => ['tl_module_c4g_expenses', 'getExpenseSettings'],
+        'eval'                    => ['tl_class'=>'clr','chosen' => true, 'includeBlankOption'=>true],
         'sql'                     => "int(10) unsigned NOT NULL default '0'"
     ];
 
