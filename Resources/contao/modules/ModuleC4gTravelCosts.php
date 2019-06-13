@@ -31,7 +31,7 @@ class ModuleC4gTravelCosts extends \Module
      * Template
      * @var string
      */
-    protected $strTemplate = 'c4g_routing_expenses';
+    protected $strTemplate = 'c4g_travel_costs';
 
     /**
      * Generate content element
@@ -40,7 +40,7 @@ class ModuleC4gTravelCosts extends \Module
     {
         if (TL_MODE == 'BE') {
             $objTemplate = new \BackendTemplate('be_wildcard');
-            $objTemplate->wildcard = '### '.$GLOBALS['TL_LANG']['FMD']['C4gTravelCostsModule'][0].' ###';
+            $objTemplate->wildcard = '### '.$GLOBALS['TL_LANG']['FMD']['c4g_travel_costs'][0].' ###';
             $objTemplate->title = $this->headline;
             $objTemplate->id = $this->id;
             $objTemplate->link = $this->title;

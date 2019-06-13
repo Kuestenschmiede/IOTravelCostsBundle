@@ -91,7 +91,7 @@ $GLOBALS['TL_DCA'][$strName] = array
             'label' => &$GLOBALS['TL_LANG'][$strName]['startBboxUpperx'],
             'default' => '',
             'wizard' => [['con4gis\MapsBundle\Resources\contao\classes\GeoPicker', 'getPickerLink']],
-            'save_callback' => [['tl_c4G_travelcosts_settings', 'setLon']],
+            'save_callback' => [['tl_c4g_travel_costs_settings', 'setLon']],
             'inputType' => 'c4g_text',
             'eval' => ['maxlength' => 20, 'tl_class' => 'w50 wizard', 'require_input' => true]
         ],
@@ -99,7 +99,7 @@ $GLOBALS['TL_DCA'][$strName] = array
             'label' => &$GLOBALS['TL_LANG'][$strName]['startBboxUppery'],
             'default' => '',
             'wizard' => [['con4gis\MapsBundle\Resources\contao\classes\GeoPicker', 'getPickerLink']],
-            'save_callback' => [['tl_c4G_travelcosts_settings', 'setLat']],
+            'save_callback' => [['tl_c4g_travel_costs_settings', 'setLat']],
             'inputType' => 'c4g_text',
             'eval' => ['maxlength' => 20, 'tl_class' => 'w50 wizard', 'require_input' => true]
         ],
@@ -107,7 +107,7 @@ $GLOBALS['TL_DCA'][$strName] = array
             'label' => &$GLOBALS['TL_LANG'][$strName]['startBboxDownerx'],
             'default' => '',
             'wizard' => [['con4gis\MapsBundle\Resources\contao\classes\GeoPicker', 'getPickerLink']],
-            'save_callback' => [['tl_c4G_travelcosts_settings', 'setLon']],
+            'save_callback' => [['tl_c4g_travel_costs_settings', 'setLon']],
             'inputType' => 'c4g_text',
             'eval' => ['maxlength' => 20, 'tl_class' => 'w50 wizard', 'require_input' => true]
         ],
@@ -115,7 +115,7 @@ $GLOBALS['TL_DCA'][$strName] = array
             'label' => &$GLOBALS['TL_LANG'][$strName]['startBboxDownery'],
             'default' => '',
             'wizard' => [['con4gis\MapsBundle\Resources\contao\classes\GeoPicker', 'getPickerLink']],
-            'save_callback' => [['tl_c4G_travelcosts_settings', 'setLat']],
+            'save_callback' => [['tl_c4g_travel_costs_settings', 'setLat']],
             'inputType' => 'c4g_text',
             'eval' => ['maxlength' => 20, 'tl_class' => 'w50 wizard', 'require_input' => true]
         ],
@@ -123,7 +123,7 @@ $GLOBALS['TL_DCA'][$strName] = array
             'label' => &$GLOBALS['TL_LANG'][$strName]['tariffs'],
             'default' => '',
             'inputType' => 'checkbox',
-            'options_callback' => ['tl_c4G_travelcosts_settings', 'getTariffs'],
+            'options_callback' => ['tl_c4g_travel_costs_settings', 'getTariffs'],
             'eval' => ['mandatory' => false, 'multiple' => true],
         ],
         'withDateTime' => [

@@ -13,3 +13,5 @@
 
 $GLOBALS['TL_LANG']['MOD']['tl_c4g_travel_costs_settings'] = ['Fahrtkosten-Einstellungen', 'Fahrtkosten-Einstellungen bearbeiten.'];
 $GLOBALS['TL_LANG']['MOD']['tl_c4g_travel_costs_tariffs'] = ['Fahrtkosten-Tarif', 'Fahrtkosten-Tarif konfigurieren.'];
+
+$GLOBALS['TL_LANG']['FMD']['c4g_travel_costs'] = ['Fahrtkostenrechner', ''];

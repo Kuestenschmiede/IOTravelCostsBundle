@@ -34,6 +34,6 @@ class con4GisTravelCostsExtension extends Extension
     }
     public function getAlias()
     {
-        return "con4gis_routing_expenses";
+        return "con4gis_travel_costs";
     }
 }

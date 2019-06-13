@@ -1,5 +1,5 @@
 {
-  "name": "routingbrxpenseundle",
+  "name": "travelcostsbundle",
   "version": "1.0.0",
   "description": "",
   "main": "webpack.config.js",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Kuestenschmiede/RoutingExpenseBundle.git"
+    "url": "git+https://github.com/Kuestenschmiede/TravelCostsBundle.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Kuestenschmiede/RoutingExpenseBundle/issues"
+    "url": "https://github.com/Kuestenschmiede/TravelCostsBundle/issues"
   },
-  "homepage": "https://github.com/Kuestenschmiede/RoutingExpenseBundle#readme",
+  "homepage": "https://github.com/Kuestenschmiede/TravelCostsBundle#readme",
   "devDependencies": {
     "babel": "^6.23.0",
     "babel-core": "^6.26.3",
