@@ -21,7 +21,7 @@
     },
     "require": {
         "contao/core-bundle": "^4.4",
-        "con4gis/maps": "^6.0"
+        "con4gis/maps": "^6.1"
     },
     "conflict": {
         "contao/core": "*",
