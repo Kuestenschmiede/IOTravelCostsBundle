@@ -11,7 +11,7 @@
  * @link       https://www.con4gis.org
  */
 
-namespace con4gis\RoutingExpensesBundle\DependencyInjection;
+namespace con4gis\TravelCostsBundle\DependencyInjection;
 
 
 use Symfony\Component\Config\FileLocator;
@@ -19,7 +19,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
-class con4gisRoutingExpensesExtension extends Extension
+class con4GisTravelCostsExtension extends Extension
 {
     /**
      * {@inheritdoc}
@@ -30,7 +30,6 @@ class con4gisRoutingExpensesExtension extends Extension
             $container,
             new FileLocator(__DIR__.'/../Resources/config')
         );
-        $loader->load('listeners.yaml');
         $loader->load('services.yaml');
     }
     public function getAlias()

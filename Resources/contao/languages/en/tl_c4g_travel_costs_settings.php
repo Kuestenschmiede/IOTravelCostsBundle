@@ -12,7 +12,7 @@
  * @link       https://www.con4gis.org
  */
 
-$strName = 'tl_c4g_routing_expenses_settings';
+$strName = 'tl_c4g_travel_costs_settings';
 $GLOBALS['TL_LANG'][$strName]['caption'] = ['Name', 'Name of the fare-settings.'];
 $GLOBALS['TL_LANG'][$strName]['startBboxUpperx'] = ['Western Longitude', 'Enter the western longitude to limit the search.'];
 $GLOBALS['TL_LANG'][$strName]['startBboxUppery'] = ['Southern Latitude', 'Enter the southern latitude to limit the search.'];;

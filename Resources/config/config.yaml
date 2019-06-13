@@ -3,4 +3,4 @@ doctrine:
     entity_managers:
         default:
             mappings:
-                con4gisRoutingExpensesBundle: ~
+                con4gisTravelCostsBundle: ~

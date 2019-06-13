@@ -10,23 +10,23 @@
  * @copyright  Küstenschmiede GmbH Software & Design
  * @link       https://www.con4gis.org
  */
-namespace con4gis\RoutingExpensesBundle\Resources\contao\modules;
+namespace con4gis\TravelCostsBundle\Resources\contao\modules;
 
 
 use con4gis\CoreBundle\Resources\contao\classes\ResourceLoader;
 use Contao\Controller;
 
 /**
- * Class ModuleC4gRoutingExpenses
- * @package \con4gis\RoutingExpensesBundle\Resources\contao\modules
+ * Class ModuleC4gTravelCosts
+ * @package \con4gis\TravelCostsBundle\Resources\contao\modules
  */
-class ModuleC4gRoutingExpenses extends \Module
+class ModuleC4gTravelCosts extends \Module
 {
     /**
      * Template
      * @var string
      */
-    protected $strTemplate = 'c4g_routing_expenses';
+    protected $strTemplate = 'c4g_travel_costs';
 
     /**
      * Generate content element
@@ -35,7 +35,7 @@ class ModuleC4gRoutingExpenses extends \Module
     {
         if (TL_MODE == 'BE') {
             $objTemplate = new \BackendTemplate('be_wildcard');
-            $objTemplate->wildcard = '### '.$GLOBALS['TL_LANG']['FMD']['C4gRoutingExpensesModule'][0].' ###';
+            $objTemplate->wildcard = '### '.$GLOBALS['TL_LANG']['FMD']['C4gTravelCostsModule'][0].' ###';
             $objTemplate->title = $this->headline;
             $objTemplate->id = $this->id;
             $objTemplate->link = $this->title;
@@ -53,10 +53,8 @@ class ModuleC4gRoutingExpenses extends \Module
         $pageId = $this->mapPage;
         $pageUrl = Controller::replaceInsertTags("{{link_url:: " . $pageId . "}}");
         ResourceLoader::loadJavaScriptDeferred('jquery-ui', "/bundles/con4giscore/vendor/jQuery/jquery-ui-1.12.1.custom/jquery-ui.js");
-        ResourceLoader::loadJavaScriptDeferred("taxi-finder", "bundles/con4gisroutingexpenses/build/taxi-finder.js");
-        ResourceLoader::loadCssRessource("fuel-finder-module", "bundles/gasstationsfuel/css/fuel-finder-module.css");
+        ResourceLoader::loadJavaScriptDeferred("taxi-finder", "bundles/con4gistravelcosts/build/taxi-finder.js");
         ResourceLoader::loadCssRessource('jquery-ui-css', "/bundles/con4giscore/vendor/jQuery/jquery-ui-1.12.1.custom/jquery-ui.css");
-//        ResourceLoader::loadCssRessource("c4g-cached-inputfield", "bundles/con4giscore/css/c4g-cached-inputfield.css");
         $GLOBALS['TL_HEAD'][] = "<script>var mapRedirect = '" . $pageUrl . "';</script>";
     }
 

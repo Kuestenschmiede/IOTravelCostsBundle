@@ -10,8 +10,7 @@
  * @copyright  Küstenschmiede GmbH Software & Design
  * @link       https://www.con4gis.org
  */
-$strName = 'tl_c4g_routing_expenses_tariffs';
-$callbackClass = \con4gis\RoutingBundle\Classes\Callbacks\TlC4gRoutingConfiguration::class;
+$strName = 'tl_c4g_travel_costs_tariffs';
 
 $GLOBALS['TL_DCA'][$strName] = array
 (

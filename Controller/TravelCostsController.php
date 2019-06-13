@@ -11,7 +11,7 @@
  * @link       https://www.con4gis.org
  */
 
-namespace con4gis\RoutingExpensesBundle\Controller;
+namespace con4gis\TravelCostsBundle\Controller;
 
 
 use con4gis\CoreBundle\Controller\BaseController;
@@ -23,7 +23,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class RoutingExpensesController extends AbstractController
+class TravelCostsController extends AbstractController
 {
     /**
      * @Route("/con4gis/expenseService/{settings}/{locations}/{tariffId}/{time}", name="getExpenseService", methods={"GET"})

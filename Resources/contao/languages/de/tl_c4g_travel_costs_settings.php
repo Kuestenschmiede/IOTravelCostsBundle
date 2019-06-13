@@ -11,7 +11,7 @@
  * @link       https://www.con4gis.org
  */
 
-$strName = 'tl_c4g_routing_expenses_settings';
+$strName = 'tl_c4g_travel_costs_settings';
 $GLOBALS['TL_LANG'][$strName]['caption'] = ['Bezeichnung','Bezeichnung der Fahrtkosten-Einstellung.'];
 $GLOBALS['TL_LANG'][$strName]['startBboxUpperx'] = ['Linker Längengrad', 'Tragen Sie den linken Längengrad zur Begrenzung der Suche ein.'];
 $GLOBALS['TL_LANG'][$strName]['startBboxUppery'] = ['Unterer Breitengrad', 'Tragen Sie den unteren Breitengrad zur Begrenzung der Suche ein.'];;

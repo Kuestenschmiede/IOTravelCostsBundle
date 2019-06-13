@@ -11,5 +11,5 @@
  * @link       https://www.con4gis.org
  */
 
-$GLOBALS['TL_LANG']['MOD']['tl_c4g_routing_expenses_settings'] = ['Fare-settings', 'Edit fare-settings'];
-$GLOBALS['TL_LANG']['MOD']['tl_c4g_routing_expenses_tariffs'] = ['Fare-tariffs', 'Edit fare-tariffs'];
+$GLOBALS['TL_LANG']['MOD']['tl_c4g_travel_costs_settings'] = ['Fare-settings', 'Edit fare-settings'];
+$GLOBALS['TL_LANG']['MOD']['tl_c4g_travel_costs_tariffs'] = ['Fare-tariffs', 'Edit fare-tariffs'];

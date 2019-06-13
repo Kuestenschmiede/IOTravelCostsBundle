@@ -11,7 +11,7 @@
  * @link       https://www.con4gis.org
  */
 
-$strName = 'tl_c4g_routing_expenses_tariffs';
+$strName = 'tl_c4g_travel_costs_tariffs';
 $GLOBALS['TL_LANG'][$strName]['caption'] = ['Caption',''];
 $GLOBALS['TL_LANG'][$strName]['basePrice'] = ['Base Price', 'Base price for a route'];
 $GLOBALS['TL_LANG'][$strName]['distancePrice'] = ['Distance Price', 'The price per kilometer.'];

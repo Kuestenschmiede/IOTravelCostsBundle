@@ -1,10 +1,10 @@
 <?php
 
-namespace con4gis\RoutingExpensesBundle\Classes\Services;
+namespace con4gis\TravelCostsBundle\Classes\Services;
 
 use con4gis\MapsBundle\Resources\contao\models\C4gMapSettingsModel;
-use con4gis\RoutingExpensesBundle\Entity\RoutingExpensesSettings;
-use con4gis\RoutingExpensesBundle\Entity\RoutingExpensesTariff;
+use con4gis\TravelCostsBundle\Entity\TravelCostsSettings;
+use con4gis\TravelCostsBundle\Entity\TravelCostsTariff;
 use Contao\Database;
 use Contao\System;
 use Doctrine\ORM\EntityManager;
@@ -31,14 +31,14 @@ class ExpenseService
         $this->db = Database::getInstance();
     }
     public function getResponse($expenseSetting, $locations, $tariffIds = null, $time  = null) {
-        $objExpenseSettings = $this->entityManager->getRepository(RoutingExpensesSettings::class)->findOneBy(['id' => $expenseSetting]);
-        if ($objExpenseSettings instanceof RoutingExpensesSettings) {
+        $objExpenseSettings = $this->entityManager->getRepository(TravelCostsSettings::class)->findOneBy(['id' => $expenseSetting]);
+        if ($objExpenseSettings instanceof TravelCostsSettings) {
             $arrTariffIds = $objExpenseSettings->getTariffs();
-            $arrTariffs = $this->entityManager->getRepository(RoutingExpensesTariff::class)->findBy(['id' => $arrTariffIds]);
+            $arrTariffs = $this->entityManager->getRepository(TravelCostsTariff::class)->findBy(['id' => $arrTariffIds]);
             if ($arrTariffs[0]) {
                 $arrSendTariffs = [];
                 foreach ($arrTariffs as $key => $objTariff) {
-                    if ($objTariff  instanceof RoutingExpensesTariff) {
+                    if ($objTariff  instanceof TravelCostsTariff) {
                         $arrSendTariffs[$key] =
                             [   'basePrice' => $objTariff->getBasePrice(),
                                 'distPrice' => $objTariff->getDistancePrice(),

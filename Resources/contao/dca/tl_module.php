@@ -14,7 +14,7 @@
 /***
  * Palettes
  */
-$GLOBALS['TL_DCA']['tl_module']['palettes']['c4g_routing_expenses']         =   '{title_legend},name,type,headline,expense_settings_id';
+$GLOBALS['TL_DCA']['tl_module']['palettes']['c4g_travel_costs']         =   '{title_legend},name,type,headline,expense_settings_id';
 /***
  * Fields
  */
@@ -34,7 +34,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['expense_settings_id'] =
 class tl_module_c4g_expenses extends Backend
 {
     public function getExpenseSettings(DataContainer $dc){
-        $stmt = $this->Database->prepare("SELECT id, caption FROM tl_c4g_routing_expenses_settings");
+        $stmt = $this->Database->prepare("SELECT id, caption FROM tl_c4g_travel_costs_settings");
         $result = $stmt->execute();
         $return = [];
         while ($row = $result->fetchAssoc()) {

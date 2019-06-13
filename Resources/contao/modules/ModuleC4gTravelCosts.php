@@ -10,22 +10,22 @@
  * @copyright  Küstenschmiede GmbH Software & Design
  * @link       https://www.con4gis.org
  */
-namespace con4gis\RoutingExpensesBundle\Resources\contao\modules;
+namespace con4gis\TravelCostsBundle\Resources\contao\modules;
 
 
 use con4gis\CoreBundle\Resources\contao\classes\C4GUtils;
 use con4gis\CoreBundle\Resources\contao\classes\ResourceLoader;
 use con4gis\CoreBundle\Resources\contao\models\C4gSettingsModel;
-use con4gis\RoutingExpensesBundle\Entity\RoutingExpensesSettings;
+use con4gis\TravelCostsBundle\Entity\TravelCostsSettings;
 use Contao\System;
 use Doctrine\ORM\EntityManager;
 use Contao\Controller;
 
 /**
- * Class ModuleC4gRoutingExpenses
- * @package \con4gis\RoutingExpensesBundle\Resources\contao\modules
+ * Class ModuleC4gTravelCosts
+ * @package \con4gis\TravelCostsBundle\Resources\contao\modules
  */
-class ModuleC4gRoutingExpenses extends \Module
+class ModuleC4gTravelCosts extends \Module
 {
     /**
      * Template
@@ -40,7 +40,7 @@ class ModuleC4gRoutingExpenses extends \Module
     {
         if (TL_MODE == 'BE') {
             $objTemplate = new \BackendTemplate('be_wildcard');
-            $objTemplate->wildcard = '### '.$GLOBALS['TL_LANG']['FMD']['C4gRoutingExpensesModule'][0].' ###';
+            $objTemplate->wildcard = '### '.$GLOBALS['TL_LANG']['FMD']['C4gTravelCostsModule'][0].' ###';
             $objTemplate->title = $this->headline;
             $objTemplate->id = $this->id;
             $objTemplate->link = $this->title;
@@ -58,8 +58,8 @@ class ModuleC4gRoutingExpenses extends \Module
         $pageId = $this->mapPage;
         $pageUrl = Controller::replaceInsertTags("{{link_url:: " . $pageId . "}}");
         ResourceLoader::loadJavaScriptDeferred('jquery-ui', "/bundles/con4giscore/vendor/jQuery/jquery-ui-1.12.1.custom/jquery-ui.js");
-        ResourceLoader::loadJavaScriptDeferred("taxi-finder", "bundles/con4gisroutingexpenses/build/taxi-finder.js");
-        ResourceLoader::loadCssRessource("taxi-finder", "bundles/con4gisroutingexpenses/css/taxi-finder.css");
+        ResourceLoader::loadJavaScriptDeferred("taxi-finder", "bundles/con4gistravelcosts/build/taxi-finder.js");
+        ResourceLoader::loadCssRessource("taxi-finder", "bundles/con4gistravelcosts/css/taxi-finder.css");
         ResourceLoader::loadCssRessource('jquery-ui-css', "/bundles/con4giscore/vendor/jQuery/jquery-ui-1.12.1.custom/jquery-ui.css");
 //        ResourceLoader::loadCssRessource("c4g-cached-inputfield", "bundles/con4giscore/css/c4g-cached-inputfield.css");
         $template = $this->Template;
@@ -68,9 +68,9 @@ class ModuleC4gRoutingExpenses extends \Module
         $template->keyReverse = C4GUtils::getKey($objSettings,3);
         $template->keyForward = C4GUtils::getKey($objSettings,2);
         $settingsId = $this->expense_settings_id;
-        $tariffConfig = System::getContainer()->get("doctrine.orm.default_entity_manager")->getRepository(RoutingExpensesSettings::class)
+        $tariffConfig = System::getContainer()->get("doctrine.orm.default_entity_manager")->getRepository(TravelCostsSettings::class)
             ->findOneBy(['id' => $settingsId]);
-        if ($tariffConfig instanceof RoutingExpensesSettings) {
+        if ($tariffConfig instanceof TravelCostsSettings) {
             $bBox = [$tariffConfig->getStartBboxDownerx(), $tariffConfig->getStartBboxDownery(), $tariffConfig->getStartBboxUpperx(), $tariffConfig->getStartBboxUppery()];
 
             if($bBox) {

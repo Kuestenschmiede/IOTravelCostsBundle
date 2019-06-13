@@ -11,19 +11,19 @@
  * @link       https://www.con4gis.org
  */
 
-namespace con4gis\RoutingExpensesBundle\Entity;
+namespace con4gis\TravelCostsBundle\Entity;
 
 use \Doctrine\ORM\Mapping as ORM;
 use con4gis\CoreBundle\Entity\BaseEntity;
 
 /**
- * Class RoutingExpensesSettings
+ * Class TravelCostsSettings
  *
  * @ORM\Entity
- * @ORM\Table(name="tl_c4g_routing_expenses_settings")
- * @package con4gis\RoutingExpensesBundle\Entity
+ * @ORM\Table(name="tl_c4g_travel_costs_settings")
+ * @package con4gis\TravelCostsBundle\Entity
  */
-class RoutingExpensesSettings extends BaseEntity
+class TravelCostsSettings extends BaseEntity
 {
     /**
      * @var int

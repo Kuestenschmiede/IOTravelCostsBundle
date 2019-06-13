@@ -15,14 +15,14 @@
  * Backend Modules
  */
 $GLOBALS['BE_MOD']['con4gis_core'] = array_merge($GLOBALS['BE_MOD']['con4gis_core'], [
-    'tl_c4g_routing_expenses_settings' => [
-        'tables' => ['tl_c4g_routing_expenses_settings','tl_c4g_routing_expenses_tariffs']
+    'tl_c4g_travel_costs_settings' => [
+        'tables' => ['tl_c4g_travel_costs_settings','tl_c4g_travel_costs_tariffs']
     ],
-    'tl_c4g_routing_expenses_tariffs' => [
-        'tables' => ['tl_c4g_routing_expenses_tariffs']
+    'tl_c4g_travel_costs_tariffs' => [
+        'tables' => ['tl_c4g_travel_costs_tariffs']
     ]
 ]);
 array_insert($GLOBALS['FE_MOD']['con4gis'], 1,
     [
-        'c4g_routing_expenses' => 'con4gis\RoutingExpensesBundle\Resources\contao\modules\ModuleC4gRoutingExpenses',
+        'c4g_travel_costs' => 'con4gis\TravelCostsBundle\Resources\contao\modules\ModuleC4gTravelCosts',
     ]);

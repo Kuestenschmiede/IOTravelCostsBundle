@@ -10,8 +10,7 @@
  * @copyright  Küstenschmiede GmbH Software & Design
  * @link       https://www.con4gis.org
  */
-$strName = 'tl_c4g_routing_expenses_settings';
-$callbackClass = \con4gis\RoutingBundle\Classes\Callbacks\TlC4gRoutingConfiguration::class;
+$strName = 'tl_c4g_travel_costs_settings';
 /**
  * Table tl_c4g_routing_expenses_settings
  */
@@ -92,7 +91,7 @@ $GLOBALS['TL_DCA'][$strName] = array
             'label' => &$GLOBALS['TL_LANG'][$strName]['startBboxUpperx'],
             'default' => '',
             'wizard' => [['con4gis\MapsBundle\Resources\contao\classes\GeoPicker', 'getPickerLink']],
-            'save_callback' => [['tl_c4g_routing_expenses_settings', 'setLon']],
+            'save_callback' => [['tl_c4G_travelcosts_settings', 'setLon']],
             'inputType' => 'c4g_text',
             'eval' => ['maxlength' => 20, 'tl_class' => 'w50 wizard', 'require_input' => true]
         ],
@@ -100,7 +99,7 @@ $GLOBALS['TL_DCA'][$strName] = array
             'label' => &$GLOBALS['TL_LANG'][$strName]['startBboxUppery'],
             'default' => '',
             'wizard' => [['con4gis\MapsBundle\Resources\contao\classes\GeoPicker', 'getPickerLink']],
-            'save_callback' => [['tl_c4g_routing_expenses_settings', 'setLat']],
+            'save_callback' => [['tl_c4G_travelcosts_settings', 'setLat']],
             'inputType' => 'c4g_text',
             'eval' => ['maxlength' => 20, 'tl_class' => 'w50 wizard', 'require_input' => true]
         ],
@@ -108,7 +107,7 @@ $GLOBALS['TL_DCA'][$strName] = array
             'label' => &$GLOBALS['TL_LANG'][$strName]['startBboxDownerx'],
             'default' => '',
             'wizard' => [['con4gis\MapsBundle\Resources\contao\classes\GeoPicker', 'getPickerLink']],
-            'save_callback' => [['tl_c4g_routing_expenses_settings', 'setLon']],
+            'save_callback' => [['tl_c4G_travelcosts_settings', 'setLon']],
             'inputType' => 'c4g_text',
             'eval' => ['maxlength' => 20, 'tl_class' => 'w50 wizard', 'require_input' => true]
         ],
@@ -116,7 +115,7 @@ $GLOBALS['TL_DCA'][$strName] = array
             'label' => &$GLOBALS['TL_LANG'][$strName]['startBboxDownery'],
             'default' => '',
             'wizard' => [['con4gis\MapsBundle\Resources\contao\classes\GeoPicker', 'getPickerLink']],
-            'save_callback' => [['tl_c4g_routing_expenses_settings', 'setLat']],
+            'save_callback' => [['tl_c4G_travelcosts_settings', 'setLat']],
             'inputType' => 'c4g_text',
             'eval' => ['maxlength' => 20, 'tl_class' => 'w50 wizard', 'require_input' => true]
         ],
@@ -124,7 +123,7 @@ $GLOBALS['TL_DCA'][$strName] = array
             'label' => &$GLOBALS['TL_LANG'][$strName]['tariffs'],
             'default' => '',
             'inputType' => 'checkbox',
-            'options_callback' => ['tl_c4g_routing_expenses_settings', 'getTariffs'],
+            'options_callback' => ['tl_c4G_travelcosts_settings', 'getTariffs'],
             'eval' => ['mandatory' => false, 'multiple' => true],
         ],
         'withDateTime' => [
@@ -141,11 +140,11 @@ $GLOBALS['TL_DCA'][$strName] = array
         ]
     ]
 );
-class tl_c4g_routing_expenses_settings extends \Contao\Backend
+class tl_c4g_travel_costs_settings extends \Contao\Backend
 {
     public function getTariffs(\Contao\DataContainer $dc)
     {
-        $tariffs = $this->Database->prepare("SELECT id,caption FROM tl_c4g_routing_expenses_tariffs ORDER BY caption")
+        $tariffs = $this->Database->prepare("SELECT id,caption FROM tl_c4g_travel_costs_tariffs ORDER BY caption")
             ->execute();
         while ($tariffs->next()) {
             $return[$tariffs->id] = $tariffs->caption;
