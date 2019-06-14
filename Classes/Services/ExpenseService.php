@@ -76,7 +76,7 @@ class ExpenseService
             }
             $response->tariffs = $arrResponseTariffs;
         }
-        return json_encode($response);
+        return $response;
 
     }
 }

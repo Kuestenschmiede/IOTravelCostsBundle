@@ -33,9 +33,8 @@ class TravelCostsController extends AbstractController
     public function getExpensesAction(Request $request, $settings, $locations, $tariffId = null, $time = null){
         $this->get('contao.framework')->initialize();
         $expenseService = $this->get("con4gis.expense_service");
-        $response = new Response();
-        $response ->setContent($expenseService->getResponse($settings, $locations, $tariffId, $time));
-        $response->headers->set('Content-Type', 'application/json');
+        $response = new JsonResponse();
+        $response ->setData($expenseService->getResponse($settings, $locations, $tariffId, $time));
         return $response;
     }
     /**
@@ -46,9 +45,8 @@ class TravelCostsController extends AbstractController
     public function getTariffAction(Request $request, $settingId){
         $this->get('contao.framework')->initialize();
         $tariffService = $this->get("con4gis.tariff_service");
-        $response = new Response();
-        $response ->setContent($tariffService->getResponse($settingId));
-        $response->headers->set('Content-Type', 'application/json');
+        $response = new JsonResponse();
+        $response ->setData($tariffService->getResponse($settingId));
         return $response;
     }
 }

@@ -20,7 +20,7 @@ export  var taxiConstantsEnglish = {
     HEADLINE_TIME: 'Time',
     HEADLINE_BASE_PRICE:'Base price',
     HEADLINE_DIST_PRICE:'Price / km',
-    HEADLINE_TIME_PRICE:'Price / m',
+    HEADLINE_TIME_PRICE:'Price / min',
     ERROR_OUT_OF_BOUNDS: 'Address is out of bounds',
     ERROR_FALSE_ADDRESS: 'Address not found',
     ERROR:'Error',

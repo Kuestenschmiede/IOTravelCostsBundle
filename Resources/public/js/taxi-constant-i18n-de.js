@@ -20,7 +20,7 @@ export  var taxiConstantsGerman = {
     HEADLINE_TIME: 'Dauer',
     HEADLINE_BASE_PRICE: 'Grundpreis',
     HEADLINE_DIST_PRICE: 'Preis / km',
-    HEADLINE_TIME_PRICE: 'Preis / m',
+    HEADLINE_TIME_PRICE: 'Preis / min',
     ERROR_OUT_OF_BOUNDS: 'Adresse außerhalb des Tarifgebiets',
     ERROR_FALSE_ADDRESS: 'Adresse nicht gefunden',
     ERROR:'Fehler',

@@ -49,18 +49,19 @@ class TravelCostsTariff extends BaseEntity
      * @var int
      * @ORM\Column(type="float")
      */
-    protected $basePrice = '';
+    protected $basePrice = 0.0;
 
     /**
      * @var float
      * @ORM\Column(type="float")
      */
-    protected $distancePrice = '';
+    protected $distancePrice = 0.0;
+    
     /**
      * @var float
      * @ORM\Column(type="float")
      */
-    protected $timePrice = '';
+    protected $timePrice = 0.0;
 
     /**
      * @var int
@@ -175,7 +176,7 @@ class TravelCostsTariff extends BaseEntity
     {
         $this->caption = $caption;
     }
-
+    
     /**
      * @return int
      */
@@ -183,7 +184,7 @@ class TravelCostsTariff extends BaseEntity
     {
         return $this->basePrice;
     }
-
+    
     /**
      * @param int $basePrice
      */
@@ -191,23 +192,23 @@ class TravelCostsTariff extends BaseEntity
     {
         $this->basePrice = $basePrice;
     }
-
+    
     /**
-     * @return int
+     * @return float
      */
-    public function getDistancePrice(): int
+    public function getDistancePrice(): float
     {
         return $this->distancePrice;
     }
-
+    
     /**
-     * @param int $distancePrice
+     * @param float $distancePrice
      */
-    public function setDistancePrice(int $distancePrice): void
+    public function setDistancePrice(float $distancePrice): void
     {
         $this->distancePrice = $distancePrice;
     }
-
+    
     /**
      * @return float
      */
@@ -215,7 +216,7 @@ class TravelCostsTariff extends BaseEntity
     {
         return $this->timePrice;
     }
-
+    
     /**
      * @param float $timePrice
      */

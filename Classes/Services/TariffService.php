@@ -48,6 +48,6 @@ class TariffService
                 }
             }
         }
-        return $arrSendTariffs ? json_encode($arrSendTariffs) : "";
+        return $arrSendTariffs ? $arrSendTariffs : "";
     }
 }
