@@ -12,6 +12,17 @@
     margin: 2px;
     border-radius: 50%;
 }
+
+.submit-expense-calc {
+    color: rgba(255,255,255,1);
+    background-color: rgba(0, 0, 0,.75);
+    height: 32px;
+    width: 210px;
+    display: inline-block;
+    padding: 2px;
+    margin: 2px 2px 2px 34px;
+    border-radius: 5%;
+}
 button.route-from-geolocation:before,
 button.route-to-geolocation:before {
     font-family: 'Font Awesome 5 Free';

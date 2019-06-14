@@ -174,7 +174,7 @@ function parseAddressString(data) {
 /**
  * calls geosearch to set autocomplete suggestions for an address-string
  * @param input       address-string from input
- * @param cssid       css-class to set response-property to
+ * @param cssId       css-class to set response-property to
  * @returns {void}
  */
 function handleAdress(input, cssId) {
@@ -505,9 +505,10 @@ $(document).ready(function() {
     setRouteTo(address);
   });
 
-
-  $(".start-search").on('click', function() {
-    submitSearch();
+  let submitButton = document.getElementById('btn-submit-expense-calc');
+  submitButton.innerText = "Suche starten";
+  $(submitButton).on('click', function() {
+    calculateExpenses();
   });
 
   $(".route-from-geolocation").on("click", function () {

@@ -11,6 +11,9 @@
             <input type="text" class="route-to ui-autocomplete-input" name="routeTo">
         </div>
     </div>
+    <div class="submit-input">
+        <button class="submit-expense-calc" id="btn-submit-expense-calc"></button>
+    </div>
 </div>
 <br>
 <?php if ($this->displayGrid): ?>
