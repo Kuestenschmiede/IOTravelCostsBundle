@@ -194,31 +194,26 @@ function handleAdress(input, cssId) {
               }
             }
             if (cssId === ".route-from") {
-              arrFromNames.push(data[i].display_name);
-              arrFromPositions.push([data[i].lat, data[i].lon]);
+              // do not add twice
+              if (!arrFromNames.includes(data[i].display_name)) {
+                arrFromNames.push(data[i].display_name);
+                arrFromPositions.push([data[i].lat, data[i].lon]);
+              }
             }
             else {
-              arrToNames.push(data[i].display_name);
-              arrToPositions.push([data[i].lat, data[i].lon]);
+              if (!arrToNames.includes(data[i].display_name)) {
+                arrToNames.push(data[i].display_name);
+                arrToPositions.push([data[i].lat, data[i].lon]);
+              }
             }
           }
         }
-        if (cssId === ".route-from") {
-          $(cssId).autocomplete({
-            source: arrFromNames
-          });
-        }
-        else {
-          $(cssId).autocomplete({
-            source: arrToNames
-          });
-        }
-
+        // trigger keydown event to show autocomplete options
+        let event = jQuery.Event("keydown", {keyCode: 8});
+        $(cssId).trigger(event);
       }
     }
-    else {
-    }
-  })
+  });
 }
 
 /**
@@ -443,12 +438,11 @@ $(document).ready(function() {
     $.extend(langConstants, taxiConstantsEnglish);
   }
   window.bBox = JSON.parse(window.bBox);
-  // TODO what? Should be swapped or not?
-  let objInputFrom = $(".route-to");
+  let objInputFrom = $(".route-from");
   if (objInputFrom[0]) {
     objInputFrom[0].placeholder = langConstants.DUMMY_INPUT;
   }
-  let objInputTo = $(".route-from");
+  let objInputTo = $(".route-to");
   if (objInputTo[0]) {
     objInputTo[0].placeholder = langConstants.DUMMY_INPUT;
   }
@@ -462,34 +456,51 @@ $(document).ready(function() {
     const scope = this;
     if (event.keyCode === 13) {
       submitSearch(scope, "." + scope.classList[0]);
-    }
-    else {
+    } else if (event.keyCode === 8 || (event.keyCode >= 37 && event.keyCode <= 40) || event.keyCode === 9) {
+      // event.stopPropagation();
+      // event.preventDefault();
+    } else {
       let currTime = Math.floor(Date.now());
       scope.counter = currTime;
-      setTimeout(function(){
+      setTimeout(function() {
         if (scope.counter && scope.counter + 1000 < Math.floor(Date.now())) {
           delete scope.counter;
           handleAdress($(scope).val(), "." + scope.classList[0]);
         }
-      },1500)
+      },1500);
     }
   };
 
-  $(".route-from").on('keydown', enterListener);
-  $(".route-from").on('autocompleteselect', function(event, ui){
+  objInputFrom.autocomplete({
+    source: arrFromNames
+  });
+  objInputFrom.on('keydown', enterListener);
+  objInputFrom.on('autocompleteselect', function(event, ui){
     let value = ui.item.value;
-    let loc = arrFromPositions[arrFromNames.findIndex(danger => danger === value)];
-    taxiData.routeFrom.loc = loc;
+    taxiData.routeFrom.loc = arrFromPositions[arrFromNames.findIndex(
+      danger => danger === value
+    )];
     calculateExpenses();
   });
-  $(".route-to").on('keydown', enterListener);
 
-  $(".route-from").on('change', function() {
+  objInputTo.autocomplete({
+    source: arrToNames
+  });
+  objInputTo.on('keydown', enterListener);
+  objInputTo.on('autocompleteselect', function(event, ui){
+    let value = ui.item.value;
+    taxiData.routeTo.loc = arrToPositions[arrToNames.findIndex(
+      danger => danger === value
+    )];
+    calculateExpenses();
+  });
+
+  objInputFrom.on('change', function() {
     let address = $(this).val();
     setRouteFrom(address);
   });
 
-  $(".route-to").on('change', function() {
+  objInputTo.on('change', function() {
     let address = $(this).val();
     setRouteTo(address);
   });
@@ -514,6 +525,7 @@ $(document).ready(function() {
       console.warn("The geolocation API is not available in your browser. Consider updating it or switching to a newer browser.");
     }
   });
+
   let objHeadlineDistPrice = $(".headline-dist-price");
   objHeadlineDistPrice.html(langConstants.HEADLINE_DIST_PRICE);
   let objHeadlineTimePrice = $(".headline-time-price");
