@@ -19,7 +19,7 @@ $GLOBALS['TL_LANG'][$strName]['startBboxUppery'] = ['Southern Latitude', 'Enter 
 $GLOBALS['TL_LANG'][$strName]['startBboxDownerx'] = ['Eastern Longitude', 'Enter the eastern longitude to limit the search.'];
 $GLOBALS['TL_LANG'][$strName]['startBboxDownery'] = ['Northern Latitude', 'Enter the northern latitude to limit the search.'];
 $GLOBALS['TL_LANG'][$strName]['tariffs'] = ['Choose tariffs', 'Choose the tariffs for these settings.'];
-$GLOBALS['TL_LANG'][$strName]['displayGrid'] = ['Show as grid', 'Show the data as HTML-Grid'];
+$GLOBALS['TL_LANG'][$strName]['displayGrid'] = ['Show as grid', 'Show the data as HTML-Grid.'];
 
 /**
  * References
@@ -36,4 +36,4 @@ $GLOBALS['TL_LANG'][$strName]['new'] = ['New fare-settings', 'Create a new fare-
 $GLOBALS['TL_LANG'][$strName]['edit'] = ['Edit fare-setting', 'Edit fare-setting with ID %s'];
 $GLOBALS['TL_LANG'][$strName]['copy'] = ['Copy fare-setting', 'Copy fare-setting with ID %s'];
 $GLOBALS['TL_LANG'][$strName]['delete'] = ['Delete fare-setting', 'Delete fare-setting with ID %s'];
-$GLOBALS['TL_LANG'][$strName]['show'] = ['Details', 'Show details for fare-setting'];
+$GLOBALS['TL_LANG'][$strName]['show'] = ['Details', 'Show details for fare-setting ID %s'];

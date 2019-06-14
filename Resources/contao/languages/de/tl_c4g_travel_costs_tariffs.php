@@ -40,8 +40,8 @@ $GLOBALS['TL_LANG'][$strName]['weekday_legend'] = 'Begrenzung durch Zeiteinstell
 /**
  * Buttons
  */
-$GLOBALS['TL_LANG'][$strName]['new']        = ['Neue Fahrtkosten-Tarif', 'Eine neue Fahrtkosten-Tarif erstellen'];
+$GLOBALS['TL_LANG'][$strName]['new']        = ['Neuer Fahrtkosten-Tarif', 'Einen neuen Fahrtkosten-Tarif erstellen'];
 $GLOBALS['TL_LANG'][$strName]['edit']       = ['Fahrtkosten-Tarif bearbeiten', 'Fahrtkosten-Tarif ID %s bearbeiten'];
 $GLOBALS['TL_LANG'][$strName]['copy']       = ['Fahrtkosten-Tarif duplizieren', 'Fahrtkosten-Tarif ID %s duplizieren'];
 $GLOBALS['TL_LANG'][$strName]['delete']     = ['Fahrtkosten-Tarif löschen', 'Fahrtkosten-Tarif ID %s löschen'];
-$GLOBALS['TL_LANG'][$strName]['show']       = ['Details', 'Die Details des Fahrtkosten-Tarif ID %s anzeigen'];
+$GLOBALS['TL_LANG'][$strName]['show']       = ['Details', 'Die Details des Fahrtkosten-Tarifs ID %s anzeigen'];

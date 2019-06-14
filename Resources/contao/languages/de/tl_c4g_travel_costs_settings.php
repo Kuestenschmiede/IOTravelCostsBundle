@@ -18,7 +18,7 @@ $GLOBALS['TL_LANG'][$strName]['startBboxUppery'] = ['Unterer Breitengrad', 'Trag
 $GLOBALS['TL_LANG'][$strName]['startBboxDownerx'] = ['Rechter Längengrad', 'Tragen Sie den rechten Längengrad zur Begrenzung der Suche ein.'];
 $GLOBALS['TL_LANG'][$strName]['startBboxDownery'] = ['Oberen Breitengrad', 'Tragen Sie den oberen Breitengrad zur Begrenzung der Suche ein.'];
 $GLOBALS['TL_LANG'][$strName]['tariffs'] = ['Tarife auswählen', 'Wählen Sie die Tarife dieser Einstellung aus.'];
-$GLOBALS['TL_LANG'][$strName]['displayGrid'] = ['Als Grid anzeigen', 'Bei aktivierter Checkbox werden die Daten in einem HTML-Grid dargestellt. Anderenfalls werden table-Elemente verwendet'];
+$GLOBALS['TL_LANG'][$strName]['displayGrid'] = ['Als Grid anzeigen', 'Bei aktivierter Checkbox werden die Daten in einem HTML-Grid dargestellt. Anderenfalls werden table-Elemente verwendet.'];
 
 /**
  * References
@@ -35,4 +35,4 @@ $GLOBALS['TL_LANG'][$strName]['new']        = ['Neue Fahrtkosten-Einstellung', '
 $GLOBALS['TL_LANG'][$strName]['edit']       = ['Fahrtkosten-Einstellung bearbeiten', 'Fahrtkosten-Einstellung ID %s bearbeiten'];
 $GLOBALS['TL_LANG'][$strName]['copy']       = ['Fahrtkosten-Einstellung duplizieren', 'Fahrtkosten-Einstellung ID %s duplizieren'];
 $GLOBALS['TL_LANG'][$strName]['delete']     = ['Fahrtkosten-Einstellung löschen', 'Fahrtkosten-Einstellung ID %s löschen'];
-$GLOBALS['TL_LANG'][$strName]['show']       = ['Details', 'Die Details des Fahrtkosten-Einstellung ID %s anzeigen'];
+$GLOBALS['TL_LANG'][$strName]['show']       = ['Details', 'Die Details der Fahrtkosten-Einstellung ID %s anzeigen'];

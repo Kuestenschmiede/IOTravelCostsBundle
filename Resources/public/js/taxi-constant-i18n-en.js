@@ -24,5 +24,6 @@ export  var taxiConstantsEnglish = {
     ERROR_OUT_OF_BOUNDS: 'Address is out of bounds',
     ERROR_FALSE_ADDRESS: 'Address not found',
     ERROR:'Error',
+    START_SEARCH: 'Start search',
     NONE: '' // last line
 }; // end of "css constants" ---

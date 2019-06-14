@@ -41,7 +41,7 @@ $GLOBALS['TL_LANG'][$strName]['weekday_legend'] = 'Limit for weekdays';
  * Buttons
  */
 $GLOBALS['TL_LANG'][$strName]['new']        = ['New Routing-Tariff', 'Create a new routing-tariff'];
-$GLOBALS['TL_LANG'][$strName]['edit']       = ['Edit Routing-Tariff', 'Edit a routing-tariff'];
-$GLOBALS['TL_LANG'][$strName]['copy']       = ['Copy Routing-Tariff', 'Copy a routing-tariff'];
-$GLOBALS['TL_LANG'][$strName]['delete']     = ['Delete Routing-Tariff', 'Delete a routing-tariff'];
-$GLOBALS['TL_LANG'][$strName]['show']       = ['Details', 'Show details for a routing-tariff'];
+$GLOBALS['TL_LANG'][$strName]['edit']       = ['Edit Routing-Tariff', 'Edit routing-tariff with ID %s'];
+$GLOBALS['TL_LANG'][$strName]['copy']       = ['Copy Routing-Tariff', 'Copy routing-tariff with ID %s'];
+$GLOBALS['TL_LANG'][$strName]['delete']     = ['Delete Routing-Tariff', 'Delete routing-tariff with ID %s'];
+$GLOBALS['TL_LANG'][$strName]['show']       = ['Details', 'Show details for routing-tariff with ID %s'];

@@ -506,7 +506,7 @@ $(document).ready(function() {
   });
 
   let submitButton = document.getElementById('btn-submit-expense-calc');
-  submitButton.innerText = "Suche starten";
+  submitButton.innerText = langConstants.START_SEARCH;
   $(submitButton).on('click', function() {
     calculateExpenses();
   });

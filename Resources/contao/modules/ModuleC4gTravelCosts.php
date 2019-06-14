@@ -74,6 +74,7 @@ class ModuleC4gTravelCosts extends \Module
             $bBox = [$tariffConfig->getStartBboxDownerx(), $tariffConfig->getStartBboxDownery(), $tariffConfig->getStartBboxUpperx(), $tariffConfig->getStartBboxUppery()];
 
             if($bBox) {
+                // swap if coordinates build no bbox in the current form
                 if ($bBox[0] > $bBox[2]) {
                     $bboxSaver = $bBox[0];
                     $bBox[0] = $bBox[2];
