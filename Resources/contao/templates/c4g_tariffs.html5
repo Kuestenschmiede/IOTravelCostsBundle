@@ -1,0 +1,26 @@
+<?php if ($this->displayGrid): ?>
+<div>
+    <div class="tariff-output" style="display:none">
+        <div class="headline-caption grid-item"></div>
+        <div class="headline-base-price grid-item"></div>
+        <div class="headline-dist-price grid-item"></div>
+        <div class="headline-time-price grid-item"></div>
+    </div>
+</div>
+<?php else: ?>
+<div>
+    <table class="tariff-output" style="display:none">
+        <tr class="tariff-output-headline">
+            <th class="headline-caption"></th>
+            <th class="headline-base-price"></th>
+            <th class="headline-dist-price"></th>
+            <th class="headline-time-price"></th>
+        </tr>
+    </table>
+</div>
+<?php endif; ?>
+<script defer>
+    window.settingId = "<?php echo $this->settingId ?>";
+    window.displayGrid = "<?php echo $this->displayGrid ?>";
+    window.serviceLang = "<?php echo $this->lang ?>";
+</script>

@@ -15,3 +15,4 @@ $GLOBALS['TL_LANG']['MOD']['tl_c4g_travel_costs_settings'] = ['Fare-settings', '
 $GLOBALS['TL_LANG']['MOD']['tl_c4g_travel_costs_tariffs'] = ['Fare-tariffs', 'Edit fare-tariffs'];
 
 $GLOBALS['TL_LANG']['FMD']['c4g_travel_costs'] = ['Travel costs calculator', ''];
+$GLOBALS['TL_LANG']['FMD']['c4g_tariffs'] = ['Travel costs tariffs', ''];

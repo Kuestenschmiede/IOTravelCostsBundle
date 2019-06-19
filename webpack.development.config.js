@@ -1,9 +1,12 @@
 var path = require('path');
 var config = {
-  entry: './Resources/public/js/taxi-finder.js',
+  entry: {
+    'taxi-finder':'./Resources/public/js/taxi-finder.js',
+    'tariff-finder':'./Resources/public/js/tariff-finder.js',
+  },
   mode: "development",
   output: {
-    filename: 'taxi-finder.js',
+    filename: '[name].js',
     path: path.resolve('./Resources/public/build/')
   },
   devtool: "inline-source-map",

@@ -178,17 +178,17 @@ class TravelCostsTariff extends BaseEntity
     }
     
     /**
-     * @return int
+     * @return float
      */
-    public function getBasePrice(): int
+    public function getBasePrice(): float
     {
         return $this->basePrice;
     }
     
     /**
-     * @param int $basePrice
+     * @param float $basePrice
      */
-    public function setBasePrice(int $basePrice): void
+    public function setBasePrice(float $basePrice): void
     {
         $this->basePrice = $basePrice;
     }

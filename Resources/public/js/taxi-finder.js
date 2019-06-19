@@ -220,6 +220,7 @@ function handleAdress(input, cssId) {
  * Checks if the given coordinates are within the bbox specified in window.bBox.
  * @param longitude
  * @param latitude
+ * @returns {boolean}
  */
 function isInBoundingBox(longitude, latitude) {
   if (window.bBox[0] < longitude &&
@@ -270,72 +271,6 @@ function submitSearch(input, cssId) {
 
 }
 
-/**
- * calls tariffService to fetch informations and pricing about the set tariffs and shows them
- * @returns {void}}
- */
-function findTariffs() {
-  let url = "con4gis/tariffService/" + window.settingId + "/";
-  $.ajax({url:url})
-    .done(function (data) {
-      let parent = $(".tariff-output");
-      if (window.displayGrid === "1") {
-        parent.css('display','grid');
-      }
-      else {
-        parent.css('display','block');
-      }
-      let rowCount = "row-even";
-      for (let i in data) {
-        if (data.hasOwnProperty(i)) {
-          if (window.displayGrid === "1") {
-            let itemName = document.createElement('div');
-            itemName.innerHTML = i;
-            itemName.className = "grid-item " + rowCount;
-            parent.append(itemName);
-            let itemBasePrice = document.createElement('div');
-            itemBasePrice.innerHTML = data[i].basePrice;
-            itemBasePrice.className = "grid-item " + rowCount;
-            parent.append(itemBasePrice);
-            let itemDistPrice = document.createElement('div');
-            itemDistPrice.innerHTML = data[i].distPrice;
-            itemDistPrice.className = "grid-item " + rowCount;
-            parent.append(itemDistPrice);
-            let itemTimePrice = document.createElement('div');
-            itemTimePrice.innerHTML = data[i].timePrice;
-            itemTimePrice.className = "grid-item " + rowCount;
-            parent.append(itemTimePrice);
-            rowCount = rowCount === "row-even" ? "row-uneven" : "row-even";
-          }
-          else {
-            let elementRow = document.createElement('tr');
-            elementRow.innerHTML = "<th>" + i + "</th>" + "<td>"+ data[i].basePrice + "€</td>" + "<td>"+ data[i].distPrice + "€</td>" + "<td>" + data[i].timePrice + "€</td>"
-            parent.append(elementRow);
-          }
-        }
-      }
-    }
-  );
-}
-
-function showAdressError(errorText) {
-  let errorDiv = document.createElement('div');
-  $(errorDiv).addClass('contentError');
-  $(errorDiv).addClass('contentHeadline');
-
-  let errorLabel = document.createElement('label');
-  errorLabel.innerHTML = errorText;
-  errorDiv.appendChild(errorLabel);
-  let buttonClose = document.createElement('button');
-  $(buttonClose).addClass(taxiConstants.POPUP_CLOSE);
-  $(buttonClose).addClass(taxiConstants.ICON);
-  $(buttonClose).on('click', function () {
-      $(this).parent().remove();
-    }
-  );
-  errorDiv.appendChild(buttonClose);
-  return errorDiv;
-}
 
 /**
  * Checks whether all params for the calculation of an expense are set and calls the server and displays the repsonse
@@ -343,7 +278,7 @@ function showAdressError(errorText) {
  */
 function calculateExpenses () {
   if (taxiData.routeFrom.loc && taxiData.routeTo.loc) {
-    let url = "con4gis/expenseService/" + window.settingId + "/" + taxiData.routeFrom.loc[0] + "," + taxiData.routeFrom.loc[1] + ";" + taxiData.routeTo.loc[0] + "," + taxiData.routeTo.loc[1] + "/";
+    let url = "con4gis/expenseService/" + window.settingId + "/" + taxiData.routeFrom.loc[0] + "," + taxiData.routeFrom.loc[1] + ";" + taxiData.routeTo.loc[0] + "," + taxiData.routeTo.loc[1];
     $.ajax({url: url}).done(function(data) {
       let tableNode = $(".route-output");
       if (window.displayGrid === "1") {
@@ -533,5 +468,4 @@ $(document).ready(function() {
   objHeadlineTimePrice.html(langConstants.HEADLINE_TIME_PRICE);
   let objHeadlineBasePrice = $(".headline-base-price");
   objHeadlineBasePrice.html(langConstants.HEADLINE_BASE_PRICE);
-  findTariffs();
 });

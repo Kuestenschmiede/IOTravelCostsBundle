@@ -26,3 +26,7 @@ array_insert($GLOBALS['FE_MOD']['con4gis'], 1,
     [
         'c4g_travel_costs' => 'con4gis\TravelCostsBundle\Resources\contao\modules\ModuleC4gTravelCosts',
     ]);
+array_insert($GLOBALS['FE_MOD']['con4gis'], 1,
+    [
+        'c4g_tariffs' => 'con4gis\TravelCostsBundle\Resources\contao\modules\ModuleC4gTariffs',
+    ]);

@@ -100,6 +100,12 @@ class TravelCostsSettings extends BaseEntity
     protected $withPositionButton = '0';
 
     /**
+     * @var int
+     * @ORM\Column(type="blob")
+     */
+    protected $blob = '';
+
+    /**
      * @return int
      */
     public function getId(): int

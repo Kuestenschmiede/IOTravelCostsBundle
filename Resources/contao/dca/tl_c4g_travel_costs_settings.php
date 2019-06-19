@@ -137,7 +137,13 @@ $GLOBALS['TL_DCA'][$strName] = array
             'default' => '',
             'inputType' => 'checkbox',
             'eval' => ['decodeEntities' => true, 'maxlength' => 255, 'tl_class' => 'long'],
-        ]
+        ],
+        'colors' => [
+                'label'                     => &$GLOBALS['TL_LANG'][$strName]['colors'],
+                'inputType'                 => 'select',
+                'options_callback'          => ['tl_c4g_travel_costs_settings', 'getColorOptions'],
+                'eval'                      => ['mandatory' => false, 'multiple' => false, 'includeBlankOption' => false],
+        ],
     ]
 );
 class tl_c4g_travel_costs_settings extends \Contao\Backend
@@ -152,7 +158,12 @@ class tl_c4g_travel_costs_settings extends \Contao\Backend
         return $return;
     }
 
-    public function setLon($varValue, DataContainer $dc)
+    public function getColorOptions()
+    {
+        return $this->getFileArray('colors');
+    }
+
+        public function setLon($varValue, DataContainer $dc)
     {
         if (!\con4gis\MapsBundle\Resources\contao\classes\Utils::validateLon($varValue)) {
             throw new Exception($GLOBALS['TL_LANG']['c4g_maps']['geox_invalid']);

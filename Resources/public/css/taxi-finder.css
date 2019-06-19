@@ -4,20 +4,20 @@
 .route-to-geolocation {
     color: rgba(255,255,255,1);
     background-color: rgba(0, 0, 0,.75);
-    height: 32px;
-    width: 32px;
+    height: 32px !important;
+    width: 32px !important;
     vertical-align: middle;
     display: inline-block;
     padding: 2px;
     margin: 2px;
-    border-radius: 50%;
+    border-radius: 5%;
 }
 
 .submit-expense-calc {
     color: rgba(255,255,255,1);
     background-color: rgba(0, 0, 0,.75);
-    height: 32px;
-    width: 210px;
+    height: 32px !important;
+    width: 210px !important;
     display: inline-block;
     padding: 2px;
     margin: 2px 2px 2px 34px;
