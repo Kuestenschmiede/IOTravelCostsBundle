@@ -106,17 +106,17 @@ $GLOBALS['TL_DCA'][$strName] = array
         ],
         'basePrice' => [
             'label'                   => &$GLOBALS['TL_LANG'][$strName]['basePrice'],
-            'default'                 => '',
+            'default'                 => 0,
             'inputType'               => 'text',
             'eval'                    => ['regxp'=>'digit'],
         ],'distancePrice' => [
             'label'                   => &$GLOBALS['TL_LANG'][$strName]['distancePrice'],
-            'default'                 => '',
+            'default'                 => 0,
             'inputType'               => 'text',
             'eval'                    => ['regxp'=>'digit'],
         ],'timePrice' => [
             'label'                   => &$GLOBALS['TL_LANG'][$strName]['timePrice'],
-            'default'                 => '',
+            'default'                 => 0,
             'inputType'               => 'text',
             'eval'                    => ['regxp'=>'digit'],
         ],
@@ -155,6 +155,7 @@ $GLOBALS['TL_DCA'][$strName] = array
                 'time_begin' => array
                 (
                     'label'                   => $GLOBALS['TL_LANG'][$strName]['time_begin'],
+                    'default'                 => 0,
                     'exclude'                 => true,
                     'inputType'               => 'text',
                     'eval'                    => array('rgxp'=>'time', 'mandatory'=>false, 'doNotCopy'=>true, 'datepicker'=>true, 'tl_class'=>'w50 wizard')
@@ -162,6 +163,7 @@ $GLOBALS['TL_DCA'][$strName] = array
                 'time_end' => array
                 (
                     'label'                   => $GLOBALS['TL_LANG'][$strName]['time_end'],
+                    'default'                 => 0,
                     'exclude'                 => true,
                     'inputType'               => 'text',
                     'eval'                    => array('rgxp'=>'time', 'mandatory'=>false, 'doNotCopy'=>true, 'datepicker'=>true, 'tl_class'=>'w50 wizard')
@@ -180,6 +182,7 @@ $GLOBALS['TL_DCA'][$strName] = array
                 'time_begin' => array
                 (
                     'label'                   => $GLOBALS['TL_LANG'][$strName]['time_begin'],
+                    'default'                 => 0,
                     'exclude'                 => true,
                     'inputType'               => 'text',
                     'eval'                    => array('rgxp'=>'time', 'mandatory'=>false, 'doNotCopy'=>true, 'datepicker'=>true, 'tl_class'=>'w50 wizard')
@@ -187,6 +190,7 @@ $GLOBALS['TL_DCA'][$strName] = array
                 'time_end' => array
                 (
                     'label'                   => $GLOBALS['TL_LANG'][$strName]['time_end'],
+                    'default'                 => 0,
                     'exclude'                 => true,
                     'inputType'               => 'text',
                     'eval'                    => array('rgxp'=>'time', 'mandatory'=>false, 'doNotCopy'=>true, 'datepicker'=>true, 'tl_class'=>'w50 wizard')
@@ -205,6 +209,7 @@ $GLOBALS['TL_DCA'][$strName] = array
                 'time_begin' => array
                 (
                     'label'                   => $GLOBALS['TL_LANG'][$strName]['time_begin'],
+                    'default'                 => 0,
                     'exclude'                 => true,
                     'inputType'               => 'text',
                     'eval'                    => array('rgxp'=>'time', 'mandatory'=>false, 'doNotCopy'=>true, 'datepicker'=>true, 'tl_class'=>'w50 wizard')
@@ -212,6 +217,7 @@ $GLOBALS['TL_DCA'][$strName] = array
                 'time_end' => array
                 (
                     'label'                   => $GLOBALS['TL_LANG'][$strName]['time_end'],
+                    'default'                 => 0,
                     'exclude'                 => true,
                     'inputType'               => 'text',
                     'eval'                    => array('rgxp'=>'time', 'mandatory'=>false, 'doNotCopy'=>true, 'datepicker'=>true, 'tl_class'=>'w50 wizard')
@@ -230,6 +236,7 @@ $GLOBALS['TL_DCA'][$strName] = array
                 'time_begin' => array
                 (
                     'label'                   => $GLOBALS['TL_LANG'][$strName]['time_begin'],
+                    'default'                 => 0,
                     'exclude'                 => true,
                     'inputType'               => 'text',
                     'eval'                    => array('rgxp'=>'time', 'mandatory'=>false, 'doNotCopy'=>true, 'datepicker'=>true, 'tl_class'=>'w50 wizard')
@@ -237,6 +244,7 @@ $GLOBALS['TL_DCA'][$strName] = array
                 'time_end' => array
                 (
                     'label'                   => $GLOBALS['TL_LANG'][$strName]['time_end'],
+                    'default'                 => 0,
                     'exclude'                 => true,
                     'inputType'               => 'text',
                     'eval'                    => array('rgxp'=>'time', 'mandatory'=>false, 'doNotCopy'=>true, 'datepicker'=>true, 'tl_class'=>'w50 wizard')
@@ -255,6 +263,7 @@ $GLOBALS['TL_DCA'][$strName] = array
                 'time_begin' => array
                 (
                     'label'                   => $GLOBALS['TL_LANG'][$strName]['time_begin'],
+                    'default'                 => 0,
                     'exclude'                 => true,
                     'inputType'               => 'text',
                     'eval'                    => array('rgxp'=>'time', 'mandatory'=>false, 'doNotCopy'=>true, 'datepicker'=>true, 'tl_class'=>'w50 wizard')
@@ -262,6 +271,7 @@ $GLOBALS['TL_DCA'][$strName] = array
                 'time_end' => array
                 (
                     'label'                   => $GLOBALS['TL_LANG'][$strName]['time_end'],
+                    'default'                 => 0,
                     'exclude'                 => true,
                     'inputType'               => 'text',
                     'eval'                    => array('rgxp'=>'time', 'mandatory'=>false, 'doNotCopy'=>true, 'datepicker'=>true, 'tl_class'=>'w50 wizard')
@@ -280,6 +290,7 @@ $GLOBALS['TL_DCA'][$strName] = array
                 'time_begin' => array
                 (
                     'label'                   => $GLOBALS['TL_LANG'][$strName]['time_begin'],
+                    'default'                 => 0,
                     'exclude'                 => true,
                     'inputType'               => 'text',
                     'eval'                    => array('rgxp'=>'time', 'mandatory'=>false, 'doNotCopy'=>true, 'datepicker'=>true, 'tl_class'=>'w50 wizard')
@@ -287,12 +298,26 @@ $GLOBALS['TL_DCA'][$strName] = array
                 'time_end' => array
                 (
                     'label'                   => $GLOBALS['TL_LANG'][$strName]['time_end'],
+                    'default'                 => 0,
                     'exclude'                 => true,
                     'inputType'               => 'text',
                     'eval'                    => array('rgxp'=>'time', 'mandatory'=>false, 'doNotCopy'=>true, 'datepicker'=>true, 'tl_class'=>'w50 wizard')
                 )
             ))
         ),
+
+        'timeBegin' => [
+            'default' => 0,
+        ],
+        'timeEnd' => [
+            'default' => 0,
+        ],
+        'beginDistance' => [
+            'default' => 0,
+        ],
+        'endDistance' => [
+            'default' => 0,
+        ],
 
     )
 );

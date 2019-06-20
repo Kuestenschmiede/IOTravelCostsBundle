@@ -89,7 +89,7 @@ $GLOBALS['TL_DCA'][$strName] = array
         ],
         'startBboxUpperx' => [
             'label' => &$GLOBALS['TL_LANG'][$strName]['startBboxUpperx'],
-            'default' => '',
+            'default' => 0,
             'wizard' => [['con4gis\MapsBundle\Resources\contao\classes\GeoPicker', 'getPickerLink']],
             'save_callback' => [['tl_c4g_travel_costs_settings', 'setLon']],
             'inputType' => 'c4g_text',
@@ -97,7 +97,7 @@ $GLOBALS['TL_DCA'][$strName] = array
         ],
         'startBboxUppery' => [
             'label' => &$GLOBALS['TL_LANG'][$strName]['startBboxUppery'],
-            'default' => '',
+            'default' => 0,
             'wizard' => [['con4gis\MapsBundle\Resources\contao\classes\GeoPicker', 'getPickerLink']],
             'save_callback' => [['tl_c4g_travel_costs_settings', 'setLat']],
             'inputType' => 'c4g_text',
@@ -105,7 +105,7 @@ $GLOBALS['TL_DCA'][$strName] = array
         ],
         'startBboxDownerx' => [
             'label' => &$GLOBALS['TL_LANG'][$strName]['startBboxDownerx'],
-            'default' => '',
+            'default' => 0,
             'wizard' => [['con4gis\MapsBundle\Resources\contao\classes\GeoPicker', 'getPickerLink']],
             'save_callback' => [['tl_c4g_travel_costs_settings', 'setLon']],
             'inputType' => 'c4g_text',
@@ -113,7 +113,7 @@ $GLOBALS['TL_DCA'][$strName] = array
         ],
         'startBboxDownery' => [
             'label' => &$GLOBALS['TL_LANG'][$strName]['startBboxDownery'],
-            'default' => '',
+            'default' => 0,
             'wizard' => [['con4gis\MapsBundle\Resources\contao\classes\GeoPicker', 'getPickerLink']],
             'save_callback' => [['tl_c4g_travel_costs_settings', 'setLat']],
             'inputType' => 'c4g_text',
@@ -121,20 +121,20 @@ $GLOBALS['TL_DCA'][$strName] = array
         ],
         'tariffs' => [
             'label' => &$GLOBALS['TL_LANG'][$strName]['tariffs'],
-            'default' => '',
+            'default' => array(),
             'inputType' => 'checkbox',
             'options_callback' => ['tl_c4g_travel_costs_settings', 'getTariffs'],
             'eval' => ['mandatory' => false, 'multiple' => true],
         ],
         'withDateTime' => [
             'label' => &$GLOBALS['TL_LANG'][$strName]['withDateTime'],
-            'default' => '',
+            'default' => 0,
             'inputType' => 'checkbox',
             'eval' => ['decodeEntities' => true, 'maxlength' => 255, 'tl_class' => 'long'],
         ],
         'displayGrid' => [
             'label' => &$GLOBALS['TL_LANG'][$strName]['displayGrid'],
-            'default' => '',
+            'default' => 0,
             'inputType' => 'checkbox',
             'eval' => ['decodeEntities' => true, 'maxlength' => 255, 'tl_class' => 'long'],
         ],
@@ -144,6 +144,12 @@ $GLOBALS['TL_DCA'][$strName] = array
                 'options_callback'          => ['tl_c4g_travel_costs_settings', 'getColorOptions'],
                 'eval'                      => ['mandatory' => false, 'multiple' => false, 'includeBlankOption' => false],
         ],
+        'type' => [
+            'default' => ''
+        ],
+        'withPositionButton' => [
+            'default' => 0
+        ]
     ]
 );
 class tl_c4g_travel_costs_settings extends \Contao\Backend
