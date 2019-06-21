@@ -267,7 +267,7 @@ function submitSearch(input, cssId) {
       let alertHandler = new AlertHandler();
       alertHandler.showInfoDialog(langConstants.ERROR, falseResponse);
     }
-  })
+  });
 
 }
 
@@ -372,7 +372,9 @@ $(document).ready(function() {
   else {
     $.extend(langConstants, taxiConstantsEnglish);
   }
-  window.bBox = JSON.parse(window.bBox);
+  if (window.bBox) {
+    window.bBox = JSON.parse(window.bBox);
+  }
   let objInputFrom = $(".route-from");
   if (objInputFrom[0]) {
     objInputFrom[0].placeholder = langConstants.DUMMY_INPUT;

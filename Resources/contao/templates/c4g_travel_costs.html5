@@ -17,15 +17,8 @@
 </div>
 <br>
 <?php if ($this->displayGrid): ?>
-<!--<div>-->
-<!--    <div class="tariff-output" style="display:none">-->
-<!--        <div class="headline-caption grid-item"></div>-->
-<!--        <div class="headline-base-price grid-item"></div>-->
-<!--        <div class="headline-dist-price grid-item"></div>-->
-<!--        <div class="headline-time-price grid-item"></div>-->
-<!--    </div>-->
-<!--</div>-->
-<div >
+
+<div>
     <div class="route-output" style="display:none;">
         <div class="headline-dist grid-item"></div>
         <div class="headline-time grid-item"></div>
@@ -35,17 +28,8 @@
 
 </div>
 <?php else: ?>
-<!--<div>-->
-<!--    <table class="tariff-output" style="display:none">-->
-<!--        <tr class="tariff-output-headline">-->
-<!--            <th class="headline-caption"></th>-->
-<!--            <th class="headline-base-price"></th>-->
-<!--            <th class="headline-dist-price"></th>-->
-<!--            <th class="headline-time-price"></th>-->
-<!--        </tr>-->
-<!--    </table>-->
-<!--</div>-->
-<div >
+
+<div>
     <table class="route-output" style="display:none">
         <tr class="route-output-headline">
             <th class="headline-dist"></th>
@@ -59,8 +43,8 @@
 
 </div>
 <?php endif; ?>
-<?php if ($this->keyReverse && $this->keyForward && $this->proxyUrl && $this->bBox): ?>
-<script defer>
+<?php if ($this->keyReverse && $this->keyForward && $this->proxyUrl): ?>
+<script>
     window.proxyUrl = "<?php echo $this->proxyUrl ?>";
     window.keyReverse = "<?php echo $this->keyReverse ?>";
     window.keyForward = "<?php echo $this->keyForward ?>";

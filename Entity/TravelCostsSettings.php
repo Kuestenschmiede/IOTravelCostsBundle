@@ -52,26 +52,26 @@ class TravelCostsSettings extends BaseEntity
     protected $type = '';
 
     /**
-     * @var float
-     * @ORM\Column(type="float")
+     * @var string
+     * @ORM\Column(type="string")
      */
     protected $startBboxUpperx = '';
-
+    
     /**
-     * @var float
-     * @ORM\Column(type="float")
+     * @var string
+     * @ORM\Column(type="string")
      */
     protected $startBboxUppery = '';
-
+    
     /**
-     * @var float
-     * @ORM\Column(type="float")
+     * @var string
+     * @ORM\Column(type="string")
      */
     protected $startBboxDownerx = '';
-
+    
     /**
-     * @var float
-     * @ORM\Column(type="float")
+     * @var string
+     * @ORM\Column(type="string")
      */
     protected $startBboxDownery = '';
 
@@ -168,69 +168,85 @@ class TravelCostsSettings extends BaseEntity
     {
         $this->type = $type;
     }
-
+    
     /**
-     * @return float
+     * @return string
      */
-    public function getStartBboxUpperx(): float
+    public function getStartBboxUpperx(): string
     {
         return $this->startBboxUpperx;
     }
-
+    
     /**
-     * @param float $startBboxUpperx
+     * @param string $startBboxUpperx
      */
-    public function setStartBboxUpperx(float $startBboxUpperx): void
+    public function setStartBboxUpperx(string $startBboxUpperx): void
     {
         $this->startBboxUpperx = $startBboxUpperx;
     }
-
+    
     /**
-     * @return float
+     * @return string
      */
-    public function getStartBboxUppery(): float
+    public function getStartBboxUppery(): string
     {
         return $this->startBboxUppery;
     }
-
+    
     /**
-     * @param float $startBboxUppery
+     * @param string $startBboxUppery
      */
-    public function setStartBboxUppery(float $startBboxUppery): void
+    public function setStartBboxUppery(string $startBboxUppery): void
     {
         $this->startBboxUppery = $startBboxUppery;
     }
-
+    
     /**
-     * @return float
+     * @return string
      */
-    public function getStartBboxDownerx(): float
+    public function getStartBboxDownerx(): string
     {
         return $this->startBboxDownerx;
     }
-
+    
     /**
-     * @param float $startBboxDownerx
+     * @param string $startBboxDownerx
      */
-    public function setStartBboxDownerx(float $startBboxDownerx): void
+    public function setStartBboxDownerx(string $startBboxDownerx): void
     {
         $this->startBboxDownerx = $startBboxDownerx;
     }
-
+    
     /**
-     * @return float
+     * @return string
      */
-    public function getStartBboxDownery(): float
+    public function getStartBboxDownery(): string
     {
         return $this->startBboxDownery;
     }
-
+    
     /**
-     * @param float $startBboxDownery
+     * @param string $startBboxDownery
      */
-    public function setStartBboxDownery(float $startBboxDownery): void
+    public function setStartBboxDownery(string $startBboxDownery): void
     {
         $this->startBboxDownery = $startBboxDownery;
+    }
+    
+    /**
+     * @return int
+     */
+    public function getBlob(): int
+    {
+        return $this->blob;
+    }
+    
+    /**
+     * @param int $blob
+     */
+    public function setBlob(int $blob): void
+    {
+        $this->blob = $blob;
     }
 
     /**

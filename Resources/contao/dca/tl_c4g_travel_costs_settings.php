@@ -89,7 +89,7 @@ $GLOBALS['TL_DCA'][$strName] = array
         ],
         'startBboxUpperx' => [
             'label' => &$GLOBALS['TL_LANG'][$strName]['startBboxUpperx'],
-            'default' => 0,
+            'default' => '',
             'wizard' => [['con4gis\MapsBundle\Resources\contao\classes\GeoPicker', 'getPickerLink']],
             'save_callback' => [['tl_c4g_travel_costs_settings', 'setLon']],
             'inputType' => 'c4g_text',
@@ -97,7 +97,7 @@ $GLOBALS['TL_DCA'][$strName] = array
         ],
         'startBboxUppery' => [
             'label' => &$GLOBALS['TL_LANG'][$strName]['startBboxUppery'],
-            'default' => 0,
+            'default' => '',
             'wizard' => [['con4gis\MapsBundle\Resources\contao\classes\GeoPicker', 'getPickerLink']],
             'save_callback' => [['tl_c4g_travel_costs_settings', 'setLat']],
             'inputType' => 'c4g_text',
@@ -105,7 +105,7 @@ $GLOBALS['TL_DCA'][$strName] = array
         ],
         'startBboxDownerx' => [
             'label' => &$GLOBALS['TL_LANG'][$strName]['startBboxDownerx'],
-            'default' => 0,
+            'default' => '',
             'wizard' => [['con4gis\MapsBundle\Resources\contao\classes\GeoPicker', 'getPickerLink']],
             'save_callback' => [['tl_c4g_travel_costs_settings', 'setLon']],
             'inputType' => 'c4g_text',
@@ -113,7 +113,7 @@ $GLOBALS['TL_DCA'][$strName] = array
         ],
         'startBboxDownery' => [
             'label' => &$GLOBALS['TL_LANG'][$strName]['startBboxDownery'],
-            'default' => 0,
+            'default' => '',
             'wizard' => [['con4gis\MapsBundle\Resources\contao\classes\GeoPicker', 'getPickerLink']],
             'save_callback' => [['tl_c4g_travel_costs_settings', 'setLat']],
             'inputType' => 'c4g_text',
@@ -121,7 +121,7 @@ $GLOBALS['TL_DCA'][$strName] = array
         ],
         'tariffs' => [
             'label' => &$GLOBALS['TL_LANG'][$strName]['tariffs'],
-            'default' => array(),
+            'default' => [],
             'inputType' => 'checkbox',
             'options_callback' => ['tl_c4g_travel_costs_settings', 'getTariffs'],
             'eval' => ['mandatory' => false, 'multiple' => true],
