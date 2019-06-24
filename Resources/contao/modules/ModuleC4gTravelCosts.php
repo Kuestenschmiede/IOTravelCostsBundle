@@ -89,7 +89,9 @@ class ModuleC4gTravelCosts extends \Module
                     // catch case all bbox params are empty strings
                     $template->bBox = "";
                 } else {
-                    $template->bBox = json_encode($bBox);
+                    $bBox = str_replace("\"", "\\\"", json_encode($bBox));
+                    $template->bBox = $bBox;
+//                    $template->bBox = $bBox;
                 }
                 
             }
