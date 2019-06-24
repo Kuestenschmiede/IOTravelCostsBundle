@@ -223,6 +223,12 @@ function handleAdress(input, cssId) {
  * @returns {boolean}
  */
 function isInBoundingBox(longitude, latitude) {
+  if (typeof longitude === "string") {
+    longitude = parseFloat(longitude);
+  }
+  if (typeof latitude === "string") {
+    latitude = parseFloat(latitude);
+  }
   if (window.bBox[0] < longitude &&
     longitude < window.bBox[2] &&
     window.bBox[1] < latitude &&
