@@ -28,6 +28,13 @@ $GLOBALS['TL_LANG'][$strName]['sunday'] = ['Sonntag', ''];
 $GLOBALS['TL_LANG'][$strName]['time_begin'] = ['Start', ''];
 $GLOBALS['TL_LANG'][$strName]['time_end'] = ['Ende', ''];
 
+$GLOBALS['TL_LANG'][$strName]['name'] = ['Name', ''];
+$GLOBALS['TL_LANG'][$strName]['fromKilometer'] = ['von Kilometer', ''];
+$GLOBALS['TL_LANG'][$strName]['toKilometer'] = ['bis Kilometer', ''];
+$GLOBALS['TL_LANG'][$strName]['kilometerPrice'] = ['Preis pro Kilometer', ''];
+
+
+
 /**
  * References
  */

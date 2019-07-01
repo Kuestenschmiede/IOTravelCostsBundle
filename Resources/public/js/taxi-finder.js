@@ -147,26 +147,31 @@ function handlePosition(coordinates, cssId, propName) {
 
 function parseAddressString(data) {
   let address = "";
-  if (data.address.pedestrian) {
-    address += data.address.pedestrian + " ";
-    if (data.address.house_number) {
-      address += data.address.house_number + ", ";
+  if (data.address) {
+    if (data.address.pedestrian) {
+      address += data.address.pedestrian + " ";
+      if (data.address.house_number) {
+        address += data.address.house_number + ", ";
+      }
+    } else if (data.address.path) {
+      address += data.address.path + " ";
+      if (data.address.house_number) {
+        address += data.address.house_number;
+      }
     }
-  } else if (data.address.path) {
-    address += data.address.path + " ";
-    if (data.address.house_number) {
-      address += data.address.house_number;
+    if (address.length > 0) {
+      address += ", ";
     }
-  }
-  if (address.length > 0) {
-    address += ", ";
-  }
 
-  if (data.address.postcode) {
-    address += data.address.postcode + " ";
+    if (data.address.postcode) {
+      address += data.address.postcode + " ";
+    }
+    if (data.address.town) {
+      address += data.address.town;
+    }
   }
-  if (data.address.town) {
-    address += data.address.town;
+  if (address === "" && data.display_name) {
+    address = data.display_name;
   }
   return address;
 }
@@ -177,7 +182,7 @@ function parseAddressString(data) {
  * @param cssId       css-class to set response-property to
  * @returns {void}
  */
-function handleAdress(input, cssId) {
+function handleAddress(input, cssId) {
   let url = window.proxyUrl + "search.php?format=json&key=" + window.keyForward + "&q=" + input;
   $.ajax({url: url}).done(function(data) {
     if (data.length > 0) {
@@ -408,7 +413,7 @@ $(document).ready(function() {
       setTimeout(function() {
         if (scope.counter && scope.counter + 1000 < Math.floor(Date.now())) {
           delete scope.counter;
-          handleAdress($(scope).val(), "." + scope.classList[0]);
+          handleAddress($(scope).val(), "." + scope.classList[0]);
         }
       },1500);
     }
