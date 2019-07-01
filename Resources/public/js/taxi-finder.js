@@ -182,8 +182,9 @@ function parseAddressString(data) {
  * @param cssId       css-class to set response-property to
  * @returns {void}
  */
-function handleAddress(input, cssId) {
-  let url = window.proxyUrl + "search.php?format=json&key=" + window.keyForward + "&q=" + input;
+function autocompleteAddress(input, cssId) {
+  let bbox = window.bBox[0] + "," + window.bBox[1] + "," + window.bBox[2] + "," + window.bBox[3];
+  let url = window.proxyUrl + "autocomplete.php?format=json&key=" + window.keyForward + "&q=" + input +"&viewbox=" + bbox;
   $.ajax({url: url}).done(function(data) {
     if (data.length > 0) {
 
@@ -413,7 +414,7 @@ $(document).ready(function() {
       setTimeout(function() {
         if (scope.counter && scope.counter + 1000 < Math.floor(Date.now())) {
           delete scope.counter;
-          handleAddress($(scope).val(), "." + scope.classList[0]);
+          autocompleteAddress($(scope).val(), "." + scope.classList[0]);
         }
       },1500);
     }
