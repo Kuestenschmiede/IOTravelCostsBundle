@@ -2,7 +2,7 @@
 
 namespace con4gis\TravelCostsBundle\Classes\Services;
 
-use con4gis\MapsBundle\Resources\contao\models\C4gMapSettingsModel;
+use con4gis\CoreBundle\Resources\contao\models\C4gSettingsModel;
 use con4gis\TravelCostsBundle\Entity\TravelCostsSettings;
 use con4gis\TravelCostsBundle\Entity\TravelCostsTariff;
 use Contao\Database;
@@ -47,7 +47,7 @@ class ExpenseService
                     }
                 }
 
-                $objSettings = C4gMapSettingsModel::findOnly();
+                $objSettings = C4gSettingsModel::findSettings();
                 $apiKey = $objSettings->con4gisIoKey;
                 $apiUrl = $objSettings->con4gisIoUrl;
 
