@@ -64,9 +64,11 @@ class ModuleC4gTravelCosts extends \Module
 //        ResourceLoader::loadCssRessource("c4g-cached-inputfield", "bundles/con4giscore/css/c4g-cached-inputfield.css");
         $template = $this->Template;
         $objSettings = C4gSettingsModel::findSettings();
-        $template->proxyUrl = $objSettings->con4gisIoUrl;
-        $template->keyReverse = C4GUtils::getKey($objSettings,3);
-        $template->keyForward = C4GUtils::getKey($objSettings,2);
+        $arrSettings = [];
+        $arrSettings['proxyUrl'] = $objSettings->con4gisIoUrl;
+        $arrSettings['keyReverse'] = C4GUtils::getKey($objSettings,3)->key;
+        $arrSettings['keyForward'] = C4GUtils::getKey($objSettings,2)->key;
+        $arrSettings['keyAutocomplete'] = C4GUtils::getKey($objSettings,7)->key;
         $settingsId = $this->expense_settings_id;
         $tariffConfig = System::getContainer()->get("doctrine.orm.default_entity_manager")->getRepository(TravelCostsSettings::class)
             ->findOneBy(['id' => $settingsId]);
@@ -87,19 +89,19 @@ class ModuleC4gTravelCosts extends \Module
                 }
                 if ($bBox[0] === $bBox[1] && $bBox[1] === $bBox[2] && $bBox[2] === $bBox[3]) {
                     // catch case all bbox params are empty strings
-                    $template->bBox = "";
+                    $arrSettings['bBox'] = "";
                 } else {
-                    $bBox = str_replace("\"", "\\\"", json_encode($bBox));
-                    $template->bBox = $bBox;
-//                    $template->bBox = $bBox;
+//                    $bBox = str_replace("\"", "\\\"", json_encode($bBox));
+                    $arrSettings['bBox'] = $bBox;
                 }
                 
             }
-            $template->displayGrid = $tariffConfig->getDisplayGrid();
-            $template->posButton = $tariffConfig->getWithPositionButton();
+            $arrSettings['displayGrid'] = $tariffConfig->getDisplayGrid();
+            $arrSettings['posButton'] = $tariffConfig->getWithPositionButton();
         }
         $language = Controller::replaceInsertTags("{{page::language}}");
-        $template->lang = $language;
-        $template->settingId = $settingsId;
+        $arrSettings['lang'] = $language;
+        $arrSettings['settingId'] = $settingsId;
+        $template->arrSettings = $arrSettings;
     }
 }

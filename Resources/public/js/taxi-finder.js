@@ -6,6 +6,7 @@ import {AlertHandler} from "./../../../../CoreBundle/Resources/public/js/AlertHa
 
 const $ = jQuery;
 const langConstants = {};
+const objSettings = window.objSettings;
 var arrFromNames = [];
 var arrFromPositions = [];
 var arrToNames = [];
@@ -125,7 +126,7 @@ function toHumanTime(timeInSeconds) {
 function handlePosition(coordinates, cssId, propName) {
   let coords = coordinates.coords;
   // check bounds
-  if (window.bBox && window.bBox[0]) {
+  if (objSettings.bBox && objSettings.bBox[0]) {
     if (!isInBoundingBox(coords.longitude, coords.latitude)) {
       // @ToDo OutofBounds
       return;
@@ -137,7 +138,7 @@ function handlePosition(coordinates, cssId, propName) {
   else {
     taxiData.routeTo.loc = [coords.latitude, coords.longitude];
   }
-  let url = window.proxyUrl + '/reverse.php?key='+ window.keyReverse+'&format=json&lat=' + coords.latitude + '&lon=' + coords.longitude;
+  let url = objSettings.proxyUrl + 'reverse.php?key='+ objSettings.keyReverse+'&format=json&lat=' + coords.latitude + '&lon=' + coords.longitude;
   $.ajax({url: url}).done(function(data) {
     let address = parseAddressString(data);
     $(cssId).val(address);
@@ -183,8 +184,8 @@ function parseAddressString(data) {
  * @returns {void}
  */
 function autocompleteAddress(input, cssId) {
-  let bbox = window.bBox[0] + "," + window.bBox[1] + "," + window.bBox[2] + "," + window.bBox[3];
-  let url = window.proxyUrl + "autocomplete.php?format=json&key=" + window.keyForward + "&q=" + input +"&viewbox=" + bbox;
+  let bbox = objSettings.bBox[0] + "," + objSettings.bBox[1] + "," + objSettings.bBox[2] + "," + objSettings.bBox[3];
+  let url = objSettings.proxyUrl + "autocomplete.php?format=json&key=" + objSettings.keyAutocomplete + "&q=" + input +"&viewbox=" + bbox;
   $.ajax({url: url}).done(function(data) {
     if (data.length > 0) {
 
@@ -193,7 +194,7 @@ function autocompleteAddress(input, cssId) {
 
         for (let i in data) {
           if (data.hasOwnProperty(i)) {
-            if (window.bBox && window.bBox[0]) {
+            if (objSettings.bBox && objSettings.bBox[0]) {
               if (!isInBoundingBox(data[i].lon, data[i].lat)) {
                 //@ToDo outofbounds
                 continue;
@@ -223,7 +224,7 @@ function autocompleteAddress(input, cssId) {
 }
 
 /**
- * Checks if the given coordinates are within the bbox specified in window.bBox.
+ * Checks if the given coordinates are within the bbox specified in objSettings.bBox.
  * @param longitude
  * @param latitude
  * @returns {boolean}
@@ -235,10 +236,10 @@ function isInBoundingBox(longitude, latitude) {
   if (typeof latitude === "string") {
     latitude = parseFloat(latitude);
   }
-  if (window.bBox[0] < longitude &&
-    longitude < window.bBox[2] &&
-    window.bBox[1] < latitude &&
-    latitude < window.bBox[3]) {
+  if (objSettings.bBox[0] < longitude &&
+    longitude < objSettings.bBox[2] &&
+    objSettings.bBox[1] < latitude &&
+    latitude < objSettings.bBox[3]) {
     return true;
   } else {
     return false;
@@ -252,11 +253,11 @@ function isInBoundingBox(longitude, latitude) {
  * @returns {void}}
  */
 function submitSearch(input, cssId) {
-  let url = window.proxyUrl + "search.php?format=json&key=" + window.keyForward + "&q=" + $(input).val();
+  let url = objSettings.proxyUrl + "search.php?format=json&key=" + objSettings.keyForward + "&q=" + $(input).val();
   $.ajax({url: url}).done(function(data) {
     let falseResponse = false;
     if (data.length > 0) {
-      if (window.bBox && window.bBox[0]) {
+      if (objSettings.bBox && objSettings.bBox[0]) {
         if (!isInBoundingBox(data[0].lon, data[0].lat)) {
           falseResponse = langConstants.ERROR_OUT_OF_BOUNDS;
         }
@@ -290,10 +291,10 @@ function submitSearch(input, cssId) {
  */
 function calculateExpenses () {
   if (taxiData.routeFrom.loc && taxiData.routeTo.loc) {
-    let url = "con4gis/expenseService/" + window.settingId + "/" + taxiData.routeFrom.loc[0] + "," + taxiData.routeFrom.loc[1] + ";" + taxiData.routeTo.loc[0] + "," + taxiData.routeTo.loc[1];
+    let url = "con4gis/expenseService/" + objSettings.settingId + "/" + taxiData.routeFrom.loc[0] + "," + taxiData.routeFrom.loc[1] + ";" + taxiData.routeTo.loc[0] + "," + taxiData.routeTo.loc[1];
     $.ajax({url: url}).done(function(data) {
       let tableNode = $(".route-output");
-      if (window.displayGrid === "1") {
+      if (objSettings.displayGrid === 1) {
         tableNode.css("display", "grid");
         $(".response-headline").remove();
         $(".response-value").remove();
@@ -320,8 +321,15 @@ function calculateExpenses () {
           insertAfterHead = nodeName;
           let responseElement = $(document.createElement('div'));
           let responseTariff = data.tariffs[tariffName] + "";
-          responseTariff = responseTariff.replace(".",",");
-          let indexDecimal = responseTariff.indexOf(',') + 3;
+          let indexDecimal;
+          if (objSettings.lang === "de") {
+            responseTariff = responseTariff.replace(".",",");
+            indexDecimal = responseTariff.indexOf(',') + 3;
+          }
+          else {
+            indexDecimal = responseTariff.indexOf('.') + 3;
+
+          }
           responseElement.html(responseTariff.substring(0, indexDecimal) + " €");
           responseElement.addClass("response-value");
           responseElement.addClass("grid-item");
@@ -373,7 +381,7 @@ function calculateExpenses () {
  * @returns {void}}
  */
 $(document).ready(function() {
-  let language = window.serviceLang || window.navigator.userLanguage || window.navigator.language;
+  let language = objSettings.lang || objSettings.navigator.userLanguage || objSettings.navigator.language;
   if (language === "en") {
     $.extend(langConstants, taxiConstantsEnglish)
   }
@@ -382,9 +390,6 @@ $(document).ready(function() {
   }
   else {
     $.extend(langConstants, taxiConstantsEnglish);
-  }
-  if (window.bBox) {
-    window.bBox = JSON.parse(window.bBox);
   }
   let objInputFrom = $(".route-from");
   if (objInputFrom[0]) {
@@ -411,11 +416,11 @@ $(document).ready(function() {
       let currTime = Math.floor(Date.now());
       scope.counter = currTime;
       setTimeout(function() {
-        if (scope.counter && scope.counter + 500 < Math.floor(Date.now())) {
+        if (scope.counter && scope.counter + 400 < Math.floor(Date.now())) {
           delete scope.counter;
           autocompleteAddress($(scope).val(), "." + scope.classList[0]);
         }
-      },750);
+      },500);
     }
   };
 

@@ -51,10 +51,21 @@ function findTariffs() {
                         itemName.className = "grid-item " + rowCount;
                         parent.append(itemName);
                         let itemBasePrice = document.createElement('div');
-                        let responseTariff = data[i].basePrice + "0000";
-                        responseTariff = responseTariff.replace(".",",");
-                        let indexDecimal = responseTariff.indexOf(',') + 3;
-                        itemBasePrice.innerHTML = responseTariff.substring(0, indexDecimal) + " €";
+                        if (data[i].basePrice % 1 !== 0) {
+                            let responseTariff = data[i].basePrice + "0000";
+                            let indexDecimal;
+                            if (window.serviceLang === "de") {
+                                responseTariff = responseTariff.replace(".",",");
+                                indexDecimal = responseTariff.indexOf(',') + 3;
+                            }
+                            else {
+                                indexDecimal = responseTariff.indexOf('.') + 3;
+                            }
+                            itemBasePrice.innerHTML = responseTariff.substring(0, indexDecimal) + " €";
+                        }
+                        else {
+                            itemBasePrice.innerHTML = data[i].basePrice + '€';
+                        }
                         itemBasePrice.className = "grid-item " + rowCount;
                         parent.append(itemBasePrice);
                         let autoauto = "auto auto";
@@ -76,10 +87,21 @@ function findTariffs() {
                                         parent.after(addHeadline);
                                     }
                                     let itemDistPrice = document.createElement('div');
-                                    responseTariff = priceElement['kilometerPrice'] + "0000";
-                                    responseTariff = responseTariff.replace(".",",");
-                                    indexDecimal = responseTariff.indexOf(',') + 3;
-                                    itemDistPrice.innerHTML = responseTariff.substring(0, indexDecimal) + " €";
+                                    if (priceElement['kilometerPrice'] % 1 !== 0) {
+                                        let responseTariff = priceElement['kilometerPrice'] + "0000";
+                                        let indexDecimal;
+                                        if (window.serviceLang === "de") {
+                                            responseTariff = responseTariff.replace(".",",");
+                                            indexDecimal = responseTariff.indexOf(',') + 3;
+                                        }
+                                        else {
+                                            indexDecimal = responseTariff.indexOf('.') + 3;
+                                        }
+                                        itemDistPrice.innerHTML = responseTariff.substring(0, indexDecimal) + " €";
+                                    }
+                                    else {
+                                        itemDistPrice.innerHTML = priceElement['kilometerPrice'] + '€';
+                                    }
                                     itemDistPrice.className = "grid-item " + rowCount;
                                     parent.append(itemDistPrice);
                                     autoauto += " auto";
@@ -88,19 +110,30 @@ function findTariffs() {
                         }
                         else {
                             let itemDistPrice = document.createElement('div');
-                            responseTariff = data[i].distPrice[0]['kilometerPrice'] + "0000";
+                            let responseTariff = data[i].distPrice[0]['kilometerPrice'] + "0000";
                             responseTariff = responseTariff.replace(".",",");
-                            indexDecimal = responseTariff.indexOf(',') + 3;
+                            let indexDecimal = responseTariff.indexOf(',') + 3;
                             itemDistPrice.innerHTML = responseTariff.substring(0, indexDecimal) + " €";
                             itemDistPrice.className = "grid-item " + rowCount;
                             parent.append(itemDistPrice);
                         }
                         if (data[i].timePrice != 0) {
                             let itemTimePrice = document.createElement('div');
-                            responseTariff = data[i].timePrice + "0000";
-                            responseTariff = responseTariff.replace(".",",");
-                            indexDecimal = responseTariff.indexOf(',') + 3;
-                            itemTimePrice.innerHTML = responseTariff.substring(0, indexDecimal) + " €";
+                            if (data[i].timePrice % 1 !== 0) {
+                                let responseTariff = data[i].timePrice + "0000";
+                                let indexDecimal;
+                                if (window.serviceLang === "de") {
+                                    responseTariff = responseTariff.replace(".",",");
+                                    indexDecimal = responseTariff.indexOf(',') + 3;
+                                }
+                                else {
+                                    indexDecimal = responseTariff.indexOf('.') + 3;
+                                }
+                                itemTimePrice.innerHTML = responseTariff.substring(0, indexDecimal) + " €";
+                            }
+                            else {
+                                itemTimePrice.innerHTML = data[i].timePrice +'€';
+                            }
                             itemTimePrice.className = "grid-item " + rowCount;
                             parent.append(itemTimePrice);
                             rowCount = rowCount === "row-even" ? "row-uneven" : "row-even";
