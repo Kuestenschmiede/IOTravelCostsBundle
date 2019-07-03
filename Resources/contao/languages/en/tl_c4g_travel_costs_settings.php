@@ -20,6 +20,7 @@ $GLOBALS['TL_LANG'][$strName]['startBboxDownerx'] = ['Eastern Longitude', 'Enter
 $GLOBALS['TL_LANG'][$strName]['startBboxDownery'] = ['Northern Latitude', 'Enter the northern latitude to limit the search.'];
 $GLOBALS['TL_LANG'][$strName]['tariffs'] = ['Choose tariffs', 'Choose the tariffs for these settings.'];
 $GLOBALS['TL_LANG'][$strName]['displayGrid'] = ['Show as grid', 'Show the data as HTML-Grid.'];
+$GLOBALS['TL_LANG'][$strName]['withPositionButton'] = ['Button for device position', 'Show a button to use the current position for locating the user.'];
 
 /**
  * References

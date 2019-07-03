@@ -70,7 +70,7 @@ $GLOBALS['TL_DCA'][$strName] = array
     // Palettes
     'palettes' => [
         '__selector__' => ['router_api_selection'],
-        'default' => '{general_legend},caption;{bbox_legend},startBboxUpperx,startBboxUppery,startBboxDownerx,startBboxDownery;tariffs,displayGrid;'
+        'default' => '{general_legend},caption;{bbox_legend},startBboxUpperx,startBboxUppery,startBboxDownerx,startBboxDownery;tariffs,displayGrid,withPositionButton;'
     ],
 
 
@@ -148,7 +148,10 @@ $GLOBALS['TL_DCA'][$strName] = array
             'default' => ''
         ],
         'withPositionButton' => [
-            'default' => 0
+            'label' => &$GLOBALS['TL_LANG'][$strName]['withPositionButton'],
+            'default' => 0,
+            'inputType' => 'checkbox',
+            'eval' => ['decodeEntities' => true, 'maxlength' => 255, 'tl_class' => 'long']
         ]
     ]
 );

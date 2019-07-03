@@ -19,6 +19,7 @@ $GLOBALS['TL_LANG'][$strName]['startBboxDownerx'] = ['Rechter Längengrad', 'Tra
 $GLOBALS['TL_LANG'][$strName]['startBboxDownery'] = ['Oberen Breitengrad', 'Tragen Sie den oberen Breitengrad zur Begrenzung der Suche ein.'];
 $GLOBALS['TL_LANG'][$strName]['tariffs'] = ['Tarife auswählen', 'Wählen Sie die Tarife dieser Einstellung aus.'];
 $GLOBALS['TL_LANG'][$strName]['displayGrid'] = ['Als Grid anzeigen', 'Bei aktivierter Checkbox werden die Daten in einem HTML-Grid dargestellt. Anderenfalls werden table-Elemente verwendet.'];
+$GLOBALS['TL_LANG'][$strName]['withPositionButton'] = ['Knopf für aktuellen Standort', 'Aktuellen Standort für Bestimmung der Adresse benutzen.'];
 
 /**
  * References
