@@ -1,2 +1,16 @@
 node_modules
 /node_modules
+
+\.idea/copyright/Küstenschmiede\.xml
+
+\.idea/misc\.xml
+
+\.idea/modules\.xml
+
+\.idea/php\.xml
+
+\.idea/TravelCostsBundle\.iml
+
+\.idea/vcs\.xml
+
+\.idea/workspace\.xml
