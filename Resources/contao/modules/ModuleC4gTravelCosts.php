@@ -66,9 +66,9 @@ class ModuleC4gTravelCosts extends \Module
         $objSettings = C4gSettingsModel::findSettings();
         $arrSettings = [];
         $arrSettings['proxyUrl'] = $objSettings->con4gisIoUrl;
-        $arrSettings['keyReverse'] = C4GUtils::getKey($objSettings,3)->key;
-        $arrSettings['keyForward'] = C4GUtils::getKey($objSettings,2)->key;
-        $arrSettings['keyAutocomplete'] = C4GUtils::getKey($objSettings,7)->key;
+        $arrSettings['keyReverse'] = C4GUtils::getKey($objSettings,3);
+        $arrSettings['keyForward'] = C4GUtils::getKey($objSettings,2);
+        $arrSettings['keyAutocomplete'] = C4GUtils::getKey($objSettings,7);
         $settingsId = $this->expense_settings_id;
         $tariffConfig = System::getContainer()->get("doctrine.orm.default_entity_manager")->getRepository(TravelCostsSettings::class)
             ->findOneBy(['id' => $settingsId]);
