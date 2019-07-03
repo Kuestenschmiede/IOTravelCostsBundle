@@ -111,9 +111,33 @@ $GLOBALS['TL_DCA'][$strName] = array
             'eval'                    => ['regxp'=>'digit'],
         ],'distancePrice' => [
             'label'                   => &$GLOBALS['TL_LANG'][$strName]['distancePrice'],
-            'default'                 => 0,
-            'inputType'               => 'text',
-            'eval'                    => ['regxp'=>'digit'],
+            'inputType'               => 'multiColumnWizard',
+            'eval'                    => [
+                'columnFields' => [
+                    'name' => [
+                        'label'             => &$GLOBALS['TL_LANG'][$strName]['name'],
+                        'default'           => 0,
+                        'inputType'         => 'text',
+                    ],
+                    'fromKilometer' => [
+                        'label'             => &$GLOBALS['TL_LANG'][$strName]['fromKilometer'],
+                        'default'           => 0,
+                        'inputType'         => 'text',
+                        'eval'              => ['regxp'=>'digit']
+                    ],
+                    'toKilometer' => [
+                        'label'             => &$GLOBALS['TL_LANG'][$strName]['toKilometer'],
+                        'default'           => 0,
+                        'inputType'         => 'text',
+                        'eval'              => ['regxp'=>'digit']
+                    ],'kilometerPrice' => [
+                        'label'             => &$GLOBALS['TL_LANG'][$strName]['kilometerPrice'],
+                        'default'           => 0,
+                        'inputType'         => 'text',
+                        'eval'              => ['regxp'=>'digit']
+                    ]
+                ]
+            ],
         ],'timePrice' => [
             'label'                   => &$GLOBALS['TL_LANG'][$strName]['timePrice'],
             'default'                 => 0,

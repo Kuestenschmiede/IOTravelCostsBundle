@@ -85,7 +85,15 @@ class ModuleC4gTravelCosts extends \Module
                     $bBox[1] = $bBox[3];
                     $bBox[3] = $bboxSaver;
                 }
-                $template->bBox = json_encode($bBox);
+                if ($bBox[0] === $bBox[1] && $bBox[1] === $bBox[2] && $bBox[2] === $bBox[3]) {
+                    // catch case all bbox params are empty strings
+                    $template->bBox = "";
+                } else {
+                    $bBox = str_replace("\"", "\\\"", json_encode($bBox));
+                    $template->bBox = $bBox;
+//                    $template->bBox = $bBox;
+                }
+                
             }
             $template->displayGrid = $tariffConfig->getDisplayGrid();
             $template->posButton = $tariffConfig->getWithPositionButton();

@@ -147,26 +147,31 @@ function handlePosition(coordinates, cssId, propName) {
 
 function parseAddressString(data) {
   let address = "";
-  if (data.address.pedestrian) {
-    address += data.address.pedestrian + " ";
-    if (data.address.house_number) {
-      address += data.address.house_number + ", ";
+  if (data.address) {
+    if (data.address.pedestrian) {
+      address += data.address.pedestrian + " ";
+      if (data.address.house_number) {
+        address += data.address.house_number + ", ";
+      }
+    } else if (data.address.path) {
+      address += data.address.path + " ";
+      if (data.address.house_number) {
+        address += data.address.house_number;
+      }
     }
-  } else if (data.address.path) {
-    address += data.address.path + " ";
-    if (data.address.house_number) {
-      address += data.address.house_number;
+    if (address.length > 0) {
+      address += ", ";
     }
-  }
-  if (address.length > 0) {
-    address += ", ";
-  }
 
-  if (data.address.postcode) {
-    address += data.address.postcode + " ";
+    if (data.address.postcode) {
+      address += data.address.postcode + " ";
+    }
+    if (data.address.town) {
+      address += data.address.town;
+    }
   }
-  if (data.address.town) {
-    address += data.address.town;
+  if (address === "" && data.display_name) {
+    address = data.display_name;
   }
   return address;
 }
@@ -177,8 +182,9 @@ function parseAddressString(data) {
  * @param cssId       css-class to set response-property to
  * @returns {void}
  */
-function handleAdress(input, cssId) {
-  let url = window.proxyUrl + "search.php?format=json&key=" + window.keyForward + "&q=" + input;
+function autocompleteAddress(input, cssId) {
+  let bbox = window.bBox[0] + "," + window.bBox[1] + "," + window.bBox[2] + "," + window.bBox[3];
+  let url = window.proxyUrl + "autocomplete.php?format=json&key=" + window.keyForward + "&q=" + input +"&viewbox=" + bbox;
   $.ajax({url: url}).done(function(data) {
     if (data.length > 0) {
 
@@ -223,6 +229,12 @@ function handleAdress(input, cssId) {
  * @returns {boolean}
  */
 function isInBoundingBox(longitude, latitude) {
+  if (typeof longitude === "string") {
+    longitude = parseFloat(longitude);
+  }
+  if (typeof latitude === "string") {
+    latitude = parseFloat(latitude);
+  }
   if (window.bBox[0] < longitude &&
     longitude < window.bBox[2] &&
     window.bBox[1] < latitude &&
@@ -267,7 +279,7 @@ function submitSearch(input, cssId) {
       let alertHandler = new AlertHandler();
       alertHandler.showInfoDialog(langConstants.ERROR, falseResponse);
     }
-  })
+  });
 
 }
 
@@ -292,8 +304,7 @@ function calculateExpenses () {
         if (data.dist) {
           let elementDistance = $(".response-dist");
           let responseDistance = data.dist + "";
-          // TODO replace . with . ?
-          responseDistance = responseDistance.replace('.','.');
+          responseDistance = responseDistance.replace('.',',');
           let indexDecimal = responseDistance.indexOf(',') + 3;
           elementDistance.html(responseDistance.substring(0, indexDecimal + 3) + " km");
         }
@@ -372,7 +383,9 @@ $(document).ready(function() {
   else {
     $.extend(langConstants, taxiConstantsEnglish);
   }
-  window.bBox = JSON.parse(window.bBox);
+  if (window.bBox) {
+    window.bBox = JSON.parse(window.bBox);
+  }
   let objInputFrom = $(".route-from");
   if (objInputFrom[0]) {
     objInputFrom[0].placeholder = langConstants.DUMMY_INPUT;
@@ -398,11 +411,11 @@ $(document).ready(function() {
       let currTime = Math.floor(Date.now());
       scope.counter = currTime;
       setTimeout(function() {
-        if (scope.counter && scope.counter + 1000 < Math.floor(Date.now())) {
+        if (scope.counter && scope.counter + 500 < Math.floor(Date.now())) {
           delete scope.counter;
-          handleAdress($(scope).val(), "." + scope.classList[0]);
+          autocompleteAddress($(scope).val(), "." + scope.classList[0]);
         }
-      },1500);
+      },750);
     }
   };
 

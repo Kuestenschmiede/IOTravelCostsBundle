@@ -57,21 +57,60 @@ function findTariffs() {
                         itemBasePrice.innerHTML = responseTariff.substring(0, indexDecimal) + " €";
                         itemBasePrice.className = "grid-item " + rowCount;
                         parent.append(itemBasePrice);
-                        let itemDistPrice = document.createElement('div');
-                        responseTariff = data[i].distPrice + "0000";
-                        responseTariff = responseTariff.replace(".",",");
-                        indexDecimal = responseTariff.indexOf(',') + 3;
-                        itemDistPrice.innerHTML = responseTariff.substring(0, indexDecimal) + " €";
-                        itemDistPrice.className = "grid-item " + rowCount;
-                        parent.append(itemDistPrice);
-                        let itemTimePrice = document.createElement('div');
-                        responseTariff = data[i].timePrice + "0000";
-                        responseTariff = responseTariff.replace(".",",");
-                        indexDecimal = responseTariff.indexOf(',') + 3;
-                        itemTimePrice.innerHTML = responseTariff.substring(0, indexDecimal) + " €";
-                        itemTimePrice.className = "grid-item " + rowCount;
-                        parent.append(itemTimePrice);
-                        rowCount = rowCount === "row-even" ? "row-uneven" : "row-even";
+                        let autoauto = "auto auto";
+                        if (data[i]['distPrice'].length > 1) {
+                            for (let priceIndex in data[i]['distPrice']) {
+                                if (data[i]['distPrice'].hasOwnProperty(priceIndex)) {
+                                    let priceElement = data[i]['distPrice'][priceIndex];
+                                    let headLineHtml = langConstants.HEADLINE_DIST_PRICE + '<br>' + priceElement['name'];
+                                    if (priceIndex === "0") {
+                                        let objHeadlineDistPrice = $(".headline-dist-price");
+                                        objHeadlineDistPrice.html(headLineHtml);
+
+                                    }
+                                    else {
+                                        let parent = $(".headline-dist-price").last();
+                                        let addHeadline = document.createElement('div');
+                                        addHeadline.className = "headline-dist-price grid-item";
+                                        addHeadline.innerHTML = headLineHtml;
+                                        parent.after(addHeadline);
+                                    }
+                                    let itemDistPrice = document.createElement('div');
+                                    responseTariff = priceElement['kilometerPrice'] + "0000";
+                                    responseTariff = responseTariff.replace(".",",");
+                                    indexDecimal = responseTariff.indexOf(',') + 3;
+                                    itemDistPrice.innerHTML = responseTariff.substring(0, indexDecimal) + " €";
+                                    itemDistPrice.className = "grid-item " + rowCount;
+                                    parent.append(itemDistPrice);
+                                    autoauto += " auto";
+                                }
+                            }
+                        }
+                        else {
+                            let itemDistPrice = document.createElement('div');
+                            responseTariff = data[i].distPrice[0]['kilometerPrice'] + "0000";
+                            responseTariff = responseTariff.replace(".",",");
+                            indexDecimal = responseTariff.indexOf(',') + 3;
+                            itemDistPrice.innerHTML = responseTariff.substring(0, indexDecimal) + " €";
+                            itemDistPrice.className = "grid-item " + rowCount;
+                            parent.append(itemDistPrice);
+                        }
+                        if (data[i].timePrice != 0) {
+                            let itemTimePrice = document.createElement('div');
+                            responseTariff = data[i].timePrice + "0000";
+                            responseTariff = responseTariff.replace(".",",");
+                            indexDecimal = responseTariff.indexOf(',') + 3;
+                            itemTimePrice.innerHTML = responseTariff.substring(0, indexDecimal) + " €";
+                            itemTimePrice.className = "grid-item " + rowCount;
+                            parent.append(itemTimePrice);
+                            rowCount = rowCount === "row-even" ? "row-uneven" : "row-even";
+                            autoauto += " auto";
+
+                        }
+                        else {
+                            $('*').remove('.headline-time-price');
+                        }
+                        $('.tariff-output').css('grid-template-columns', autoauto);
                     }
                     else {
                         let elementRow = document.createElement('tr');
