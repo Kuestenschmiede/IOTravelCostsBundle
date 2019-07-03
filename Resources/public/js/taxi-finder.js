@@ -304,8 +304,7 @@ function calculateExpenses () {
         if (data.dist) {
           let elementDistance = $(".response-dist");
           let responseDistance = data.dist + "";
-          // TODO replace . with . ?
-          responseDistance = responseDistance.replace('.','.');
+          responseDistance = responseDistance.replace('.',',');
           let indexDecimal = responseDistance.indexOf(',') + 3;
           elementDistance.html(responseDistance.substring(0, indexDecimal + 3) + " km");
         }
