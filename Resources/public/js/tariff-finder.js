@@ -104,7 +104,7 @@ function findTariffs() {
                             itemTimePrice.className = "grid-item " + rowCount;
                             parent.append(itemTimePrice);
                             rowCount = rowCount === "row-even" ? "row-uneven" : "row-even";
-                            autoauto += "auto";
+                            autoauto += " auto";
 
                         }
                         else {

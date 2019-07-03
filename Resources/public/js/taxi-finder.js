@@ -411,11 +411,11 @@ $(document).ready(function() {
       let currTime = Math.floor(Date.now());
       scope.counter = currTime;
       setTimeout(function() {
-        if (scope.counter && scope.counter + 1000 < Math.floor(Date.now())) {
+        if (scope.counter && scope.counter + 500 < Math.floor(Date.now())) {
           delete scope.counter;
           autocompleteAddress($(scope).val(), "." + scope.classList[0]);
         }
-      },1500);
+      },750);
     }
   };
 
