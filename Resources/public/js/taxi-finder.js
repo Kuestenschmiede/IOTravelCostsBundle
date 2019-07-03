@@ -304,8 +304,7 @@ function calculateExpenses () {
         if (data.dist) {
           let elementDistance = $(".response-dist");
           let responseDistance = data.dist + "";
-          // TODO replace . with . ?
-          responseDistance = responseDistance.replace('.','.');
+          responseDistance = responseDistance.replace('.',',');
           let indexDecimal = responseDistance.indexOf(',') + 3;
           elementDistance.html(responseDistance.substring(0, indexDecimal + 3) + " km");
         }
@@ -412,11 +411,11 @@ $(document).ready(function() {
       let currTime = Math.floor(Date.now());
       scope.counter = currTime;
       setTimeout(function() {
-        if (scope.counter && scope.counter + 1000 < Math.floor(Date.now())) {
+        if (scope.counter && scope.counter + 500 < Math.floor(Date.now())) {
           delete scope.counter;
           autocompleteAddress($(scope).val(), "." + scope.classList[0]);
         }
-      },1500);
+      },750);
     }
   };
 
