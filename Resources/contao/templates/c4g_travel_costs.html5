@@ -1,13 +1,17 @@
 <div class="input-route">
     <div class="route-from-input">
         <div class="input-route-from-field">
+            <?php if ($this->posButton): ?>
             <button class="route-from-geolocation" title="Get user position"></button>
+            <?php endif; ?>
             <input type="text" class="route-from" name="routeFrom">
         </div>
     </div>
     <div class="route-to-input">
         <div class="input-route-to-field">
+            <?php if ($this->posButton): ?>
             <button class="route-to-geolocation" title="Get user position"></button>
+            <?php endif; ?>
             <input type="text" class="route-to ui-autocomplete-input" name="routeTo">
         </div>
     </div>
