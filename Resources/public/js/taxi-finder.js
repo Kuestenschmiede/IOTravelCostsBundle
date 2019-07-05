@@ -128,7 +128,8 @@ function handlePosition(coordinates, cssId, propName) {
   // check bounds
   if (objSettings.bBox && objSettings.bBox[0]) {
     if (!isInBoundingBox(coords.longitude, coords.latitude)) {
-      // @ToDo OutofBounds
+      let alertHandler = new AlertHandler();
+      alertHandler.showInfoDialog(langConstants.ERROR, langConstants.POSITION_OUT_OF_BOUNDS);
       return;
     }
   }
@@ -196,7 +197,6 @@ function autocompleteAddress(input, cssId) {
           if (data.hasOwnProperty(i)) {
             if (objSettings.bBox && objSettings.bBox[0]) {
               if (!isInBoundingBox(data[i].lon, data[i].lat)) {
-                //@ToDo outofbounds
                 continue;
               }
             }
@@ -270,7 +270,9 @@ function submitSearch(input, cssId) {
         else {
           taxiData.routeFrom.loc = [data[0].lat, data[0].lon];
         }
-        calculateExpenses();
+        if (taxiData.routeFrom.loc.length > 0 && taxiData.routeTo.loc.length > 0) {
+          calculateExpenses();
+        }
       }
     }
     else {
@@ -404,7 +406,7 @@ $(document).ready(function() {
   let objHeadlineTime = $(".headline-time");
   objHeadlineTime.html(langConstants.HEADLINE_TIME);
 
-  // submits search on "enter", autocompletes address after 1.5 seconds otherwise
+  // submits search on "enter", autocompletes address after 0.5 seconds otherwise
   const enterListener = function(event) {
     const scope = this;
     if (event.keyCode === 13) {
@@ -461,7 +463,11 @@ $(document).ready(function() {
   let submitButton = document.getElementById('btn-submit-expense-calc');
   submitButton.innerText = langConstants.START_SEARCH;
   $(submitButton).on('click', function() {
-    calculateExpenses();
+    taxiData.routeFrom.loc = [];
+    taxiData.routeTo.loc = [];
+    submitSearch(objInputFrom, ".route-from");
+    submitSearch(objInputTo, ".route-to");
+    // calculateExpenses();
   });
 
   $(".route-from-geolocation").on("click", function () {

@@ -14,7 +14,7 @@
 /**
  *  constants
  */
-export  var taxiConstantsEnglish = {
+export var taxiConstantsEnglish = {
     DUMMY_INPUT: 'Enter postal code, city or street...',
     HEADLINE_DIST: 'Distance',
     HEADLINE_TIME: 'Time',
@@ -25,5 +25,6 @@ export  var taxiConstantsEnglish = {
     ERROR_FALSE_ADDRESS: 'Address not found',
     ERROR:'Error',
     START_SEARCH: 'Start search',
+    POSITION_OUT_OF_BOUNDS: "Your current position is out of bounds",
     NONE: '' // last line
 }; // end of "css constants" ---

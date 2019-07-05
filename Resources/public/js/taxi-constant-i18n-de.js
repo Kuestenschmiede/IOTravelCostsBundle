@@ -25,5 +25,6 @@ export  var taxiConstantsGerman = {
     ERROR_FALSE_ADDRESS: 'Adresse nicht gefunden',
     ERROR:'Fehler',
     START_SEARCH: 'Suche starten',
+    POSITION_OUT_OF_BOUNDS: "Ihre aktuelle Position ist außerhalb des Tarifsgebiets",
     NONE: '' // last line
 }; // end of "css constants" ---
