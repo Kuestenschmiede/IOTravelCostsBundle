@@ -15,6 +15,6 @@
  *  constants
  */
 export  var taxiConstants = {
-    lol: 'PLZ, Ort oder Straße eingeben...',
+    lol: 'Straße, Ort oder PLZ eingeben ...',
     NONE: '' // last line
 }; // end of "css constants" ---

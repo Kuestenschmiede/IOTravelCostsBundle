@@ -15,7 +15,7 @@
  *  constants
  */
 export  var taxiConstantsGerman = {
-    DUMMY_INPUT: 'PLZ, Ort oder Straße eingeben...',
+    DUMMY_INPUT: 'Straße, Ort oder PLZ eingeben ...',
     HEADLINE_DIST: 'Entfernung',
     HEADLINE_TIME: 'Dauer',
     HEADLINE_BASE_PRICE: 'Grundpreis',
@@ -24,7 +24,7 @@ export  var taxiConstantsGerman = {
     ERROR_OUT_OF_BOUNDS: 'Adresse außerhalb des Tarifgebiets',
     ERROR_FALSE_ADDRESS: 'Adresse nicht gefunden',
     ERROR:'Fehler',
-    START_SEARCH: 'Suche starten',
+    START_SEARCH: 'Berechnen',
     POSITION_OUT_OF_BOUNDS: "Ihre aktuelle Position ist außerhalb des Tarifsgebiets",
     NONE: '' // last line
 }; // end of "css constants" ---
