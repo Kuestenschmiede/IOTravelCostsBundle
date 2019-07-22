@@ -70,7 +70,7 @@ $GLOBALS['TL_DCA'][$strName] = array
     // Palettes
     'palettes' => [
         '__selector__' => ['router_api_selection'],
-        'default' => '{general_legend},caption;{bbox_legend},startBboxUpperx,startBboxUppery,startBboxDownerx,startBboxDownery;tariffs,displayGrid,withPositionButton,withSubmitButton,distPrice;'
+        'default' => '{general_legend},caption;{bbox_legend},startBboxUpperx,startBboxUppery,startBboxDownerx,startBboxDownery;tariffs,displayGrid,withPositionButton,withSubmitButton,distPrice,centerx,centery;'
     ],
 
 
@@ -166,8 +166,23 @@ $GLOBALS['TL_DCA'][$strName] = array
             'eval' => ['mandatory'=>true],
             'reference' => &$GLOBALS['TL_LANG'][$strName]['references']['distPrice'],
             'inputType' => 'radio',
-
-        ]
+        ],
+        'centerx' => [
+            'label' => &$GLOBALS['TL_LANG'][$strName]['centerx'],
+            'default' => '',
+            'wizard' => [['con4gis\MapsBundle\Resources\contao\classes\GeoPicker', 'getPickerLink']],
+            'save_callback' => [['tl_c4g_travel_costs_settings', 'setLon']],
+            'inputType' => 'c4g_text',
+            'eval' => ['maxlength' => 20, 'tl_class' => 'w50 wizard', 'require_input' => true]
+        ],
+        'centery' => [
+            'label' => &$GLOBALS['TL_LANG'][$strName]['centery'],
+            'default' => '',
+            'wizard' => [['con4gis\MapsBundle\Resources\contao\classes\GeoPicker', 'getPickerLink']],
+            'save_callback' => [['tl_c4g_travel_costs_settings', 'setLat']],
+            'inputType' => 'c4g_text',
+            'eval' => ['maxlength' => 20, 'tl_class' => 'w50 wizard', 'require_input' => true]
+        ],
     ]
 );
 class tl_c4g_travel_costs_settings extends \Contao\Backend

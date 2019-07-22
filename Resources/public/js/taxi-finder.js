@@ -189,10 +189,22 @@ function parseAddressString(data) {
  * @returns {void}
  */
 function autocompleteAddress(input, cssId) {
-  let bbox = objSettings.bBox[0] + "," + objSettings.bBox[1] + "," + objSettings.bBox[2] + "," + objSettings.bBox[3];
-  let url = objSettings.proxyUrl + "autocomplete.php?format=json&key=" + objSettings.keyAutocomplete + "&q=" + input +"&viewbox=" + bbox;
+  let center;
+  if (objSettings.center) {
+    center = objSettings.center[0] + "," + objSettings.center[1];
+  }
+  else {
+    center = (parseFloat(objSettings.bBox[0]) + parseFloat(objSettings.bBox[2])) / 2 + "," + (parseFloat(objSettings.bBox[1]) + parseFloat(objSettings.bBox[3])) / 2;
+  }
+  let url = objSettings.proxyUrl + "autocomplete.php?format=json&key=" + objSettings.keyAutocomplete + "&q=" + input +"&center=" + center;
   $.ajax({url: url}).done(function(data) {
-    let center = [(parseFloat(objSettings.bBox[0]) + parseFloat(objSettings.bBox[2])) / 2, (parseFloat(objSettings.bBox[1]) + parseFloat(objSettings.bBox[3])) / 2];
+    let center;
+    if (objSettings.center) {
+      center = objSettings.center;
+    }
+    else {
+      center = [(parseFloat(objSettings.bBox[0]) + parseFloat(objSettings.bBox[2])) / 2, (parseFloat(objSettings.bBox[1]) + parseFloat(objSettings.bBox[3])) / 2];
+    }
     if (data.length > 0) {
 
       if (data[0] && data[0].display_name) {

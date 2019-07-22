@@ -23,6 +23,8 @@ $GLOBALS['TL_LANG'][$strName]['displayGrid'] = ['Show as grid', 'Show the data a
 $GLOBALS['TL_LANG'][$strName]['withPositionButton'] = ['Button for device position', 'Show a button to use the current position for locating the user.'];
 $GLOBALS['TL_LANG'][$strName]['withSubmitButton'] = ['Button for calculation', 'Show a button to calculate the travel costs'];
 $GLOBALS['TL_LANG'][$strName]['distPrice'] = ['Type of cost calculation', 'Type of cost calculation for the distance.'];
+$GLOBALS['TL_LANG'][$strName]['centerx'] = ['Longitude of the center', 'Longitude of the focus for the search.'];
+$GLOBALS['TL_LANG'][$strName]['centery'] = ['Latitude of the center', 'Latitude of the focus for the search.'];
 
 /**
  * References

@@ -118,6 +118,18 @@ class TravelCostsSettings extends BaseEntity
     protected $distPrice = 0;
 
     /**
+     * @var string
+     * @ORM\Column(type="string")
+     */
+    protected $centerx = '';
+
+    /**
+     * @var string
+     * @ORM\Column(type="string")
+     */
+    protected $centery = '';
+
+    /**
      * @return int
      */
     public function getId(): int
@@ -355,5 +367,37 @@ class TravelCostsSettings extends BaseEntity
     public function setDistPrice(int $distPrice): void
     {
         $this->distPrice = $distPrice;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCenterx(): string
+    {
+        return $this->centerx;
+    }
+
+    /**
+     * @param string $centerx
+     */
+    public function setCenterx(string $centerx): void
+    {
+        $this->centerx = $centerx;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCentery(): string
+    {
+        return $this->centery;
+    }
+
+    /**
+     * @param string $centery
+     */
+    public function setCentery(string $centery): void
+    {
+        $this->centery = $centery;
     }
 }

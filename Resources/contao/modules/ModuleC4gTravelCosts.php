@@ -96,6 +96,9 @@ class ModuleC4gTravelCosts extends \Module
                 }
                 
             }
+            if ($tariffConfig->getCenterX() && $tariffConfig->getCenterY()) {
+                $arrSettings['center'] = [$tariffConfig->getCenterX(), $tariffConfig->getCenterY()];
+            }
             $arrSettings['displayGrid'] = $tariffConfig->getDisplayGrid();
             $arrSettings['posButton'] = $tariffConfig->getWithPositionButton();
             $arrSettings['submitButton'] = $tariffConfig->getWithSubmitButton();
