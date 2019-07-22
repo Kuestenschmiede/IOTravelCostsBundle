@@ -22,11 +22,13 @@ $GLOBALS['TL_LANG'][$strName]['tariffs'] = ['Choose tariffs', 'Choose the tariff
 $GLOBALS['TL_LANG'][$strName]['displayGrid'] = ['Show as grid', 'Show the data as HTML-Grid.'];
 $GLOBALS['TL_LANG'][$strName]['withPositionButton'] = ['Button for device position', 'Show a button to use the current position for locating the user.'];
 $GLOBALS['TL_LANG'][$strName]['withSubmitButton'] = ['Button for calculation', 'Show a button to calculate the travel costs'];
-
+$GLOBALS['TL_LANG'][$strName]['distPrice'] = ['Type of cost calculation', 'Type of cost calculation for the distance.'];
 
 /**
  * References
  */
+$GLOBALS['TL_LANG'][$strName]['references']['distPrice'][0] = 'Price for the distinct kilometers (e.g. for taxis)';
+$GLOBALS['TL_LANG'][$strName]['references']['distPrice'][1] = 'The whole distance sets the price';
 
 /** legend */
 $GLOBALS['TL_LANG'][$strName]['bbox_legend'] = 'Limit with boundingbox';

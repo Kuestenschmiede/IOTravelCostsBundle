@@ -52,7 +52,8 @@ class ExpenseService
                 $apiUrl = $objSettings->con4gisIoUrl;
 
                 if ($apiKey && $apiUrl) {
-                    $sendUrl = rtrim($apiUrl, "/") . "/" . "routingExpense.php?loc=" . $locations . "&tariffs=". urlencode(\GuzzleHttp\json_encode($arrSendTariffs)) . "&time=" . $time . "&key=" . $apiKey;
+                    $typeCalc = $objExpenseSettings->getDistPrice();
+                    $sendUrl = rtrim($apiUrl, "/") . "/" . "routingExpense.php?loc=" . $locations . "&tariffs=". urlencode(\GuzzleHttp\json_encode($arrSendTariffs)) . "&typeCalc=" . $typeCalc . "&time=" . $time . "&key=" . $apiKey;
                     $REQUEST = new \Request();
                     if ($_SERVER['HTTP_REFERER']) {
                         $REQUEST->setHeader('Referer', $_SERVER['HTTP_REFERER']);

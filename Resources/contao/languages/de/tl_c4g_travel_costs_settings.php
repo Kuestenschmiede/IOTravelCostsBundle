@@ -21,10 +21,13 @@ $GLOBALS['TL_LANG'][$strName]['tariffs'] = ['Tarife auswählen', 'Wählen Sie di
 $GLOBALS['TL_LANG'][$strName]['displayGrid'] = ['Als Grid anzeigen', 'Bei aktivierter Checkbox werden die Daten in einem HTML-Grid dargestellt. Anderenfalls werden table-Elemente verwendet.'];
 $GLOBALS['TL_LANG'][$strName]['withPositionButton'] = ['Knopf für aktuellen Standort', 'Aktuellen Standort für Bestimmung der Adresse benutzen.'];
 $GLOBALS['TL_LANG'][$strName]['withSubmitButton'] = ['Knopf für Berechnung', 'Knopf für Berechnung anzeigen.'];
+$GLOBALS['TL_LANG'][$strName]['distPrice'] = ['Art der Kostenberechnung', 'Art der Kostenberechnung für die Distanz.'];
 
 /**
  * References
  */
+$GLOBALS['TL_LANG'][$strName]['references']['distPrice'][0] = 'Preis für Entfernung entsprechend der Angaben (bspw. für Taxi-Fahrtpreis)';
+$GLOBALS['TL_LANG'][$strName]['references']['distPrice'][1] = 'Gesamtstrecke bestimmt Kilometerpreis';
 
 /** legend */
 $GLOBALS['TL_LANG'][$strName]['bbox_legend'] = 'Begrenzung durch Boundingbox';

@@ -112,6 +112,12 @@ class TravelCostsSettings extends BaseEntity
     protected $blob = '';
 
     /**
+     * @var int
+     * @ORM\Column(type="integer")
+     */
+    protected $distPrice = 0;
+
+    /**
      * @return int
      */
     public function getId(): int
@@ -335,4 +341,19 @@ class TravelCostsSettings extends BaseEntity
         $this->withSubmitButton = $withSubmitButton;
     }
 
+    /**
+     * @return int
+     */
+    public function getDistPrice(): int
+    {
+        return $this->distPrice;
+    }
+
+    /**
+     * @param int $distPrice
+     */
+    public function setDistPrice(int $distPrice): void
+    {
+        $this->distPrice = $distPrice;
+    }
 }
