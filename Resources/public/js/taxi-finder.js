@@ -188,29 +188,42 @@ function autocompleteAddress(input, cssId) {
   let bbox = objSettings.bBox[0] + "," + objSettings.bBox[1] + "," + objSettings.bBox[2] + "," + objSettings.bBox[3];
   let url = objSettings.proxyUrl + "autocomplete.php?format=json&key=" + objSettings.keyAutocomplete + "&q=" + input +"&viewbox=" + bbox;
   $.ajax({url: url}).done(function(data) {
+    let center = [(parseFloat(objSettings.bBox[0]) + parseFloat(objSettings.bBox[2])) / 2, (parseFloat(objSettings.bBox[1]) + parseFloat(objSettings.bBox[3])) / 2];
     if (data.length > 0) {
 
       if (data[0] && data[0].display_name) {
         // $(cssId).val(data[0].display_name);
-
+        let arrAddresses = [];
         for (let i in data) {
           if (data.hasOwnProperty(i)) {
             if (objSettings.bBox && objSettings.bBox[0]) {
-              if (!isInBoundingBox(data[i].lon, data[i].lat)) {
-                continue;
+              if (isInBoundingBox(data[i].lon, data[i].lat)) {
+                let distance = Math.sqrt((center[0] - data[i].lon) * (center[0] - data[i].lon) + (center[1] - data[i].lat) * (center[1] - data[i].lat));
+                let element = {
+                  'dist' : distance,
+                  'pos'  : [data[i].lat, data[i].lon],
+                  'name' : data[i].display_name
+                };
+                arrAddresses.push(element);
               }
             }
+          }
+        }
+        arrAddresses.sort((a,b) => a.dist -b.dist);
+
+        for (let i in arrAddresses) {
+          if (arrAddresses.hasOwnProperty(i)) {
             if (cssId === ".route-from") {
               // do not add twice
-              if (!arrFromNames.includes(data[i].display_name)) {
-                arrFromNames.push(data[i].display_name);
-                arrFromPositions.push([data[i].lat, data[i].lon]);
+              if (!arrFromNames.includes(arrAddresses[i].name)) {
+                arrFromNames.push(arrAddresses[i].name);
+                arrFromPositions.push(arrAddresses[i].pos);
               }
             }
             else {
-              if (!arrToNames.includes(data[i].display_name)) {
-                arrToNames.push(data[i].display_name);
-                arrToPositions.push([data[i].lat, data[i].lon]);
+              if (!arrToNames.includes(arrAddresses[i].name)) {
+                arrToNames.push(arrAddresses[i].name);
+                arrToPositions.push(arrAddresses[i].pos);
               }
             }
           }
