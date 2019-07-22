@@ -101,6 +101,12 @@ class TravelCostsSettings extends BaseEntity
 
     /**
      * @var int
+     * @ORM\Column(type="integer")
+     */
+    protected $withSubmitButton = '0';
+
+    /**
+     * @var int
      * @ORM\Column(type="blob")
      */
     protected $blob = '';
@@ -312,4 +318,21 @@ class TravelCostsSettings extends BaseEntity
     {
         $this->withPositionButton = $withPositionButton;
     }
+
+    /**
+     * @return int
+     */
+    public function getWithSubmitButton(): int
+    {
+        return $this->withSubmitButton;
+    }
+
+    /**
+     * @param int $withSubmitButton
+     */
+    public function setWithSubmitButton(int $withSubmitButton): void
+    {
+        $this->withSubmitButton = $withSubmitButton;
+    }
+
 }

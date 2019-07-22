@@ -98,6 +98,7 @@ class ModuleC4gTravelCosts extends \Module
             }
             $arrSettings['displayGrid'] = $tariffConfig->getDisplayGrid();
             $arrSettings['posButton'] = $tariffConfig->getWithPositionButton();
+            $arrSettings['submitButton'] = $tariffConfig->getWithSubmitButton();
         }
         $language = Controller::replaceInsertTags("{{page::language}}");
         $arrSettings['lang'] = $language;

@@ -15,9 +15,12 @@
             <input type="text" class="route-to ui-autocomplete-input" name="routeTo">
         </div>
     </div>
+    <?php if ($this->arrSettings['submitButton']): ?>
     <div class="submit-input">
         <button class="submit-expense-calc" id="btn-submit-expense-calc"></button>
     </div>
+    <?php endif; ?>
+
 </div>
 <br>
 <?php if ($this->arrSettings['displayGrid']): ?>

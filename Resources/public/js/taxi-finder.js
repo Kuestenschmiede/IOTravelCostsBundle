@@ -44,7 +44,9 @@ function setRouteTo(address) {
  */
 function handleRouteFromPosition(coordinates) {
   handlePosition(coordinates, ".route-from", "routeFrom");
-  calculateExpenses();
+  if (!objSettings.submitButton) {
+    calculateExpenses();
+  }
 
 }
 
@@ -55,7 +57,9 @@ function handleRouteFromPosition(coordinates) {
  */
 function handleRouteToPosition(coordinates) {
   handlePosition(coordinates, ".route-to", "routeTo");
-  calculateExpenses();
+  if (!objSettings.submitButton) {
+    calculateExpenses();
+  }
 }
 
 /**
@@ -284,7 +288,9 @@ function submitSearch(input, cssId) {
           taxiData.routeFrom.loc = [data[0].lat, data[0].lon];
         }
         if (taxiData.routeFrom.loc.length > 0 && taxiData.routeTo.loc.length > 0) {
-          calculateExpenses();
+          if (!objSettings.submitButton) {
+            calculateExpenses();
+          }
         }
       }
     }
@@ -448,7 +454,9 @@ $(document).ready(function() {
     taxiData.routeFrom.loc = arrFromPositions[arrFromNames.findIndex(
       danger => danger === value
     )];
-    calculateExpenses();
+    if (!objSettings.submitButton) {
+      calculateExpenses();
+    }
   });
 
   objInputTo.autocomplete({
@@ -460,7 +468,9 @@ $(document).ready(function() {
     taxiData.routeTo.loc = arrToPositions[arrToNames.findIndex(
       danger => danger === value
     )];
-    calculateExpenses();
+    if (!objSettings.submitButton) {
+      calculateExpenses();
+    }
   });
 
   objInputFrom.on('change', function() {
@@ -472,16 +482,20 @@ $(document).ready(function() {
     let address = $(this).val();
     setRouteTo(address);
   });
-
-  let submitButton = document.getElementById('btn-submit-expense-calc');
-  submitButton.innerText = langConstants.START_SEARCH;
-  $(submitButton).on('click', function() {
-    taxiData.routeFrom.loc = [];
-    taxiData.routeTo.loc = [];
-    submitSearch(objInputFrom, ".route-from");
-    submitSearch(objInputTo, ".route-to");
-    // calculateExpenses();
-  });
+  if (objSettings.submitButton) {
+    let submitButton = document.getElementById('btn-submit-expense-calc');
+    submitButton.innerText = langConstants.START_SEARCH;
+    $(submitButton).on('click', function() {
+      if (taxiData.routeFrom.loc && taxiData.routeTo.loc) {
+        calculateExpenses();
+      }
+      else {
+        taxiData.routeFrom.loc = [];
+        taxiData.routeTo.loc = [];
+        submitSearch(objInputFrom, ".route-from");
+        submitSearch(objInputTo, ".route-to");    }
+    });
+  }
 
   $(".route-from-geolocation").on("click", function () {
     if (navigator.geolocation) {
