@@ -20,7 +20,7 @@ function roundToTwo(num) {
   if (typeof num != "float") {
     num = parseFloat(num);
   }
-  return +(Math.round(num + "e+2")  + "e-2");
+  return num.toFixed(2);
 }
 /**
  * Saves the string of the start address to the script-scoped variable
@@ -340,10 +340,8 @@ function calculateExpenses () {
         }
         if (data.dist) {
           let elementDistance = $(".response-dist");
-          let responseDistance = data.dist + "";
-          responseDistance = responseDistance.replace('.',',');
-          let indexDecimal = responseDistance.indexOf(',') + 3;
-          elementDistance.html(responseDistance.substring(0, indexDecimal + 3) + " km");
+          let responseDistance = toHumanDistance(data.dist * 1000);
+          elementDistance.html(responseDistance);
         }
         let insertAfterHead = $(".headline-time");
         let insertAfterVal = $(".response-time");

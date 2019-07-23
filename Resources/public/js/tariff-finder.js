@@ -19,7 +19,12 @@ $(document).ready(function() {
 
     findTariffs();
 });
-
+function roundToTwo(num) {
+    if (typeof num != "float") {
+        num =parseFloat(num);
+    }
+    return num.toFixed(2);
+}
 /**
  * calls tariffService to fetch informations and pricing about the set tariffs and shows them
  * @returns {void}}
@@ -53,16 +58,11 @@ function findTariffs() {
                         parent.append(itemName);
                         let itemBasePrice = document.createElement('div');
                         if (data[i].basePrice % 1 !== 0) {
-                            let responseTariff = data[i].basePrice + "0000";
-                            let indexDecimal;
+                            let responseTariff = roundToTwo(data[i].basePrice);
                             if (window.serviceLang === "de") {
                                 responseTariff = responseTariff.replace(".",",");
-                                indexDecimal = responseTariff.indexOf(',') + 3;
                             }
-                            else {
-                                indexDecimal = responseTariff.indexOf('.') + 3;
-                            }
-                            itemBasePrice.innerHTML = responseTariff.substring(0, indexDecimal) + " €";
+                            itemBasePrice.innerHTML = responseTariff + " €";
                         }
                         else {
                             itemBasePrice.innerHTML = data[i].basePrice + '€';
@@ -91,16 +91,11 @@ function findTariffs() {
 
                                     let itemDistPrice = document.createElement('div');
                                     if (priceElement['kilometerPrice'] % 1 !== 0) {
-                                        let responseTariff = priceElement['kilometerPrice'] + "0000";
-                                        let indexDecimal;
+                                        let responseTariff = roundToTwo(priceElement['kilometerPrice']);
                                         if (window.serviceLang === "de") {
                                             responseTariff = responseTariff.replace(".",",");
-                                            indexDecimal = responseTariff.indexOf(',') + 3;
                                         }
-                                        else {
-                                            indexDecimal = responseTariff.indexOf('.') + 3;
-                                        }
-                                        itemDistPrice.innerHTML = responseTariff.substring(0, indexDecimal) + " €";
+                                        itemDistPrice.innerHTML = responseTariff + " €";
                                     }
                                     else {
                                         itemDistPrice.innerHTML = priceElement['kilometerPrice'] + '€';
@@ -114,7 +109,7 @@ function findTariffs() {
                         }
                         else {
                             let itemDistPrice = document.createElement('div');
-                            let responseTariff = data[i].distPrice[0]['kilometerPrice'] + "0000";
+                            let responseTariff = data[i].distPrice[0]['kilometerPrice'];
                             responseTariff = responseTariff.replace(".",",");
                             let indexDecimal = responseTariff.indexOf(',') + 3;
                             itemDistPrice.innerHTML = responseTariff.substring(0, indexDecimal) + " €";
