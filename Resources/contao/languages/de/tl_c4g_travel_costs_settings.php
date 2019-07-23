@@ -28,12 +28,19 @@ $GLOBALS['TL_LANG'][$strName]['centery'] = ['Breitengrad des Zentrums', 'Breiten
 $GLOBALS['TL_LANG'][$strName]['errorMessageBounds'] = ['Fehler-Text: Außerhalb der Bounding-Box', 'Geben Sie hier einen eigenen Fehlertext ein, falls die Adresse außerhalb der gewählten Bounding-Box liegt.'];
 $GLOBALS['TL_LANG'][$strName]['errorMessageNotFound'] = ['Fehler-Text: Adresse nicht gefunden', 'Geben Sie hier einen eigenen Fehlertext ein, falls die Adresse nicht gefunden wird.'];
 $GLOBALS['TL_LANG'][$strName]['searchPlaceholder'] = ['Platzhalter der Suche', 'Geben Sie hier einen eigenen Platzhalter für die Suche ein.'];
+$GLOBALS['TL_LANG'][$strName]['tariffDisplay'] = ['Art der Darstellung', 'Art der Darstellung der Tarife.'];
+$GLOBALS['TL_LANG'][$strName]['displayText'] = ['Benutzerdefinierte Tarifbeschreibung', 'Geben Sie hier die benutzerdefinierte Tarifbeschreibung ein.'];
+$GLOBALS['TL_LANG'][$strName]['hideDisplay'] = ['Tarifbeschreibung nachladen', 'Laden der Tarifbeschreibung erst nach erfolgreicher Berechnung von Fahrtkosten.'];
+
+
 
 /**
  * References
  */
 $GLOBALS['TL_LANG'][$strName]['references']['distPrice'][0] = 'Preis für Entfernung entsprechend der Angaben (bspw. für Taxi-Fahrtpreis)';
 $GLOBALS['TL_LANG'][$strName]['references']['distPrice'][1] = 'Gesamtstrecke bestimmt Kilometerpreis';
+$GLOBALS['TL_LANG'][$strName]['references']['tariffDisplay'][0] = 'Automatische Darstellung';
+$GLOBALS['TL_LANG'][$strName]['references']['tariffDisplay'][1] = 'Benutzerdefinierte Darstellung';
 
 /** legend */
 $GLOBALS['TL_LANG'][$strName]['general_legend'] = 'Allgemeine Einstellungen';
@@ -42,6 +49,7 @@ $GLOBALS['TL_LANG'][$strName]['tariffLegend'] = 'Wähle die zugehörigen Tarife'
 $GLOBALS['TL_LANG'][$strName]['controlLegend'] = 'Einstellungen der Oberfläche';
 $GLOBALS['TL_LANG'][$strName]['centerLegend'] = 'Fokus der Suche';
 $GLOBALS['TL_LANG'][$strName]['customMsgLegend'] = 'Benutzerdefinierte Nachrichten';
+$GLOBALS['TL_LANG'][$strName]['descriptionLegend'] = 'Beschreibung der Tarife';
 
 /**
  * Buttons

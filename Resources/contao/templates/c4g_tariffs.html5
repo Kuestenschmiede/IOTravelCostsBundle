@@ -1,4 +1,10 @@
-<?php if ($this->displayGrid): ?>
+<?php if ($this->tariffDisplay):?>
+<div>
+    <div class="tariff-output" style="display:none">
+        <?php echo $this->customText ?>
+    </div>
+</div>
+<?php elseif ($this->displayGrid && !$this->tariffDisplay): ?>
 <div>
     <div class="tariff-output" style="display:none">
         <div class="headline-caption grid-item"></div>
@@ -7,7 +13,7 @@
         <div class="headline-time-price grid-item"></div>
     </div>
 </div>
-<?php else: ?>
+<?php elseif (!$this->displayGrid && !$this->tariffDisplay): ?>
 <div>
     <table class="tariff-output" style="display:none">
         <tr class="tariff-output-headline">
@@ -18,6 +24,7 @@
         </tr>
     </table>
 </div>
+<?php else: ?>
 <?php endif; ?>
 <script defer>
     window.settingId = "<?php echo $this->settingId ?>";

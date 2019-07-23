@@ -69,6 +69,8 @@ class ModuleC4gTariffs extends \Module
             $template->displayGrid = $tariffConfig->getDisplayGrid();
             $template->posButton = $tariffConfig->getWithPositionButton();
         }
+        $template->tariffDisplay = $tariffConfig->getTariffDisplay();
+        $template->customText = $tariffConfig->getDisplayText();
         $language = Controller::replaceInsertTags("{{page::language}}");
         $template->lang = $language;
         $template->settingId = $settingsId;

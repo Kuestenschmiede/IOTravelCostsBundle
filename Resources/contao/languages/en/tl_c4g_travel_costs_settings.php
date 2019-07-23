@@ -29,12 +29,16 @@ $GLOBALS['TL_LANG'][$strName]['centery'] = ['Latitude of the center', 'Latitude 
 $GLOBALS['TL_LANG'][$strName]['errorMessageBounds'] = ['Error message: Out of Bounds', 'Enter your custom error message, if the address is out of bounds.'];
 $GLOBALS['TL_LANG'][$strName]['errorMessageNotFound'] = ['Error message: Address not found', 'Enter your custom error message, if no matching address is found.'];
 $GLOBALS['TL_LANG'][$strName]['searchPlaceholder'] = ['Placeholder for search', 'Enter a custom placeholder for the search input.'];
+$GLOBALS['TL_LANG'][$strName]['tariffDisplay'] = ['Type of tariff-display', ''];
 
 /**
  * References
  */
 $GLOBALS['TL_LANG'][$strName]['references']['distPrice'][0] = 'Price for the distinct kilometers (e.g. for taxis)';
 $GLOBALS['TL_LANG'][$strName]['references']['distPrice'][1] = 'The whole distance sets the price';
+
+$GLOBALS['TL_LANG'][$strName]['references']['tariffDisplay'][0] = 'Automatic display';
+$GLOBALS['TL_LANG'][$strName]['references']['tariffDisplay'][1] = 'Custom display';
 
 /** legend */
 $GLOBALS['TL_LANG'][$strName]['general_legend'] = 'General settings';

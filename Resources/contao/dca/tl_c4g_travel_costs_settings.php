@@ -70,7 +70,7 @@ $GLOBALS['TL_DCA'][$strName] = array
     // Palettes
     'palettes' => [
         '__selector__' => ['router_api_selection'],
-        'default' => '{general_legend},caption;{bbox_legend:hide},startBboxUpperx,startBboxUppery,startBboxDownerx,startBboxDownery;{tariffLegend},tariffs;{controlLegend},displayGrid,withPositionButton,withSubmitButton,withDeleteButton,distPrice;{centerLegend},centerx,centery;{customMsgLegend:hide},errorMessageBounds,errorMessageNotFound,searchPlaceholder'
+        'default' => '{general_legend},caption;{bbox_legend:hide},startBboxUpperx,startBboxUppery,startBboxDownerx,startBboxDownery;{tariffLegend},tariffs;{controlLegend},displayGrid,withPositionButton,withSubmitButton,withDeleteButton,distPrice;{centerLegend},centerx,centery;{customMsgLegend:hide},errorMessageBounds,errorMessageNotFound,searchPlaceholder;{descriptionLegend},tariffDisplay,displayText,hideDisplay;'
     ],
 
 
@@ -206,6 +206,23 @@ $GLOBALS['TL_DCA'][$strName] = array
             'default' => '',
             'inputType' => 'text',
             'eval' => ['decodeEntities' => true, 'tl_class' => 'long'],
+        ],
+        'tariffDisplay' => [
+            'label' => &$GLOBALS['TL_LANG'][$strName]['tariffDisplay'],
+            'default' => 0,
+            'options' => [0, 1],
+            'reference' => &$GLOBALS['TL_LANG'][$strName]['references']['tariffDisplay'],
+            'inputType' => 'radio',
+        ],
+        'displayText' => [
+            'label' => &$GLOBALS['TL_LANG'][$strName]['displayText'],
+            'eval' => ['rte'=>"tinyMCE"],
+            'inputType' => 'text',
+        ],
+        'hideDisplay' => [
+            'label' => &$GLOBALS['TL_LANG'][$strName]['hideDisplay'],
+            'default' => 0,
+            'inputType' => 'checkbox',
         ],
     ]
 );

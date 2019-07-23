@@ -153,6 +153,24 @@ class TravelCostsSettings extends BaseEntity
     protected $searchPlaceholder = '';
 
     /**
+     * @var int
+     * @ORM\Column(type="integer")
+     */
+    protected $tariffDisplay = '';
+
+    /**
+     * @var string
+     * @ORM\Column(type="string")
+     */
+    protected $displayText = '';
+
+    /**
+     * @var int
+     * @ORM\Column(type="integer")
+     */
+    protected $hideDisplay = 0;
+
+    /**
      * @return int
      */
     public function getId(): int
@@ -487,4 +505,53 @@ class TravelCostsSettings extends BaseEntity
     {
         $this->searchPlaceholder = $searchPlaceholder;
     }
+
+    /**
+     * @return int
+     */
+    public function getTariffDisplay(): int
+    {
+        return $this->tariffDisplay;
+    }
+
+    /**
+     * @param int $tariffDisplay
+     */
+    public function setTariffDisplay(int $tariffDisplay): void
+    {
+        $this->tariffDisplay = $tariffDisplay;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDisplayText(): string
+    {
+        return $this->displayText;
+    }
+
+    /**
+     * @param string $displayText
+     */
+    public function setDisplayText(string $displayText): void
+    {
+        $this->displayText = $displayText;
+    }
+
+    /**
+     * @return int
+     */
+    public function getHideDisplay(): int
+    {
+        return $this->hideDisplay;
+    }
+
+    /**
+     * @param int $hideDisplay
+     */
+    public function setHideDisplay(int $hideDisplay): void
+    {
+        $this->hideDisplay = $hideDisplay;
+    }
+
 }

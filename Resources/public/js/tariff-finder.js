@@ -1,6 +1,8 @@
 import {travelConstantsEnglish} from "./travel-constant-i18n-en";
 import {travelConstantsGerman} from "./travel-constant-i18n-de";
 const langConstants = {};
+const objSettings = window.objSettings;
+
 /**
  * Initial function to enable user-input to the gui
  * @returns {void}}
@@ -16,8 +18,9 @@ $(document).ready(function() {
     else {
         $.extend(langConstants, travelConstantsEnglish);
     }
-
-    findTariffs();
+    if (!objSettings.hideDisplay) {
+        findTariffs();
+    }
 });
 function roundToTwo(num) {
     if (typeof num != "float") {
@@ -34,11 +37,13 @@ function findTariffs() {
     $.ajax({url:url})
         .done(function (data) {
             let parent = $(".tariff-output");
-            if (window.displayGrid === "1") {
-                parent.css('display','grid');
-            }
-            else {
-                parent.css('display','block');
+            if (objSettings.hideDisplay == 0) {
+                if (window.displayGrid === "1") {
+                    parent.css('display','grid');
+                }
+                else {
+                    parent.css('display','block');
+                }
             }
             let rowCount = "row-even";
 

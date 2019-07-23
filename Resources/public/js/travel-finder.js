@@ -403,6 +403,15 @@ function calculateExpenses () {
           }
         }
       }
+      if(objSettings.hideDisplay) {
+        let tariffs = $(".tariff-output");
+        if (window.displayGrid === "1") {
+          tariffs.css('display','grid');
+        }
+        else {
+          tariffs.css('display','block');
+        }
+      }
     })
   }
 }
