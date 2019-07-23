@@ -1,7 +1,7 @@
 "use strict";
-import {taxiConstantsEnglish} from "./taxi-constant-i18n-en";
-import {taxiConstantsGerman} from "./taxi-constant-i18n-de";
-import {taxiConstants} from "./taxi-constants.js";
+import {travelConstantsEnglish} from "./travel-constant-i18n-en";
+import {travelConstantsGerman} from "./travel-constant-i18n-de";
+import {travelConstants} from "./travel-constants.js";
 import {AlertHandler} from "./../../../../CoreBundle/Resources/public/js/AlertHandler";
 
 const $ = jQuery;
@@ -11,7 +11,7 @@ var arrFromNames = [];
 var arrFromPositions = [];
 var arrToNames = [];
 var arrToPositions = [];
-var taxiData = {
+var travelData = {
   routeFrom: {},
   routeTo: {}
 };
@@ -25,7 +25,7 @@ let routeToInput = null;
  * @returns {void}
  */
 function setRouteFrom(address) {
-  taxiData.routeFrom.adress = address;
+  travelData.routeFrom.adress = address;
 }
 
 /**
@@ -34,7 +34,7 @@ function setRouteFrom(address) {
  * @returns {void}
  */
 function setRouteTo(address) {
-  taxiData.routeTo.adress = address;
+  travelData.routeTo.adress = address;
 }
 
 /**
@@ -138,16 +138,16 @@ function handlePosition(coordinates, cssId, propName) {
     }
   }
   if (cssId === ".route-from") {
-    taxiData.routeFrom.loc = [coords.latitude, coords.longitude];
+    travelData.routeFrom.loc = [coords.latitude, coords.longitude];
   }
   else {
-    taxiData.routeTo.loc = [coords.latitude, coords.longitude];
+    travelData.routeTo.loc = [coords.latitude, coords.longitude];
   }
   let url = objSettings.proxyUrl + 'reverse.php?key='+ objSettings.keyReverse+'&format=json&lat=' + coords.latitude + '&lon=' + coords.longitude;
   $.ajax({url: url}).done(function(data) {
     let address = parseAddressString(data);
     $(cssId).val(address);
-    taxiData[propName].adress = address;
+    travelData[propName].adress = address;
   });
 }
 
@@ -294,12 +294,12 @@ function submitSearch(input, cssId) {
 
       if (data[0] && data[0].display_name && !falseResponse) {
         if (cssId === ".route-to") {
-          taxiData.routeTo.loc = [data[0].lat, data[0].lon];
+          travelData.routeTo.loc = [data[0].lat, data[0].lon];
         }
         else {
-          taxiData.routeFrom.loc = [data[0].lat, data[0].lon];
+          travelData.routeFrom.loc = [data[0].lat, data[0].lon];
         }
-        if (taxiData.routeFrom.loc.length > 0 && taxiData.routeTo.loc.length > 0) {
+        if (travelData.routeFrom.loc.length > 0 && travelData.routeTo.loc.length > 0) {
           if (!objSettings.submitButton) {
             calculateExpenses();
           }
@@ -323,8 +323,8 @@ function submitSearch(input, cssId) {
  * @returns {void}
  */
 function calculateExpenses () {
-  if (taxiData.routeFrom.loc && taxiData.routeTo.loc) {
-    let url = "con4gis/expenseService/" + objSettings.settingId + "/" + taxiData.routeFrom.loc[0] + "," + taxiData.routeFrom.loc[1] + ";" + taxiData.routeTo.loc[0] + "," + taxiData.routeTo.loc[1];
+  if (travelData.routeFrom.loc && travelData.routeTo.loc) {
+    let url = "con4gis/expenseService/" + objSettings.settingId + "/" + travelData.routeFrom.loc[0] + "," + travelData.routeFrom.loc[1] + ";" + travelData.routeTo.loc[0] + "," + travelData.routeTo.loc[1];
     $.ajax({url: url}).done(function(data) {
       let tableNode = $(".route-output");
       if (objSettings.displayGrid === 1) {
@@ -416,13 +416,13 @@ function calculateExpenses () {
 $(document).ready(function() {
   let language = objSettings.lang || objSettings.navigator.userLanguage || objSettings.navigator.language;
   if (language === "en") {
-    $.extend(langConstants, taxiConstantsEnglish)
+    $.extend(langConstants, travelConstantsEnglish)
   }
   else if (language === "de") {
-    $.extend(langConstants, taxiConstantsGerman);
+    $.extend(langConstants, travelConstantsGerman);
   }
   else {
-    $.extend(langConstants, taxiConstantsEnglish);
+    $.extend(langConstants, travelConstantsEnglish);
   }
   let objInputFrom = $(".route-from");
   if (objInputFrom[0]) {
@@ -463,7 +463,7 @@ $(document).ready(function() {
   objInputFrom.on('keydown', enterListener);
   objInputFrom.on('autocompleteselect', function(event, ui){
     let value = ui.item.value;
-    taxiData.routeFrom.loc = arrFromPositions[arrFromNames.findIndex(
+    travelData.routeFrom.loc = arrFromPositions[arrFromNames.findIndex(
       danger => danger === value
     )];
     if (!objSettings.submitButton) {
@@ -477,7 +477,7 @@ $(document).ready(function() {
   objInputTo.on('keydown', enterListener);
   objInputTo.on('autocompleteselect', function(event, ui){
     let value = ui.item.value;
-    taxiData.routeTo.loc = arrToPositions[arrToNames.findIndex(
+    travelData.routeTo.loc = arrToPositions[arrToNames.findIndex(
       danger => danger === value
     )];
     if (!objSettings.submitButton) {
@@ -498,12 +498,12 @@ $(document).ready(function() {
     let submitButton = document.getElementById('btn-submit-expense-calc');
     submitButton.innerText = langConstants.START_SEARCH;
     $(submitButton).on('click', function() {
-      if (taxiData.routeFrom.loc && taxiData.routeTo.loc) {
+      if (travelData.routeFrom.loc && travelData.routeTo.loc) {
         calculateExpenses();
       }
       else {
-        taxiData.routeFrom.loc = [];
-        taxiData.routeTo.loc = [];
+        travelData.routeFrom.loc = [];
+        travelData.routeTo.loc = [];
         submitSearch(objInputFrom, ".route-from");
         submitSearch(objInputTo, ".route-to");    }
     });

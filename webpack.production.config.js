@@ -1,7 +1,7 @@
 var path = require('path');
 var config = {
   entry: {
-    'taxi-finder':'./Resources/public/js/taxi-finder.js',
+    'travel-finder':'./Resources/public/js/travel-finder.js',
     'tariff-finder':'./Resources/public/js/tariff-finder.js',
   },
   mode: "production",

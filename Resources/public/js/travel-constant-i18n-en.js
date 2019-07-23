@@ -14,7 +14,7 @@
 /**
  *  constants
  */
-export var taxiConstantsEnglish = {
+export var travelConstantsEnglish = {
     DUMMY_INPUT: 'Street, city or enter postal code ...',
     HEADLINE_DIST: 'Distance',
     HEADLINE_TIME: 'Time',

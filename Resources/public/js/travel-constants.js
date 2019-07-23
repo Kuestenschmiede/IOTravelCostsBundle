@@ -14,7 +14,7 @@
 /**
  *  constants
  */
-export  var taxiConstants = {
+export  var travelConstants = {
     lol: 'Straße, Ort oder PLZ eingeben ...',
     NONE: '' // last line
 }; // end of "css constants" ---

@@ -1,5 +1,5 @@
-import {taxiConstantsEnglish} from "./taxi-constant-i18n-en";
-import {taxiConstantsGerman} from "./taxi-constant-i18n-de";
+import {travelConstantsEnglish} from "./travel-constant-i18n-en";
+import {travelConstantsGerman} from "./travel-constant-i18n-de";
 const langConstants = {};
 /**
  * Initial function to enable user-input to the gui
@@ -8,13 +8,13 @@ const langConstants = {};
 $(document).ready(function() {
     let language = window.serviceLang || window.navigator.userLanguage || window.navigator.language;
     if (language === "en") {
-        $.extend(langConstants, taxiConstantsEnglish)
+        $.extend(langConstants, travelConstantsEnglish)
     }
     else if (language === "de") {
-        $.extend(langConstants, taxiConstantsGerman);
+        $.extend(langConstants, travelConstantsGerman);
     }
     else {
-        $.extend(langConstants, taxiConstantsEnglish);
+        $.extend(langConstants, travelConstantsEnglish);
     }
 
     findTariffs();
