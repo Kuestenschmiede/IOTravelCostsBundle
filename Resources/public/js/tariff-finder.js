@@ -43,6 +43,7 @@ function findTariffs() {
             objHeadlineTimePrice.html(langConstants.HEADLINE_TIME_PRICE);
             let objHeadlineBasePrice = $(".headline-base-price");
             objHeadlineBasePrice.html(langConstants.HEADLINE_BASE_PRICE);
+            let headlineSet = false;
             for (let i in data) {
                 if (data.hasOwnProperty(i)) {
                     if (window.displayGrid === "1") {
@@ -73,19 +74,21 @@ function findTariffs() {
                             for (let priceIndex in data[i]['distPrice']) {
                                 if (data[i]['distPrice'].hasOwnProperty(priceIndex)) {
                                     let priceElement = data[i]['distPrice'][priceIndex];
-                                    let headLineHtml = langConstants.HEADLINE_DIST_PRICE + '<br>' + priceElement['name'];
-                                    if (priceIndex === "0") {
-                                        let objHeadlineDistPrice = $(".headline-dist-price");
-                                        objHeadlineDistPrice.html(headLineHtml);
+                                    if (!headlineSet) {
+                                        let headLineHtml = langConstants.HEADLINE_DIST_PRICE + '<br>' + priceElement['name'];
+                                        if (priceIndex === "0") {
+                                            let objHeadlineDistPrice = $(".headline-dist-price");
+                                            objHeadlineDistPrice.html(headLineHtml);
+                                        }
+                                        else {
+                                            let parent = $(".headline-dist-price").last();
+                                            let addHeadline = document.createElement('div');
+                                            addHeadline.className = "headline-dist-price grid-item";
+                                            addHeadline.innerHTML = headLineHtml;
+                                            parent.after(addHeadline);
+                                        }
+                                    }
 
-                                    }
-                                    else {
-                                        let parent = $(".headline-dist-price").last();
-                                        let addHeadline = document.createElement('div');
-                                        addHeadline.className = "headline-dist-price grid-item";
-                                        addHeadline.innerHTML = headLineHtml;
-                                        parent.after(addHeadline);
-                                    }
                                     let itemDistPrice = document.createElement('div');
                                     if (priceElement['kilometerPrice'] % 1 !== 0) {
                                         let responseTariff = priceElement['kilometerPrice'] + "0000";
@@ -107,6 +110,7 @@ function findTariffs() {
                                     autoauto += " auto";
                                 }
                             }
+                            headlineSet = true;
                         }
                         else {
                             let itemDistPrice = document.createElement('div');
