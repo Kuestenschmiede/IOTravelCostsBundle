@@ -70,7 +70,7 @@ $GLOBALS['TL_DCA'][$strName] = array
     // Palettes
     'palettes' => [
         '__selector__' => ['router_api_selection'],
-        'default' => '{general_legend},caption;{bbox_legend},startBboxUpperx,startBboxUppery,startBboxDownerx,startBboxDownery;{tariffLegend},tariffs;{controlLegend},displayGrid,withPositionButton,withSubmitButton,withDeleteButton,distPrice;{centerLegend},centerx,centery;'
+        'default' => '{general_legend},caption;{bbox_legend:hide},startBboxUpperx,startBboxUppery,startBboxDownerx,startBboxDownery;{tariffLegend},tariffs;{controlLegend},displayGrid,withPositionButton,withSubmitButton,withDeleteButton,distPrice;{centerLegend},centerx,centery;{customMsgLegend:hide},errorMessageBounds,errorMessageNotFound,searchPlaceholder'
     ],
 
 
@@ -188,6 +188,24 @@ $GLOBALS['TL_DCA'][$strName] = array
             'save_callback' => [['tl_c4g_travel_costs_settings', 'setLat']],
             'inputType' => 'c4g_text',
             'eval' => ['maxlength' => 20, 'tl_class' => 'w50 wizard', 'require_input' => true]
+        ],
+        'errorMessageBounds' => [
+            'label' => &$GLOBALS['TL_LANG'][$strName]['errorMessageBounds'],
+            'default' => '',
+            'inputType' => 'text',
+            'eval' => ['decodeEntities' => true, 'tl_class' => 'long'],
+        ],
+        'errorMessageNotFound' => [
+            'label' => &$GLOBALS['TL_LANG'][$strName]['errorMessageNotFound'],
+            'default' => '',
+            'inputType' => 'text',
+            'eval' => ['decodeEntities' => true, 'tl_class' => 'long'],
+        ],
+        'searchPlaceholder' => [
+            'label' => &$GLOBALS['TL_LANG'][$strName]['searchPlaceholder'],
+            'default' => '',
+            'inputType' => 'text',
+            'eval' => ['decodeEntities' => true, 'tl_class' => 'long'],
         ],
     ]
 );

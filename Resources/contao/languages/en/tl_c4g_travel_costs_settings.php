@@ -26,6 +26,9 @@ $GLOBALS['TL_LANG'][$strName]['withDeleteButton'] = ['Button to delete', 'Button
 $GLOBALS['TL_LANG'][$strName]['distPrice'] = ['Type of cost calculation', 'Type of cost calculation for the distance.'];
 $GLOBALS['TL_LANG'][$strName]['centerx'] = ['Longitude of the center', 'Longitude of the focus for the search.'];
 $GLOBALS['TL_LANG'][$strName]['centery'] = ['Latitude of the center', 'Latitude of the focus for the search.'];
+$GLOBALS['TL_LANG'][$strName]['errorMessageBounds'] = ['Error message: Out of Bounds', 'Enter your custom error message, if the address is out of bounds.'];
+$GLOBALS['TL_LANG'][$strName]['errorMessageNotFound'] = ['Error message: Address not found', 'Enter your custom error message, if no matching address is found.'];
+$GLOBALS['TL_LANG'][$strName]['searchPlaceholder'] = ['Placeholder for search', 'Enter a custom placeholder for the search input.'];
 
 /**
  * References
@@ -39,6 +42,7 @@ $GLOBALS['TL_LANG'][$strName]['bbox_legend'] = 'Limit with boundingbox';
 $GLOBALS['TL_LANG'][$strName]['tariffLegend'] = 'Pick your tariffs';
 $GLOBALS['TL_LANG'][$strName]['controlLegend'] = 'Customize your controls';
 $GLOBALS['TL_LANG'][$strName]['centerLegend'] = 'Focus search with center';
+$GLOBALS['TL_LANG'][$strName]['customMsgLegend'] = 'Custom Messages';
 
 
 

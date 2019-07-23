@@ -136,6 +136,23 @@ class TravelCostsSettings extends BaseEntity
     protected $centery = '';
 
     /**
+     * @var string
+     * @ORM\Column(type="string")
+     */
+    protected $errorMessageBounds = '';
+
+    /**
+     * @var string
+     * @ORM\Column(type="string")
+     */
+    protected $errorMessageNotFound = '';
+    /**
+     * @var string
+     * @ORM\Column(type="string")
+     */
+    protected $searchPlaceholder = '';
+
+    /**
      * @return int
      */
     public function getId(): int
@@ -421,5 +438,53 @@ class TravelCostsSettings extends BaseEntity
     public function setCentery(string $centery): void
     {
         $this->centery = $centery;
+    }
+
+    /**
+     * @return string
+     */
+    public function getErrorMessageBounds(): string
+    {
+        return $this->errorMessageBounds;
+    }
+
+    /**
+     * @param string $errorMessageBounds
+     */
+    public function setErrorMessageBounds(string $errorMessageBounds): void
+    {
+        $this->errorMessageBounds = $errorMessageBounds;
+    }
+
+    /**
+     * @return string
+     */
+    public function getErrorMessageNotFound(): string
+    {
+        return $this->errorMessageNotFound;
+    }
+
+    /**
+     * @param string $errorMessageNotFound
+     */
+    public function setErrorMessageNotFound(string $errorMessageNotFound): void
+    {
+        $this->errorMessageNotFound = $errorMessageNotFound;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSearchPlaceholder(): string
+    {
+        return $this->searchPlaceholder;
+    }
+
+    /**
+     * @param string $searchPlaceholder
+     */
+    public function setSearchPlaceholder(string $searchPlaceholder): void
+    {
+        $this->searchPlaceholder = $searchPlaceholder;
     }
 }

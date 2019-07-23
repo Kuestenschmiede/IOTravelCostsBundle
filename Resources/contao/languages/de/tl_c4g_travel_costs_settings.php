@@ -25,6 +25,9 @@ $GLOBALS['TL_LANG'][$strName]['withDeleteButton'] = ['Knopf zum Löschen', 'Knop
 $GLOBALS['TL_LANG'][$strName]['distPrice'] = ['Art der Kostenberechnung', 'Art der Kostenberechnung für die Distanz.'];
 $GLOBALS['TL_LANG'][$strName]['centerx'] = ['Längengrad des Zentrums', 'Längengrad des Zentrums, auf den die Suche fokussiert sein soll.'];
 $GLOBALS['TL_LANG'][$strName]['centery'] = ['Breitengrad des Zentrums', 'Breitengrad des Zentrums, auf den die Suche fokussiert sein soll.'];
+$GLOBALS['TL_LANG'][$strName]['errorMessageBounds'] = ['Fehler-Text: Außerhalb der Bounding-Box', 'Geben Sie hier einen eigenen Fehlertext ein, falls die Adresse außerhalb der gewählten Bounding-Box liegt.'];
+$GLOBALS['TL_LANG'][$strName]['errorMessageNotFound'] = ['Fehler-Text: Adresse nicht gefunden', 'Geben Sie hier einen eigenen Fehlertext ein, falls die Adresse nicht gefunden wird.'];
+$GLOBALS['TL_LANG'][$strName]['searchPlaceholder'] = ['Platzhalter der Suche', 'Geben Sie hier einen eigenen Platzhalter für die Suche ein.'];
 
 /**
  * References
@@ -38,6 +41,7 @@ $GLOBALS['TL_LANG'][$strName]['bbox_legend'] = 'Begrenzung durch Boundingbox';
 $GLOBALS['TL_LANG'][$strName]['tariffLegend'] = 'Wähle die zugehörigen Tarife';
 $GLOBALS['TL_LANG'][$strName]['controlLegend'] = 'Einstellungen der Oberfläche';
 $GLOBALS['TL_LANG'][$strName]['centerLegend'] = 'Fokus der Suche';
+$GLOBALS['TL_LANG'][$strName]['customMsgLegend'] = 'Benutzerdefinierte Nachrichten';
 
 /**
  * Buttons

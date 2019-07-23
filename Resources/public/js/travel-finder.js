@@ -1,7 +1,6 @@
 "use strict";
 import {travelConstantsEnglish} from "./travel-constant-i18n-en";
 import {travelConstantsGerman} from "./travel-constant-i18n-de";
-import {travelConstants} from "./travel-constants.js";
 import {AlertHandler} from "./../../../../CoreBundle/Resources/public/js/AlertHandler";
 
 const $ = jQuery;
@@ -291,7 +290,7 @@ function submitSearch(input, cssId) {
     if (data.length > 0) {
       if (objSettings.bBox && objSettings.bBox[0]) {
         if (!isInBoundingBox(data[0].lon, data[0].lat)) {
-          falseResponse = langConstants.ERROR_OUT_OF_BOUNDS;
+          falseResponse = objSettings.errMsgBounds || langConstants.ERROR_OUT_OF_BOUNDS;
         }
       }
 
@@ -310,13 +309,17 @@ function submitSearch(input, cssId) {
       }
     }
     else {
-      falseResponse = langConstants.ERROR_FALSE_ADDRESS;
+      falseResponse = objSettings.errMsgNotFound || langConstants.ERROR_FALSE_ADDRESS;
     }
     if (falseResponse) {
       let alertHandler = new AlertHandler();
       alertHandler.showInfoDialog(langConstants.ERROR, falseResponse);
     }
-  });
+  })
+      .fail(function(){
+        let alertHandler = new AlertHandler();
+        alertHandler.showInfoDialog(langConstants.ERROR, objSettings.errMsgNotFound || langConstants.ERROR_FALSE_ADDRESS);
+      });
 
 }
 
@@ -421,11 +424,11 @@ $(document).ready(function() {
   }
   let objInputFrom = $(".route-from");
   if (objInputFrom[0]) {
-    objInputFrom[0].placeholder = langConstants.DUMMY_INPUT;
+    objInputFrom[0].placeholder = objSettings.searchPlaceholder || langConstants.DUMMY_INPUT;
   }
   let objInputTo = $(".route-to");
   if (objInputTo[0]) {
-    objInputTo[0].placeholder = langConstants.DUMMY_INPUT;
+    objInputTo[0].placeholder = objSettings.searchPlaceholder || langConstants.DUMMY_INPUT;
   }
   let objHeadlineDist = $(".headline-dist");
   objHeadlineDist.html(langConstants.HEADLINE_DIST);
@@ -441,14 +444,34 @@ $(document).ready(function() {
       // event.stopPropagation();
       // event.preventDefault();
     } else {
-      let currTime = Math.floor(Date.now());
-      scope.counter = currTime;
-      setTimeout(function() {
-        if (scope.counter && scope.counter + 400 < Math.floor(Date.now())) {
-          delete scope.counter;
-          autocompleteAddress($(scope).val(), "." + scope.classList[0]);
+      if ($(scope).val().length == 0 && !event.keyCode) {
+        let tableNode = $(".route-output");
+        let cssClass = scope.classList[0];
+        if (cssClass === "route-from") {
+          travelData.routeFrom = {};
+          arrFromNames = [];
+          arrFromPositions = [];
         }
-      },500);
+        else if (cssClass === "route-to"){
+          travelData.routeTo = {};
+          arrToNames = [];
+          arrToPositions = [];
+        }
+        else{
+          console.log("This is weird");
+        }
+        tableNode.css("display","none");
+      }
+      else {
+        let currTime = Math.floor(Date.now());
+        scope.counter = currTime;
+        setTimeout(function() {
+          if (scope.counter && scope.counter + 400 < Math.floor(Date.now())) {
+            delete scope.counter;
+            autocompleteAddress($(scope).val(), "." + scope.classList[0]);
+          }
+        },500);
+      }
     }
   };
 
@@ -456,6 +479,9 @@ $(document).ready(function() {
     source: arrFromNames
   });
   objInputFrom.on('keydown', enterListener);
+  if (objSettings.delButton) {
+    objInputFrom.on('search', enterListener);
+  }
   objInputFrom.on('autocompleteselect', function(event, ui){
     let value = ui.item.value;
     travelData.routeFrom.loc = arrFromPositions[arrFromNames.findIndex(

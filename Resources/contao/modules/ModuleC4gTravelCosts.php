@@ -99,6 +99,9 @@ class ModuleC4gTravelCosts extends \Module
             if ($tariffConfig->getCenterX() && $tariffConfig->getCenterY()) {
                 $arrSettings['center'] = [$tariffConfig->getCenterX(), $tariffConfig->getCenterY()];
             }
+            $arrSettings['errMsgBounds'] = $tariffConfig->getErrorMessageBounds();
+            $arrSettings['errMsgNotFound'] = $tariffConfig->getErrorMessageNotFound();
+            $arrSettings['searchPlaceholder'] = $tariffConfig->getSearchPlaceholder();
             $arrSettings['displayGrid'] = $tariffConfig->getDisplayGrid();
             $arrSettings['posButton'] = $tariffConfig->getWithPositionButton();
             $arrSettings['delButton'] = $tariffConfig->getWithDeleteButton();
