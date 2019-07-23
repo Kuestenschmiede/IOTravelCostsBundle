@@ -16,9 +16,12 @@ var travelData = {
   routeTo: {}
 };
 
-let routeFromInput = null;
-let routeToInput = null;
-
+function roundToTwo(num) {
+  if (typeof num != "float") {
+    num = parseFloat(num);
+  }
+  return +(Math.round(num + "e+2")  + "e-2");
+}
 /**
  * Saves the string of the start address to the script-scoped variable
  * @param address     String for start address
@@ -353,17 +356,11 @@ function calculateExpenses () {
           nodeName.insertAfter(insertAfterHead);
           insertAfterHead = nodeName;
           let responseElement = $(document.createElement('div'));
-          let responseTariff = data.tariffs[tariffName] + "";
-          let indexDecimal;
+          let responseTariff = roundToTwo(data.tariffs[tariffName]) + "";
           if (objSettings.lang === "de") {
             responseTariff = responseTariff.replace(".",",");
-            indexDecimal = responseTariff.indexOf(',') + 3;
           }
-          else {
-            indexDecimal = responseTariff.indexOf('.') + 3;
-
-          }
-          responseElement.html(responseTariff.substring(0, indexDecimal) + " €");
+          responseElement.html(responseTariff + " €");
           responseElement.addClass("response-value");
           responseElement.addClass("grid-item");
           responseElement.insertAfter(insertAfterVal);

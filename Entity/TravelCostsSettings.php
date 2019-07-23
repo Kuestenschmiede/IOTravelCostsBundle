@@ -107,6 +107,12 @@ class TravelCostsSettings extends BaseEntity
 
     /**
      * @var int
+     * @ORM\Column(type="integer")
+     */
+    protected $withDeleteButton = '0';
+
+    /**
+     * @var int
      * @ORM\Column(type="blob")
      */
     protected $blob = '';
@@ -351,6 +357,22 @@ class TravelCostsSettings extends BaseEntity
     public function setWithSubmitButton(int $withSubmitButton): void
     {
         $this->withSubmitButton = $withSubmitButton;
+    }
+
+    /**
+     * @return int
+     */
+    public function getWithDeleteButton(): int
+    {
+        return $this->withDeleteButton;
+    }
+
+    /**
+     * @param int $withDeleteButton
+     */
+    public function setWithDeleteButton(int $withDeleteButton): void
+    {
+        $this->withDeleteButton = $withDeleteButton;
     }
 
     /**

@@ -4,7 +4,11 @@
             <?php if ($this->arrSettings['posButton']): ?>
             <button class="route-from-geolocation" title="Get user position"></button>
             <?php endif; ?>
-            <input type="text" class="route-from" name="routeFrom">
+            <?php if ($this->arrSettings['delButton']): ?>
+            <input type="search" class="route-from ui-autocomplete-input" name="routeFrom">
+            <?php else: ?>
+            <input type="text" class="route-from ui-autocomplete-input" name="routeFrom">
+            <?php endif; ?>
         </div>
     </div>
     <div class="route-to-input">
@@ -12,7 +16,11 @@
             <?php if ($this->arrSettings['posButton']): ?>
             <button class="route-to-geolocation" title="Get user position"></button>
             <?php endif; ?>
+            <?php if ($this->arrSettings['delButton']): ?>
+            <input type="search" class="route-to ui-autocomplete-input" name="routeTo">
+            <?php else: ?>
             <input type="text" class="route-to ui-autocomplete-input" name="routeTo">
+            <?php endif; ?>
         </div>
     </div>
     <?php if ($this->arrSettings['submitButton']): ?>

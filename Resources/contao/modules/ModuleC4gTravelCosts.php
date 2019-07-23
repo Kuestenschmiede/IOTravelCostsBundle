@@ -101,6 +101,7 @@ class ModuleC4gTravelCosts extends \Module
             }
             $arrSettings['displayGrid'] = $tariffConfig->getDisplayGrid();
             $arrSettings['posButton'] = $tariffConfig->getWithPositionButton();
+            $arrSettings['delButton'] = $tariffConfig->getWithDeleteButton();
             $arrSettings['submitButton'] = $tariffConfig->getWithSubmitButton();
         }
         $language = Controller::replaceInsertTags("{{page::language}}");

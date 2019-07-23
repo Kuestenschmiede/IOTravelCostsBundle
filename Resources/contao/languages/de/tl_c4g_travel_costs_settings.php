@@ -21,6 +21,7 @@ $GLOBALS['TL_LANG'][$strName]['tariffs'] = ['Tarife auswählen', 'Wählen Sie di
 $GLOBALS['TL_LANG'][$strName]['displayGrid'] = ['Als Grid anzeigen', 'Bei aktivierter Checkbox werden die Daten in einem HTML-Grid dargestellt. Anderenfalls werden table-Elemente verwendet.'];
 $GLOBALS['TL_LANG'][$strName]['withPositionButton'] = ['Knopf für aktuellen Standort', 'Aktuellen Standort für Bestimmung der Adresse benutzen.'];
 $GLOBALS['TL_LANG'][$strName]['withSubmitButton'] = ['Knopf für Berechnung', 'Knopf für Berechnung anzeigen.'];
+$GLOBALS['TL_LANG'][$strName]['withDeleteButton'] = ['Knopf zum Löschen', 'Knopf zum Löschen der Eingabe.'];
 $GLOBALS['TL_LANG'][$strName]['distPrice'] = ['Art der Kostenberechnung', 'Art der Kostenberechnung für die Distanz.'];
 $GLOBALS['TL_LANG'][$strName]['centerx'] = ['Längengrad des Zentrums', 'Längengrad des Zentrums, auf den die Suche fokussiert sein soll.'];
 $GLOBALS['TL_LANG'][$strName]['centery'] = ['Breitengrad des Zentrums', 'Breitengrad des Zentrums, auf den die Suche fokussiert sein soll.'];
@@ -32,8 +33,11 @@ $GLOBALS['TL_LANG'][$strName]['references']['distPrice'][0] = 'Preis für Entfer
 $GLOBALS['TL_LANG'][$strName]['references']['distPrice'][1] = 'Gesamtstrecke bestimmt Kilometerpreis';
 
 /** legend */
-$GLOBALS['TL_LANG'][$strName]['bbox_legend'] = 'Begrenzung durch Boundingbox';
 $GLOBALS['TL_LANG'][$strName]['general_legend'] = 'Allgemeine Einstellungen';
+$GLOBALS['TL_LANG'][$strName]['bbox_legend'] = 'Begrenzung durch Boundingbox';
+$GLOBALS['TL_LANG'][$strName]['tariffLegend'] = 'Wähle die zugehörigen Tarife';
+$GLOBALS['TL_LANG'][$strName]['controlLegend'] = 'Einstellungen der Oberfläche';
+$GLOBALS['TL_LANG'][$strName]['centerLegend'] = 'Fokus der Suche';
 
 /**
  * Buttons

@@ -22,6 +22,7 @@ $GLOBALS['TL_LANG'][$strName]['tariffs'] = ['Choose tariffs', 'Choose the tariff
 $GLOBALS['TL_LANG'][$strName]['displayGrid'] = ['Show as grid', 'Show the data as HTML-Grid.'];
 $GLOBALS['TL_LANG'][$strName]['withPositionButton'] = ['Button for device position', 'Show a button to use the current position for locating the user.'];
 $GLOBALS['TL_LANG'][$strName]['withSubmitButton'] = ['Button for calculation', 'Show a button to calculate the travel costs'];
+$GLOBALS['TL_LANG'][$strName]['withDeleteButton'] = ['Button to delete', 'Button to delete your search.'];
 $GLOBALS['TL_LANG'][$strName]['distPrice'] = ['Type of cost calculation', 'Type of cost calculation for the distance.'];
 $GLOBALS['TL_LANG'][$strName]['centerx'] = ['Longitude of the center', 'Longitude of the focus for the search.'];
 $GLOBALS['TL_LANG'][$strName]['centery'] = ['Latitude of the center', 'Latitude of the focus for the search.'];
@@ -33,8 +34,13 @@ $GLOBALS['TL_LANG'][$strName]['references']['distPrice'][0] = 'Price for the dis
 $GLOBALS['TL_LANG'][$strName]['references']['distPrice'][1] = 'The whole distance sets the price';
 
 /** legend */
+$GLOBALS['TL_LANG'][$strName]['general_legend'] = 'General settings';
 $GLOBALS['TL_LANG'][$strName]['bbox_legend'] = 'Limit with boundingbox';
-$GLOBALS['TL_LANG'][$strName]['general_legend'] = 'Generell settings';
+$GLOBALS['TL_LANG'][$strName]['tariffLegend'] = 'Pick your tariffs';
+$GLOBALS['TL_LANG'][$strName]['controlLegend'] = 'Customize your controls';
+$GLOBALS['TL_LANG'][$strName]['centerLegend'] = 'Focus search with center';
+
+
 
 /**
  * Buttons
