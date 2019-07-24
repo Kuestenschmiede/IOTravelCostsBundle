@@ -70,7 +70,7 @@ $GLOBALS['TL_DCA'][$strName] = array
     // Palettes
     'palettes' => [
         '__selector__' => ['tariffDisplay'],
-        'default' => '{general_legend},caption;{bbox_legend:hide},startBboxUpperx,startBboxUppery,startBboxDownerx,startBboxDownery;{tariffLegend},tariffs;{controlLegend},displayGrid,withPositionButton,withSubmitButton,withDeleteButton,distPrice;{centerLegend},centerx,centery;{customMsgLegend:hide},errorMessageBounds,errorMessageNotFound,searchPlaceholder,language;{descriptionLegend},tariffDisplay,hideDisplay;'
+        'default' => '{general_legend},caption;{bbox_legend:hide},startBboxUpperx,startBboxUppery,startBboxDownerx,startBboxDownery;{tariffLegend},tariffs;{controlLegend},displayGrid,withPositionButton,withSubmitButton,withDeleteButton,distPrice;{centerLegend},centerx,centery;{customMsgLegend:hide},errorMessageBounds,errorMessageNotFound,searchPlaceholder,language,currency;{descriptionLegend},tariffDisplay,hideDisplay;'
     ],
 
 
@@ -214,6 +214,12 @@ $GLOBALS['TL_DCA'][$strName] = array
             'reference' => &$GLOBALS['TL_LANG'][$strName]['references']['language'],
             'eval' => ['submitOnChange' => true],
             'inputType' => 'radio',
+        ],
+        'currency' => [
+            'label' => &$GLOBALS['TL_LANG'][$strName]['currency'],
+            'default' => '€',
+            'inputType' => 'text',
+            'eval' => ['maxlength' => 1, 'mandatory' => tr]
         ],
         'tariffDisplay' => [
             'label' => &$GLOBALS['TL_LANG'][$strName]['tariffDisplay'],

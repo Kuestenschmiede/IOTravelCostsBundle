@@ -6,6 +6,7 @@ import {AlertHandler} from "./../../../../CoreBundle/Resources/public/js/AlertHa
 const $ = jQuery;
 const langConstants = {};
 const objSettings = window.objSettings;
+const currency = objSettings.currency || "€";
 var arrFromNames = [];
 var arrFromPositions = [];
 var arrToNames = [];
@@ -361,7 +362,7 @@ function calculateExpenses () {
           if (objSettings.lang === "de") {
             responseTariff = responseTariff.replace(".",",");
           }
-          responseElement.html(responseTariff + " €");
+          responseElement.html(responseTariff + " " + currency);
           responseElement.addClass("response-value");
           responseElement.addClass("grid-item");
           responseElement.insertAfter(insertAfterVal);
@@ -396,7 +397,7 @@ function calculateExpenses () {
             let responseTariff = data.tariffs[tariffName] + "";
             responseTariff = responseTariff.replace(".",",");
             let indexDecimal = responseTariff.indexOf(',') + 3;
-            responseElement.innerHTML = responseTariff.substring(0, indexDecimal) + " €";
+            responseElement.innerHTML = responseTariff.substring(0, indexDecimal) + " " + currency;
             $(responseElement).addClass("response-value");
             headlindeNode.append(headlineElement);
             responseNode.append(responseElement);

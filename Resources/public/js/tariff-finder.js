@@ -2,6 +2,7 @@ import {travelConstantsEnglish} from "./travel-constant-i18n-en";
 import {travelConstantsGerman} from "./travel-constant-i18n-de";
 const langConstants = {};
 const objSettings = window.objSettings;
+const currency = window.currency || '€';
 
 /**
  * Initial function to enable user-input to the gui
@@ -67,10 +68,10 @@ function findTariffs() {
                             if (window.serviceLang === "de") {
                                 responseTariff = responseTariff.replace(".",",");
                             }
-                            itemBasePrice.innerHTML = responseTariff + " €";
+                            itemBasePrice.innerHTML = responseTariff + " " + currency;
                         }
                         else {
-                            itemBasePrice.innerHTML = data[i].basePrice + '€';
+                            itemBasePrice.innerHTML = data[i].basePrice + " " + currency;
                         }
                         itemBasePrice.className = "grid-item " + rowCount;
                         parent.append(itemBasePrice);
@@ -100,10 +101,10 @@ function findTariffs() {
                                         if (window.serviceLang === "de") {
                                             responseTariff = responseTariff.replace(".",",");
                                         }
-                                        itemDistPrice.innerHTML = responseTariff + " €";
+                                        itemDistPrice.innerHTML = responseTariff + " " + currency;
                                     }
                                     else {
-                                        itemDistPrice.innerHTML = priceElement['kilometerPrice'] + '€';
+                                        itemDistPrice.innerHTML = priceElement['kilometerPrice'] + " " + currency;
                                     }
                                     itemDistPrice.className = "grid-item " + rowCount;
                                     parent.append(itemDistPrice);
@@ -117,7 +118,7 @@ function findTariffs() {
                             let responseTariff = data[i].distPrice[0]['kilometerPrice'];
                             responseTariff = responseTariff.replace(".",",");
                             let indexDecimal = responseTariff.indexOf(',') + 3;
-                            itemDistPrice.innerHTML = responseTariff.substring(0, indexDecimal) + " €";
+                            itemDistPrice.innerHTML = responseTariff.substring(0, indexDecimal) + " " + currency;
                             itemDistPrice.className = "grid-item " + rowCount;
                             parent.append(itemDistPrice);
                         }
@@ -133,10 +134,10 @@ function findTariffs() {
                                 else {
                                     indexDecimal = responseTariff.indexOf('.') + 3;
                                 }
-                                itemTimePrice.innerHTML = responseTariff.substring(0, indexDecimal) + " €";
+                                itemTimePrice.innerHTML = responseTariff.substring(0, indexDecimal) + " " + currency;
                             }
                             else {
-                                itemTimePrice.innerHTML = data[i].timePrice +'€';
+                                itemTimePrice.innerHTML = data[i].timePrice + " " + currency;
                             }
                             itemTimePrice.className = "grid-item " + rowCount;
                             parent.append(itemTimePrice);
@@ -151,7 +152,7 @@ function findTariffs() {
                     }
                     else {
                         let elementRow = document.createElement('tr');
-                        elementRow.innerHTML = "<th>" + i + "</th>" + "<td>"+ data[i].basePrice + "€</td>" + "<td>"+ data[i].distPrice + "€</td>" + "<td>" + data[i].timePrice + "€</td>"
+                        elementRow.innerHTML = "<th>" + i + "</th>" + "<td>"+ data[i].basePrice + " " + currency+ "</td>" + "<td>"+ data[i].distPrice + " " + currency+ "</td>" + data[i].timePrice +" " + currency+ "</td>";
                         parent.append(elementRow);
                     }
                 }

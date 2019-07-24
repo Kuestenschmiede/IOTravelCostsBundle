@@ -36,4 +36,5 @@
     window.settingId = "<?php echo $this->settingId ?>";
     window.displayGrid = "<?php echo $this->displayGrid ?>";
     window.serviceLang = "<?php echo $this->lang ?>";
+    window.currency = "<?php echo $this->currency ?>";
 </script>

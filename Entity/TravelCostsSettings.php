@@ -159,6 +159,11 @@ class TravelCostsSettings extends BaseEntity
     protected $language = 0;
 
     /**
+     * @var string
+     * @ORM\Column(type="string")
+     */
+    protected $currency = '€';
+    /**
      * @var int
      * @ORM\Column(type="integer")
      */
@@ -574,5 +579,21 @@ class TravelCostsSettings extends BaseEntity
     public function setHideDisplay(int $hideDisplay): void
     {
         $this->hideDisplay = $hideDisplay;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCurrency(): string
+    {
+        return $this->currency;
+    }
+
+    /**
+     * @param string $currency
+     */
+    public function setCurrency(string $currency): void
+    {
+        $this->currency = $currency;
     }
 }

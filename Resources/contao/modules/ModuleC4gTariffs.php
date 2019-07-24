@@ -73,6 +73,7 @@ class ModuleC4gTariffs extends \Module
         $template->tariffDisplay = $tariffConfig->getTariffDisplay();
         $template->hideDisplay = $tariffConfig->getHideDisplay();
         $template->customText = $tariffConfig->getDisplayText();
+        $template->currency = $tariffConfig->getCurrency();
         if ($tariffConfig->getLanguage()) {
             $language = $tariffConfig->getLanguage() === 1 ? "en" : "de";
         }

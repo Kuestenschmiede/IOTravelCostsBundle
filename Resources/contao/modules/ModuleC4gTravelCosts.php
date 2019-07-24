@@ -108,6 +108,7 @@ class ModuleC4gTravelCosts extends \Module
             $arrSettings['submitButton'] = $tariffConfig->getWithSubmitButton();
             $arrSettings['hideDisplay'] = $tariffConfig->getHideDisplay();
             $arrSettings['displayType'] = $tariffConfig->getTariffDisplay();
+            $arrSettings['currency'] = $tariffConfig->getCurrency();
         }
         if ($tariffConfig->getLanguage()) {
              $language = $tariffConfig->getLanguage() === 1 ? "en" : "de";
