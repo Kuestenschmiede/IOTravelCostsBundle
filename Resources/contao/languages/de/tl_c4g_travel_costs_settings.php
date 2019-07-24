@@ -31,6 +31,7 @@ $GLOBALS['TL_LANG'][$strName]['searchPlaceholder'] = ['Platzhalter der Suche', '
 $GLOBALS['TL_LANG'][$strName]['tariffDisplay'] = ['Art der Darstellung', 'Art der Darstellung der Tarife.'];
 $GLOBALS['TL_LANG'][$strName]['displayText'] = ['Benutzerdefinierte Tarifbeschreibung', 'Geben Sie hier die benutzerdefinierte Tarifbeschreibung ein.'];
 $GLOBALS['TL_LANG'][$strName]['hideDisplay'] = ['Tarifbeschreibung nachladen', 'Laden der Tarifbeschreibung erst nach erfolgreicher Berechnung von Fahrtkosten.'];
+$GLOBALS['TL_LANG'][$strName]['language'] = ['Sprache', 'Sprache anpassen.'];
 
 
 
@@ -39,8 +40,15 @@ $GLOBALS['TL_LANG'][$strName]['hideDisplay'] = ['Tarifbeschreibung nachladen', '
  */
 $GLOBALS['TL_LANG'][$strName]['references']['distPrice'][0] = 'Preis für Entfernung entsprechend der Angaben (bspw. für Taxi-Fahrtpreis)';
 $GLOBALS['TL_LANG'][$strName]['references']['distPrice'][1] = 'Gesamtstrecke bestimmt Kilometerpreis';
+
 $GLOBALS['TL_LANG'][$strName]['references']['tariffDisplay'][0] = 'Automatische Darstellung';
 $GLOBALS['TL_LANG'][$strName]['references']['tariffDisplay'][1] = 'Benutzerdefinierte Darstellung';
+
+$GLOBALS['TL_LANG'][$strName]['references']['language'][0] = 'Browsersprache';
+$GLOBALS['TL_LANG'][$strName]['references']['language'][1] = 'Englisch';
+$GLOBALS['TL_LANG'][$strName]['references']['language'][2] = 'Deutsch';
+
+
 
 /** legend */
 $GLOBALS['TL_LANG'][$strName]['general_legend'] = 'Allgemeine Einstellungen';

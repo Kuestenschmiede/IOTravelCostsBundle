@@ -156,6 +156,12 @@ class TravelCostsSettings extends BaseEntity
      * @var int
      * @ORM\Column(type="integer")
      */
+    protected $language = 0;
+
+    /**
+     * @var int
+     * @ORM\Column(type="integer")
+     */
     protected $tariffDisplay = '';
 
     /**
@@ -509,6 +515,22 @@ class TravelCostsSettings extends BaseEntity
     /**
      * @return int
      */
+    public function getLanguage(): int
+    {
+        return $this->language;
+    }
+
+    /**
+     * @param int $language
+     */
+    public function setLanguage(int $language): void
+    {
+        $this->language = $language;
+    }
+
+    /**
+     * @return int
+     */
     public function getTariffDisplay(): int
     {
         return $this->tariffDisplay;
@@ -553,5 +575,4 @@ class TravelCostsSettings extends BaseEntity
     {
         $this->hideDisplay = $hideDisplay;
     }
-
 }

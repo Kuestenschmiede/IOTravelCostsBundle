@@ -68,11 +68,17 @@ class ModuleC4gTariffs extends \Module
             }
             $template->displayGrid = $tariffConfig->getDisplayGrid();
             $template->posButton = $tariffConfig->getWithPositionButton();
+
         }
         $template->tariffDisplay = $tariffConfig->getTariffDisplay();
         $template->hideDisplay = $tariffConfig->getHideDisplay();
         $template->customText = $tariffConfig->getDisplayText();
-        $language = Controller::replaceInsertTags("{{page::language}}");
+        if ($tariffConfig->getLanguage()) {
+            $language = $tariffConfig->getLanguage() === 1 ? "en" : "de";
+        }
+        else {
+            $language = Controller::replaceInsertTags("{{page::language}}");
+        }
         $template->lang = $language;
         $template->settingId = $settingsId;
     }

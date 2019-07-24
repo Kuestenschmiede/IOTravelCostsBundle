@@ -32,6 +32,8 @@ $GLOBALS['TL_LANG'][$strName]['searchPlaceholder'] = ['Placeholder for search', 
 $GLOBALS['TL_LANG'][$strName]['tariffDisplay'] = ['Type of tariff-display', ''];
 $GLOBALS['TL_LANG'][$strName]['displayText'] = ['Custom description for the tariffs', 'Enter a custom description for your tariffs.'];
 $GLOBALS['TL_LANG'][$strName]['hideDisplay'] = ['Delay tariff description', 'Load the description of the tariffs after a calculation of the tariffs.'];
+$GLOBALS['TL_LANG'][$strName]['language'] = ['Language', 'Set language.'];
+
 
 /**
  * References
@@ -41,6 +43,10 @@ $GLOBALS['TL_LANG'][$strName]['references']['distPrice'][1] = 'The whole distanc
 
 $GLOBALS['TL_LANG'][$strName]['references']['tariffDisplay'][0] = 'Automatic display';
 $GLOBALS['TL_LANG'][$strName]['references']['tariffDisplay'][1] = 'Custom display';
+
+$GLOBALS['TL_LANG'][$strName]['references']['language'][0] = 'Browserlanguage';
+$GLOBALS['TL_LANG'][$strName]['references']['language'][1] = 'English';
+$GLOBALS['TL_LANG'][$strName]['references']['language'][2] = 'German';
 
 /** legend */
 $GLOBALS['TL_LANG'][$strName]['general_legend'] = 'General settings';

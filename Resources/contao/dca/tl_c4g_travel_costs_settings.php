@@ -70,7 +70,7 @@ $GLOBALS['TL_DCA'][$strName] = array
     // Palettes
     'palettes' => [
         '__selector__' => ['tariffDisplay'],
-        'default' => '{general_legend},caption;{bbox_legend:hide},startBboxUpperx,startBboxUppery,startBboxDownerx,startBboxDownery;{tariffLegend},tariffs;{controlLegend},displayGrid,withPositionButton,withSubmitButton,withDeleteButton,distPrice;{centerLegend},centerx,centery;{customMsgLegend:hide},errorMessageBounds,errorMessageNotFound,searchPlaceholder;{descriptionLegend},tariffDisplay,hideDisplay;'
+        'default' => '{general_legend},caption;{bbox_legend:hide},startBboxUpperx,startBboxUppery,startBboxDownerx,startBboxDownery;{tariffLegend},tariffs;{controlLegend},displayGrid,withPositionButton,withSubmitButton,withDeleteButton,distPrice;{centerLegend},centerx,centery;{customMsgLegend:hide},errorMessageBounds,errorMessageNotFound,searchPlaceholder,language;{descriptionLegend},tariffDisplay,hideDisplay;'
     ],
 
 
@@ -206,6 +206,14 @@ $GLOBALS['TL_DCA'][$strName] = array
             'default' => '',
             'inputType' => 'text',
             'eval' => ['decodeEntities' => true, 'tl_class' => 'long'],
+        ],
+        'language' => [
+            'label' => &$GLOBALS['TL_LANG'][$strName]['language'],
+            'default' => 0,
+            'options' => [0, 1, 2],
+            'reference' => &$GLOBALS['TL_LANG'][$strName]['references']['language'],
+            'eval' => ['submitOnChange' => true],
+            'inputType' => 'radio',
         ],
         'tariffDisplay' => [
             'label' => &$GLOBALS['TL_LANG'][$strName]['tariffDisplay'],

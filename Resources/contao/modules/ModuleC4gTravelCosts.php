@@ -109,7 +109,12 @@ class ModuleC4gTravelCosts extends \Module
             $arrSettings['hideDisplay'] = $tariffConfig->getHideDisplay();
             $arrSettings['displayType'] = $tariffConfig->getTariffDisplay();
         }
-        $language = Controller::replaceInsertTags("{{page::language}}");
+        if ($tariffConfig->getLanguage()) {
+             $language = $tariffConfig->getLanguage() === 1 ? "en" : "de";
+        }
+        else {
+            $language = Controller::replaceInsertTags("{{page::language}}");
+        }
         $arrSettings['lang'] = $language;
         $arrSettings['settingId'] = $settingsId;
         $template->arrSettings = $arrSettings;
