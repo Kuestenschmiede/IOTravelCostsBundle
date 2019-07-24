@@ -70,6 +70,7 @@ class ModuleC4gTariffs extends \Module
             $template->posButton = $tariffConfig->getWithPositionButton();
         }
         $template->tariffDisplay = $tariffConfig->getTariffDisplay();
+        $template->hideDisplay = $tariffConfig->getHideDisplay();
         $template->customText = $tariffConfig->getDisplayText();
         $language = Controller::replaceInsertTags("{{page::language}}");
         $template->lang = $language;

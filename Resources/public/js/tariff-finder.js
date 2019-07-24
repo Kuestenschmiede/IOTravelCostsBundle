@@ -18,7 +18,7 @@ $(document).ready(function() {
     else {
         $.extend(langConstants, travelConstantsEnglish);
     }
-    if (!objSettings.hideDisplay) {
+    if (!objSettings.displayType) {
         findTariffs();
     }
 });

@@ -30,6 +30,8 @@ $GLOBALS['TL_LANG'][$strName]['errorMessageBounds'] = ['Error message: Out of Bo
 $GLOBALS['TL_LANG'][$strName]['errorMessageNotFound'] = ['Error message: Address not found', 'Enter your custom error message, if no matching address is found.'];
 $GLOBALS['TL_LANG'][$strName]['searchPlaceholder'] = ['Placeholder for search', 'Enter a custom placeholder for the search input.'];
 $GLOBALS['TL_LANG'][$strName]['tariffDisplay'] = ['Type of tariff-display', ''];
+$GLOBALS['TL_LANG'][$strName]['displayText'] = ['Custom description for the tariffs', 'Enter a custom description for your tariffs.'];
+$GLOBALS['TL_LANG'][$strName]['hideDisplay'] = ['Delay tariff description', 'Load the description of the tariffs after a calculation of the tariffs.'];
 
 /**
  * References
@@ -47,6 +49,7 @@ $GLOBALS['TL_LANG'][$strName]['tariffLegend'] = 'Pick your tariffs';
 $GLOBALS['TL_LANG'][$strName]['controlLegend'] = 'Customize your controls';
 $GLOBALS['TL_LANG'][$strName]['centerLegend'] = 'Focus search with center';
 $GLOBALS['TL_LANG'][$strName]['customMsgLegend'] = 'Custom Messages';
+$GLOBALS['TL_LANG'][$strName]['descriptionLegend'] = 'Description for the tariffs';
 
 
 

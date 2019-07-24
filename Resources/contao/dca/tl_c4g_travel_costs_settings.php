@@ -69,14 +69,14 @@ $GLOBALS['TL_DCA'][$strName] = array
 
     // Palettes
     'palettes' => [
-        '__selector__' => ['router_api_selection'],
-        'default' => '{general_legend},caption;{bbox_legend:hide},startBboxUpperx,startBboxUppery,startBboxDownerx,startBboxDownery;{tariffLegend},tariffs;{controlLegend},displayGrid,withPositionButton,withSubmitButton,withDeleteButton,distPrice;{centerLegend},centerx,centery;{customMsgLegend:hide},errorMessageBounds,errorMessageNotFound,searchPlaceholder;{descriptionLegend},tariffDisplay,displayText,hideDisplay;'
+        '__selector__' => ['tariffDisplay'],
+        'default' => '{general_legend},caption;{bbox_legend:hide},startBboxUpperx,startBboxUppery,startBboxDownerx,startBboxDownery;{tariffLegend},tariffs;{controlLegend},displayGrid,withPositionButton,withSubmitButton,withDeleteButton,distPrice;{centerLegend},centerx,centery;{customMsgLegend:hide},errorMessageBounds,errorMessageNotFound,searchPlaceholder;{descriptionLegend},tariffDisplay,hideDisplay;'
     ],
 
 
     // Subpalettes
     'subpalettes' => [
-
+        'tariffDisplay_1' => "displayText"
     ],
 
     // Fields
@@ -212,6 +212,7 @@ $GLOBALS['TL_DCA'][$strName] = array
             'default' => 0,
             'options' => [0, 1],
             'reference' => &$GLOBALS['TL_LANG'][$strName]['references']['tariffDisplay'],
+            'eval' => ['submitOnChange' => true],
             'inputType' => 'radio',
         ],
         'displayText' => [

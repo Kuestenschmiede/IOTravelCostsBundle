@@ -1,6 +1,12 @@
-<?php if ($this->tariffDisplay):?>
+<?php if ($this->tariffDisplay && $this->hideDisplay):?>
 <div>
     <div class="tariff-output" style="display:none">
+        <?php echo $this->customText ?>
+    </div>
+</div>
+<?php elseif ($this->tariffDisplay && !$this->hideDisplay): ?>
+<div>
+    <div class="tariff-output" style="display:block">
         <?php echo $this->customText ?>
     </div>
 </div>
