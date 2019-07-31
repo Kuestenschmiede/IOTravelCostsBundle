@@ -2,7 +2,7 @@
     "name": "con4gis/travel-costs",
     "type": "contao-bundle",
     "description": "Travel costs bundle to calculate costs for driving using con4gis.io services.",
-    "keywords": ["con4gis", "travel", "costs", "contao", "calculator", "con4gis.io", "taxi"],
+    "keywords": ["con4gis", "travel", "costs", "contao", "calculator", "con4gis.io"],
     "license": "LGPL-3.0-or-later",
     "authors": [
         {
@@ -22,7 +22,7 @@
     "require": {
         "contao/core-bundle": "^4.4",
         "con4gis/core": "^3.3",
-        "con4gis/maps": "^6.2"
+        "con4gis/maps": "^6.1"
     },
     "conflict": {
         "contao/core": "*",
