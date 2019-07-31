@@ -2,15 +2,18 @@
 import {travelConstantsEnglish} from "./travel-constant-i18n-en";
 import {travelConstantsGerman} from "./travel-constant-i18n-de";
 import {AlertHandler} from "./../../../../CoreBundle/Resources/public/js/AlertHandler";
+import {AutocompleteHandler} from "./../../../../CoreBundle/Resources/public/js/AutocompleteHandler";
 
 const $ = jQuery;
 const langConstants = {};
 const objSettings = window.objSettings;
 const currency = objSettings.currency || "€";
-var arrFromNames = [];
-var arrFromPositions = [];
-var arrToNames = [];
-var arrToPositions = [];
+const containerAddresses = {
+  arrFromPositions: [],
+  arrFromNames: [],
+  arrToPositions: [],
+  arrToNames: []
+};
 var travelData = {
   routeFrom: {},
   routeTo: {}
@@ -191,69 +194,69 @@ function parseAddressString(data) {
  * @param cssId       css-class to set response-property to
  * @returns {void}
  */
-function autocompleteAddress(input, cssId) {
-  let center;
-  if (objSettings.center) {
-    center = objSettings.center[0] + "," + objSettings.center[1];
-  }
-  else {
-    center = (parseFloat(objSettings.bBox[0]) + parseFloat(objSettings.bBox[2])) / 2 + "," + (parseFloat(objSettings.bBox[1]) + parseFloat(objSettings.bBox[3])) / 2;
-  }
-  let url = objSettings.proxyUrl + "autocomplete.php?format=json&key=" + objSettings.keyAutocomplete + "&q=" + input +"&center=" + center;
-  $.ajax({url: url}).done(function(data) {
-    let center;
-    if (objSettings.center) {
-      center = objSettings.center;
-    }
-    else {
-      center = [(parseFloat(objSettings.bBox[0]) + parseFloat(objSettings.bBox[2])) / 2, (parseFloat(objSettings.bBox[1]) + parseFloat(objSettings.bBox[3])) / 2];
-    }
-    if (data.length > 0) {
-
-      if (data[0] && data[0].display_name) {
-        // $(cssId).val(data[0].display_name);
-        let arrAddresses = [];
-        for (let i in data) {
-          if (data.hasOwnProperty(i)) {
-            if (objSettings.bBox && objSettings.bBox[0]) {
-              if (isInBoundingBox(data[i].lon, data[i].lat)) {
-                let distance = Math.sqrt((center[0] - data[i].lon) * (center[0] - data[i].lon) + (center[1] - data[i].lat) * (center[1] - data[i].lat));
-                let element = {
-                  'dist' : distance,
-                  'pos'  : [data[i].lat, data[i].lon],
-                  'name' : data[i].display_name
-                };
-                arrAddresses.push(element);
-              }
-            }
-          }
-        }
-        arrAddresses.sort((a,b) => a.dist -b.dist);
-
-        for (let i in arrAddresses) {
-          if (arrAddresses.hasOwnProperty(i)) {
-            if (cssId === ".route-from") {
-              // do not add twice
-              if (!arrFromNames.includes(arrAddresses[i].name)) {
-                arrFromNames.push(arrAddresses[i].name);
-                arrFromPositions.push(arrAddresses[i].pos);
-              }
-            }
-            else {
-              if (!arrToNames.includes(arrAddresses[i].name)) {
-                arrToNames.push(arrAddresses[i].name);
-                arrToPositions.push(arrAddresses[i].pos);
-              }
-            }
-          }
-        }
-        // trigger keydown event to show autocomplete options
-        let event = jQuery.Event("keydown", {keyCode: 8});
-        $(cssId).trigger(event);
-      }
-    }
-  });
-}
+// function autocompleteAddress(input, cssId) {
+//   let center;
+//   if (objSettings.center) {
+//     center = objSettings.center[0] + "," + objSettings.center[1];
+//   }
+//   else {
+//     center = (parseFloat(objSettings.bBox[0]) + parseFloat(objSettings.bBox[2])) / 2 + "," + (parseFloat(objSettings.bBox[1]) + parseFloat(objSettings.bBox[3])) / 2;
+//   }
+//   let url = objSettings.proxyUrl + "autocomplete.php?format=json&key=" + objSettings.keyAutocomplete + "&q=" + input +"&center=" + center;
+//   $.ajax({url: url}).done(function(data) {
+//     let center;
+//     if (objSettings.center) {
+//       center = objSettings.center;
+//     }
+//     else {
+//       center = [(parseFloat(objSettings.bBox[0]) + parseFloat(objSettings.bBox[2])) / 2, (parseFloat(objSettings.bBox[1]) + parseFloat(objSettings.bBox[3])) / 2];
+//     }
+//     if (data.length > 0) {
+//
+//       if (data[0] && data[0].display_name) {
+//         // $(cssId).val(data[0].display_name);
+//         let arrAddresses = [];
+//         for (let i in data) {
+//           if (data.hasOwnProperty(i)) {
+//             if (objSettings.bBox && objSettings.bBox[0]) {
+//               if (isInBoundingBox(data[i].lon, data[i].lat)) {
+//                 let distance = Math.sqrt((center[0] - data[i].lon) * (center[0] - data[i].lon) + (center[1] - data[i].lat) * (center[1] - data[i].lat));
+//                 let element = {
+//                   'dist' : distance,
+//                   'pos'  : [data[i].lat, data[i].lon],
+//                   'name' : data[i].display_name
+//                 };
+//                 arrAddresses.push(element);
+//               }
+//             }
+//           }
+//         }
+//         arrAddresses.sort((a,b) => a.dist -b.dist);
+//
+//         for (let i in arrAddresses) {
+//           if (arrAddresses.hasOwnProperty(i)) {
+//             if (cssId === ".route-from") {
+//               // do not add twice
+//               if (!arrFromNames.includes(arrAddresses[i].name)) {
+//                 arrFromNames.push(arrAddresses[i].name);
+//                 arrFromPositions.push(arrAddresses[i].pos);
+//               }
+//             }
+//             else {
+//               if (!arrToNames.includes(arrAddresses[i].name)) {
+//                 arrToNames.push(arrAddresses[i].name);
+//                 arrToPositions.push(arrAddresses[i].pos);
+//               }
+//             }
+//           }
+//         }
+//         // trigger keydown event to show autocomplete options
+//         let event = jQuery.Event("keydown", {keyCode: 8});
+//         $(cssId).trigger(event);
+//       }
+//     }
+//   });
+// }
 
 /**
  * Checks if the given coordinates are within the bbox specified in objSettings.bBox.
@@ -459,13 +462,13 @@ $(document).ready(function() {
         let cssClass = scope.classList[0];
         if (cssClass === "route-from") {
           travelData.routeFrom = {};
-          arrFromNames = [];
-          arrFromPositions = [];
+          containerAddresses.arrFromPositions = [];
+          containerAddresses.arrFromPositions = [];
         }
         else if (cssClass === "route-to"){
           travelData.routeTo = {};
-          arrToNames = [];
-          arrToPositions = [];
+          containerAddresses.arrToNames = [];
+          containerAddresses.arrToPositions = [];
         }
         else{
           console.log("This is weird");
@@ -478,52 +481,74 @@ $(document).ready(function() {
         setTimeout(function() {
           if (scope.counter && scope.counter + 400 < Math.floor(Date.now())) {
             delete scope.counter;
-            autocompleteAddress($(scope).val(), "." + scope.classList[0]);
+            let autocompleteHandler = new AutocompleteHandler();
+            autocompleteHandler.autocompleteAddress($(scope).val(), "." + scope.classList[0], objSettings, containerAddresses);
           }
         },500);
       }
     }
   };
-
-  objInputFrom.autocomplete({
-    source: arrFromNames
-  });
-  objInputFrom.on('keydown', enterListener);
-  if (objSettings.delButton) {
-    objInputFrom.on('search', enterListener);
-  }
-  objInputFrom.on('autocompleteselect', function(event, ui){
+  const selectToListener = function(event, ui) {
     let value = ui.item.value;
-    travelData.routeFrom.loc = arrFromPositions[arrFromNames.findIndex(
-      danger => danger === value
+    travelData.routeTo.loc = containerAddresses.arrToPositions[containerAddresses.arrToNames.findIndex(
+        danger => danger === value
     )];
     if (!objSettings.submitButton) {
       calculateExpenses();
     }
-  });
-
-  objInputTo.autocomplete({
-    source: arrToNames
-  });
-  objInputTo.on('keydown', enterListener);
-  objInputTo.on('autocompleteselect', function(event, ui){
-    let value = ui.item.value;
-    travelData.routeTo.loc = arrToPositions[arrToNames.findIndex(
-      danger => danger === value
-    )];
-    if (!objSettings.submitButton) {
-      calculateExpenses();
-    }
-  });
-
-  objInputFrom.on('change', function() {
-    let address = $(this).val();
-    setRouteFrom(address);
-  });
-
-  objInputTo.on('change', function() {
+  };
+  const deleteFromListener = function(event) {
+    let tableNode = $(".route-output");
+    travelData.routeFrom = {};
+    containerAddresses.arrFromPositions = [];
+    containerAddresses.arrFromPositions = [];
+    tableNode.css("display", "none");
+  };
+  const deleteToListener = function(event) {
+    let tableNode = $(".route-output");
+    travelData.routeFrom = {};
+    containerAddresses.arrFromPositions = [];
+    containerAddresses.arrFromPositions = [];
+    tableNode.css("display", "none");
+  };
+  const changeToListener = function() {
     let address = $(this).val();
     setRouteTo(address);
+  };
+  const selectFromListener = function(event, ui){
+    let value = ui.item.value;
+    travelData.routeFrom.loc = containerAddresses.arrFromPositions[containerAddresses.arrFromNames.findIndex(
+        danger => danger === value
+    )];
+    if (!objSettings.submitButton) {
+      calculateExpenses();
+    }
+  };
+  const changeFromListener = function() {
+    let address = $(this).val();
+    setRouteTo(address);
+  };
+  const objFromListeners = {
+    "selectListener": selectFromListener,
+    "submitFunction": submitSearch,
+    "deleteFunction": deleteFromListener,
+    "changeListener": changeFromListener
+  };
+  const objToListeners = {
+    "selectListener": selectToListener,
+    "submitFunction": submitSearch,
+    "deleteFunction": deleteToListener,
+    "changeListener": changeToListener
+  };
+  const autocompleteHandlerFrom = new AutocompleteHandler(objInputFrom, objFromListeners, "route-to", objSettings, containerAddresses);
+  autocompleteHandlerFrom.handleInput();
+  objInputFrom.autocomplete({
+    source: containerAddresses.arrFromNames
+  });
+  const autocompleteHandlerTo = new AutocompleteHandler(objInputTo, objToListeners, "route-from", objSettings, containerAddresses);
+  autocompleteHandlerTo.handleInput();
+  objInputTo.autocomplete({
+    source: containerAddresses.arrToNames
   });
   if (objSettings.submitButton) {
     let submitButton = document.getElementById('btn-submit-expense-calc');
