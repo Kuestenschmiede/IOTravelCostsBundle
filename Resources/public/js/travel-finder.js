@@ -449,45 +449,7 @@ $(document).ready(function() {
   objHeadlineTime.html(langConstants.HEADLINE_TIME);
 
   // submits search on "enter", autocompletes address after 0.5 seconds otherwise
-  const enterListener = function(event) {
-    const scope = this;
-    if (event.keyCode === 13) {
-      submitSearch(scope, "." + scope.classList[0]);
-    } else if (event.keyCode === 8 || (event.keyCode >= 37 && event.keyCode <= 40) || event.keyCode === 9) {
-      // event.stopPropagation();
-      // event.preventDefault();
-    } else {
-      if ($(scope).val().length == 0 && !event.keyCode) {
-        let tableNode = $(".route-output");
-        let cssClass = scope.classList[0];
-        if (cssClass === "route-from") {
-          travelData.routeFrom = {};
-          containerAddresses.arrFromPositions = [];
-          containerAddresses.arrFromPositions = [];
-        }
-        else if (cssClass === "route-to"){
-          travelData.routeTo = {};
-          containerAddresses.arrToNames = [];
-          containerAddresses.arrToPositions = [];
-        }
-        else{
-          console.log("This is weird");
-        }
-        tableNode.css("display","none");
-      }
-      else {
-        let currTime = Math.floor(Date.now());
-        scope.counter = currTime;
-        setTimeout(function() {
-          if (scope.counter && scope.counter + 400 < Math.floor(Date.now())) {
-            delete scope.counter;
-            let autocompleteHandler = new AutocompleteHandler();
-            autocompleteHandler.autocompleteAddress($(scope).val(), "." + scope.classList[0], objSettings, containerAddresses);
-          }
-        },500);
-      }
-    }
-  };
+
   const selectToListener = function(event, ui) {
     let value = ui.item.value;
     travelData.routeTo.loc = containerAddresses.arrToPositions[containerAddresses.arrToNames.findIndex(
