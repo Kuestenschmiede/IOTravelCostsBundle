@@ -117,6 +117,7 @@ class ModuleC4gTravelCosts extends \Module
             $language = Controller::replaceInsertTags("{{page::language}}");
         }
         $arrSettings['lang'] = $language;
+        $arrSettings['autoLength'] = $tariffConfig->getLimitAutocomplete() ?: 10;
         $arrSettings['settingId'] = $settingsId;
         $template->arrSettings = $arrSettings;
     }

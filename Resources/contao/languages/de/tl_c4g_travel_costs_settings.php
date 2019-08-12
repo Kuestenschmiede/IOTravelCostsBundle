@@ -33,6 +33,7 @@ $GLOBALS['TL_LANG'][$strName]['displayText'] = ['Benutzerdefinierte Tarifbeschre
 $GLOBALS['TL_LANG'][$strName]['hideDisplay'] = ['Tarifbeschreibung nachladen', 'Laden der Tarifbeschreibung erst nach erfolgreicher Berechnung von Fahrtkosten.'];
 $GLOBALS['TL_LANG'][$strName]['language'] = ['Sprache', 'Sprache anpassen.'];
 $GLOBALS['TL_LANG'][$strName]['currency'] = ['Währung', 'Währung anpassen.'];
+$GLOBALS['TL_LANG'][$strName]['limitAutocomplete'] = ['Anzahl Vorschläge', 'Geben Sie die Anzahl der Vorschläge ein.'];
 
 
 

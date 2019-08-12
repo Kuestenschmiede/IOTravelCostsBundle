@@ -70,7 +70,7 @@ $GLOBALS['TL_DCA'][$strName] = array
     // Palettes
     'palettes' => [
         '__selector__' => ['tariffDisplay'],
-        'default' => '{general_legend},caption;{bbox_legend:hide},startBboxUpperx,startBboxUppery,startBboxDownerx,startBboxDownery;{tariffLegend},tariffs;{controlLegend},displayGrid,withPositionButton,withSubmitButton,withDeleteButton,distPrice;{centerLegend},centerx,centery;{customMsgLegend:hide},errorMessageBounds,errorMessageNotFound,searchPlaceholder,language,currency;{descriptionLegend},tariffDisplay,hideDisplay;'
+        'default' => '{general_legend},caption;{bbox_legend:hide},startBboxUpperx,startBboxUppery,startBboxDownerx,startBboxDownery;{tariffLegend},tariffs;{controlLegend},displayGrid,withPositionButton,withSubmitButton,withDeleteButton,distPrice,limitAutocomplete;{centerLegend},centerx,centery;{customMsgLegend:hide},errorMessageBounds,errorMessageNotFound,searchPlaceholder,language,currency;{descriptionLegend},tariffDisplay,hideDisplay;'
     ],
 
 
@@ -239,6 +239,13 @@ $GLOBALS['TL_DCA'][$strName] = array
             'default' => 0,
             'inputType' => 'checkbox',
         ],
+        'limitAutocomplete' => [
+
+            'label' => &$GLOBALS['TL_LANG'][$strName]['limitAutocomplete'],
+            'default' => 10,
+            'inputType' => 'text',
+            'eval' => ['rgxp' => 'digit']
+        ]
     ]
 );
 class tl_c4g_travel_costs_settings extends \Contao\Backend

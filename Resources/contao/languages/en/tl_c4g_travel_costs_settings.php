@@ -34,6 +34,7 @@ $GLOBALS['TL_LANG'][$strName]['displayText'] = ['Custom description for the tari
 $GLOBALS['TL_LANG'][$strName]['hideDisplay'] = ['Delay tariff description', 'Load the description of the tariffs after a calculation of the tariffs.'];
 $GLOBALS['TL_LANG'][$strName]['language'] = ['Language', 'Set language.'];
 $GLOBALS['TL_LANG'][$strName]['language'] = ['Currency', 'Set currency.'];
+$GLOBALS['TL_LANG'][$strName]['limitAutocomplete'] = ['Count autocompletion', 'Enter the amount of autocompletion-responses.'];
 
 
 /**

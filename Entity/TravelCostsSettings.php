@@ -180,6 +180,11 @@ class TravelCostsSettings extends BaseEntity
      * @ORM\Column(type="integer")
      */
     protected $hideDisplay = 0;
+    /**
+     * @var int
+     * @ORM\Column(type="integer")
+     */
+    protected $limitAutocomplete = 10;
 
     /**
      * @return int
@@ -596,4 +601,21 @@ class TravelCostsSettings extends BaseEntity
     {
         $this->currency = $currency;
     }
+
+    /**
+     * @return int
+     */
+    public function getLimitAutocomplete(): int
+    {
+        return $this->limitAutocomplete;
+    }
+
+    /**
+     * @param int $limitAutocomplete
+     */
+    public function setLimitAutocomplete(int $limitAutocomplete): void
+    {
+        $this->limitAutocomplete = $limitAutocomplete;
+    }
+
 }
