@@ -219,7 +219,7 @@ $GLOBALS['TL_DCA'][$strName] = array
             'label' => &$GLOBALS['TL_LANG'][$strName]['currency'],
             'default' => '€',
             'inputType' => 'text',
-            'eval' => ['maxlength' => 1, 'mandatory' => tr]
+            'eval' => ['maxlength' => 1, 'mandatory' => true]
         ],
         'tariffDisplay' => [
             'label' => &$GLOBALS['TL_LANG'][$strName]['tariffDisplay'],
