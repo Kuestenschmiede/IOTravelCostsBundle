@@ -41,8 +41,8 @@ class ModuleC4gTariffs extends \Module
         $pageId = $this->mapPage;
         $pageUrl = Controller::replaceInsertTags("{{link_url:: " . $pageId . "}}");
         ResourceLoader::loadJavaScriptDeferred('jquery-ui', "/bundles/con4giscore/vendor/jQuery/jquery-ui-1.12.1.custom/jquery-ui.js");
-        ResourceLoader::loadJavaScriptDeferred("tariff-finder", "bundles/con4gistravelcosts/build/tariff-finder.js");
-        ResourceLoader::loadCssRessource("travel-finder", "bundles/con4gistravelcosts/css/travel-finder.css");
+        ResourceLoader::loadJavaScriptDeferred("tariff-finder", "bundles/con4gisiotravelcosts/build/tariff-finder.js");
+        ResourceLoader::loadCssRessource("travel-finder", "bundles/con4gisiotravelcosts/css/travel-finder.css");
         ResourceLoader::loadCssRessource('jquery-ui-css', "/bundles/con4giscore/vendor/jQuery/jquery-ui-1.12.1.custom/jquery-ui.css");
 //        ResourceLoader::loadCssRessource("c4g-cached-inputfield", "bundles/con4giscore/css/c4g-cached-inputfield.css");
         $template = $this->Template;

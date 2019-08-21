@@ -19,7 +19,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
-class con4GisTravelCostsExtension extends Extension
+class con4gisIOTravelCostsExtension extends Extension
 {
     /**
      * {@inheritdoc}
@@ -34,6 +34,6 @@ class con4GisTravelCostsExtension extends Extension
     }
     public function getAlias()
     {
-        return "con4gis_travel_costs";
+        return "con4gis_io_travel_costs";
     }
 }
