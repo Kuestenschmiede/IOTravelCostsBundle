@@ -1,23 +1,18 @@
 {
-    "name": "con4gis/travel-costs",
+    "name": "con4gis/io-travel-costs",
     "type": "contao-bundle",
     "description": "Travel costs bundle to calculate costs for driving using con4gis.io services.",
-    "keywords": ["con4gis", "travel", "costs", "contao", "calculator", "con4gis.io"],
+    "keywords": ["con4gis", "travel", "costs", "contao", "calculator", "con4gis.io", "taxi", "fare"],
     "license": "LGPL-3.0-or-later",
     "authors": [
         {
             "name": "Kuestenschmiede GmbH Software & Design",
             "homepage": "https://kuestenschmiede.de",
             "role": "Operator"
-        },
-        {
-            "name": "con4gis community",
-            "homepage": "https://con4gis.org",
-            "role": "Developer"
         }
     ],
     "support": {
-        "email": "support@con4gis.org"
+        "email": "support@con4gis.io"
     },
     "require": {
         "contao/core-bundle": "^4.4",
@@ -30,7 +25,7 @@
     },
     "autoload": {
         "psr-4": {
-            "con4gis\\TravelCostsBundle\\": ""
+            "con4gis\\IOTravelCostsBundle\\": ""
         },
         "classmap": [
             "Resources/contao/"
@@ -49,6 +44,6 @@
         "branch-alias": {
             "dev-master": "1.0.x-dev"
         },
-        "contao-manager-plugin": "con4gis\\TravelCostsBundle\\ContaoManager\\Plugin"
+        "contao-manager-plugin": "con4gis\\IOTravelCostsBundle\\ContaoManager\\Plugin"
     }
 }

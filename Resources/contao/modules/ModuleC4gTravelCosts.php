@@ -10,20 +10,20 @@
  * @copyright  Küstenschmiede GmbH Software & Design
  * @link       https://www.con4gis.org
  */
-namespace con4gis\TravelCostsBundle\Resources\contao\modules;
+namespace con4gis\IOTravelCostsBundle\Resources\contao\modules;
 
 
 use con4gis\CoreBundle\Resources\contao\classes\C4GUtils;
 use con4gis\CoreBundle\Resources\contao\classes\ResourceLoader;
 use con4gis\CoreBundle\Resources\contao\models\C4gSettingsModel;
-use con4gis\TravelCostsBundle\Entity\TravelCostsSettings;
+use con4gis\IOTravelCostsBundle\Entity\TravelCostsSettings;
 use Contao\System;
 use Doctrine\ORM\EntityManager;
 use Contao\Controller;
 
 /**
  * Class ModuleC4gTravelCosts
- * @package \con4gis\TravelCostsBundle\Resources\contao\modules
+ * @package \con4gis\IOTravelCostsBundle\Resources\contao\modules
  */
 class ModuleC4gTravelCosts extends \Module
 {

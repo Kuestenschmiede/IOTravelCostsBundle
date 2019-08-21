@@ -11,7 +11,7 @@
  * @link       https://www.con4gis.org
  */
 
-namespace con4gis\TravelCostsBundle\Entity;
+namespace con4gis\IOTravelCostsBundle\Entity;
 
 use \Doctrine\ORM\Mapping as ORM;
 use con4gis\CoreBundle\Entity\BaseEntity;

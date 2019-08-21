@@ -11,7 +11,7 @@
  * @link       https://www.con4gis.org
  */
 
-namespace con4gis\TravelCostsBundle\DependencyInjection;
+namespace con4gis\IOTravelCostsBundle\DependencyInjection;
 
 
 use Symfony\Component\Config\FileLocator;

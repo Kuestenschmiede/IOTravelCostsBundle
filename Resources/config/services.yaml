@@ -1,12 +1,12 @@
 services:
   con4gis.expense_service:
-    class: con4gis\TravelCostsBundle\Classes\Services\ExpenseService
+    class: con4gis\IOTravelCostsBundle\Classes\Services\ExpenseService
     public: true
     arguments:
       - "@event_dispatcher"
       - "@doctrine.orm.entity_manager"
   con4gis.tariff_service:
-    class: con4gis\TravelCostsBundle\Classes\Services\TariffService
+    class: con4gis\IOTravelCostsBundle\Classes\Services\TariffService
     public: true
     arguments:
       - "@event_dispatcher"

@@ -1,12 +1,12 @@
 <?php
 
 
-namespace con4gis\TravelCostsBundle\Classes\Services;
+namespace con4gis\IOTravelCostsBundle\Classes\Services;
 
 
 use con4gis\MapsBundle\Resources\contao\models\C4gMapSettingsModel;
-use con4gis\TravelCostsBundle\Entity\TravelCostsSettings;
-use con4gis\TravelCostsBundle\Entity\TravelCostsTariff;
+use con4gis\IOTravelCostsBundle\Entity\TravelCostsSettings;
+use con4gis\IOTravelCostsBundle\Entity\TravelCostsTariff;
 use Contao\Database;
 use Doctrine\ORM\EntityManager;
 

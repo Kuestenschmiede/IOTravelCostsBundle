@@ -25,9 +25,9 @@ $GLOBALS['BE_MOD']['con4gis_core'] = array_merge($GLOBALS['BE_MOD']['con4gis_cor
 
 array_insert($GLOBALS['FE_MOD']['con4gis'], 1,
     [
-        'c4g_travel_costs' => 'con4gis\TravelCostsBundle\Resources\contao\modules\ModuleC4gTravelCosts',
+        'c4g_travel_costs' => 'con4gis\IOTravelCostsBundle\Resources\contao\modules\ModuleC4gTravelCosts',
     ]);
 array_insert($GLOBALS['FE_MOD']['con4gis'], 1,
     [
-        'c4g_tariffs' => 'con4gis\TravelCostsBundle\Resources\contao\modules\ModuleC4gTariffs',
+        'c4g_tariffs' => 'con4gis\IOTravelCostsBundle\Resources\contao\modules\ModuleC4gTariffs',
     ]);

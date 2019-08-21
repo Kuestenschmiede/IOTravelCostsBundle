@@ -10,15 +10,15 @@
  * @copyright  Küstenschmiede GmbH Software & Design
  * @link       https://www.con4gis.org
  */
-namespace con4gis\TravelCostsBundle;
+namespace con4gis\IOTravelCostsBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
- * Class con4gisTravelCostsBundle
- * @package con4gis\TravelCostsBundle
+ * Class con4gisIOTravelCostsBundle
+ * @package con4gis\IOTravelCostsBundle
  */
-class con4gisTravelCostsBundle extends Bundle
+class con4gisIOTravelCostsBundle extends Bundle
 {
 
 }

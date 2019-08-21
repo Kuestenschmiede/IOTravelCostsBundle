@@ -1,5 +1,5 @@
 {
-  "name": "travelcostsbundle",
+  "name": "iotravelcostsbundle",
   "version": "1.0.0",
   "description": "",
   "main": "webpack.config.js",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Kuestenschmiede/TravelCostsBundle.git"
+    "url": "git+https://github.com/Kuestenschmiede/IOTravelCostsBundle.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Kuestenschmiede/TravelCostsBundle/issues"
+    "url": "https://github.com/Kuestenschmiede/IOTravelCostsBundle/issues"
   },
-  "homepage": "https://github.com/Kuestenschmiede/TravelCostsBundle#readme",
+  "homepage": "https://github.com/Kuestenschmiede/IOTravelCostsBundle#readme",
   "devDependencies": {
     "babel": "^6.23.0",
     "babel-core": "^6.26.3",

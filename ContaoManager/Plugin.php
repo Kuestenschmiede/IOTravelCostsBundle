@@ -11,10 +11,10 @@
  * @link       https://www.con4gis.org
  */
 
-namespace con4gis\TravelCostsBundle\ContaoManager;
+namespace con4gis\IOTravelCostsBundle\ContaoManager;
 
 use con4gis\CoreBundle\con4gisCoreBundle;
-use con4gis\TravelCostsBundle\con4gisTravelCostsBundle;
+use con4gis\IOTravelCostsBundle\con4gisIOTravelCostsBundle;
 use Contao\CoreBundle\ContaoCoreBundle;
 use Contao\ManagerPlugin\Bundle\Config\BundleConfig;
 use Contao\ManagerPlugin\Bundle\Config\ConfigInterface;
@@ -48,7 +48,7 @@ class Plugin implements RoutingPluginInterface, BundlePluginInterface, ConfigPlu
     public function getBundles(ParserInterface $parser)
     {
         return [
-            BundleConfig::create(con4gisTravelCostsBundle::class)
+            BundleConfig::create(con4gisIOTravelCostsBundle::class)
                 ->setLoadAfter([con4gisCoreBundle::class])
         ];
     }

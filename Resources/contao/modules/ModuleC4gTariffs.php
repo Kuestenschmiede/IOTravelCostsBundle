@@ -1,10 +1,10 @@
 <?php
 
 
-namespace con4gis\TravelCostsBundle\Resources\contao\modules;
+namespace con4gis\IOTravelCostsBundle\Resources\contao\modules;
 
 use con4gis\CoreBundle\Resources\contao\classes\ResourceLoader;
-use con4gis\TravelCostsBundle\Entity\TravelCostsSettings;
+use con4gis\IOTravelCostsBundle\Entity\TravelCostsSettings;
 use Contao\Controller;
 use Contao\System;
 

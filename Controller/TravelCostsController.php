@@ -11,7 +11,7 @@
  * @link       https://www.con4gis.org
  */
 
-namespace con4gis\TravelCostsBundle\Controller;
+namespace con4gis\IOTravelCostsBundle\Controller;
 
 
 use con4gis\CoreBundle\Controller\BaseController;

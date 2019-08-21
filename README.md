@@ -1,7 +1,7 @@
-# TravelCostsBundle
+# IOTravelCostsBundle
 
 ## Overview
-The TravelCostsBundle implements a calculator for travel costs, based on customizable tariffs. 
+The IOTravelCostsBundle implements a calculator for travel costs, based on customizable tariffs. 
 The tariff structure can be edited in the backend and can depend on the current time, e.g. you can have different
 tariffs for different times of the day or different days of the week. 
 
@@ -13,9 +13,9 @@ __Features include:__
 ## Installation
 Via composer:
 ```
-composer require con4gis/travel-costs
+composer require con4gis/io-travel-costs
 ```
-Alternatively, you can use the Contao Manager to install the con4gis-TravelCosts.
+Alternatively, you can use the Contao Manager to install the con4gis-IOTravelCosts.
 
 ## Requirements
 - [Contao](https://github.com/contao/core-bundle) (***4.4.x LTS*** or latest stable release)
