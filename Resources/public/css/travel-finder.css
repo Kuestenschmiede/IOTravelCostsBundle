@@ -45,6 +45,9 @@ th, td {
     text-align: left;
     border-bottom: 1px solid #ddd;
 }
+input[type=search]::-webkit-search-cancel-button {
+    -webkit-appearance: searchfield-cancel-button;
+}
 tr:nth-child(even),
 div.row-uneven,
 div.response-dist,
