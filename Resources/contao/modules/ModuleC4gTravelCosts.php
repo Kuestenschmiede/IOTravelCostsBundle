@@ -102,7 +102,6 @@ class ModuleC4gTravelCosts extends \Module
             $arrSettings['errMsgBounds'] = $tariffConfig->getErrorMessageBounds();
             $arrSettings['errMsgNotFound'] = $tariffConfig->getErrorMessageNotFound();
             $arrSettings['searchPlaceholder'] = $tariffConfig->getSearchPlaceholder();
-            $arrSettings['displayGrid'] = $tariffConfig->getDisplayGrid();
             $arrSettings['posButton'] = $tariffConfig->getWithPositionButton();
             $arrSettings['delButton'] = $tariffConfig->getWithDeleteButton();
             $arrSettings['submitButton'] = $tariffConfig->getWithSubmitButton();

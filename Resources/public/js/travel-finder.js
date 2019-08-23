@@ -15,8 +15,14 @@ const containerAddresses = {
   arrToNames: []
 };
 var travelData = {
-  routeFrom: {},
-  routeTo: {}
+  routeFrom: {
+    address : "",
+    loc: []
+  },
+  routeTo: {
+    address : "",
+    loc: []
+  }
 };
 
 function roundToTwo(num) {
@@ -31,7 +37,7 @@ function roundToTwo(num) {
  * @returns {void}
  */
 function setRouteFrom(address) {
-  travelData.routeFrom.adress = address;
+  travelData.routeFrom.address = address;
 }
 
 /**
@@ -40,7 +46,7 @@ function setRouteFrom(address) {
  * @returns {void}
  */
 function setRouteTo(address) {
-  travelData.routeTo.adress = address;
+  travelData.routeTo.address = address;
 }
 
 /**
@@ -153,7 +159,7 @@ function handlePosition(coordinates, cssId, propName) {
   $.ajax({url: url}).done(function(data) {
     let address = parseAddressString(data);
     $(cssId).val(address);
-    travelData[propName].adress = address;
+    travelData[propName].address = address;
   });
 }
 
@@ -299,7 +305,7 @@ function submitSearch(input, cssId) {
       }
 
       if (data[0] && data[0].display_name && !falseResponse) {
-        if (cssId === ".route-to") {
+        if (cssId === "route-to") {
           travelData.routeTo.loc = [data[0].lat, data[0].lon];
         }
         else {
@@ -337,84 +343,45 @@ function calculateExpenses () {
     let url = "con4gis/expenseService/" + objSettings.settingId + "/" + travelData.routeFrom.loc[0] + "," + travelData.routeFrom.loc[1] + ";" + travelData.routeTo.loc[0] + "," + travelData.routeTo.loc[1];
     $.ajax({url: url}).done(function(data) {
       let tableNode = $(".route-output");
-      if (objSettings.displayGrid === 1) {
-        tableNode.css("display", "grid");
-        $(".response-headline").remove();
-        $(".response-value").remove();
-        if (data.time) {
-          let elementTime = $(".response-time");
-          elementTime.html(toHumanTime(data.time));
-        }
-        if (data.dist) {
-          let elementDistance = $(".response-dist");
-          let responseDistance = toHumanDistance(data.dist * 1000);
-          elementDistance.html(responseDistance);
-        }
-        let insertAfterHead = $(".headline-time");
-        let insertAfterVal = $(".response-time");
-        let autoAuto = "auto auto ";
-        for(let tariffName in data.tariffs) {
-          let nodeName = $(document.createElement('div'));
-          nodeName.html(tariffName);
-          nodeName.addClass("response-headline");
-          nodeName.addClass("grid-item");
-          nodeName.insertAfter(insertAfterHead);
-          insertAfterHead = nodeName;
-          let responseElement = $(document.createElement('div'));
-          let responseTariff = roundToTwo(data.tariffs[tariffName]) + "";
-          if (objSettings.lang === "de") {
-            responseTariff = responseTariff.replace(".",",");
-          }
-          responseElement.html(responseTariff + " " + currency);
-          responseElement.addClass("response-value");
-          responseElement.addClass("grid-item");
-          responseElement.insertAfter(insertAfterVal);
-          insertAfterVal = responseElement;
-          autoAuto += "auto ";
-        }
-        tableNode.css("grid-template-columns", autoAuto);
+      tableNode.css("display", "grid");
+      $(".response-headline").remove();
+      $(".response-value").remove();
+      if (data.time) {
+        let elementTime = $(".response-time");
+        elementTime.html(toHumanTime(data.time));
       }
-      else {
-        tableNode.css("display", "block");
-        $(".response-headline").remove();
-        $(".response-value").remove();
-        if (data.time) {
-          let elementTime = $(".response-time");
-          elementTime.html(toHumanTime(data.time));
-        }
-        if (data.dist) {
-          let elementDistance = $(".response-dist");
-          let responseDistance = data.dist + "";
-          responseDistance = responseDistance.replace('.','.');
-          let indexDecimal = responseDistance.indexOf(',') + 3;
-          elementDistance.html(responseDistance.substring(0, indexDecimal + 3) + " km");
-        }
-        let headlindeNode = $(".route-output-headline");
-        let responseNode = $(".route-output-values");
-        for(let tariffName in data.tariffs) {
-          if (data.tariffs.hasOwnProperty(tariffName)) {
-            let headlineElement = document.createElement('th');
-            headlineElement.innerHTML = tariffName;
-            $(headlineElement).addClass("response-headline");
-            let responseElement = document.createElement('td');
-            let responseTariff = data.tariffs[tariffName] + "";
-            responseTariff = responseTariff.replace(".",",");
-            let indexDecimal = responseTariff.indexOf(',') + 3;
-            responseElement.innerHTML = responseTariff.substring(0, indexDecimal) + " " + currency;
-            $(responseElement).addClass("response-value");
-            headlindeNode.append(headlineElement);
-            responseNode.append(responseElement);
-          }
-        }
+      if (data.dist) {
+        let elementDistance = $(".response-dist");
+        let responseDistance = toHumanDistance(data.dist * 1000);
+        elementDistance.html(responseDistance);
       }
+      let insertAfterHead = $(".headline-time");
+      let insertAfterVal = $(".response-time");
+      let autoAuto = "auto auto ";
+      for(let tariffName in data.tariffs) {
+        let nodeName = $(document.createElement('div'));
+        nodeName.html(tariffName);
+        nodeName.addClass("response-headline");
+        nodeName.addClass("grid-item");
+        nodeName.insertAfter(insertAfterHead);
+        insertAfterHead = nodeName;
+        let responseElement = $(document.createElement('div'));
+        let responseTariff = roundToTwo(data.tariffs[tariffName]) + "";
+        if (objSettings.lang === "de") {
+          responseTariff = responseTariff.replace(".",",");
+        }
+        responseElement.html(responseTariff + " " + currency);
+        responseElement.addClass("response-value");
+        responseElement.addClass("grid-item");
+        responseElement.insertAfter(insertAfterVal);
+        insertAfterVal = responseElement;
+        autoAuto += "auto ";
+      }
+      tableNode.css("grid-template-columns", autoAuto);
+
       if(objSettings.hideDisplay) {
         let tariffs = $(".tariff-output");
-        if (window.displayGrid === "1") {
-          tariffs.css('display','grid');
-        }
-        else {
-          tariffs.css('display','block');
-        }
+        tariffs.css('display','grid');
       }
     })
   }

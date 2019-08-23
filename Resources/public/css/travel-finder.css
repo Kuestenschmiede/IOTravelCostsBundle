@@ -30,25 +30,10 @@ button.route-to-geolocation:before {
     font-size: inherit;
     content: "\f05b";
 }
-table, th, td {
-    /*border: 1px solid black;*/
-}
-table {
-    border-collapse: collapse;
-    width: 100%;
-}
-tbody {
-    width: 100%;
-}
-th, td {
-    padding-right: 30px !important;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
+
 input[type=search]::-webkit-search-cancel-button {
     -webkit-appearance: searchfield-cancel-button;
 }
-tr:nth-child(even),
 div.row-uneven,
 div.response-dist,
 div.response-time,

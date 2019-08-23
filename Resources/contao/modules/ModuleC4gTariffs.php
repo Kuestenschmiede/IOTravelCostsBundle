@@ -66,7 +66,6 @@ class ModuleC4gTariffs extends \Module
                 }
                 $template->bBox = json_encode($bBox);
             }
-            $template->displayGrid = $tariffConfig->getDisplayGrid();
             $template->posButton = $tariffConfig->getWithPositionButton();
 
         }
