@@ -31,3 +31,5 @@ array_insert($GLOBALS['FE_MOD']['con4gis'], 1,
     [
         'c4g_tariffs' => 'con4gis\IOTravelCostsBundle\Resources\contao\modules\ModuleC4gTariffs',
     ]);
+
+$GLOBALS['con4gis']['io-travel-costs']['installed'] = true;
