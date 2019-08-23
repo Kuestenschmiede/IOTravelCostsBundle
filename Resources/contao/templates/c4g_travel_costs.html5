@@ -31,8 +31,6 @@
 
 </div>
 <br>
-<?php if ($this->arrSettings['displayGrid']): ?>
-
 <div>
     <div class="route-output" style="display:none;">
         <div class="headline-dist grid-item"></div>
@@ -42,22 +40,7 @@
     </div>
 
 </div>
-<?php else: ?>
 
-<div>
-    <table class="route-output" style="display:none">
-        <tr class="route-output-headline">
-            <th class="headline-dist"></th>
-            <th class="headline-time"></th>
-        </tr>
-        <tr class="route-output-values">
-            <td class="response-dist"></td>
-            <td class="response-time"></td>
-        </tr>
-    </table>
-
-</div>
-<?php endif; ?>
 <script>
     window.objSettings = <?php echo json_encode($this->arrSettings) ?>;
 </script>

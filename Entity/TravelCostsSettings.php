@@ -91,12 +91,6 @@ class TravelCostsSettings extends BaseEntity
      * @var int
      * @ORM\Column(type="integer")
      */
-    protected $displayGrid = '0';
-
-    /**
-     * @var int
-     * @ORM\Column(type="integer")
-     */
     protected $withPositionButton = '0';
 
     /**
@@ -360,22 +354,6 @@ class TravelCostsSettings extends BaseEntity
     public function setWithDateTime(int $withDateTime): void
     {
         $this->withDateTime = $withDateTime;
-    }
-
-    /**
-     * @return int
-     */
-    public function getDisplayGrid(): int
-    {
-        return $this->displayGrid;
-    }
-
-    /**
-     * @param int $displayGrid
-     */
-    public function setDisplayGrid(int $displayGrid): void
-    {
-        $this->displayGrid = $displayGrid;
     }
 
     /**
