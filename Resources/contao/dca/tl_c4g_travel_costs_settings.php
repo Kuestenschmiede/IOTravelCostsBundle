@@ -70,7 +70,7 @@ $GLOBALS['TL_DCA'][$strName] = array
     // Palettes
     'palettes' => [
         '__selector__' => ['tariffDisplay'],
-        'default' => '{general_legend},caption;{bbox_legend:hide},startBboxUpperx,startBboxUppery,startBboxDownerx,startBboxDownery;{tariffLegend},tariffs;{controlLegend},displayGrid,withPositionButton,withSubmitButton,withDeleteButton,distPrice,limitAutocomplete;{centerLegend},centerx,centery;{customMsgLegend:hide},errorMessageBounds,errorMessageNotFound,searchPlaceholder,language,currency;{descriptionLegend},tariffDisplay,hideDisplay;'
+        'default' => '{general_legend},caption;{bbox_legend:hide},startBboxUpperx,startBboxUppery,startBboxDownerx,startBboxDownery;{tariffLegend},tariffs;{controlLegend},withPositionButton,withSubmitButton,withDeleteButton,distPrice,limitAutocomplete;{centerLegend},centerx,centery;{customMsgLegend:hide},errorMessageBounds,errorMessageNotFound,searchPlaceholder,language,currency;{descriptionLegend},tariffDisplay,hideDisplay;'
     ],
 
 
@@ -128,12 +128,6 @@ $GLOBALS['TL_DCA'][$strName] = array
         ],
         'withDateTime' => [
             'label' => &$GLOBALS['TL_LANG'][$strName]['withDateTime'],
-            'default' => 0,
-            'inputType' => 'checkbox',
-            'eval' => ['decodeEntities' => true, 'maxlength' => 255, 'tl_class' => 'long'],
-        ],
-        'displayGrid' => [
-            'label' => &$GLOBALS['TL_LANG'][$strName]['displayGrid'],
             'default' => 0,
             'inputType' => 'checkbox',
             'eval' => ['decodeEntities' => true, 'maxlength' => 255, 'tl_class' => 'long'],
