@@ -155,7 +155,7 @@ class TravelCostsSettings extends BaseEntity
      * @var int
      * @ORM\Column(type="integer")
      */
-    protected $tariffDisplay = '';
+    protected $tariffDisplay = 0;
 
     /**
      * @var string

@@ -225,6 +225,7 @@ $GLOBALS['TL_DCA'][$strName] = array
         ],
         'displayText' => [
             'label' => &$GLOBALS['TL_LANG'][$strName]['displayText'],
+            'default' => '',
             'eval' => ['rte'=>"tinyMCE"],
             'inputType' => 'text',
         ],
