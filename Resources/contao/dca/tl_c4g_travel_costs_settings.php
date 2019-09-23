@@ -130,7 +130,7 @@ $GLOBALS['TL_DCA'][$strName] = array
             'label' => &$GLOBALS['TL_LANG'][$strName]['withDateTime'],
             'default' => 0,
             'inputType' => 'checkbox',
-            'eval' => ['decodeEntities' => true, 'maxlength' => 255, 'tl_class' => 'long'],
+            'eval' => ['maxlength' => 255, 'tl_class' => 'long'],
         ],
         'colors' => [
                 'label'                     => &$GLOBALS['TL_LANG'][$strName]['colors'],
@@ -143,21 +143,21 @@ $GLOBALS['TL_DCA'][$strName] = array
         ],
         'withPositionButton' => [
             'label' => &$GLOBALS['TL_LANG'][$strName]['withPositionButton'],
-            'default' => 0,
+            'default' => '0',
             'inputType' => 'checkbox',
-            'eval' => ['decodeEntities' => true, 'maxlength' => 255, 'tl_class' => 'long']
+            'eval' => ['maxlength' => 255, 'tl_class' => 'long']
         ],
         'withSubmitButton' => [
             'label' => &$GLOBALS['TL_LANG'][$strName]['withSubmitButton'],
-            'default' => 0,
+            'default' => '0',
             'inputType' => 'checkbox',
-            'eval' => ['decodeEntities' => true, 'maxlength' => 255, 'tl_class' => 'long']
+            'eval' => ['maxlength' => 255, 'tl_class' => 'long']
         ],
         'withDeleteButton' => [
             'label' => &$GLOBALS['TL_LANG'][$strName]['withDeleteButton'],
-            'default' => 0,
+            'default' => '0',
             'inputType' => 'checkbox',
-            'eval' => ['decodeEntities' => true, 'maxlength' => 255, 'tl_class' => 'long']
+            'eval' => ['maxlength' => 255, 'tl_class' => 'long']
         ],
         'distPrice' => [
             'label' => &$GLOBALS['TL_LANG'][$strName]['distPrice'],
@@ -231,7 +231,7 @@ $GLOBALS['TL_DCA'][$strName] = array
         ],
         'hideDisplay' => [
             'label' => &$GLOBALS['TL_LANG'][$strName]['hideDisplay'],
-            'default' => 0,
+            'default' => '0',
             'inputType' => 'checkbox',
         ],
         'limitAutocomplete' => [

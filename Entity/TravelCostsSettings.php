@@ -85,23 +85,23 @@ class TravelCostsSettings extends BaseEntity
      * @var int
      * @ORM\Column(type="integer")
      */
-    protected $withDateTime = '0';
+    protected $withDateTime = 0;
 
     /**
-     * @var int
-     * @ORM\Column(type="integer")
+     * @var string
+     * @ORM\Column(type="string", length=1)
      */
     protected $withPositionButton = '0';
 
     /**
-     * @var int
-     * @ORM\Column(type="integer")
+     * @var string
+     * @ORM\Column(type="string", length=1)
      */
     protected $withSubmitButton = '0';
 
     /**
-     * @var int
-     * @ORM\Column(type="integer")
+     * @var string
+     * @ORM\Column(type="string", length=1)
      */
     protected $withDeleteButton = '0';
 
@@ -164,10 +164,11 @@ class TravelCostsSettings extends BaseEntity
     protected $displayText = '';
 
     /**
-     * @var int
-     * @ORM\Column(type="integer")
+     * @var string
+     * @ORM\Column(type="string", length=1)
      */
-    protected $hideDisplay = 0;
+    protected $hideDisplay = '0';
+
     /**
      * @var int
      * @ORM\Column(type="integer")
@@ -337,54 +338,6 @@ class TravelCostsSettings extends BaseEntity
     /**
      * @return int
      */
-    public function getWithPositionButton(): int
-    {
-        return $this->withPositionButton;
-    }
-
-    /**
-     * @param int $withPositionButton
-     */
-    public function setWithPositionButton(int $withPositionButton): void
-    {
-        $this->withPositionButton = $withPositionButton;
-    }
-
-    /**
-     * @return int
-     */
-    public function getWithSubmitButton(): int
-    {
-        return $this->withSubmitButton;
-    }
-
-    /**
-     * @param int $withSubmitButton
-     */
-    public function setWithSubmitButton(int $withSubmitButton): void
-    {
-        $this->withSubmitButton = $withSubmitButton;
-    }
-
-    /**
-     * @return int
-     */
-    public function getWithDeleteButton(): int
-    {
-        return $this->withDeleteButton;
-    }
-
-    /**
-     * @param int $withDeleteButton
-     */
-    public function setWithDeleteButton(int $withDeleteButton): void
-    {
-        $this->withDeleteButton = $withDeleteButton;
-    }
-
-    /**
-     * @return int
-     */
     public function getDistPrice(): int
     {
         return $this->distPrice;
@@ -527,22 +480,6 @@ class TravelCostsSettings extends BaseEntity
     }
 
     /**
-     * @return int
-     */
-    public function getHideDisplay(): int
-    {
-        return $this->hideDisplay;
-    }
-
-    /**
-     * @param int $hideDisplay
-     */
-    public function setHideDisplay(int $hideDisplay): void
-    {
-        $this->hideDisplay = $hideDisplay;
-    }
-
-    /**
      * @return string
      */
     public function getCurrency(): string
@@ -572,6 +509,70 @@ class TravelCostsSettings extends BaseEntity
     public function setLimitAutocomplete(int $limitAutocomplete): void
     {
         $this->limitAutocomplete = $limitAutocomplete;
+    }
+
+    /**
+     * @return string
+     */
+    public function getWithPositionButton(): string
+    {
+        return $this->withPositionButton;
+    }
+
+    /**
+     * @param string $withPositionButton
+     */
+    public function setWithPositionButton(string $withPositionButton)
+    {
+        $this->withPositionButton = $withPositionButton;
+    }
+
+    /**
+     * @return string
+     */
+    public function getWithSubmitButton(): string
+    {
+        return $this->withSubmitButton;
+    }
+
+    /**
+     * @param string $withSubmitButton
+     */
+    public function setWithSubmitButton(string $withSubmitButton)
+    {
+        $this->withSubmitButton = $withSubmitButton;
+    }
+
+    /**
+     * @return string
+     */
+    public function getWithDeleteButton(): string
+    {
+        return $this->withDeleteButton;
+    }
+
+    /**
+     * @param string $withDeleteButton
+     */
+    public function setWithDeleteButton(string $withDeleteButton)
+    {
+        $this->withDeleteButton = $withDeleteButton;
+    }
+
+    /**
+     * @return string
+     */
+    public function getHideDisplay(): string
+    {
+        return $this->hideDisplay;
+    }
+
+    /**
+     * @param string $hideDisplay
+     */
+    public function setHideDisplay(string $hideDisplay)
+    {
+        $this->hideDisplay = $hideDisplay;
     }
 
 }
