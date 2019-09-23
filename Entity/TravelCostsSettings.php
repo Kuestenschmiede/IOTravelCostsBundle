@@ -301,7 +301,7 @@ class TravelCostsSettings extends BaseEntity
     {
         $this->startBboxDownery = $startBboxDownery;
     }
- 
+
     /**
      * @return array
      */
