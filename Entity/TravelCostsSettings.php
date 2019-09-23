@@ -107,12 +107,6 @@ class TravelCostsSettings extends BaseEntity
 
     /**
      * @var int
-     * @ORM\Column(type="blob")
-     */
-    protected $blob = '';
-
-    /**
-     * @var int
      * @ORM\Column(type="integer")
      */
     protected $distPrice = 0;
@@ -307,23 +301,7 @@ class TravelCostsSettings extends BaseEntity
     {
         $this->startBboxDownery = $startBboxDownery;
     }
-    
-    /**
-     * @return int
-     */
-    public function getBlob(): int
-    {
-        return $this->blob;
-    }
-    
-    /**
-     * @param int $blob
-     */
-    public function setBlob(int $blob): void
-    {
-        $this->blob = $blob;
-    }
-
+ 
     /**
      * @return array
      */
