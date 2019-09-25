@@ -11,10 +11,10 @@
  * @link       https://www.con4gis.org
  */
 
-$GLOBALS['TL_LANG']['MOD']['con4gis_iotravelcosts'] = ['con4gis.io Travel costs', 'con4gis.io travel costs calculator'];
+$GLOBALS['TL_LANG']['MOD']['con4gis_iotravelcosts'] = ['con4gis.io - Travel costs', 'con4gis.io travel costs calculator'];
 
-$GLOBALS['TL_LANG']['MOD']['tl_c4g_travel_costs_settings'] = ['Fare-settings', 'Edit fare-settings'];
-$GLOBALS['TL_LANG']['MOD']['tl_c4g_travel_costs_tariffs'] = ['Fare-tariffs', 'Edit fare-tariffs'];
+$GLOBALS['TL_LANG']['MOD']['tl_c4g_travel_costs_settings'] = ['Settings', 'Edit fare-settings'];
+$GLOBALS['TL_LANG']['MOD']['tl_c4g_travel_costs_tariffs'] = ['Tariffs', 'Edit fare-tariffs'];
 
-$GLOBALS['TL_LANG']['FMD']['c4g_travel_costs'] = ['Travel costs calculator', ''];
-$GLOBALS['TL_LANG']['FMD']['c4g_tariffs'] = ['Travel costs tariffs', ''];
+$GLOBALS['TL_LANG']['FMD']['c4g_travel_costs'] = ['Travel costs calculator (con4gis.io)', ''];
+$GLOBALS['TL_LANG']['FMD']['c4g_tariffs'] = ['Travel costs tariffs (con4gis.io)', ''];

@@ -79,7 +79,7 @@ class TravelCostsSettings extends BaseEntity
      * @var array
      * @ORM\Column(type="array")
      */
-    protected $tariffs = '';
+    protected $tariffs = [];
 
     /**
      * @var int
