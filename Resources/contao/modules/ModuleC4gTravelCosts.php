@@ -16,6 +16,7 @@ namespace con4gis\IOTravelCostsBundle\Resources\contao\modules;
 use con4gis\CoreBundle\Resources\contao\classes\C4GUtils;
 use con4gis\CoreBundle\Resources\contao\classes\ResourceLoader;
 use con4gis\CoreBundle\Resources\contao\models\C4gSettingsModel;
+use con4gis\MapsBundle\Resources\contao\models\C4gMapProfilesModel;
 use con4gis\IOTravelCostsBundle\Entity\TravelCostsSettings;
 use Contao\System;
 use Doctrine\ORM\EntityManager;
@@ -64,7 +65,14 @@ class ModuleC4gTravelCosts extends \Module
 //        ResourceLoader::loadCssRessource("c4g-cached-inputfield", "bundles/con4giscore/css/c4g-cached-inputfield.css");
         $template = $this->Template;
         $objSettings = C4gSettingsModel::findSettings();
+        $objMapsProfile = C4gMapProfilesModel::findByPk($objSettings->defaultprofile);
         $arrSettings = [];
+        if($objMapsProfile->geosearchParams){
+            $arrSettings['geosearchParams'] = [];
+            foreach(unserialize($objMapsProfile->geosearchParams) as $geosearchParam){
+                $arrSettings['geosearchParams'] = array_merge($arrSettings['geosearchParams'], [$geosearchParam['keys'] => $geosearchParam['params']]);
+            }
+        }
         $arrSettings['proxyUrl'] = $objSettings->con4gisIoUrl;
         $arrSettings['keyReverse'] = C4GUtils::getKey($objSettings,3);
         $arrSettings['keyForward'] = C4GUtils::getKey($objSettings,2);

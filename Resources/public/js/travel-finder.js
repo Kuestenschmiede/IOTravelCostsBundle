@@ -295,6 +295,13 @@ function isInBoundingBox(longitude, latitude) {
  */
 function submitSearch(input, cssId) {
   let url = objSettings.proxyUrl + "search.php?format=json&key=" + objSettings.keyForward + "&q=" + $(input).val();
+  if (objSettings.geosearchParams) {
+      for (let param in objSettings.geosearchParams) {
+        if (objSettings.geosearchParams.hasOwnProperty(param)) {
+          url += "&" + param + "=" + objSettings.geosearchParams[param];
+        }
+      }
+    }
   $.ajax({url: url}).done(function(data) {
     let falseResponse = false;
     if (data.length > 0) {
