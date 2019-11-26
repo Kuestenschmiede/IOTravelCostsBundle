@@ -499,8 +499,18 @@ $(document).ready(function() {
         submitSearch(objInputFrom, ".route-from");
         submitSearch(objInputTo, ".route-to");    }
     });
+    let resetButton = document.getElementById('btn-reset-expense-calc');
+    resetButton.innerText = "Reset";
+    $(resetButton).on('click', function() {
+      $('.ui-autocomplete-input').val("");
+      $(".route-output").css("display", "none");
+    })
   }
-
+  $("span.deleteIcon span"). on ("click", (element) => {
+    var input = element.currentTarget.previousSibling.previousElementSibling;
+    input.value = '';
+    $(input).val()
+  })
   $(".route-from-geolocation").on("click", function () {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(handleRouteFromPosition);

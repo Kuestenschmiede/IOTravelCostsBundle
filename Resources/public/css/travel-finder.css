@@ -13,7 +13,8 @@
     border-radius: 5%;
 }
 
-.submit-expense-calc {
+.submit-expense-calc,
+.reset-expense-calc {
     color: rgba(255,255,255,1);
     background-color: rgba(0, 0, 0,.75);
     height: 32px !important;
@@ -23,6 +24,29 @@
     margin: 2px 2px 2px 34px;
     border-radius: 5%;
 }
+/*span.deleteIcon {*/
+/*    position: relative;*/
+/*}*/
+/*span.deleteIcon span {*/
+/*    position: absolute;*/
+/*    display: block;*/
+/*    top: 5px;*/
+/*    right: 0px;*/
+/*    width: 16px;*/
+/*    height: 16px;*/
+/*}*/
+/*span.deleteIcon span:before {*/
+/*    font-family: 'Font Awesome 5 Free';*/
+/*    content: "\f1f8";*/
+/*    font-weight: 900;*/
+/*    color: rgba(0, 0, 0,.75);*/
+/*    background-color: rgba(255,255,255,1);*/
+/*    cursor: pointer;*/
+/*}*/
+/*span.deleteIcon input {*/
+/*    padding-right: 16px;*/
+/*    box-sizing: border-box;*/
+/*}*/
 button.route-from-geolocation:before,
 button.route-to-geolocation:before {
     font-family: 'Font Awesome 5 Free';

@@ -5,6 +5,10 @@
             <button class="route-from-geolocation" title="Get user position"></button>
             <?php endif; ?>
             <?php if ($this->arrSettings['delButton']): ?>
+<!--            <span class="deleteIcon">-->
+<!--                <input type="text" class="route-from ui-autocomplete-input" name="routeFrom">-->
+<!--                <span></span>-->
+<!--            </span>-->
             <input type="search" class="route-from ui-autocomplete-input" name="routeFrom">
             <?php else: ?>
             <input type="text" class="route-from ui-autocomplete-input" name="routeFrom">
@@ -26,6 +30,7 @@
     <?php if ($this->arrSettings['submitButton']): ?>
     <div class="submit-input">
         <button class="submit-expense-calc" id="btn-submit-expense-calc"></button>
+        <button class="reset-expense-calc" id="btn-reset-expense-calc"></button>
     </div>
     <?php endif; ?>
 
