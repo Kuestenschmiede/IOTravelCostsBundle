@@ -25,6 +25,7 @@ export var travelConstantsEnglish = {
     ERROR_FALSE_ADDRESS: 'Address not found',
     ERROR:'Error',
     START_SEARCH: 'Calculate',
+    RESET: 'Reset',
     POSITION_OUT_OF_BOUNDS: "Your current position is out of bounds",
     NONE: '' // last line
 }; // end of "css constants" ---

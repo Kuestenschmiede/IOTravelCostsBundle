@@ -500,7 +500,7 @@ $(document).ready(function() {
         submitSearch(objInputTo, ".route-to");    }
     });
     let resetButton = document.getElementById('btn-reset-expense-calc');
-    resetButton.innerText = "Reset";
+    resetButton.innerText = langConstants.RESET;
     $(resetButton).on('click', function() {
       $('.ui-autocomplete-input').val("");
       $(".route-output").css("display", "none");

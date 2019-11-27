@@ -25,6 +25,7 @@ export  var travelConstantsGerman = {
     ERROR_FALSE_ADDRESS: 'Adresse nicht gefunden',
     ERROR:'Fehler',
     START_SEARCH: 'Berechnen',
+    RESET: 'Zurücksetzen',
     POSITION_OUT_OF_BOUNDS: "Ihre aktuelle Position ist außerhalb des Tarifsgebiets",
     NONE: '' // last line
 }; // end of "css constants" ---
