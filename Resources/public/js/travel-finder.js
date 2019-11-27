@@ -504,6 +504,7 @@ $(document).ready(function() {
     $(resetButton).on('click', function() {
       $('.ui-autocomplete-input').val("");
       $(".route-output").css("display", "none");
+      $(".tariff-output.hideAgain").css("display", "none");
     })
   }
   $("span.deleteIcon span"). on ("click", (element) => {

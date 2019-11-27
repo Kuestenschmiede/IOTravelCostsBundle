@@ -12,7 +12,7 @@
 </div>
 <?php elseif (!$this->tariffDisplay): ?>
 <div>
-    <div class="tariff-output" style="display:none">
+    <div class="tariff-output hideAgain" style="display:none">
         <div class="headline-caption grid-item"></div>
         <div class="headline-base-price grid-item"></div>
         <div class="headline-dist-price grid-item"></div>
