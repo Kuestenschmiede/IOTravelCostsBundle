@@ -11,10 +11,8 @@
  * @link       https://www.con4gis.org
  */
 
-$GLOBALS['TL_LANG']['MOD']['con4gis_iotravelcosts'] = ['con4gis.io - Fahrtkosten', 'con4gis.io Fahrtkostenrechner'];
-
-$GLOBALS['TL_LANG']['MOD']['tl_c4g_travel_costs_settings'] = ['Einstellungen', 'Fahrtkosten-Einstellungen bearbeiten.'];
-$GLOBALS['TL_LANG']['MOD']['tl_c4g_travel_costs_tariffs'] = ['Tarife', 'Fahrtkosten-Tarif konfigurieren.'];
+$GLOBALS['TL_LANG']['MOD']['c4g_travel_costs_settings'] = ['Einstellungen', 'Fahrtkosten-Einstellungen bearbeiten.'];
+$GLOBALS['TL_LANG']['MOD']['c4g_travel_costs_tariffs'] = ['Tarife', 'Fahrtkosten-Tarif konfigurieren.'];
 
 $GLOBALS['TL_LANG']['FMD']['c4g_travel_costs'] = ['Fahrtkostenrechner (con4gis.io)', ''];
 $GLOBALS['TL_LANG']['FMD']['c4g_tariffs'] = ['Fahrtkosten-Tarife (con4gis.io)', ''];

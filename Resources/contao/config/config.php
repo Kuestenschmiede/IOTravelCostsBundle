@@ -14,12 +14,15 @@
 /**
  * Backend Modules
  */
-array_insert($GLOBALS['BE_MOD'], array_search('content', array_keys($GLOBALS['BE_MOD'])) + 3, [
-    'con4gis_iotravelcosts' => [
-        'tl_c4g_travel_costs_settings' => ['tables' => ['tl_c4g_travel_costs_settings','tl_c4g_travel_costs_tariffs']],
-        'tl_c4g_travel_costs_tariffs' => ['tables' => ['tl_c4g_travel_costs_tariffs']]
-    ]
-]);
+$GLOBALS['BE_MOD']['con4gis'] = array_merge($GLOBALS['BE_MOD']['con4gis'], [
+        'c4g_travel_costs_settings' => ['tables' => ['tl_c4g_travel_costs_settings','tl_c4g_travel_costs_tariffs']],
+        'c4g_travel_costs_tariffs' => ['tables' => ['tl_c4g_travel_costs_tariffs']]
+        ]
+ );
+
+if(TL_MODE == "BE") {
+    $GLOBALS['TL_CSS'][] = '/bundles/con4gisiotravelcosts/css/con4gis.css';
+}
 
 array_insert($GLOBALS['FE_MOD']['con4gis'], 1,
     [
@@ -31,7 +34,3 @@ array_insert($GLOBALS['FE_MOD']['con4gis'], 1,
     ]);
 
 $GLOBALS['con4gis']['io-travel-costs']['installed'] = true;
-
-if(TL_MODE == "BE") {
-    $GLOBALS['TL_CSS'][] = '/bundles/con4gisiotravelcosts/css/backend_svg.css';
-}
