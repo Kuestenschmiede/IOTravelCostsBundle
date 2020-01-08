@@ -53,17 +53,17 @@ $GLOBALS['TL_DCA'][$strName] = array
             'edit' => [
                 'label' => &$GLOBALS['TL_LANG'][$strName]['edit'],
                 'href' => 'act=edit',
-                'icon' => 'edit.gif'
+                'icon' => 'edit.svg',
             ],
             'copy' => [
                 'label' => &$GLOBALS['TL_LANG'][$strName]['copy'],
                 'href' => 'act=copy',
-                'icon' => 'copy.gif'
+                'icon' => 'copy.svg'
             ],
             'delete' => [
                 'label' => &$GLOBALS['TL_LANG'][$strName]['delete'],
                 'href' => 'act=delete',
-                'icon' => 'delete.gif',
+                'icon' => 'delete.svg',
                 'attributes' => 'onclick="if (!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['deleteConfirm'] . '\')) return false; Backend.getScrollOffset();"'
             ],
             'show' => [
