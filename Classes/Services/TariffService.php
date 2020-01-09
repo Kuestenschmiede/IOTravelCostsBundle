@@ -1,10 +1,7 @@
 <?php
 
-
 namespace con4gis\IOTravelCostsBundle\Classes\Services;
 
-
-use con4gis\MapsBundle\Resources\contao\models\C4gMapSettingsModel;
 use con4gis\IOTravelCostsBundle\Entity\TravelCostsSettings;
 use con4gis\IOTravelCostsBundle\Entity\TravelCostsTariff;
 use Contao\Database;
@@ -18,7 +15,6 @@ class TariffService
      */
     private $entityManager = null;
 
-
     /**
      * AreaService constructor.
      * @param $eventDispatcher
@@ -30,7 +26,8 @@ class TariffService
         $this->entityManager = $entityManager;
         $this->db = Database::getInstance();
     }
-    public function getResponse($settingsId) {
+    public function getResponse($settingsId)
+    {
         $objExpenseSettings = $this->entityManager->getRepository(TravelCostsSettings::class)->findOneBy(['id' => $settingsId]);
         if ($objExpenseSettings instanceof TravelCostsSettings) {
             $arrTariffIds = $objExpenseSettings->getTariffs();
@@ -40,14 +37,15 @@ class TariffService
                 foreach ($arrTariffs as $key => $objTariff) {
                     if ($objTariff  instanceof TravelCostsTariff) {
                         $arrSendTariffs[$objTariff->getCaption()] =
-                            [   'basePrice' => $objTariff->getBasePrice(),
+                            ['basePrice' => $objTariff->getBasePrice(),
                                 'distPrice' => $objTariff->getDistancePrice(),
-                                'timePrice' => $objTariff->getTimePrice()
+                                'timePrice' => $objTariff->getTimePrice(),
                             ];
                     }
                 }
             }
         }
-        return $arrSendTariffs ? $arrSendTariffs : "";
+
+        return $arrSendTariffs ? $arrSendTariffs : '';
     }
 }

@@ -6,9 +6,7 @@ use con4gis\CoreBundle\Resources\contao\models\C4gSettingsModel;
 use con4gis\IOTravelCostsBundle\Entity\TravelCostsSettings;
 use con4gis\IOTravelCostsBundle\Entity\TravelCostsTariff;
 use Contao\Database;
-use Contao\System;
 use Doctrine\ORM\EntityManager;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 class ExpenseService
 {
@@ -17,7 +15,6 @@ class ExpenseService
      * @var EntityManager
      */
     private $entityManager = null;
-
 
     /**
      * AreaService constructor.
@@ -30,7 +27,8 @@ class ExpenseService
         $this->entityManager = $entityManager;
         $this->db = Database::getInstance();
     }
-    public function getResponse($expenseSetting, $locations, $tariffIds = null, $time  = null) {
+    public function getResponse($expenseSetting, $locations, $tariffIds = null, $time = null)
+    {
         $objExpenseSettings = $this->entityManager->getRepository(TravelCostsSettings::class)->findOneBy(['id' => $expenseSetting]);
         if ($objExpenseSettings instanceof TravelCostsSettings) {
             $arrTariffIds = $objExpenseSettings->getTariffs();
@@ -40,9 +38,9 @@ class ExpenseService
                 foreach ($arrTariffs as $key => $objTariff) {
                     if ($objTariff  instanceof TravelCostsTariff) {
                         $arrSendTariffs[$key] =
-                            [   'basePrice' => $objTariff->getBasePrice(),
+                            ['basePrice' => $objTariff->getBasePrice(),
                                 'distPrice' => $objTariff->getDistancePrice(),
-                                'timePrice' => $objTariff->getTimePrice()
+                                'timePrice' => $objTariff->getTimePrice(),
                             ];
                     }
                 }
@@ -53,7 +51,7 @@ class ExpenseService
 
                 if ($apiKey && $apiUrl) {
                     $typeCalc = $objExpenseSettings->getDistPrice();
-                    $sendUrl = rtrim($apiUrl, "/") . "/" . "routingExpense.php?loc=" . $locations . "&tariffs=". urlencode(\GuzzleHttp\json_encode($arrSendTariffs)) . "&typeCalc=" . $typeCalc . "&time=" . $time . "&key=" . $apiKey;
+                    $sendUrl = rtrim($apiUrl, '/') . '/' . 'routingExpense.php?loc=' . $locations . '&tariffs=' . urlencode(\GuzzleHttp\json_encode($arrSendTariffs)) . '&typeCalc=' . $typeCalc . '&time=' . $time . '&key=' . $apiKey;
                     $REQUEST = new \Request();
                     if ($_SERVER['HTTP_REFERER']) {
                         $REQUEST->setHeader('Referer', $_SERVER['HTTP_REFERER']);
@@ -61,15 +59,14 @@ class ExpenseService
                     if ($_SERVER['HTTP_USER_AGENT']) {
                         $REQUEST->setHeader('User-Agent', $_SERVER['HTTP_USER_AGENT']);
                     }
-                    $REQUEST->setHeader('Content-Type', "application/json");
-                    $REQUEST->method = "GET";
+                    $REQUEST->setHeader('Content-Type', 'application/json');
+                    $REQUEST->method = 'GET';
                     $REQUEST->send($sendUrl);
                 }
-
             }
         }
         $response = json_decode($REQUEST->response);
-        if ($response->tariffs){
+        if ($response->tariffs) {
             $arrResponseTariffs = [];
             foreach ($response->tariffs as $key => $tariff) {
 //                $objTariff = $arrTariffs[$key]
@@ -77,7 +74,7 @@ class ExpenseService
             }
             $response->tariffs = $arrResponseTariffs;
         }
-        return $response;
 
+        return $response;
     }
 }
