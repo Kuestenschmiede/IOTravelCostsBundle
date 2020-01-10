@@ -33,7 +33,7 @@ $GLOBALS['TL_LANG'][$strName]['tariffDisplay'] = ['Type of tariff-display', ''];
 $GLOBALS['TL_LANG'][$strName]['displayText'] = ['Custom description for the tariffs', 'Enter a custom description for your tariffs.'];
 $GLOBALS['TL_LANG'][$strName]['hideDisplay'] = ['Delay tariff description', 'Load the description of the tariffs after a calculation of the tariffs.'];
 $GLOBALS['TL_LANG'][$strName]['language'] = ['Language', 'Set language.'];
-$GLOBALS['TL_LANG'][$strName]['language'] = ['Currency', 'Set currency.'];
+$GLOBALS['TL_LANG'][$strName]['currency'] = ['Currency', 'Set currency.'];
 $GLOBALS['TL_LANG'][$strName]['limitAutocomplete'] = ['Count autocompletion', 'Enter the amount of autocompletion-responses.'];
 
 
