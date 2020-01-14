@@ -15,3 +15,7 @@
 li .c4g_travel_costs_settings, li .c4g_travel_costs_tariffs {
   display: none !important;
 }
+
+li .active .c4g_travel_costs_settings, li .active .c4g_travel_costs_tariffs {
+  display: block !important;
+}
