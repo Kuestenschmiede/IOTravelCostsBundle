@@ -3,7 +3,7 @@
 
 namespace con4gis\IOTravelCostsBundle\Resources\contao\modules;
 
-use con4gis\CoreBundle\Resources\contao\classes\ResourceLoader;
+use con4gis\CoreBundle\Classes\ResourceLoader;
 use con4gis\IOTravelCostsBundle\Entity\TravelCostsSettings;
 use Contao\Controller;
 use Contao\System;

@@ -21,7 +21,7 @@ $GLOBALS['TL_DCA'][$strName] = array
         'dataContainer'               => 'Table',
         'enableVersioning'            => true,
         'onsubmit_callback'             => array(
-            array('\con4gis\CoreBundle\Resources\contao\classes\C4GAutomator', 'purgeApiCache')
+            array('\con4gis\CoreBundle\Classes\C4GAutomator', 'purgeApiCache')
         )
     ),
 
