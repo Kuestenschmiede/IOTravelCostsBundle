@@ -15,8 +15,8 @@
  * Backend Modules
  */
 $GLOBALS['BE_MOD']['con4gis'] = array_merge($GLOBALS['BE_MOD']['con4gis'], [
-        'c4g_travel_costs_settings' => ['tables' => ['tl_c4g_travel_costs_settings','tl_c4g_travel_costs_tariffs']],
-        'c4g_travel_costs_tariffs' => ['tables' => ['tl_c4g_travel_costs_tariffs']]
+        'c4g_travel_costs_tariffs' => ['brick' => 'io-travel-costs', 'tables' => ['tl_c4g_travel_costs_tariffs'],  'icon' => 'bundles/con4gisiotravelcosts/images/be-icons/travelcosts_tariff.svg'],
+        'c4g_travel_costs_settings' => ['brick' => 'io-travel-costs', 'tables' => ['tl_c4g_travel_costs_settings','tl_c4g_travel_costs_tariffs'],'icon' => 'bundles/con4giscore/images/be-icons/edit.svg'],
         ]
  );
 
