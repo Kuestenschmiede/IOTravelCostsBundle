@@ -98,7 +98,7 @@ $GLOBALS['TL_DCA'][$strName] = array
         'startBboxUpperx' => [
             'label' => &$GLOBALS['TL_LANG'][$strName]['startBboxUpperx'],
             'default' => '',
-            'wizard' => [['con4gis\MapsBundle\Resources\contao\classes\GeoPicker', 'getPickerLink']],
+            'wizard' => [['con4gis\MapsBundle\Classes\GeoPicker', 'getPickerLink']],
             'save_callback' => [['tl_c4g_travel_costs_settings', 'setLon']],
             'inputType' => 'c4g_text',
             'eval' => ['maxlength' => 20, 'tl_class' => 'w50 wizard', 'require_input' => true]
@@ -106,7 +106,7 @@ $GLOBALS['TL_DCA'][$strName] = array
         'startBboxUppery' => [
             'label' => &$GLOBALS['TL_LANG'][$strName]['startBboxUppery'],
             'default' => '',
-            'wizard' => [['con4gis\MapsBundle\Resources\contao\classes\GeoPicker', 'getPickerLink']],
+            'wizard' => [['con4gis\MapsBundle\Classes\GeoPicker', 'getPickerLink']],
             'save_callback' => [['tl_c4g_travel_costs_settings', 'setLat']],
             'inputType' => 'c4g_text',
             'eval' => ['maxlength' => 20, 'tl_class' => 'w50 wizard', 'require_input' => true]
@@ -114,7 +114,7 @@ $GLOBALS['TL_DCA'][$strName] = array
         'startBboxDownerx' => [
             'label' => &$GLOBALS['TL_LANG'][$strName]['startBboxDownerx'],
             'default' => '',
-            'wizard' => [['con4gis\MapsBundle\Resources\contao\classes\GeoPicker', 'getPickerLink']],
+            'wizard' => [['con4gis\MapsBundle\Classes\GeoPicker', 'getPickerLink']],
             'save_callback' => [['tl_c4g_travel_costs_settings', 'setLon']],
             'inputType' => 'c4g_text',
             'eval' => ['maxlength' => 20, 'tl_class' => 'w50 wizard', 'require_input' => true]
@@ -122,7 +122,7 @@ $GLOBALS['TL_DCA'][$strName] = array
         'startBboxDownery' => [
             'label' => &$GLOBALS['TL_LANG'][$strName]['startBboxDownery'],
             'default' => '',
-            'wizard' => [['con4gis\MapsBundle\Resources\contao\classes\GeoPicker', 'getPickerLink']],
+            'wizard' => [['con4gis\MapsBundle\Classes\GeoPicker', 'getPickerLink']],
             'save_callback' => [['tl_c4g_travel_costs_settings', 'setLat']],
             'inputType' => 'c4g_text',
             'eval' => ['maxlength' => 20, 'tl_class' => 'w50 wizard', 'require_input' => true]
@@ -178,7 +178,7 @@ $GLOBALS['TL_DCA'][$strName] = array
         'centerx' => [
             'label' => &$GLOBALS['TL_LANG'][$strName]['centerx'],
             'default' => '',
-            'wizard' => [['con4gis\MapsBundle\Resources\contao\classes\GeoPicker', 'getPickerLink']],
+            'wizard' => [['con4gis\MapsBundle\Classes\GeoPicker', 'getPickerLink']],
             'save_callback' => [['tl_c4g_travel_costs_settings', 'setLon']],
             'inputType' => 'c4g_text',
             'eval' => ['maxlength' => 20, 'tl_class' => 'w50 wizard', 'require_input' => true]
@@ -186,7 +186,7 @@ $GLOBALS['TL_DCA'][$strName] = array
         'centery' => [
             'label' => &$GLOBALS['TL_LANG'][$strName]['centery'],
             'default' => '',
-            'wizard' => [['con4gis\MapsBundle\Resources\contao\classes\GeoPicker', 'getPickerLink']],
+            'wizard' => [['con4gis\MapsBundle\Classes\GeoPicker', 'getPickerLink']],
             'save_callback' => [['tl_c4g_travel_costs_settings', 'setLat']],
             'inputType' => 'c4g_text',
             'eval' => ['maxlength' => 20, 'tl_class' => 'w50 wizard', 'require_input' => true]
@@ -270,7 +270,7 @@ class tl_c4g_travel_costs_settings extends \Contao\Backend
 
         public function setLon($varValue, DataContainer $dc)
     {
-        if (!\con4gis\MapsBundle\Resources\contao\classes\Utils::validateLon($varValue)) {
+        if (!\con4gis\MapsBundle\Classes\Utils::validateLon($varValue)) {
             throw new Exception($GLOBALS['TL_LANG']['c4g_maps']['geox_invalid']);
         }
         return $varValue;
@@ -278,7 +278,7 @@ class tl_c4g_travel_costs_settings extends \Contao\Backend
 
     public function setLat($varValue, DataContainer $dc)
     {
-        if (!\con4gis\MapsBundle\Resources\contao\classes\Utils::validateLon($varValue)) {
+        if (!\con4gis\MapsBundle\Classes\Utils::validateLon($varValue)) {
             throw new Exception($GLOBALS['TL_LANG']['c4g_maps']['geox_invalid']);
         }
         return $varValue;

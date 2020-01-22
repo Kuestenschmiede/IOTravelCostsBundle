@@ -20,10 +20,6 @@ $GLOBALS['BE_MOD']['con4gis'] = array_merge($GLOBALS['BE_MOD']['con4gis'], [
         ]
  );
 
-if(TL_MODE == "BE") {
-    $GLOBALS['TL_CSS'][] = '/bundles/con4gisiotravelcosts/css/con4gis.css';
-}
-
 /**
  * Frontend modules
  */
