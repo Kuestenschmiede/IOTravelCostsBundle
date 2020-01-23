@@ -11,8 +11,8 @@
  * @link       https://www.con4gis.org
  */
 
-$GLOBALS['TL_LANG']['MOD']['c4g_travel_costs_settings'] = ['IOTravelCosts: Settings', 'Edit fare-settings'];
-$GLOBALS['TL_LANG']['MOD']['c4g_travel_costs_tariffs'] = ['IOTravelCosts: Tariffs', 'Edit fare-tariffs'];
+$GLOBALS['TL_LANG']['MOD']['c4g_travel_costs_settings'] = ['(travel-costs) Settings', 'Edit fare-settings'];
+$GLOBALS['TL_LANG']['MOD']['c4g_travel_costs_tariffs'] = ['(travel-costs) Tariffs', 'Edit fare-tariffs'];
 
-$GLOBALS['TL_LANG']['FMD']['c4g_travel_costs'] = ['io-travel-costs: Travel costs calculator', 'Travel cost calculator (from / to). Requires a con4gis.io API key.'];
-$GLOBALS['TL_LANG']['FMD']['c4g_travel_costs_tariffs'] = ['io-travel-costs: Travel costs tariffs', 'Display travel cost tariffs'];
+$GLOBALS['TL_LANG']['FMD']['c4g_travel_costs'] = ['(travel-costs) Calculator', 'Travel cost calculator (from / to). Requires a con4gis.io API key.'];
+$GLOBALS['TL_LANG']['FMD']['c4g_travel_costs_tariffs'] = ['(travel-costs) Tariffs', 'Display travel cost tariffs'];
