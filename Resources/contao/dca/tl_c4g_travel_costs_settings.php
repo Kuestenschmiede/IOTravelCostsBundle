@@ -248,7 +248,10 @@ $GLOBALS['TL_DCA'][$strName] = array
             'default' => 10,
             'inputType' => 'text',
             'eval' => ['rgxp' => 'digit']
-        ]
+        ],
+        'importId' => [
+            'eval' => ['doNotCopy' => true]
+        ],
     ]
 );
 class tl_c4g_travel_costs_settings extends \Contao\Backend

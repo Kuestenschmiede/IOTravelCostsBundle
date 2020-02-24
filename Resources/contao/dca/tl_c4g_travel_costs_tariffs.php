@@ -350,6 +350,9 @@ $GLOBALS['TL_DCA'][$strName] = array
         'endDistance' => [
             'default' => 0,
         ],
+        'importId' => [
+            'eval' => ['doNotCopy' => true]
+        ],
 
     )
 );
