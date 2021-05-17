@@ -58,11 +58,10 @@ class ModuleC4gTravelCosts extends \Module
     {
         $pageId = $this->mapPage;
         $pageUrl = Controller::replaceInsertTags("{{link_url:: " . $pageId . "}}");
-        ResourceLoader::loadJavaScriptDeferred('jquery-ui', "/bundles/con4giscore/vendor/jQuery/jquery-ui-1.12.1.custom/jquery-ui.js");
-        ResourceLoader::loadJavaScriptDeferred("travel-finder", "bundles/con4gisiotravelcosts/build/travel-finder.js");
-        ResourceLoader::loadCssRessource("travel-finder", "bundles/con4gisiotravelcosts/css/travel-finder.css");
-        ResourceLoader::loadCssRessource('jquery-ui-css', "/bundles/con4giscore/vendor/jQuery/jquery-ui-1.12.1.custom/jquery-ui.css");
-//        ResourceLoader::loadCssRessource("c4g-cached-inputfield", "bundles/con4giscore/css/c4g-cached-inputfield.css");
+        ResourceLoader::loadJavaScriptResource("bundles/con4giscore/vendor/jQuery/jquery-ui-1.12.1.custom/jquery-ui.min.js", ResourceLoader::JAVASCRIPT, 'jquery-ui');
+        ResourceLoader::loadJavaScriptResource("bundles/con4gisiotravelcosts/build/tariff-finder.js", "tariff-finder");
+        ResourceLoader::loadCssResource("travel-finder", "bundles/con4gisiotravelcosts/dist/css/travel-finder.min.css");
+        ResourceLoader::loadCssResource('jquery-ui-css', "/bundles/con4giscore/vendor/jQuery/jquery-ui-1.12.1.custom/jquery-ui.min.css");
         $template = $this->Template;
         $objSettings = C4gSettingsModel::findSettings();
         $objMapsProfile = C4gMapProfilesModel::findByPk($objSettings->defaultprofile);
