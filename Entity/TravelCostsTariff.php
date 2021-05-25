@@ -21,7 +21,7 @@ use con4gis\CoreBundle\Entity\BaseEntity;
  *
  * @ORM\Entity
  * @ORM\Table(name="tl_c4g_travel_costs_tariffs")
- * @package con4gis\RoutingBundle\Entity
+ * @package con4gis\TravelCostsBundle\Entity
  */
 class TravelCostsTariff extends BaseEntity
 {
