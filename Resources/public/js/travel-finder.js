@@ -6,8 +6,7 @@ import {AutocompleteHandler} from "./../../../../CoreBundle/Resources/public/src
 
 const $ = jQuery;
 const langConstants = {};
-const objSettings = window.objSettings;
-const currency = objSettings.currency || "€";
+const objSettings = {};
 const containerAddresses = {
   arrFromPositions: [],
   arrFromNames: [],
@@ -377,7 +376,7 @@ function calculateExpenses () {
         if (objSettings.lang === "de") {
           responseTariff = responseTariff.replace(".",",");
         }
-        responseElement.html(responseTariff + " " + currency);
+        responseElement.html(responseTariff + " " + objSettings.currency || "€");
         responseElement.addClass("response-value");
         responseElement.addClass("grid-item");
         responseElement.insertAfter(insertAfterVal);
@@ -400,6 +399,7 @@ function calculateExpenses () {
  */
 $(document).ready(function() {
   let language = objSettings.lang || window.navigator.userLanguage || window.navigator.language;
+  $.extend(objSettings, window.objSettings);
   if (language === "en") {
     $.extend(langConstants, travelConstantsEnglish)
   }

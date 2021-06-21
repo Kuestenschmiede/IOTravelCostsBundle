@@ -1,7 +1,6 @@
 import {travelConstantsEnglish} from "./travel-constant-i18n-en";
 import {travelConstantsGerman} from "./travel-constant-i18n-de";
 const langConstants = {};
-const objSettings = window.objSettings;
 const currency = window.currency || '€';
 
 /**
@@ -19,7 +18,7 @@ $(document).ready(function() {
     else {
         $.extend(langConstants, travelConstantsEnglish);
     }
-    if (!objSettings.displayType) {
+    if (window.displayType == "0") {
         findTariffs();
     }
 });
@@ -38,13 +37,8 @@ function findTariffs() {
     $.ajax({url:url})
         .done(function (data) {
             let parent = $(".tariff-output");
-            if (objSettings.hideDisplay == 0) {
-                if (window.displayGrid === "1") {
-                    parent.css('display','grid');
-                }
-                else {
-                    parent.css('display','block');
-                }
+            if (window.hideDisplay == 0) {
+                parent.css('display','grid');
             }
             let rowCount = "row-even";
 

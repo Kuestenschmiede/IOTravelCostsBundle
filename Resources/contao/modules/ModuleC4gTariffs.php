@@ -40,10 +40,10 @@ class ModuleC4gTariffs extends \Module
     {
         $pageId = $this->mapPage;
         $pageUrl = Controller::replaceInsertTags("{{link_url:: " . $pageId . "}}");
-        ResourceLoader::loadJavaScriptResource("bundles/con4giscore/vendor/jQuery/jquery-ui-1.12.1.custom/jquery-ui.min.js", ResourceLoader::JAVASCRIPT, 'jquery-ui');
-        ResourceLoader::loadJavaScriptResource("bundles/con4gisiotravelcosts/build/tariff-finder.js", "tariff-finder");
-        ResourceLoader::loadCssResource("travel-finder", "bundles/con4gisiotravelcosts/dist/css/travel-finder.min.css");
-        ResourceLoader::loadCssResource('jquery-ui-css', "/bundles/con4giscore/vendor/jQuery/jquery-ui-1.12.1.custom/jquery-ui.min.css");
+        ResourceLoader::loadJavaScriptResource("bundles/con4giscore/vendor/jQuery/jquery-ui-1.12.1.custom/jquery-ui.min.js", ResourceLoader::JAVASCRIPT,'jquery-ui');
+        ResourceLoader::loadJavaScriptResource("bundles/con4gisiotravelcosts/build/tariff-finder.js", ResourceLoader::JAVASCRIPT,"tariff-finder" );
+        ResourceLoader::loadCssResource("bundles/con4gisiotravelcosts/dist/css/travel-finder.min.css", "travel-finder");
+        ResourceLoader::loadCssResource("/bundles/con4giscore/vendor/jQuery/jquery-ui-1.12.1.custom/jquery-ui.min.css",'jquery-ui-css' );
         $template = $this->Template;
         $settingsId = $this->expense_settings_id;
         $tariffConfig = System::getContainer()->get("doctrine.orm.default_entity_manager")->getRepository(TravelCostsSettings::class)

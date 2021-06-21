@@ -59,9 +59,9 @@ class ModuleC4gTravelCosts extends \Module
         $pageId = $this->mapPage;
         $pageUrl = Controller::replaceInsertTags("{{link_url:: " . $pageId . "}}");
         ResourceLoader::loadJavaScriptResource("bundles/con4giscore/vendor/jQuery/jquery-ui-1.12.1.custom/jquery-ui.min.js", ResourceLoader::JAVASCRIPT, 'jquery-ui');
-        ResourceLoader::loadJavaScriptResource("bundles/con4gisiotravelcosts/build/tariff-finder.js", "tariff-finder");
-        ResourceLoader::loadCssResource("travel-finder", "bundles/con4gisiotravelcosts/dist/css/travel-finder.min.css");
-        ResourceLoader::loadCssResource('jquery-ui-css', "/bundles/con4giscore/vendor/jQuery/jquery-ui-1.12.1.custom/jquery-ui.min.css");
+        ResourceLoader::loadJavaScriptResource( "bundles/con4gisiotravelcosts/build/travel-finder.js", ResourceLoader::JAVASCRIPT, "travel-finder");
+        ResourceLoader::loadCssResource("bundles/con4gisiotravelcosts/dist/css/travel-finder.min.css", "travel-finder");
+        ResourceLoader::loadCssResource("/bundles/con4giscore/vendor/jQuery/jquery-ui-1.12.1.custom/jquery-ui.min.css", 'jquery-ui-css');
         $template = $this->Template;
         $objSettings = C4gSettingsModel::findSettings();
         $objMapsProfile = C4gMapProfilesModel::findByPk($objSettings->defaultprofile);
@@ -101,7 +101,7 @@ class ModuleC4gTravelCosts extends \Module
 //                    $bBox = str_replace("\"", "\\\"", json_encode($bBox));
                     $arrSettings['bBox'] = $bBox;
                 }
-                
+
             }
             if ($tariffConfig->getCenterX() && $tariffConfig->getCenterY()) {
                 $arrSettings['center'] = [$tariffConfig->getCenterX(), $tariffConfig->getCenterY()];

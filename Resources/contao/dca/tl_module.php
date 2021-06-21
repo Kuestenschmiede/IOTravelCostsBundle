@@ -15,7 +15,7 @@
  * Palettes
  */
 $GLOBALS['TL_DCA']['tl_module']['palettes']['c4g_travel_costs']         =   '{title_legend},name,type,headline,expense_settings_id';
-$GLOBALS['TL_DCA']['tl_module']['palettes']['c4g_tariffs']              =   '{title_legend},name,type,headline,expense_settings_id';
+$GLOBALS['TL_DCA']['tl_module']['palettes']['c4g_travel_costs_tariffs']              =   '{title_legend},name,type,headline,expense_settings_id';
 /***
  * Fields
  */

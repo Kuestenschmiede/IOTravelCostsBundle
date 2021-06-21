@@ -24,5 +24,7 @@
 <script defer>
     window.settingId = "<?php echo $this->settingId ?>";
     window.serviceLang = "<?php echo $this->lang ?>";
+    window.displayType = "<?php echo $this->tariffDisplay ?>";
+    window.hideDisplay = "<?php echo $this->hideDisplay ?>";
     window.currency = "<?php echo $this->currency ?>";
 </script>
