@@ -1,8 +1,8 @@
 "use strict";
 import {travelConstantsEnglish} from "./travel-constant-i18n-en";
 import {travelConstantsGerman} from "./travel-constant-i18n-de";
-import {AlertHandler} from "./../../../../CoreBundle/Resources/public/vendor/js/AlertHandler";
-import {AutocompleteHandler} from "./../../../../CoreBundle/Resources/public/src/js/AutocompleteHandler";
+import {AlertHandler} from "./../../../../../CoreBundle/src/Resources/public/vendor/js/AlertHandler.js";
+import {AutocompleteHandler} from "./../../../../../CoreBundle/src/Resources/public/src/js/AutocompleteHandler.js";
 
 const $ = jQuery;
 const langConstants = {};
