@@ -400,10 +400,10 @@ function calculateExpenses () {
 $(document).ready(function() {
   let language = objSettings.lang || window.navigator.userLanguage || window.navigator.language;
   $.extend(objSettings, window.objSettings);
-  if (language === "en") {
+  if (language.includes("en")) {
     $.extend(langConstants, travelConstantsEnglish)
   }
-  else if (language === "de") {
+  else if (language.includes("de")) {
     $.extend(langConstants, travelConstantsGerman);
   }
   else {
