@@ -154,7 +154,7 @@ $GLOBALS['TL_DCA'][$strName] = array
         ],
         'monday' => array
         (
-            'label'                   => $GLOBALS['TL_LANG'][$strName]['monday'],
+            'label'                   => &$GLOBALS['TL_LANG'][$strName]['monday'],
             'default'                 => time(),
             'exclude'                 => true,
             'inputType'               => 'multiColumnWizard',
@@ -162,14 +162,14 @@ $GLOBALS['TL_DCA'][$strName] = array
             (
                 'time_begin' => array
                 (
-                    'label'                   => $GLOBALS['TL_LANG'][$strName]['time_begin'],
+                    'label'                   => &$GLOBALS['TL_LANG'][$strName]['time_begin'],
                     'exclude'                 => true,
                     'inputType'               => 'text',
                     'eval'                    => array('rgxp'=>'time', 'mandatory'=>false, 'doNotCopy'=>true, 'datepicker'=>true, 'tl_class'=>'w50 wizard')
                 ),
                 'time_end' => array
                 (
-                    'label'                   => $GLOBALS['TL_LANG'][$strName]['time_end'],
+                    'label'                   => &$GLOBALS['TL_LANG'][$strName]['time_end'],
                     'exclude'                 => true,
                     'inputType'               => 'text',
                     'eval'                    => array('rgxp'=>'time', 'mandatory'=>false, 'doNotCopy'=>true, 'datepicker'=>true, 'tl_class'=>'w50 wizard')
@@ -178,7 +178,7 @@ $GLOBALS['TL_DCA'][$strName] = array
         ),
         'tuesday' => array
         (
-            'label'                   => $GLOBALS['TL_LANG'][$strName]['tuesday'],
+            'label'                   => &$GLOBALS['TL_LANG'][$strName]['tuesday'],
             'default'                 => time(),
             'exclude'                 => true,
             'inputType'               => 'multiColumnWizard',
@@ -186,7 +186,7 @@ $GLOBALS['TL_DCA'][$strName] = array
             (
                 'time_begin' => array
                 (
-                    'label'                   => $GLOBALS['TL_LANG'][$strName]['time_begin'],
+                    'label'                   => &$GLOBALS['TL_LANG'][$strName]['time_begin'],
                     'default'                 => 0,
                     'exclude'                 => true,
                     'inputType'               => 'text',
@@ -194,7 +194,7 @@ $GLOBALS['TL_DCA'][$strName] = array
                 ),
                 'time_end' => array
                 (
-                    'label'                   => $GLOBALS['TL_LANG'][$strName]['time_end'],
+                    'label'                   => &$GLOBALS['TL_LANG'][$strName]['time_end'],
                     'default'                 => 0,
                     'exclude'                 => true,
                     'inputType'               => 'text',
@@ -205,7 +205,7 @@ $GLOBALS['TL_DCA'][$strName] = array
 
         'wednesday' => array
         (
-            'label'                   => $GLOBALS['TL_LANG'][$strName]['wednesday'],
+            'label'                   => &$GLOBALS['TL_LANG'][$strName]['wednesday'],
             'default'                 => time(),
             'exclude'                 => true,
             'inputType'               => 'multiColumnWizard',
@@ -213,7 +213,7 @@ $GLOBALS['TL_DCA'][$strName] = array
             (
                 'time_begin' => array
                 (
-                    'label'                   => $GLOBALS['TL_LANG'][$strName]['time_begin'],
+                    'label'                   => &$GLOBALS['TL_LANG'][$strName]['time_begin'],
                     'default'                 => 0,
                     'exclude'                 => true,
                     'inputType'               => 'text',
@@ -221,7 +221,7 @@ $GLOBALS['TL_DCA'][$strName] = array
                 ),
                 'time_end' => array
                 (
-                    'label'                   => $GLOBALS['TL_LANG'][$strName]['time_end'],
+                    'label'                   => &$GLOBALS['TL_LANG'][$strName]['time_end'],
                     'default'                 => 0,
                     'exclude'                 => true,
                     'inputType'               => 'text',
@@ -232,7 +232,7 @@ $GLOBALS['TL_DCA'][$strName] = array
 
         'thursday' => array
         (
-            'label'                   => $GLOBALS['TL_LANG'][$strName]['thursday'],
+            'label'                   => &$GLOBALS['TL_LANG'][$strName]['thursday'],
             'default'                 => time(),
             'exclude'                 => true,
             'inputType'               => 'multiColumnWizard',
@@ -240,7 +240,7 @@ $GLOBALS['TL_DCA'][$strName] = array
             (
                 'time_begin' => array
                 (
-                    'label'                   => $GLOBALS['TL_LANG'][$strName]['time_begin'],
+                    'label'                   => &$GLOBALS['TL_LANG'][$strName]['time_begin'],
                     'default'                 => 0,
                     'exclude'                 => true,
                     'inputType'               => 'text',
@@ -248,7 +248,7 @@ $GLOBALS['TL_DCA'][$strName] = array
                 ),
                 'time_end' => array
                 (
-                    'label'                   => $GLOBALS['TL_LANG'][$strName]['time_end'],
+                    'label'                   => &$GLOBALS['TL_LANG'][$strName]['time_end'],
                     'default'                 => 0,
                     'exclude'                 => true,
                     'inputType'               => 'text',
@@ -259,7 +259,7 @@ $GLOBALS['TL_DCA'][$strName] = array
 
         'friday' => array
         (
-            'label'                   => $GLOBALS['TL_LANG'][$strName]['friday'],
+            'label'                   => &$GLOBALS['TL_LANG'][$strName]['friday'],
             'default'                 => time(),
             'exclude'                 => true,
             'inputType'               => 'multiColumnWizard',
@@ -267,7 +267,7 @@ $GLOBALS['TL_DCA'][$strName] = array
             (
                 'time_begin' => array
                 (
-                    'label'                   => $GLOBALS['TL_LANG'][$strName]['time_begin'],
+                    'label'                   => &$GLOBALS['TL_LANG'][$strName]['time_begin'],
                     'default'                 => 0,
                     'exclude'                 => true,
                     'inputType'               => 'text',
@@ -275,7 +275,7 @@ $GLOBALS['TL_DCA'][$strName] = array
                 ),
                 'time_end' => array
                 (
-                    'label'                   => $GLOBALS['TL_LANG'][$strName]['time_end'],
+                    'label'                   => &$GLOBALS['TL_LANG'][$strName]['time_end'],
                     'default'                 => 0,
                     'exclude'                 => true,
                     'inputType'               => 'text',
@@ -286,7 +286,7 @@ $GLOBALS['TL_DCA'][$strName] = array
 
         'saturday' => array
         (
-            'label'                   => $GLOBALS['TL_LANG'][$strName]['saturday'],
+            'label'                   => &$GLOBALS['TL_LANG'][$strName]['saturday'],
             'default'                 => time(),
             'exclude'                 => true,
             'inputType'               => 'multiColumnWizard',
@@ -294,7 +294,7 @@ $GLOBALS['TL_DCA'][$strName] = array
             (
                 'time_begin' => array
                 (
-                    'label'                   => $GLOBALS['TL_LANG'][$strName]['time_begin'],
+                    'label'                   => &$GLOBALS['TL_LANG'][$strName]['time_begin'],
                     'default'                 => 0,
                     'exclude'                 => true,
                     'inputType'               => 'text',
@@ -302,7 +302,7 @@ $GLOBALS['TL_DCA'][$strName] = array
                 ),
                 'time_end' => array
                 (
-                    'label'                   => $GLOBALS['TL_LANG'][$strName]['time_end'],
+                    'label'                   => &$GLOBALS['TL_LANG'][$strName]['time_end'],
                     'default'                 => 0,
                     'exclude'                 => true,
                     'inputType'               => 'text',
@@ -313,7 +313,7 @@ $GLOBALS['TL_DCA'][$strName] = array
 
         'sunday' => array
         (
-            'label'                   => $GLOBALS['TL_LANG'][$strName]['sunday'],
+            'label'                   => &$GLOBALS['TL_LANG'][$strName]['sunday'],
             'default'                 => time(),
             'exclude'                 => true,
             'inputType'               => 'multiColumnWizard',
@@ -321,7 +321,7 @@ $GLOBALS['TL_DCA'][$strName] = array
             (
                 'time_begin' => array
                 (
-                    'label'                   => $GLOBALS['TL_LANG'][$strName]['time_begin'],
+                    'label'                   => &$GLOBALS['TL_LANG'][$strName]['time_begin'],
                     'default'                 => 0,
                     'exclude'                 => true,
                     'inputType'               => 'text',
@@ -329,7 +329,7 @@ $GLOBALS['TL_DCA'][$strName] = array
                 ),
                 'time_end' => array
                 (
-                    'label'                   => $GLOBALS['TL_LANG'][$strName]['time_end'],
+                    'label'                   => &$GLOBALS['TL_LANG'][$strName]['time_end'],
                     'default'                 => 0,
                     'exclude'                 => true,
                     'inputType'               => 'text',
