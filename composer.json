@@ -16,7 +16,7 @@
     },
     "require": {
         "contao/core-bundle": "^4.9",
-        "con4gis/core": "^5.1.0",
+        "con4gis/core": "6.0.0",
         "con4gis/maps": "^8.1.0",
         "doctrine/orm": "^2.8.4",
         "doctrine/data-fixtures": "^1.4.4",
@@ -44,9 +44,6 @@
         "preferred-install": "dist"
     },
     "extra": {
-        "branch-alias": {
-            "dev-main": "1.0.x-dev"
-        },
         "contao-manager-plugin": "con4gis\\IOTravelCostsBundle\\ContaoManager\\Plugin"
     }
 }
