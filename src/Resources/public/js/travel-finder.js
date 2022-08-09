@@ -398,8 +398,8 @@ function calculateExpenses () {
  * @returns {void}}
  */
 $(document).ready(function() {
-  let language = objSettings.lang || window.navigator.userLanguage || window.navigator.language;
   $.extend(objSettings, window.objSettings);
+  let language = objSettings.lang || window.navigator.userLanguage || window.navigator.language;
   if (language.includes("en")) {
     $.extend(langConstants, travelConstantsEnglish)
   }
