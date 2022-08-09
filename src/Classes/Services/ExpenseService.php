@@ -5,27 +5,17 @@ namespace con4gis\IOTravelCostsBundle\Classes\Services;
 use con4gis\CoreBundle\Resources\contao\models\C4gSettingsModel;
 use con4gis\IOTravelCostsBundle\Entity\TravelCostsSettings;
 use con4gis\IOTravelCostsBundle\Entity\TravelCostsTariff;
-use Contao\Database;
 use Doctrine\ORM\EntityManager;
 
 class ExpenseService
 {
-    private $eventDispatcher;
-    /**
-     * @var EntityManager
-     */
-    private $entityManager = null;
 
     /**
-     * AreaService constructor.
-     * @param $eventDispatcher
-     * @param $entityManager
+     * AreaService constructor
      */
-    public function __construct($eventDispatcher, EntityManager $entityManager)
+    public function __construct(EntityManager $manager)
     {
-        $this->eventDispatcher = $eventDispatcher;
-        $this->entityManager = $entityManager;
-        $this->db = Database::getInstance();
+        $this->entityManager = $manager;
     }
     public function getResponse($expenseSetting, $locations, $tariffIds = null, $time = null)
     {

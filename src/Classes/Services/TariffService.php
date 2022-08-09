@@ -9,7 +9,6 @@ use Doctrine\ORM\EntityManager;
 
 class TariffService
 {
-    private $eventDispatcher;
     /**
      * @var EntityManager
      */
@@ -17,14 +16,10 @@ class TariffService
 
     /**
      * AreaService constructor.
-     * @param $eventDispatcher
-     * @param $entityManager
      */
-    public function __construct($eventDispatcher, EntityManager $entityManager)
+    public function __construct(EntityManager $manager)
     {
-        $this->eventDispatcher = $eventDispatcher;
-        $this->entityManager = $entityManager;
-        $this->db = Database::getInstance();
+        $this->entityManager = $manager;
     }
     public function getResponse($settingsId)
     {

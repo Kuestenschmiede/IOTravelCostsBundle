@@ -14,23 +14,32 @@
 namespace con4gis\IOTravelCostsBundle\Controller;
 
 
-use con4gis\CoreBundle\Controller\BaseController;
+use con4gis\IOTravelCostsBundle\Classes\Services\ExpenseService;
+use con4gis\IOTravelCostsBundle\Classes\Services\TariffService;
+use Contao\CoreBundle\Framework\ContaoFramework;
+use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+
 
 class TravelCostsController extends AbstractController
 {
+    public function __construct(EntityManager $manager, ContaoFramework $contaoFramework)
+    {
+        $this->entityManager = $manager;
+        $this->framework = $contaoFramework;
+    }
     /**
-     * @Route("/con4gis/expenseService/{settings}/{locations}/{tariffId}/{time}", name="getExpenseService", methods={"GET"})
+     * @Route("/con4gis/expenseService/{settings}/{locations}/{tariffId}/{time}", defaults={"tariffId":null,"time":null}, name="getExpenseService", methods={"GET"})
      * @param $request
      * @return JsonResponse
      */
     public function getExpensesAction(Request $request, $settings, $locations, $tariffId = null, $time = null){
-        $this->get('contao.framework')->initialize();
-        $expenseService = $this->get("con4gis.expense_service");
+        $this->framework->initialize();
+        $expenseService = new ExpenseService($this->entityManager);
         $response = new JsonResponse();
         $response ->setData($expenseService->getResponse($settings, $locations, $tariffId, $time));
         return $response;
@@ -41,8 +50,7 @@ class TravelCostsController extends AbstractController
      * @return JsonResponse
      */
     public function getTariffAction(Request $request, $settingId){
-        $this->get('contao.framework')->initialize();
-        $tariffService = $this->get("con4gis.tariff_service");
+        $tariffService = new TariffService($this->entityManager);
         $response = new JsonResponse();
         $response ->setData($tariffService->getResponse($settingId));
         return $response;
