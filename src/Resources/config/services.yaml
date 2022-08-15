@@ -1,13 +1,12 @@
 services:
-  con4gis.expense_service:
-    class: con4gis\IOTravelCostsBundle\Classes\Services\ExpenseService
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  con4gis\IOTravelCostsBundle\Controller\TravelCostsController:
+    class: con4gis\IOTravelCostsBundle\Controller\TravelCostsController
+    autowire: true
     public: true
     arguments:
-      - "@event_dispatcher"
       - "@doctrine.orm.entity_manager"
-  con4gis.tariff_service:
-    class: con4gis\IOTravelCostsBundle\Classes\Services\TariffService
-    public: true
-    arguments:
-      - "@event_dispatcher"
-      - "@doctrine.orm.entity_manager"
+      - "@contao.framework"
