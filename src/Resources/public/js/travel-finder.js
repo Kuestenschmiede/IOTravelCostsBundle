@@ -10,10 +10,15 @@ const objSettings = {};
 const containerAddresses = {
   arrFromPositions: [],
   arrFromNames: [],
+  arrOverPositions: {},
+  arrOverNames: {},
   arrToPositions: [],
   arrToNames: []
 };
+var counterOverFields = 0;
 var travelData = {
+  routeOver: {
+  },
   routeFrom: {
     address : "",
     loc: []
@@ -314,8 +319,12 @@ function submitSearch(input, cssId) {
         if (cssId === "route-to") {
           travelData.routeTo.loc = [data[0].lat, data[0].lon];
         }
-        else {
+        else if (cssId === "route-from"){
           travelData.routeFrom.loc = [data[0].lat, data[0].lon];
+        }
+        else {
+          let count = cssId[cssId.length - 1];
+          travelData.routeOver[count].loc = [data[0].lat, data[0].lon];
         }
         if (travelData.routeFrom.loc.length > 0 && travelData.routeTo.loc.length > 0) {
           if (!objSettings.submitButton) {
@@ -346,7 +355,15 @@ function submitSearch(input, cssId) {
  */
 function calculateExpenses () {
   if (travelData.routeFrom.loc && travelData.routeTo.loc) {
-    let url = "con4gis/expenseService/" + objSettings.settingId + "/" + travelData.routeFrom.loc[0] + "," + travelData.routeFrom.loc[1] + ";" + travelData.routeTo.loc[0] + "," + travelData.routeTo.loc[1];
+    let url = "con4gis/expenseService/" + objSettings.settingId + "/" + travelData.routeFrom.loc[0] + "," + travelData.routeFrom.loc[1] + ";";
+    if (travelData.routeOver) {
+      for (let i in travelData.routeOver) {
+        if (travelData.routeOver.hasOwnProperty(i) && travelData.routeOver[i].loc) {
+          url += travelData.routeOver[i].loc[0] + "," + travelData.routeOver[i].loc[1] + ";"
+        }
+      }
+    }
+    url += travelData.routeTo.loc[0] + "," + travelData.routeTo.loc[1]
     $.ajax({url: url}).done(function(data) {
       let tableNode = $(".route-output");
       tableNode.css("display", "grid");
@@ -526,6 +543,85 @@ $(document).ready(function() {
     } else {
       console.warn("The geolocation API is not available in your browser. Consider updating it or switching to a newer browser.");
     }
+  });
+  $(".route-over-add").on("click", function () {
+    counterOverFields++;
+    let currentCount = counterOverFields;
+    let divRouteOverInput = document.createElement('div');
+    divRouteOverInput.className = "input-route-over-field count-" + counterOverFields;
+    if (objSettings.posButton) {
+      let buttonGeolocation = document.createElement('button');
+      buttonGeolocation.className = "route-over-geolocation";
+      $(buttonGeolocation).on('click', function () {
+        if (navigator.geolocation) {
+          const handleRouteOverPosition = function (coordinates) {
+            handlePosition(coordinates, ".route-over count-" + currentCount, "route-over count-" + currentCount);
+            if (!objSettings.submitButton) {
+              calculateExpenses();
+            }
+          }
+          navigator.geolocation.getCurrentPosition(handleRouteOverPosition);
+        } else {
+          console.warn("The geolocation API is not available in your browser. Consider updating it or switching to a newer browser.");
+        }
+      });
+      divRouteOverInput.appendChild(buttonGeolocation)
+    }
+    let inputField = document.createElement('input');
+    inputField.className = "over-count-" + currentCount + " route-over ui-autocomplete-input"
+    if (objSettings.delButton) {
+      inputField.type = 'search';
+    }
+    else {
+      inputField.type = 'text';
+    }
+    containerAddresses.arrOverNames[currentCount] = [];
+    containerAddresses.arrOverPositions[currentCount] = [];
+    travelData.routeOver[currentCount] = {
+      address: "",
+      loc: []
+    }
+    const deleteOverListener = function () {
+      $(this).val();
+      travelData.routeOver[currentCount].address = address;
+
+    };
+    const selectOverListener = function (event, ui) {
+      let value = ui.item.value;
+      travelData.routeFrom.loc = containerAddresses.arrOverPositions[currentCount][containerAddresses.arrOverNames[currentCount].findIndex(
+          danger => danger === value
+      )];
+      if (!objSettings.submitButton) {
+        calculateExpenses();
+      }
+    };
+    const changeOverListener = function () {
+      let address = $(this).val();
+      travelData.routeOver[currentCount].address = address;
+
+    }
+    const objOverListeners = {
+      "selectListener": selectOverListener,
+      "submitFunction": submitSearch,
+      "deleteFunction": deleteOverListener,
+      "changeListener": changeOverListener
+    }
+    containerAddresses.arrOverNames[currentCount] = [];
+    containerAddresses.arrOverPositions[currentCount] = [];
+    const autocompleteHandlerOver = new AutocompleteHandler($(inputField), objOverListeners, "route-over-" + currentCount, objSettings, containerAddresses);
+    autocompleteHandlerOver.handleInput();
+    $(inputField).autocomplete({
+      source: containerAddresses.arrOverNames[currentCount]
+    });
+    divRouteOverInput.appendChild(inputField);
+    let buttonRemove = document.createElement('button');
+    buttonRemove.innerText = "X";
+    $(buttonRemove).on('click', function() {
+      delete travelData.routeOver[currentCount];
+      $(divRouteOverInput).remove();
+    });
+    divRouteOverInput.appendChild(buttonRemove);
+    $(".route-over-input").append(divRouteOverInput);
   });
 
   let objHeadlineDistPrice = $(".headline-dist-price");

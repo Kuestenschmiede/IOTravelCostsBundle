@@ -15,6 +15,12 @@
             <?php endif; ?>
         </div>
     </div>
+    <?php if ($this->arrSettings['overPositions']): ?>
+    <div class="route-over-input">
+        <button class="route-over-add" title="Zwischenziele hinzufügen">+</button>
+    </div>
+    <?php endif; ?>
+
     <div class="route-to-input">
         <div class="input-route-to-field">
             <?php if ($this->arrSettings['posButton']): ?>

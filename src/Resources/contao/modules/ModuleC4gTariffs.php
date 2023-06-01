@@ -7,8 +7,10 @@ use con4gis\CoreBundle\Classes\ResourceLoader;
 use con4gis\IOTravelCostsBundle\Entity\TravelCostsSettings;
 use Contao\Controller;
 use Contao\System;
+use Contao\Module;
+use Contao\BackendTemplate;
 
-class ModuleC4gTariffs extends \Module
+class ModuleC4gTariffs extends Module
 {
     /**
      * Template
@@ -22,7 +24,7 @@ class ModuleC4gTariffs extends \Module
     public function generate()
     {
         if (TL_MODE == 'BE') {
-            $objTemplate = new \BackendTemplate('be_wildcard');
+            $objTemplate = new BackendTemplate('be_wildcard');
             $objTemplate->wildcard = '### '.$GLOBALS['TL_LANG']['FMD']['c4g_tariffs'][0].' ###';
             $objTemplate->title = $this->headline;
             $objTemplate->id = $this->id;

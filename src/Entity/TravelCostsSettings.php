@@ -110,6 +110,12 @@ class TravelCostsSettings extends BaseEntity
      * @ORM\Column(type="string", length=1)
      */
     protected $withDeleteButton = '0';
+   
+    /**
+     * @var string
+     * @ORM\Column(type="string", length=1)
+     */
+    protected $overPositions = '0';
 
     /**
      * @var int
@@ -581,6 +587,22 @@ class TravelCostsSettings extends BaseEntity
         $this->withDeleteButton = $withDeleteButton;
     }
 
+    /**
+     * @return string
+     */
+    public function getOverPositions(): string
+    {
+        return $this->overPositions;
+    }
+
+    /**
+     * @param string $overPositions
+     */
+    public function setOverPositions(string $overPositions): void
+    {
+        $this->overPositions = $overPositions;
+    }
+    
     /**
      * @return string
      */

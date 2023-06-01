@@ -2,6 +2,7 @@ $fa-font-path: "../../../../bundles/con4giscore/vendor/fontawesome/webfonts";
 @import "node_modules/@fortawesome/fontawesome-free/scss/fontawesome";
 @import "node_modules/@fortawesome/fontawesome-free/scss/solid";
 .route-from-geolocation,
+.route-over-geolocation,
 .route-to-geolocation {
     color: rgba(255,255,255,1);
     background-color: rgba(0, 0, 0,.75);
@@ -13,7 +14,11 @@ $fa-font-path: "../../../../bundles/con4giscore/vendor/fontawesome/webfonts";
     margin: 2px;
     border-radius: 5%;
 }
-
+.input-route button {
+    color: rgba(255,255,255,1);
+    background-color: rgba(0, 0, 0,.75);
+    height: 32px;
+}
 .submit-expense-calc,
 .reset-expense-calc {
     color: rgba(255,255,255,1);
@@ -49,6 +54,7 @@ $fa-font-path: "../../../../bundles/con4giscore/vendor/fontawesome/webfonts";
 /*    box-sizing: border-box;*/
 /*}*/
 button.route-from-geolocation:before,
+button.route-over-geolocation:before,
 button.route-to-geolocation:before {
     font-family: 'Font Awesome 5 Free';
     font-weight: 900;

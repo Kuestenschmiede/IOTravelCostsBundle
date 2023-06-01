@@ -21,12 +21,14 @@ use con4gis\IOTravelCostsBundle\Entity\TravelCostsSettings;
 use Contao\System;
 use Doctrine\ORM\EntityManager;
 use Contao\Controller;
+use Contao\Module;
+use Contao\BackendTemplate;
 
 /**
  * Class ModuleC4gTravelCosts
  * @package \con4gis\IOTravelCostsBundle\Resources\contao\modules
  */
-class ModuleC4gTravelCosts extends \Module
+class ModuleC4gTravelCosts extends Module
 {
     /**
      * Template
@@ -40,7 +42,7 @@ class ModuleC4gTravelCosts extends \Module
     public function generate()
     {
         if (TL_MODE == 'BE') {
-            $objTemplate = new \BackendTemplate('be_wildcard');
+            $objTemplate = new BackendTemplate('be_wildcard');
             $objTemplate->wildcard = '### '.$GLOBALS['TL_LANG']['FMD']['c4g_travel_costs'][0].' ###';
             $objTemplate->title = $this->headline;
             $objTemplate->id = $this->id;
@@ -112,6 +114,7 @@ class ModuleC4gTravelCosts extends \Module
             $arrSettings['posButton'] = $tariffConfig->getWithPositionButton();
             $arrSettings['delButton'] = $tariffConfig->getWithDeleteButton();
             $arrSettings['submitButton'] = $tariffConfig->getWithSubmitButton();
+            $arrSettings['overPositions'] = $tariffConfig->getOverPositions();
             $arrSettings['hideDisplay'] = $tariffConfig->getHideDisplay();
             $arrSettings['displayType'] = $tariffConfig->getTariffDisplay();
             $arrSettings['currency'] = $tariffConfig->getCurrency();
