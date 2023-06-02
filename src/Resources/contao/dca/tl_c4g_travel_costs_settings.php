@@ -78,7 +78,7 @@ $GLOBALS['TL_DCA'][$strName] = array
     // Palettes
     'palettes' => [
         '__selector__' => ['tariffDisplay'],
-        'default' => '{general_legend},caption;{bbox_legend:hide},startBboxUpperx,startBboxUppery,startBboxDownerx,startBboxDownery;{tariffLegend},tariffs;{controlLegend},withPositionButton,withSubmitButton,withDeleteButton,overPositions,addTimes,distPrice,limitAutocomplete;{centerLegend},centerx,centery;{customMsgLegend:hide},errorMessageBounds,errorMessageNotFound,searchPlaceholder,language,currency;{descriptionLegend},tariffDisplay,hideDisplay;'
+        'default' => '{general_legend},caption;{bbox_legend:hide},startBboxUpperx,startBboxUppery,startBboxDownerx,startBboxDownery;{tariffLegend},tariffs;{controlLegend},withPositionButton,withSubmitButton,withDeleteButton,overPositions,addTimes,distPrice,limitAutocomplete,addPriceOptions;{centerLegend},centerx,centery;{customMsgLegend:hide},errorMessageBounds,errorMessageNotFound,searchPlaceholder,language,currency;{descriptionLegend},tariffDisplay,hideDisplay;'
     ],
 
 
@@ -267,6 +267,26 @@ $GLOBALS['TL_DCA'][$strName] = array
         'importId' => [
             'eval' => ['doNotCopy' => true]
         ],
+        'addPriceOptions' => [
+            'label'                   => &$GLOBALS['TL_LANG'][$strName]['addPriceOptions'],
+            'default'                 => '',
+            'inputType'               => 'multiColumnWizard',
+            'eval'                    => [
+                'columnFields' => [
+                    'name' => [
+                        'label'             => &$GLOBALS['TL_LANG'][$strName]['name'],
+                        'default'           => "",
+                        'inputType'         => 'text',
+                    ],
+                    'addPrice' => [
+                        'label'             => &$GLOBALS['TL_LANG'][$strName]['addPrice'],
+                        'default'           => 0,
+                        'inputType'         => 'text',
+                        'eval'              => ['regxp'=>'digit']
+                    ]
+                ]
+            ]
+        ]
     ]
 );
 class tl_c4g_travel_costs_settings extends \Contao\Backend

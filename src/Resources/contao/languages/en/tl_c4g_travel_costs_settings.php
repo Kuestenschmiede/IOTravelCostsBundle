@@ -38,7 +38,9 @@ $GLOBALS['TL_LANG'][$strName]['hideDisplay'] = ['Delay tariff description', 'Loa
 $GLOBALS['TL_LANG'][$strName]['language'] = ['Language', 'Set language.'];
 $GLOBALS['TL_LANG'][$strName]['currency'] = ['Currency', 'Set currency.'];
 $GLOBALS['TL_LANG'][$strName]['limitAutocomplete'] = ['Count autocompletion', 'Enter the amount of autocompletion-responses.'];
-
+$GLOBALS['TL_LANG'][$strName]['addPriceOptions'] = ['Additional pricing options', 'Enter additional pricing options here.'];
+$GLOBALS['TL_LANG'][$strName]['name'] = ['Name', 'Name of the pricing option.'];
+$GLOBALS['TL_LANG'][$strName]['addPrice'] = ['Price', 'Value of the pricing option.'];
 
 /**
  * References

@@ -198,6 +198,12 @@ class TravelCostsSettings extends BaseEntity
      * @ORM\Column(type="integer")
      */
     protected $limitAutocomplete = 10;
+    
+    /**
+     * @var null
+     * @ORM\Column(type="array")
+     */
+    protected $addPriceOptions = [];
 
     /**
      * @return int
@@ -661,6 +667,22 @@ class TravelCostsSettings extends BaseEntity
     public function setHideDisplay(string $hideDisplay)
     {
         $this->hideDisplay = $hideDisplay;
+    }
+
+    /**
+     * @return null
+     */
+    public function getAddPriceOptions()
+    {
+        return $this->addPriceOptions;
+    }
+
+    /**
+     * @param null $addPriceOptions
+     */
+    public function setAddPriceOptions($addPriceOptions): void
+    {
+        $this->addPriceOptions = $addPriceOptions;
     }
 
 }

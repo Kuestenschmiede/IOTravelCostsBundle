@@ -19,6 +19,10 @@ $fa-font-path: "../../../../bundles/con4giscore/vendor/fontawesome/webfonts";
     background-color: rgba(0, 0, 0,.75);
     height: 32px;
 }
+input.add-prices,
+input.add-time {
+    height: 32px;
+}
 .submit-expense-calc,
 .reset-expense-calc {
     color: rgba(255,255,255,1);

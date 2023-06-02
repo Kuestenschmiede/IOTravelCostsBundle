@@ -22,6 +22,7 @@ use Contao\System;
 use Doctrine\ORM\EntityManager;
 use Contao\Controller;
 use Contao\Module;
+use Contao\StringUtil;
 use Contao\BackendTemplate;
 
 /**
@@ -116,6 +117,9 @@ class ModuleC4gTravelCosts extends Module
             $arrSettings['submitButton'] = $tariffConfig->getWithSubmitButton();
             $arrSettings['overPositions'] = $tariffConfig->getOverPositions();
             $arrSettings['addTime'] = $tariffConfig->getAddTimes();
+            if ($tariffConfig->getAddPriceOptions()) {
+                $arrSettings['addPriceOptions'] = StringUtil::deserialize($tariffConfig->getAddPriceOptions());
+            }
             $arrSettings['hideDisplay'] = $tariffConfig->getHideDisplay();
             $arrSettings['displayType'] = $tariffConfig->getTariffDisplay();
             $arrSettings['currency'] = $tariffConfig->getCurrency();

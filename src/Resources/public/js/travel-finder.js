@@ -377,6 +377,16 @@ function calculateExpenses () {
     if (objSettings.addTime) {
       url += "/null/" + $("input.add-time").val();
     }
+    let addPrice = 0;
+    if (objSettings.addPriceOptions) {
+      let arrOptions = $(".add-prices");
+      for (let i in arrOptions) {
+        if (arrOptions.hasOwnProperty(i) && arrOptions[i].checked && arrOptions[i].value) {
+          addPrice += parseInt(arrOptions[i].value);
+        }
+      }
+      console.log (addPrice);
+    }
     $.ajax({url: url}).done(function(data) {
       let tableNode = $(".route-output");
       tableNode.css("display", "grid");
@@ -402,7 +412,7 @@ function calculateExpenses () {
         nodeName.insertAfter(insertAfterHead);
         insertAfterHead = nodeName;
         let responseElement = $(document.createElement('div'));
-        let responseTariff = roundToTwo(data.tariffs[tariffName]) + "";
+        let responseTariff = roundToTwo(data.tariffs[tariffName] + addPrice) + "";
         if (objSettings.lang === "de") {
           responseTariff = responseTariff.replace(".",",");
         }

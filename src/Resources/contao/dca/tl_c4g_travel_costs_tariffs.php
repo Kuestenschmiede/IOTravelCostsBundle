@@ -116,7 +116,8 @@ $GLOBALS['TL_DCA'][$strName] = array
             'default'                 => 0,
             'inputType'               => 'text',
             'eval'                    => ['regxp'=>'digit'],
-        ],'distancePrice' => [
+        ],
+        'distancePrice' => [
             'label'                   => &$GLOBALS['TL_LANG'][$strName]['distancePrice'],
             'default'                 => '',
             'inputType'               => 'multiColumnWizard',
@@ -146,7 +147,8 @@ $GLOBALS['TL_DCA'][$strName] = array
                     ]
                 ]
             ],
-        ],'timePrice' => [
+        ],
+        'timePrice' => [
             'label'                   => &$GLOBALS['TL_LANG'][$strName]['timePrice'],
             'default'                 => 0,
             'inputType'               => 'text',

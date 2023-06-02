@@ -33,6 +33,13 @@
             <?php endif; ?>
         </div>
     </div>
+    <?php if ($this->arrSettings['addPriceOptions']): ?>
+    <div class="price-options">
+        <?php foreach ($this->arrSettings['addPriceOptions'] as $id => $row): ?>
+            <input class="add-prices" type="checkbox" value="<?php echo $row['addPrice'] ?>"><?php echo $row['name'] . " [" . $row['addPrice'] ?>€] <br>
+        <?php endforeach ?>
+    </div>
+    <?php endif; ?>
     <?php if ($this->arrSettings['addTime']): ?>
     <div class="input-add-time">
         <input class="add-time" type="number">
