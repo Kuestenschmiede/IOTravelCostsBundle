@@ -28,9 +28,11 @@ class ExpenseService
                 foreach ($arrTariffs as $key => $objTariff) {
                     if ($objTariff  instanceof TravelCostsTariff) {
                         $arrSendTariffs[$key] =
-                            ['basePrice' => $objTariff->getBasePrice(),
+                            [
+                                'basePrice' => $objTariff->getBasePrice(),
                                 'distPrice' => $objTariff->getDistancePrice(),
                                 'timePrice' => $objTariff->getTimePrice(),
+                                'stopTime'  => $objTariff->getStopTime()
                             ];
                     }
                 }

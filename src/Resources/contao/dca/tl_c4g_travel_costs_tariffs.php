@@ -91,7 +91,7 @@ $GLOBALS['TL_DCA'][$strName] = array
     (
         '__selector__'                => array(''),
         'default'                     => '{general_legend},caption;'
-            . '{price_legend},basePrice,distancePrice,timePrice;'
+            . '{price_legend},basePrice,distancePrice,timePrice,stopTime;'
             .'{weekday_legend:hide},monday,tuesday,wednesday,thursday,friday,saturday,sunday;'
     ),
 
@@ -148,6 +148,12 @@ $GLOBALS['TL_DCA'][$strName] = array
             ],
         ],'timePrice' => [
             'label'                   => &$GLOBALS['TL_LANG'][$strName]['timePrice'],
+            'default'                 => 0,
+            'inputType'               => 'text',
+            'eval'                    => ['regxp'=>'digit'],
+        ],
+        'stopTime' => [
+            'label'                   => &$GLOBALS['TL_LANG'][$strName]['stopTime'],
             'default'                 => 0,
             'inputType'               => 'text',
             'eval'                    => ['regxp'=>'digit'],

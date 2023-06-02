@@ -73,6 +73,12 @@ class TravelCostsTariff extends BaseEntity
      * @var int
      * @ORM\Column(type="integer")
      */
+    protected $stopTime = 0;
+
+    /**
+     * @var int
+     * @ORM\Column(type="integer")
+     */
     protected $timeBegin = '';
 
     /**
@@ -246,6 +252,22 @@ class TravelCostsTariff extends BaseEntity
     public function setTimePrice(float $timePrice): void
     {
         $this->timePrice = $timePrice;
+    }
+
+    /**
+     * @return int
+     */
+    public function getStopTime(): int
+    {
+        return $this->stopTime;
+    }
+
+    /**
+     * @param int $stopTime
+     */
+    public function setStopTime(int $stopTime): void
+    {
+        $this->stopTime = $stopTime;
     }
     
     /**

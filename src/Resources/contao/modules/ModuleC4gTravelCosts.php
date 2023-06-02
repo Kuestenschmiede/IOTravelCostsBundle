@@ -115,6 +115,7 @@ class ModuleC4gTravelCosts extends Module
             $arrSettings['delButton'] = $tariffConfig->getWithDeleteButton();
             $arrSettings['submitButton'] = $tariffConfig->getWithSubmitButton();
             $arrSettings['overPositions'] = $tariffConfig->getOverPositions();
+            $arrSettings['addTime'] = $tariffConfig->getAddTimes();
             $arrSettings['hideDisplay'] = $tariffConfig->getHideDisplay();
             $arrSettings['displayType'] = $tariffConfig->getTariffDisplay();
             $arrSettings['currency'] = $tariffConfig->getCurrency();

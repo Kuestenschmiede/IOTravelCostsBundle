@@ -156,14 +156,24 @@ function handlePosition(coordinates, cssId, propName) {
   if (cssId === ".route-from") {
     travelData.routeFrom.loc = [coords.latitude, coords.longitude];
   }
-  else {
+  else if (cssId === ".route-to") {
     travelData.routeTo.loc = [coords.latitude, coords.longitude];
+  }
+  else if (cssId.indexOf('over') != -1){
+    let count = propName[propName.length -1];
+    travelData.routeOver[count].loc = [coords.latitude, coords.longitude];
   }
   let url = objSettings.proxyUrl + 'reverse.php?key='+ objSettings.keyReverse+'&format=json&lat=' + coords.latitude + '&lon=' + coords.longitude;
   $.ajax({url: url}).done(function(data) {
     let address = parseAddressString(data);
     $(cssId).val(address);
-    travelData[propName].address = address;
+    if (propName.indexOf('over') != -1){
+      let count = propName[propName.length -1];
+      travelData.routeOver[count].address = address;
+    }
+    else {
+      travelData[propName].address = address;
+    }
   });
 }
 
@@ -363,7 +373,10 @@ function calculateExpenses () {
         }
       }
     }
-    url += travelData.routeTo.loc[0] + "," + travelData.routeTo.loc[1]
+    url += travelData.routeTo.loc[0] + "," + travelData.routeTo.loc[1];
+    if (objSettings.addTime) {
+      url += "/null/" + $("input.add-time").val();
+    }
     $.ajax({url: url}).done(function(data) {
       let tableNode = $(".route-output");
       tableNode.css("display", "grid");
@@ -555,7 +568,7 @@ $(document).ready(function() {
       $(buttonGeolocation).on('click', function () {
         if (navigator.geolocation) {
           const handleRouteOverPosition = function (coordinates) {
-            handlePosition(coordinates, ".route-over count-" + currentCount, "route-over count-" + currentCount);
+            handlePosition(coordinates, ".route-over", "route-over count-" + currentCount);
             if (!objSettings.submitButton) {
               calculateExpenses();
             }

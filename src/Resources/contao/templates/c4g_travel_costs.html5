@@ -33,6 +33,11 @@
             <?php endif; ?>
         </div>
     </div>
+    <?php if ($this->arrSettings['addTime']): ?>
+    <div class="input-add-time">
+        <input class="add-time" type="number">
+    </div>
+    <?php endif; ?>
     <?php if ($this->arrSettings['submitButton']): ?>
     <div class="submit-input">
         <button class="submit-expense-calc" id="btn-submit-expense-calc"></button>

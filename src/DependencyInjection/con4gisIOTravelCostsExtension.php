@@ -32,8 +32,4 @@ class con4gisIOTravelCostsExtension extends Extension
         );
         $loader->load('services.yaml');
     }
-    public function getAlias()
-    {
-        return "con4gis_io_travel_costs";
-    }
 }

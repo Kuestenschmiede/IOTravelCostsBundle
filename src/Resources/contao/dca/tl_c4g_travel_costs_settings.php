@@ -78,7 +78,7 @@ $GLOBALS['TL_DCA'][$strName] = array
     // Palettes
     'palettes' => [
         '__selector__' => ['tariffDisplay'],
-        'default' => '{general_legend},caption;{bbox_legend:hide},startBboxUpperx,startBboxUppery,startBboxDownerx,startBboxDownery;{tariffLegend},tariffs;{controlLegend},withPositionButton,withSubmitButton,withDeleteButton,distPrice,limitAutocomplete;{centerLegend},centerx,centery;{customMsgLegend:hide},errorMessageBounds,errorMessageNotFound,searchPlaceholder,language,currency;{descriptionLegend},tariffDisplay,hideDisplay;'
+        'default' => '{general_legend},caption;{bbox_legend:hide},startBboxUpperx,startBboxUppery,startBboxDownerx,startBboxDownery;{tariffLegend},tariffs;{controlLegend},withPositionButton,withSubmitButton,withDeleteButton,overPositions,addTimes,distPrice,limitAutocomplete;{centerLegend},centerx,centery;{customMsgLegend:hide},errorMessageBounds,errorMessageNotFound,searchPlaceholder,language,currency;{descriptionLegend},tariffDisplay,hideDisplay;'
     ],
 
 
@@ -163,6 +163,21 @@ $GLOBALS['TL_DCA'][$strName] = array
         ],
         'withDeleteButton' => [
             'label' => &$GLOBALS['TL_LANG'][$strName]['withDeleteButton'],
+            'default' => '0',
+            'inputType' => 'checkbox',
+            'eval' => ['maxlength' => 255, 'tl_class' => 'long']
+        ],'overPositions' => [
+            'label' => &$GLOBALS['TL_LANG'][$strName]['overPositions'],
+            'default' => '0',
+            'inputType' => 'checkbox',
+            'eval' => ['maxlength' => 255, 'tl_class' => 'long']
+        ],'timeAtStop' => [
+            'label' => &$GLOBALS['TL_LANG'][$strName]['timeAtStop'],
+            'default' => 0,
+            'inputType' => 'text',
+            'eval' => ['regex' => 'digit', 'tl_class' => 'long']
+        ],'addTimes' => [
+            'label' => &$GLOBALS['TL_LANG'][$strName]['addTimes'],
             'default' => '0',
             'inputType' => 'checkbox',
             'eval' => ['maxlength' => 255, 'tl_class' => 'long']

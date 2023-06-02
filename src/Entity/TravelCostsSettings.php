@@ -121,6 +121,18 @@ class TravelCostsSettings extends BaseEntity
      * @var int
      * @ORM\Column(type="integer")
      */
+    protected $timeAtStop = 0;
+
+    /**
+     * @var string
+     * @ORM\Column(type="string", length=1)
+     */
+    protected $addTimes = '0';
+
+    /**
+     * @var int
+     * @ORM\Column(type="integer")
+     */
     protected $distPrice = 0;
 
     /**
@@ -601,6 +613,38 @@ class TravelCostsSettings extends BaseEntity
     public function setOverPositions(string $overPositions): void
     {
         $this->overPositions = $overPositions;
+    }
+
+    /**
+     * @return int
+     */
+    public function getTimeAtStop(): int
+    {
+        return $this->timeAtStop;
+    }
+
+    /**
+     * @param int $timeAtStop
+     */
+    public function setTimeAtStop(int $timeAtStop): void
+    {
+        $this->timeAtStop = $timeAtStop;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAddTimes(): string
+    {
+        return $this->addTimes;
+    }
+
+    /**
+     * @param string $addTimes
+     */
+    public function setAddTimes(string $addTimes): void
+    {
+        $this->addTimes = $addTimes;
     }
     
     /**
