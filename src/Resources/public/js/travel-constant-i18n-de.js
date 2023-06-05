@@ -16,6 +16,7 @@
  */
 export  var travelConstantsGerman = {
     DUMMY_INPUT: 'Straße, Ort oder PLZ eingeben ...',
+    DUMMY_INPUT_TIME: 'Zusätzliche Haltezeit in Minuten eingeben...',
     HEADLINE_DIST: 'Entfernung',
     HEADLINE_TIME: 'Dauer',
     HEADLINE_BASE_PRICE: 'Grundpreis',

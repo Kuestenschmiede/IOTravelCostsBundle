@@ -158,11 +158,18 @@ class TravelCostsSettings extends BaseEntity
      * @ORM\Column(type="string")
      */
     protected $errorMessageNotFound = '';
+
     /**
      * @var string
      * @ORM\Column(type="string")
      */
     protected $searchPlaceholder = '';
+
+    /**
+     * @var string
+     * @ORM\Column(type="string")
+     */
+    protected $inputPlaceholder = '';
 
     /**
      * @var int
@@ -477,6 +484,22 @@ class TravelCostsSettings extends BaseEntity
         $this->searchPlaceholder = $searchPlaceholder;
     }
 
+    /**
+     * @return string
+     */
+    public function getInputPlaceholder(): string
+    {
+        return $this->inputPlaceholder;
+    }
+
+    /**
+     * @param string $inputPlaceholder
+     */
+    public function setInputPlaceholder(string $inputPlaceholder): void
+    {
+        $this->inputPlaceholder = $inputPlaceholder;
+    }
+    
     /**
      * @return int
      */

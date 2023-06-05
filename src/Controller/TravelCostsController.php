@@ -14,6 +14,7 @@
 namespace con4gis\IOTravelCostsBundle\Controller;
 
 
+use Symfony\Component\EventDispatcher\EventDispatcher;
 use con4gis\IOTravelCostsBundle\Classes\Services\ExpenseService;
 use con4gis\IOTravelCostsBundle\Classes\Services\TariffService;
 use Contao\CoreBundle\Framework\ContaoFramework;
@@ -27,9 +28,10 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class TravelCostsController extends AbstractController
 {
-    public function __construct(EntityManager $manager, ContaoFramework $contaoFramework)
+    public function __construct(EntityManager $manager, EventDispatcher $eventDispatcher, ContaoFramework $contaoFramework)
     {
         $this->entityManager = $manager;
+        $this->eventDispatcher = $eventDispatcher;
         $this->framework = $contaoFramework;
     }
     /**
@@ -39,7 +41,7 @@ class TravelCostsController extends AbstractController
      */
     public function getExpensesAction(Request $request, $settings, $locations, $tariffId = null, $time = null){
         $this->framework->initialize();
-        $expenseService = new ExpenseService($this->entityManager);
+        $expenseService = new ExpenseService($this->entityManager, $this->eventDispatcher);
         $response = new JsonResponse();
         $response ->setData($expenseService->getResponse($settings, $locations, $tariffId, $time));
         return $response;

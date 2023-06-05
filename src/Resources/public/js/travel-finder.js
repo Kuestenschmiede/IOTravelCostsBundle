@@ -457,6 +457,10 @@ $(document).ready(function() {
   if (objInputTo[0]) {
     objInputTo[0].placeholder = objSettings.searchPlaceholder || langConstants.DUMMY_INPUT;
   }
+  let objInputTime = $(".add-time");
+  if (objInputTime[0]) {
+    objInputTime[0].placeholder = objSettings.inputPlaceholder || langConstants.DUMMY_INPUT_TIME;
+  }
   let objHeadlineDist = $(".headline-dist");
   objHeadlineDist.html(langConstants.HEADLINE_DIST);
   let objHeadlineTime = $(".headline-time");
@@ -545,6 +549,7 @@ $(document).ready(function() {
       $('.ui-autocomplete-input').val("");
       $(".route-output").css("display", "none");
       $(".tariff-output.hideAgain").css("display", "none");
+      $(".remove-over-input").trigger('click');
     })
   }
   $("span.deleteIcon span"). on ("click", (element) => {
@@ -591,6 +596,7 @@ $(document).ready(function() {
       divRouteOverInput.appendChild(buttonGeolocation)
     }
     let inputField = document.createElement('input');
+    inputField.placeholder = langConstants.DUMMY_INPUT;
     inputField.className = "over-count-" + currentCount + " route-over ui-autocomplete-input"
     if (objSettings.delButton) {
       inputField.type = 'search';
@@ -638,7 +644,7 @@ $(document).ready(function() {
     });
     divRouteOverInput.appendChild(inputField);
     let buttonRemove = document.createElement('button');
-    buttonRemove.innerText = "X";
+    buttonRemove.className = "remove-over-input";
     $(buttonRemove).on('click', function() {
       delete travelData.routeOver[currentCount];
       $(divRouteOverInput).remove();

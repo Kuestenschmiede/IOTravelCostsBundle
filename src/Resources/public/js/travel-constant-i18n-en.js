@@ -16,6 +16,7 @@
  */
 export var travelConstantsEnglish = {
     DUMMY_INPUT: 'Street, city or enter postal code ...',
+    DUMMY_INPUT_TIME: 'Enter additional time in minutes...',
     HEADLINE_DIST: 'Distance',
     HEADLINE_TIME: 'Time',
     HEADLINE_BASE_PRICE:'Base price',

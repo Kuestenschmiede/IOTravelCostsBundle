@@ -78,7 +78,7 @@ $GLOBALS['TL_DCA'][$strName] = array
     // Palettes
     'palettes' => [
         '__selector__' => ['tariffDisplay'],
-        'default' => '{general_legend},caption;{bbox_legend:hide},startBboxUpperx,startBboxUppery,startBboxDownerx,startBboxDownery;{tariffLegend},tariffs;{controlLegend},withPositionButton,withSubmitButton,withDeleteButton,overPositions,addTimes,distPrice,limitAutocomplete,addPriceOptions;{centerLegend},centerx,centery;{customMsgLegend:hide},errorMessageBounds,errorMessageNotFound,searchPlaceholder,language,currency;{descriptionLegend},tariffDisplay,hideDisplay;'
+        'default' => '{general_legend},caption;{bbox_legend:hide},startBboxUpperx,startBboxUppery,startBboxDownerx,startBboxDownery;{tariffLegend},tariffs;{controlLegend},withPositionButton,withSubmitButton,withDeleteButton,overPositions,addTimes,distPrice,limitAutocomplete,addPriceOptions;{centerLegend},centerx,centery;{customMsgLegend:hide},errorMessageBounds,errorMessageNotFound,searchPlaceholder,inputPlaceholder,language,currency;{descriptionLegend},tariffDisplay,hideDisplay;'
     ],
 
 
@@ -220,6 +220,12 @@ $GLOBALS['TL_DCA'][$strName] = array
         ],
         'searchPlaceholder' => [
             'label' => &$GLOBALS['TL_LANG'][$strName]['searchPlaceholder'],
+            'default' => '',
+            'inputType' => 'text',
+            'eval' => ['decodeEntities' => true, 'tl_class' => 'long'],
+        ],
+        'inputPlaceholder' => [
+            'label' => &$GLOBALS['TL_LANG'][$strName]['inputPlaceholder'],
             'default' => '',
             'inputType' => 'text',
             'eval' => ['decodeEntities' => true, 'tl_class' => 'long'],

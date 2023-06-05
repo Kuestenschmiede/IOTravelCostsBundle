@@ -17,7 +17,7 @@
     </div>
     <?php if ($this->arrSettings['overPositions']): ?>
     <div class="route-over-input">
-        <button class="route-over-add" title="Zwischenziele hinzufügen">+</button>
+        <button class="route-over-add" title="Zwischenziele hinzufügen"/>
     </div>
     <?php endif; ?>
 
@@ -36,7 +36,9 @@
     <?php if ($this->arrSettings['addPriceOptions']): ?>
     <div class="price-options">
         <?php foreach ($this->arrSettings['addPriceOptions'] as $id => $row): ?>
+        <?php if ($row['name'] && $row['addPrice']): ?>
             <input class="add-prices" type="checkbox" value="<?php echo $row['addPrice'] ?>"><?php echo $row['name'] . " [" . $row['addPrice'] ?>€] <br>
+        <?php endif; ?>
         <?php endforeach ?>
     </div>
     <?php endif; ?>

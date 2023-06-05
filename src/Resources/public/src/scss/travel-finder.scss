@@ -66,6 +66,26 @@ button.route-to-geolocation:before {
     content: "\f05b";
 }
 
+button.route-over-add,
+button.remove-over-input{
+    padding: 2px;
+    margin: 2px;
+    border-radius: 5%;
+    width: 32px;
+}
+button.route-over-add:before {
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    font-size: inherit;
+    content: "\f067";
+}
+button.remove-over-input:before {
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    font-size: inherit;
+    content: "\f1f8";
+}
+
 input[type=search]::-webkit-search-cancel-button {
     -webkit-appearance: searchfield-cancel-button;
 }

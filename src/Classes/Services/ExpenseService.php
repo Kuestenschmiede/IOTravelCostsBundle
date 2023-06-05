@@ -3,9 +3,11 @@
 namespace con4gis\IOTravelCostsBundle\Classes\Services;
 
 use con4gis\CoreBundle\Resources\contao\models\C4gSettingsModel;
+use con4gis\IOTravelCostsBundle\Classes\Events\CalculateExpenseEvent;
 use con4gis\IOTravelCostsBundle\Entity\TravelCostsSettings;
 use con4gis\IOTravelCostsBundle\Entity\TravelCostsTariff;
 use Doctrine\ORM\EntityManager;
+use Symfony\Component\EventDispatcher\EventDispatcher;
 
 class ExpenseService
 {
@@ -13,9 +15,11 @@ class ExpenseService
     /**
      * AreaService constructor
      */
-    public function __construct(EntityManager $manager)
+    public function __construct(EntityManager $manager, EventDispatcher $eventDispatcher)
     {
         $this->entityManager = $manager;
+        $this->eventDispatcher = $eventDispatcher;
+
     }
     public function getResponse($expenseSetting, $locations, $tariffIds = null, $time = null)
     {
@@ -23,6 +27,22 @@ class ExpenseService
         if ($objExpenseSettings instanceof TravelCostsSettings) {
             $arrTariffIds = $objExpenseSettings->getTariffs();
             $arrTariffs = $this->entityManager->getRepository(TravelCostsTariff::class)->findBy(['id' => $arrTariffIds]);
+
+            $event = new CalculateExpenseEvent();
+            $event->setSettings($objExpenseSettings);
+            if ($time) {
+                $event->setInput($time);
+            }
+            $event->setTariffs($arrTariffs);
+            $event->setLocations($locations);
+            $this->eventDispatcher->dispatch($event, $event::NAME);
+            $objExpenseSettings = $event->getSettings();
+            $arrTariffs = $event->getTariffs();
+            $locations = $event->getLocations();
+            if ($time) {
+                $time = $event->getInput();
+            }
+
             if ($arrTariffs[0]) {
                 $arrSendTariffs = [];
                 foreach ($arrTariffs as $key => $objTariff) {

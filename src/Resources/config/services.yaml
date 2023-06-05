@@ -9,4 +9,5 @@ services:
     public: true
     arguments:
       - "@doctrine.orm.entity_manager"
+      - "@event_dispatcher"
       - "@contao.framework"
