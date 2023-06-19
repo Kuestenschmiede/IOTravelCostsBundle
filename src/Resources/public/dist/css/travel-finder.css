@@ -17,7 +17,7 @@
   line-height: 1
 }
 .fa-lg {
-  font-size: 1.33333em;
+  font-size: 1.3333333333em;
   line-height: .75em;
   vertical-align: -.0667em
 }
@@ -102,20 +102,10 @@
   margin-left: .3em
 }
 .fa-spin {
-  -webkit-animation: fa-spin 2s infinite linear;
   animation: fa-spin 2s infinite linear
 }
 .fa-pulse {
-  -webkit-animation: fa-spin 1s infinite steps(8);
   animation: fa-spin 1s infinite steps(8)
-}
-@-webkit-keyframes fa-spin {
-  0% {
-    transform: rotate(0)
-  }
-  100% {
-    transform: rotate(360deg)
-  }
 }
 @keyframes fa-spin {
   0% {
@@ -4574,7 +4564,7 @@
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  */
 @font-face {
-  font-family: 'Font Awesome 5 Free';
+  font-family: "Font Awesome 5 Free";
   font-style: normal;
   font-weight: 900;
   font-display: block;
@@ -4583,10 +4573,11 @@
 }
 .fa,
 .fas {
-  font-family: 'Font Awesome 5 Free';
+  font-family: "Font Awesome 5 Free";
   font-weight: 900
 }
 .route-from-geolocation,
+.route-over-geolocation,
 .route-to-geolocation {
   color: #fff;
   background-color: rgba(0,0,0,.75);
@@ -4597,6 +4588,15 @@
   padding: 2px;
   margin: 2px;
   border-radius: 5%
+}
+.input-route button {
+  color: #fff;
+  background-color: rgba(0,0,0,.75);
+  height: 32px
+}
+input.add-prices,
+input.add-time {
+  height: 32px
 }
 .reset-expense-calc,
 .submit-expense-calc {
@@ -4610,11 +4610,31 @@
   border-radius: 5%
 }
 button.route-from-geolocation:before,
+button.route-over-geolocation:before,
 button.route-to-geolocation:before {
-  font-family: 'Font Awesome 5 Free';
+  font-family: "Font Awesome 5 Free";
   font-weight: 900;
   font-size: inherit;
   content: "\f05b"
+}
+button.remove-over-input,
+button.route-over-add {
+  padding: 2px;
+  margin: 2px;
+  border-radius: 5%;
+  width: 32px
+}
+button.route-over-add:before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  font-size: inherit;
+  content: "\f067"
+}
+button.remove-over-input:before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  font-size: inherit;
+  content: "\f1f8"
 }
 input[type=search]::-webkit-search-cancel-button {
   -webkit-appearance: searchfield-cancel-button
