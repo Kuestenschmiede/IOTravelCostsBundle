@@ -617,7 +617,7 @@ $(document).ready(function() {
     };
     const selectOverListener = function (event, ui) {
       let value = ui.item.value;
-      travelData.routeFrom.loc = containerAddresses.arrOverPositions[currentCount][containerAddresses.arrOverNames[currentCount].findIndex(
+      travelData.routeOver[currentCount].loc = containerAddresses.arrOverPositions[currentCount][containerAddresses.arrOverNames[currentCount].findIndex(
           danger => danger === value
       )];
       if (!objSettings.submitButton) {
