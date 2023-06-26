@@ -271,6 +271,7 @@ $GLOBALS['TL_DCA'][$strName] = array
             'eval' => ['rgxp' => 'digit']
         ],
         'importId' => [
+            'default' => 0,
             'eval' => ['doNotCopy' => true]
         ],
         'addPriceOptions' => [
