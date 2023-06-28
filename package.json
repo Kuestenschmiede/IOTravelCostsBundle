@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/Kuestenschmiede/IOTravelCostsBundle#readme",
   "devDependencies": {
-    "webpack": "^5.87.0",
+    "webpack": "^5.88.0",
     "webpack-cli": "^5.1.1"
   },
   "dependencies": {
@@ -35,6 +35,6 @@
     "gulp-plumber": "^1.2.1",
     "gulp-rename": "^2.0.0",
     "gulp-sass": "^5.1.0",
-    "sass": "^1.62.1"
+    "sass": "^1.63.6"
   }
 }
