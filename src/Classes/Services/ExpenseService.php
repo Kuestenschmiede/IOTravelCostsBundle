@@ -49,10 +49,11 @@ class ExpenseService
                     if ($objTariff  instanceof TravelCostsTariff) {
                         $arrSendTariffs[$key] =
                             [
-                                'basePrice' => $objTariff->getBasePrice(),
-                                'distPrice' => $objTariff->getDistancePrice(),
-                                'timePrice' => $objTariff->getTimePrice(),
-                                'stopTime'  => $objTariff->getStopTime()
+                                'basePrice'     => $objTariff->getBasePrice(),
+                                'distPrice'     => $objTariff->getDistancePrice(),
+                                'timePrice'     => $objTariff->getTimePrice(),
+                                'stopTime'      => $objTariff->getStopTime(),
+                                'interimPrice'  => $objTariff->getInterimPrice()
                             ];
                     }
                 }

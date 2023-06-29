@@ -17,6 +17,7 @@ $GLOBALS['TL_LANG'][$strName]['basePrice'] = ['Basispreis', 'Der Preis, der paus
 $GLOBALS['TL_LANG'][$strName]['distancePrice'] = ['Preis für Entfernung', 'Der Preis pro Kilometer.'];
 $GLOBALS['TL_LANG'][$strName]['timePrice'] = ['Preis für Zeit', 'Der Preis pro Minute.'];
 $GLOBALS['TL_LANG'][$strName]['stopTime'] = ['Zeit bei Zwischenstopp', 'Die Zeit, die ein Zwischenstopp in Anspruch nimmt.'];
+$GLOBALS['TL_LANG'][$strName]['interimPrice'] = ['Preis für Zwischenstopp', 'Kosten für einen Zwischenstopp.'];
 
 $GLOBALS['TL_LANG'][$strName]['monday'] = ['Montag', ''];
 $GLOBALS['TL_LANG'][$strName]['tuesday'] = ['Dienstag', ''];
