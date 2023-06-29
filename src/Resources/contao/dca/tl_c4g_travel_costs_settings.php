@@ -185,7 +185,7 @@ $GLOBALS['TL_DCA'][$strName] = array
         'distPrice' => [
             'label' => &$GLOBALS['TL_LANG'][$strName]['distPrice'],
             'default' => 0,
-            'options' => [0, 1],
+            'options' => [0, 1, 2],
             'eval' => ['mandatory'=>true],
             'reference' => &$GLOBALS['TL_LANG'][$strName]['references']['distPrice'],
             'inputType' => 'radio',

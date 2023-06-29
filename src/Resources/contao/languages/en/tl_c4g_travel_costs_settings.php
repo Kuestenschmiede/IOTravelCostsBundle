@@ -48,6 +48,7 @@ $GLOBALS['TL_LANG'][$strName]['addPrice'] = ['Price', 'Value of the pricing opti
  */
 $GLOBALS['TL_LANG'][$strName]['references']['distPrice'][0] = 'Price for the distinct kilometers (e.g. for taxis)';
 $GLOBALS['TL_LANG'][$strName]['references']['distPrice'][1] = 'The whole distance sets the price';
+$GLOBALS['TL_LANG'][$strName]['references']['distPrice'][2] = 'Price for the distinct kilometers (rounded to full kilometer)';
 
 $GLOBALS['TL_LANG'][$strName]['references']['tariffDisplay'][0] = 'Automatic display';
 $GLOBALS['TL_LANG'][$strName]['references']['tariffDisplay'][1] = 'Custom display';

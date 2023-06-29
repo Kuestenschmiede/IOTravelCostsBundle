@@ -49,6 +49,8 @@ $GLOBALS['TL_LANG'][$strName]['addPrice'] = ['Preis', 'Wert der Preis-Oütion'];
  */
 $GLOBALS['TL_LANG'][$strName]['references']['distPrice'][0] = 'Preis für Entfernung entsprechend der Angaben (bspw. für Taxi-Fahrtpreis)';
 $GLOBALS['TL_LANG'][$strName]['references']['distPrice'][1] = 'Gesamtstrecke bestimmt Kilometerpreis';
+$GLOBALS['TL_LANG'][$strName]['references']['distPrice'][2] = 'Preis für Entfernung entsprechend der Angaben (aufgerundet auf vollen Kilometer)';
+
 
 $GLOBALS['TL_LANG'][$strName]['references']['tariffDisplay'][0] = 'Automatische Darstellung';
 $GLOBALS['TL_LANG'][$strName]['references']['tariffDisplay'][1] = 'Benutzerdefinierte Darstellung';
