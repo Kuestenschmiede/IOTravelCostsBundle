@@ -595,7 +595,7 @@ $(document).ready(function() {
       divRouteOverInput.appendChild(buttonGeolocation)
     }
     let inputField = document.createElement('input');
-    inputField.placeholder = langConstants.DUMMY_INPUT;
+    inputField.placeholder = objSettings.searchPlaceholder || langConstants.DUMMY_INPUT;
     inputField.className = "over-count-" + currentCount + " route-over ui-autocomplete-input"
     if (objSettings.delButton) {
       inputField.type = 'search';
