@@ -382,10 +382,9 @@ function calculateExpenses () {
       let arrOptions = $(".add-prices");
       for (let i in arrOptions) {
         if (arrOptions.hasOwnProperty(i) && arrOptions[i].checked && arrOptions[i].value) {
-          addPrice += parseInt(arrOptions[i].value);
+          addPrice += parseFloat(arrOptions[i].value.replace(',','.'));
         }
       }
-      console.log (addPrice);
     }
     $.ajax({url: url}).done(function(data) {
       let tableNode = $(".route-output");
